@@ -1,0 +1,15 @@
+
+thead > tr {color:#fff; background-color:00888A;}
+
+
+ body {
+                           background-image: url("assets/img/error-bck.png");
+                           background-color:#e6e7e9;
+                        }
+                        #panelBck{
+                           background-color:#f7f7f7;
+                           box-shadow: 0 6px 20px 0 rgba(244, 143, 177, 0.5);
+                           color:#8d2929;
+                        }
+
+                        .clearfix{}
