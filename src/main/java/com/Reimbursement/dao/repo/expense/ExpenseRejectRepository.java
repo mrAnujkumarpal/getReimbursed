@@ -11,6 +11,6 @@ import java.util.List;
 
 public interface ExpenseRejectRepository extends JpaRepository<ExpenseReject, Integer> {
 
-    @Query("from ExpenseReject where expense=?1")
-    List<ExpenseReject> findAllRelatedGivenExpense(Expense expense);
+    @Query("from ExpenseReject where expense_Id=?1")
+    List<ExpenseReject> findAllRelatedGivenExpense(int expenseIds);
 }

@@ -36,7 +36,7 @@ public interface ExpenseService {
 
     public void updateExpAsReject(ExpenseReject er);
 
-    public List<ExpenseReject> getExpenseRejectReasonData(Expense expense);
+    public List<ExpenseReject> getExpenseRejectReasonData(int expenseID);
 
     public  List<ExpensePicture> getAllBillsPerExpense(Expense expense);
 

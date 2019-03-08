@@ -96,12 +96,13 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public void updateExpAsReject(ExpenseReject ex){
+        System.out.println(" inside expense service imp class ");
         expenseDaoService.saveExpenseRejectReason(ex);
     }
 
     @Override
-    public List<ExpenseReject> getExpenseRejectReasonData(Expense expense){
-        return  expenseDaoService.fetchExpenseRejectReasonDetails(expense);
+    public List<ExpenseReject> getExpenseRejectReasonData(int expenseID){
+        return  expenseDaoService.fetchExpenseRejectReasonDetails(expenseID);
     }
 
     @Override

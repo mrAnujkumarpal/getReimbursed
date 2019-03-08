@@ -13,8 +13,8 @@ public class ExpenseReject implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "exp_reject_Id")
-    private int exp_reject_Id;
+    @Column(name = "Id")
+    private int Id;
 
     @Column(name = "exp_reject_reason")
     private String exp_reject_reason;
@@ -26,14 +26,34 @@ public class ExpenseReject implements Serializable {
     @Column(name = "exp_reject_By")
     private String exp_reject_By;
 
+    @Column(name = "rejected_exp_Id")
+    private int expense_Id;
 
-    @ManyToOne(optional = false)
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public int getExpense_Id() {
+        return expense_Id;
+    }
+
+    public void setExpense_Id(int expense_Id) {
+        this.expense_Id = expense_Id;
+    }
+    /*
+   @ManyToOne(optional = false)
     @JoinColumn(name = "id")
-    private Employee employee;
+        private Employee employee;
 
-    @ManyToOne(optional = false)
+   @ManyToOne(optional = false)
     @JoinColumn(name = "exp_id")
     private Expense expense;
+
+
 
 
     public int getExp_reject_Id() {
@@ -43,7 +63,7 @@ public class ExpenseReject implements Serializable {
     public void setExp_reject_Id(int exp_reject_Id) {
         this.exp_reject_Id = exp_reject_Id;
     }
-
+*/
     public String getExp_reject_reason() {
         return exp_reject_reason;
     }
@@ -68,7 +88,7 @@ public class ExpenseReject implements Serializable {
         this.exp_reject_By = exp_reject_By;
     }
 
-    public Employee getEmployee() {
+  /*  public Employee getEmployee() {
         return employee;
     }
 
@@ -83,4 +103,5 @@ public class ExpenseReject implements Serializable {
     public void setExpense(Expense expense) {
         this.expense = expense;
     }
+    */
 }

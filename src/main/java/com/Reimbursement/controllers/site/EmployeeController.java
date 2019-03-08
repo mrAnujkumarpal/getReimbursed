@@ -60,9 +60,11 @@ public class EmployeeController extends Validate {
 
         ModelAndView mv = new ModelAndView("employee/allEmployees");
 
+
         mv.addObject("roleList", employeeService.getAllEmployeeRoles());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("allEmployeesList", employeeService.getAllEmployees());
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
 
         return mv;
     }
@@ -86,10 +88,10 @@ public class EmployeeController extends Validate {
         System.out.println(" after remove size " + empls.size());
 */
 
-
         mv.addObject("roleList", employeeService.getAllEmployeeRoles());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("allEmployeesList", employeeService.getAllEmployees());
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         mv.addObject("employee", employee);
 
         return mv;
@@ -144,28 +146,11 @@ public class EmployeeController extends Validate {
 
             employee.setCreatedDate(currentDate);
              employee.setPassword(employee.getPassword());
-           // employee.setPassword(employee.getPassword());
-            //teamLeader.setPassword(passwordEncoder.encode(teamLeader.getPassword()));
             employeeService.addEmployee(employee);
             System.out.println("-------------------------Fetching start--------------------------------");
 
             String userName = employeeFullName(employee);
             System.out.println("userName " + userName );
-
-           /* String mailBody = "Dear " + userName + ", " +
-                    "\n Your account has been created with Email:  " + employee.getEmail() + "." +
-                    "\n Your employee code and portal login details will share you shortly." +
-                    "\n\n  Wish you all the best." +
-                    "\n\n\n Thanks & Warm Regards  \n IT Logic Lab";
-
-
-            registrationEmail.setTo(employee.getEmail());
-            registrationEmail.setSubject("Welcome for Registration ");
-            registrationEmail.setText(mailBody);
-            registrationEmail.setFrom("noreply@domain.com");*/
-            //emailService.sendTextEmail(registrationEmail);
-
-
             System.out.println("now going to send email... "  +  employee.getEmail());
             emailService.sendHTML_RegistrationMail(userName, employee.getEmail());
             mv.setViewName("redirect:/viewAllEmployees");
@@ -217,11 +202,13 @@ public class EmployeeController extends Validate {
             int employeeRoleId = employee.getEmpRole().getId();
             System.out.println("employeeRoleId " + employeeRoleId);
             EmployeeRole er = employeeService.getEmployeeRoleByRoleId(employeeRoleId);
+            if(logedInEmployee().getId()== employee.getId()){
+                mv.addObject("showUploadDpForm",true);
+            }
             mv.addObject("empImage", empDP);
             mv.addObject("employeeRole", er.getEmpRole());
             mv.addObject("employeeRoleId", employeeRoleId);
             mv.addObject("employeeData", employee);
-            mv.addObject("employeeRoleId", er.getId());
             mv.setViewName("employee/viewEmployee");
         }else{
             mv.setViewName("redirect:/wrongAccess");

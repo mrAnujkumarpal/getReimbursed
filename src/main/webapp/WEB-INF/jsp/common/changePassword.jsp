@@ -58,10 +58,7 @@
 
 
 
- <div class="input-field col s12">
-                          <input name="email" type="email" class="validate" >
-                           <label for="email">Register email id</label>
-                      </div>
+  
                       <div class="input-field col s12">
                         <input type="password" name="oldpassword"/>
                         <label for="oldPassword">Old Password</label>

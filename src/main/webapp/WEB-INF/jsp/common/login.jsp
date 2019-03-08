@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <style>
-        .top-buffer { margin-top:150px; }
+        .top-buffer { margin-top:50px; }
 
         body {
             background-color: #f6f8fa;
@@ -18,10 +19,15 @@
 
 <body>
 
-<div class="container">
-    <form th:action="@{/login}" method="POST" class="form-signin">
+ <div class="container-fluid">
 
         <div class="row top-buffer"></div>
+    <div class="row card-panel">
+
+
+     <h5 class="center login-form-text"> Login ${loginEmployee}</h5>
+    <form th:action="@{/login}" method="POST" class="form-signin">
+
         <div class="col-xs-6 col-lg-offset-3">
             <h3 class="form-signin-heading"  text="Sign-in"></h3>
 
@@ -33,7 +39,9 @@
             <button style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);"  class="btn btn-sm btn-primary btn-block" name="Submit" value="Login" type="Submit">Login</button>
         </div>
     </form>
-</div>
 
+
+</div>
+</div>
 </body>
 </html>

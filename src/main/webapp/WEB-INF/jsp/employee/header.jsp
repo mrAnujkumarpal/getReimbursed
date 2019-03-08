@@ -2,7 +2,7 @@
     <nav  style="background:  linear-gradient(to right, #6A1B58 0%, #6A1B58 40%, #300D2A 100%);">
         <div class="nav-wrapper">
             <a href="#!" class="brand-logo" style="margin:10px;">
-                <img class="responsive-img" style="max-height:53px;min-height:50px; margin-top:-7px;" src="/assets/img/mylogo.PNG"/>
+                <img class="responsive-img" style="max-height:80px;min-height:50px; margin-top:-15px;" src="/assets/img/anuj.png"/>
             </a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
@@ -25,7 +25,7 @@
                      <li><a class='dropdown-button' href='#' data-activates='vendor-dropdown' data-belowOrigin="true" data-constrainWidth="false">Vendor<i class="material-icons right">arrow_drop_down</i> </a></li>
                         <!-- Dropdown Structure -->
                         <ul id='vendor-dropdown' class='dropdown-content'>
-                          <c:if test="${employeeRoleId == 4}"><li><a href="/addNewVendor">Add Vendor</a></li></c:if>
+                          <c:if test="${employeeRoleId == 4||employeeRoleId == 5 ||employeeRoleId == 6}"><li><a href="/addNewVendor">Add Vendor</a></li></c:if>
                             <li><a href="/allVendors">View Vendors</a></li>
                         </ul>
 

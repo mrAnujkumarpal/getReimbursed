@@ -33,7 +33,7 @@ public interface ExpenseDaoService {
 
     public void saveExpenseRejectReason(ExpenseReject er);
 
-    public List<ExpenseReject> fetchExpenseRejectReasonDetails(Expense expense);
+    public List<ExpenseReject> fetchExpenseRejectReasonDetails(int expense_id);
 
     public  List<ExpensePicture> fetchAllAttechedBillWithExpense(Expense expense);
 

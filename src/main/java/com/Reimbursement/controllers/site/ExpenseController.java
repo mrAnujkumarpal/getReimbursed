@@ -1,8 +1,10 @@
 package com.Reimbursement.controllers.site;
+
 /**
  * Created by Anuj Kumar.
  */
 import com.Reimbursement.controllers.validation.Validate;
+import com.Reimbursement.models.commonModel.Location;
 import com.Reimbursement.models.commonModel.Vendor;
 import com.Reimbursement.models.empModel.Employee;
 import com.Reimbursement.models.expense.*;
@@ -46,13 +48,13 @@ public class ExpenseController extends Validate {
     @Autowired
     private EmailService emailService;
 
-
     @RequestMapping("/expenseType")
     public ModelAndView viewAllExpenseType() {
         ModelAndView mv = new ModelAndView("expense/expenseType");
         List<ExpenseType> et = expenseService.viewAllExpenseType();
 
         mv.addObject("expenseTypeList", et);
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return mv;
     }
 
@@ -74,7 +76,6 @@ public class ExpenseController extends Validate {
         expenseType.setExpType_Name(etName);
 
         expenseService.addExpenseType(expenseType);
-
 
         resp.put("success", "true");
         resp.put("message", etName + " as new role added successfully.");
@@ -123,13 +124,13 @@ public class ExpenseController extends Validate {
         return resp;
     }
 
-
     @RequestMapping(value = "/expenseStatus", method = RequestMethod.GET)
     public ModelAndView viewAllExpenseStatus() {
         ModelAndView mv = new ModelAndView("expense/expenseStatus");
         List<ExpenseStatus> esL = expenseService.viewAllExpenseStatus();
 
         mv.addObject("expenseStatusList", esL);
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return mv;
     }
 
@@ -156,19 +157,18 @@ public class ExpenseController extends Validate {
         return resp;
     }
 
-
     @RequestMapping("/createEditExpense")
     public ModelAndView createExpense() {
 
         System.out.println("Go 4 CreateExpense");
         ModelAndView mv = new ModelAndView("expense/createNew");
 
-       // Employee employee= employeeService.getEmployeeById(logedInEmployeeId());
+        // Employee employee= employeeService.getEmployeeById(logedInEmployeeId());
         mv.addObject("payModeList", commonService.getAllPaymentMode());
         mv.addObject("allVendorsList", commonService.getAllendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         mv.addObject("mode", "Add");
         return mv;
     }
@@ -189,6 +189,7 @@ public class ExpenseController extends Validate {
             mv.addObject("allVendorsList", commonService.getAllendors());
             mv.addObject("locationList", commonService.getAllLocations());
             mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
+            mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
             mv.addObject("expense", ex);
             mv.addObject("mode", "Edit");
 
@@ -261,7 +262,7 @@ public class ExpenseController extends Validate {
         expense.setExpenseStatus(expenseService.getExpenseStatusDetailsById(1));
         Expense addedExpense = expenseService.saveExpense(expense);
 
-        System.out.println(" Added Expense " +  addedExpense.getExp_id());
+        System.out.println(" Added Expense " + addedExpense.getExp_id());
 
         if (addedExpense != null && expense.getBillable()) {
             System.out.println("Expense billable  : TRUE");
@@ -306,18 +307,18 @@ public class ExpenseController extends Validate {
             System.out.println("Expense billable  : FALSE ");
             System.out.println("So you don't need to save bills ");
         }
-        emailService.sendHTML_ExpenseMail
-                (
-                empName, emp.getEmail(),addedExpense.getExp_amount(),
-                addedExpense.getExp_id(),empName,
+        emailService.sendHTML_ExpenseMail(
+                empName, emp.getEmail(), addedExpense.getExp_amount(),
+                addedExpense.getExp_id(), empName,
                 addedExpense.getExpenseStatus().getExpStatus_Name()
-                 );
+        );
 
         mv.addObject("success", true);
         mv.addObject("payModeList", commonService.getAllPaymentMode());
         mv.addObject("allVendorsList", commonService.getAllendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
+        mv.addObject("employeeRoleId", emp.getEmpRole().getId());
         mv.addObject("mode", "Add");
         mv.addObject("message", "Expense successfully created.");
         return mv;
@@ -328,117 +329,146 @@ public class ExpenseController extends Validate {
     public ModelAndView viewPerticularExpense(@PathVariable("expense_Id") int expense_Id) {
         System.out.println("comming expense id to view " + expense_Id);
         ModelAndView mv = new ModelAndView();
-      //  List<ExpenseReject> er = new ArrayList<>();
-        List<ExpensePicture> epBls = new ArrayList<>();
+
         Expense expense = expenseService.getExpenseById(expense_Id);
-        System.out.println("employe id-->" + expense.getEmployee().getId());
-       // System.out.println("TL-->" + expense.getEmployee().getSubimitter_To().getId());
-        //System.out.println("Manager-->" + expense.getEmployee().getApprover_To().getId());
-        String imgPath = "";
+        if (expense != null) {
+            List<ExpensePicture> epBls = new ArrayList<>();
+            System.out.println("employe id-->" + expense.getEmployee().getId());
+            String imgPath = "";
 
-        /**********we find this from session**************
-         *
-         *   4
-         * || expense.getEmployee().getSubimitter_To().getId() == 4
-         || expense.getEmployee().getApprover_To().getId() == 4
-         */
-        int logedInempId=logedInEmployee().getId();
-        if (expense.getEmployee().getId() == logedInempId
-                || expense.getEmployee().getSubimitter_To().getId() == logedInempId
-                || expense.getEmployee().getApprover_To().getId() == logedInempId ) {
+            int logedInempId = logedInEmployee().getId();
+            if (expense.getEmployee().getId() == logedInempId
+                    || expense.getEmployee().getSubimitter_To().getId() == logedInempId
+                    || expense.getEmployee().getApprover_To().getId() == logedInempId) {
 
-            System.out.println(" Iside if condition ");
-            mv.addObject("aboutExpense", expense);
+                System.out.println(" Iside if condition ");
+                mv.addObject("aboutExpense", expense);
 
-
-            if (expense.getExpenseStatus().getExpStatus_Id() == 6) {
-                mv.addObject("rejextExpDetails", expenseService.getExpenseRejectReasonData(expense));
-            }
-
-            if (expense.getBillable()) {
-                System.out.println("find attached bill details.");
-                epBls = expenseService.getAllBillsPerExpense(expense);
-                if (epBls != null) {
-                    System.out.println("find attached bill details-- " + epBls.size());
-                    for (ExpensePicture ep : epBls) {
-                        //ep.setBillPath(ep.getBillPath().substring(50, ep.getBillPath().length()));
-                        imgPath = ep.getBillPath().substring(50, ep.getBillPath().length());
-                        System.out.println(" Image path ====>>> " + imgPath);
-                        mv.addObject("imgPath", imgPath);
-                    }
-                    mv.addObject("expAttachedBills", epBls);
-                } else {
-                    mv.addObject("expAttachedBills", "");
+               if (expense.getExpenseStatus().getExpStatus_Id() == 6) {
+                    System.out.println("this expense now is in rejected state");
+                    mv.addObject("rejextExpDetails", expenseService.getExpenseRejectReasonData(expense.getExp_id()));
+System.out.println("++++++++++++++++++");
                 }
+                if (expense.getBillable()) {
+                    System.out.println("find attached bill details.");
+                    epBls = expenseService.getAllBillsPerExpense(expense);
+                    if (epBls != null) {
+                        System.out.println("find attached bill details-- " + epBls.size());
+                        for (ExpensePicture ep : epBls) {
+                            //ep.setBillPath(ep.getBillPath().substring(50, ep.getBillPath().length()));
+                            imgPath = ep.getBillPath().substring(50, ep.getBillPath().length());
+                            System.out.println(" Image path ====>>> " + imgPath);
+                            mv.addObject("imgPath", imgPath);
+                        }
+                        mv.addObject("expAttachedBills", epBls);
+                    } else {
+                        mv.addObject("expAttachedBills", "");
+                    }
+                } else {
+                    System.out.println("Bills was not attached with this expense.");
+                }
+
+                mv.setViewName("reports/viewparticularExpense");
             } else {
-                System.out.println("Bills was not attached with this expense.");
+                mv = new ModelAndView("redirect:/wrongAccess");
             }
-            mv.setViewName("reports/viewparticularExpense");
+
+            mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+            mv.addObject("payModeList", commonService.getAllPaymentMode());
+            System.out.println("comming expense details " + expense.getExp_id());
         } else {
-           // mv.addObject("aboutExpense", "");
-
-            String url = "wrongAccess";
-            System.out.println("url ::" + url);
-
-            mv = new ModelAndView("redirect:/wrongAccess");
-
+            mv = new ModelAndView("redirect:/404");
         }
-
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
-        mv.addObject("payModeList", commonService.getAllPaymentMode());
-        System.out.println("comming expense details " + expense.getExp_id());
-
         return mv;
     }
-
 
     @RequestMapping(value = "/submitPerticularExpense/{expense_Id}", method = RequestMethod.GET)
     public String submitPerticularExpense(@PathVariable("expense_Id") int expense_Id) {
         System.out.println("comming expense id to view " + expense_Id);
 
         Expense ex = expenseService.getExpenseById(expense_Id);
-        System.out.println("Expense created by :::::: " + ex.getEmployee().getfName());
-        int oldStatus = ex.getExpenseStatus().getExpStatus_Id();
-        System.out.println("oldStatus :::::: " + oldStatus);
-        int logedInEmployeeId=logedInEmployee().getId();
-        if((ex.getEmployee().getId()!=logedInEmployeeId )
-                || (ex.getEmployee().getId()==logedInEmployeeId
-                && oldStatus==1)) {
+        if (ex != null) {
+            System.out.println("Expense created by :::::: " + ex.getEmployee().getfName());
+            int oldStatus = ex.getExpenseStatus().getExpStatus_Id();
+            System.out.println("oldStatus :::::: " + oldStatus);
+            int logedInEmployeeId = logedInEmployee().getId();
+            if ((ex.getEmployee().getId() != logedInEmployeeId)
+                    || (ex.getEmployee().getId() == logedInEmployeeId
+                    && oldStatus == 1)) {
 
-            if (oldStatus < 5) {
-                int newStatus = oldStatus + 1;
-                ExpenseStatus es = expenseService.getExpenseStatusDetailsById(newStatus);
-                ex.setExpenseStatus(es);
-                expenseService.saveExpense(ex);
+                if (oldStatus < 5) {
+                    int newStatus = oldStatus + 1;
+                    ExpenseStatus es = expenseService.getExpenseStatusDetailsById(newStatus);
+                    ex.setExpenseStatus(es);
+                    expenseService.saveExpense(ex);
+                }
+            } else {
+                System.out.println("Loged in employee id:::::: " + logedInEmployeeId);
+                System.out.println("Both are same and expense not in created state."
+                        + " that's you don't have rights to approved your own bolls. ");
             }
-        }else{
-            System.out.println("Loged in employee id:::::: " + logedInEmployeeId);
-            System.out.println("Both are same and expense not in created state." +
-                    " that's you don't have rights to approved your own bolls. ");
+            Employee emp = employeeService.getEmployeeById(ex.getEmployee().getId());
+            String empName = employeeFullName(emp);
+
+            String byName = employeeFullName(logedInEmployee());
+            System.out.println(empName + " This empliyee is differ from loged in emp " + logedInEmployeeId);
+            emailService.sendHTML_ExpenseMail(
+                    empName, emp.getEmail(), ex.getExp_amount(),
+                    ex.getExp_id(), byName,
+                    ex.getExpenseStatus().getExpStatus_Name()
+            );
+
+            return "redirect:/viewPerticularExpense/" + expense_Id;
+        } else {
+            return "redirect:/404";
         }
-        Employee emp = employeeService.getEmployeeById(ex.getEmployee().getId());
-                String empName = employeeFullName(emp);
-
-                String byName =employeeFullName(logedInEmployee());
-                System.out.println(empName + " This empliyee is differ from loged in emp " + logedInEmployeeId);
-        emailService.sendHTML_ExpenseMail
-                (
-                        empName, emp.getEmail(),ex.getExp_amount(),
-                        ex.getExp_id(),byName,
-                        ex.getExpenseStatus().getExpStatus_Name()
-                );
-
-        return "redirect:/viewPerticularExpense/" + expense_Id;
     }
 
+    @RequestMapping(value = "/expense/rejectExpenseReasonForm", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, String> rejectReason(ModelMap model, HttpServletRequest request) {
+        System.out.println("inside rejectExpenseReasonForms");
+        Map<String, String> resp = new HashMap<>();
+        String expense_id = request.getParameter("expense_id").trim();
+        String reject_reason = request.getParameter("reject_reason").trim();
+        System.out.println(" id " + expense_id);
+        System.out.println(" ireject_reasond " + reject_reason);
+        Date currentDate = new Date();
 
+        Employee employee = logedInEmployee();
+        ExpenseReject expenseReject = new ExpenseReject();
+
+        expenseReject.setExp_reject_By(employeeFullName(employee));
+        expenseReject.setExp_reject_Date(currentDate);
+        expenseReject.setExp_reject_reason(reject_reason);
+        expenseReject.setExpense_Id(Integer.valueOf(expense_id));
+
+        expenseService.updateExpAsReject(expenseReject);
+
+        // expenseService.rejectReasonOfExpense(ids,request.getParameter("reason").trim());
+        resp.put("success", "true");
+        return resp;
+    }
+
+    @RequestMapping(value = "/rejectExpense/{expense_id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> editExpenseId(ModelMap model, @PathVariable int expense_id) {
+        System.out.println("comes here Controller ------------>" + expense_id);
+        Map<String, Object> resp = new HashMap<>();
+
+        Expense ex = expenseService.getExpenseById(expense_id);
+
+        System.out.println("Expense created by :::::: " + ex.getEmployee().getfName());
+        resp.put("success", "true");
+        resp.put("id", ex.getExp_id());
+        return resp;
+    }
 
     /*
      *Below method not in use now it is used when
      *Check box start working
      *
      */
-
     @RequestMapping(value = "/submitExpense", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView submitExpense(ModelMap model, HttpServletRequest request) {
@@ -456,7 +486,6 @@ public class ExpenseController extends Validate {
         // resp.put("message", "Expenses successfully submitted.");
         expenseService.submitExpenseToNextLavel(ids);
         ModelAndView mv = new ModelAndView("expense/createNew");
-
 
         mv.addObject("payModeList", commonService.getAllPaymentMode());
         mv.addObject("allVendorsList", commonService.getAllendors());

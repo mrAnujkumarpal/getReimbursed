@@ -14,7 +14,7 @@
            <div class="container-fluid">
                <div class="row">
                    <div class="col s12 m12 l12">
-                       <table class="striped  responsive-table z-depth-5" id="allLocationList">
+                       <table class="striped  responsive-table z-depth-1" id="allLocationList">
                            <thead>
                               <tr style="color:#4e342e">
                                    <th>Employee ID</th>
@@ -30,7 +30,7 @@
                                  <td>${dpData.empDPType}</td>
                                  <td>
                                     <a href="/default">
-                                         <img src="data:image/jpeg;base64,${dpData.base64}" style='max-height:100px;'>
+                                         <img class="z-depth-5" src="data:image/jpeg;base64,${dpData.base64}" style='max-height:100px;'>
                                     </a>
                                  </td>
                               </tr>

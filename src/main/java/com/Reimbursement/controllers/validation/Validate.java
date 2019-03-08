@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.swing.text.html.parser.Entity;
 import java.util.Collections;
 import java.io.File;
 import java.security.MessageDigest;
@@ -97,7 +99,11 @@ public class Validate {
             resp.put("message", "All fields are required.");
             return resp;
         }
-
+        fname.trim();
+        lName.trim();
+        mobileNo.trim();
+        password.trim();
+        email.trim();
         if (fname.length() < 3) {
             resp.put("success", success);
             resp.put("message", "First name is too short.");
@@ -149,14 +155,14 @@ public class Validate {
             return resp;
         }
 
-/*
+
 
         if (employee.getSubimitter_To().getId() == employee.getApprover_To().getId()) {
             resp.put("success", success);
             resp.put("message", "Submitter & approver can not same.");
             return resp;
         }
-*/
+
 
         resp.put("success", "true");
         resp.put("message", "Successfully added.");
@@ -185,8 +191,6 @@ public class Validate {
     }
 
     public static String createDirectory(String userName) {
-
-
         String targetPath = UPLOAD_DIRECTORY + "/" + userName;
         File targetFolder = new File(targetPath);
         if (!targetFolder.isDirectory()) {
@@ -275,27 +279,16 @@ public class Validate {
 
     public  Employee logedInEmployee(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(" inside default login " + authentication.getName());
-
         return    employeeRepository.findByEmail(authentication.getName());
     }
-
-/*    public  int logedInEmployeeId(){
-        ModelAndView modelAndView = new ModelAndView();
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(" inside default login " + authentication.getName());
-
-        return   employeeRepository.findByEmail(authentication.getName()).getId();
-    }*/
 
 public List sortedListBasedOnID(List al){
 
      Collections.sort(al, new Comparator<Employee>() {
+
         @Override
         public int compare(Employee object1, Employee object2) {
-
             return  object1.getId()- object2.getId();
-
 
         }
     });

@@ -38,7 +38,7 @@
                                 <a href="/myTeamMembers/${employeeData.id}" class="text-capitalize right"><small> ${employeeData.fName} team</small></a>
                                  <span class="card-title text-capitalize flow-text left-align">${employeeData.fName} ${employeeData.lName}</span>
 
-                                <p><i class="material-icons">perm_identity</i>  :   ${employeeRole}</p>
+                                <p><i class="material-icons">perm_identity</i>  :${showUploadDpForm eq true}-- ${showUploadDpForm eq true}   ${employeeRole}</p>
                                 <p><i class="material-icons">perm_phone_msg</i> :  ${employeeData.mobile} </p>
                                 <p><i class="material-icons">email</i> :  ${employeeData.email}</p>
 
@@ -57,8 +57,8 @@
                            </div>
                       </div>
                </div>
+               <c:if test="${showUploadDpForm eq true}">
                <div class="col s10 m6 l4   offset-m3 offset-l4  offset-s1">
-
                      <form method="post" action="doUploadEmpDP" enctype="multipart/form-data">
                          <div class = "file-field input-field">
                              <div class="btn"><span>Browse</span><input name="empPhoto" type = "file"/></div>
@@ -73,8 +73,8 @@
                              </button>
                           </div>
                      </form>
-
                 </div>
+                </c:if>
            </div>
         </div>
 

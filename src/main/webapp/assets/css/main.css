@@ -2,6 +2,9 @@
 thead > tr {color:#fff; background-color:00888A;}
 
 
+#rejectBtn{
+padding:10px;
+}
  body {
                            background-image: url("assets/img/error-bck.png");
                            background-color:#e6e7e9;

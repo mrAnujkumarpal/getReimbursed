@@ -95,12 +95,13 @@ public class ExpenseDaoServiceImpl implements ExpenseDaoService {
 
     @Override
     public void saveExpenseRejectReason(ExpenseReject er) {
+        System.out.println(" inside expense dao service imps");
         expenseRejectRepository.save(er);
     }
 
     @Override
-    public List<ExpenseReject> fetchExpenseRejectReasonDetails(Expense expense) {
-        return expenseRejectRepository.findAllRelatedGivenExpense(expense);
+    public List<ExpenseReject> fetchExpenseRejectReasonDetails(int id) {
+        return expenseRejectRepository.findAllRelatedGivenExpense(id);
     }
 
     @Override

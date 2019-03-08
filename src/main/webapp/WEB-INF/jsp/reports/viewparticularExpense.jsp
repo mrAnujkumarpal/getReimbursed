@@ -7,11 +7,10 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+             <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
 
     </head>
@@ -27,7 +26,9 @@
                         <div class="col s12 m12 l10  offset-l1">
                             <div class="row card">
                                 <div class="col s12 m12 l12  z-depth-1">
-                                    <h5>View  Expense :  &nbsp; #00-${aboutExpense.exp_id}</h5>
+                                    <h5>View  Expense :  &nbsp; #00-${aboutExpense.exp_id}
+                                    <small class="right-align">  </small>
+                                    </h5>
                                 </div>
                                 <div class="col s12 m6 l6 z-depth-2">
                                     <div class="" style="padding:10px 0px; margin:10px 0px;">
@@ -94,33 +95,33 @@
 
                                         <div class="col s12 l12  m12">
                                             <div class="right-align">
-                                                <a href="" style="background: linear-gradient(to right, #FF5252 0%, #EB7077 50%, #f48fb1 100%);" class="btn-large waves-effect waves-light"> <b>Reject</b> </a>
+
+                                            <a href="" data-target="ExpenseTypeModelWindow"  style="background: linear-gradient(to right, #FF5252 0%, #EB7077 50%, #f48fb1 100%); margin: 10px 0px;"  data-uri="<c:url value="/rejectExpense/${aboutExpense.exp_id}"/>"  class="btn-large modal-trigger  editExpenceTypeBtn">
+                                                                                                   <b>Rejected</b>
+                                                                                                </a>
+
+
                                                 <a href="/submitPerticularExpense/${aboutExpense.exp_id}" style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);"  class="btn-large waves-effect waves-light"><b>Approved</b> </a>
                                             </div>
                                         </div>
-<!--
+
                                         <div class="col s12 l12  m12">
-                                            <div class="" id="rejectReasonForm">
-                                                <form  method="post" action="rejectExpenseReasonForm">
-
+                                            <div class="" id="rejectReasonForm" style="display:none">
+                                                <form  method="GET" action="RejectExpenseDone">
                                                     <div class="row">
-                                                        <input  name="" type="hidden" value="${aboutExpense.exp_id}">
+                                                        <input  name="expense_id" type="hidden" value="${aboutExpense.exp_id}">
 
                                                         <div class="input-field col s12">
-                                                            <textarea id="textarea" name="" class="materialize-textarea" data-length="120"  value=""></textarea>
+                                                            <textarea id="textarea" name="reject_reason" class="materialize-textarea" data-length="120"  value=""></textarea>
                                                             <label for="textarea">Kindly mention reject reason </label>
-                                                        </div>
 
-
-                                                        <div class="input-field col s12">
-                                                            <button href="#" style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);" class="btn waves-effect waves-light col s4">Reject <i class="material-icons right">send</i></button>
+                                                            <button href="#" style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);" class="btn waves-effect waves-light col s4">Rejected <i class="material-icons right">send</i></button>
                                                         </div>
                                                     </div>
-
                                                 </form>
                                             </div>
                                         </div>
-                                        -->
+
                                     </div>
                                 </div>
 
@@ -161,17 +162,96 @@
                 </c:otherwise>
             </c:choose>
         </div>
-        <!--Import jQuery before materialize.js-->
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
-        <script src="assets/js/main.js" type="text/javascript"></script>
-        <script>
+             <!-- Modal Structure -->
+                    <div id="ExpenseTypeModelWindow" class="modal">
+                                                    <div class="modal-content">
+                                                        <form  method="post" id="expenseTypeModalForm" >
+
+                                                                <input  name="expense_id" type="text" class="expenseId hide" value="${aboutExpense.exp_id}">
+                                                                <div class="input-field col s12">
+                                                                    <textarea id="textarea" name="reject_reason" class="materialize-textarea" data-length="120"  value=""></textarea>
+                                                                    <label for="textarea">Kindly mention reject reason </label>
+
+                                                                    <button  data-uri="<c:url value="/RejectExpenseDone"/>" href="#" style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);" class="btn waves-effect waves-light col s4 exRejectUrl">Rejected <i class="material-icons right">send</i></button>
+                                                                </div>
+
+                                                        </form>
+                                                    </div>
+                    </div>
+
+
+           <!--Import jQuery before materialize.js-->
+                             <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+                             <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
+                             <script src="assets/js/main.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+
+         $(document).ready(function(){ $('.modal').modal(); });
+
+
             $(document).ready(function () {
                 $('.dropdown-trigger').dropdown();
                 $('select').formSelect();
 
             });
+
+ $('.editExpenceTypeBtn').click(function () {
+                                 var url = $(this).data('uri');
+                                 $.ajax({
+                                     type: 'get',
+                                     url: url,
+                                     success: function (response) {
+                                         if (response.success === "true") {
+                                            var id = response.id;
+                                            $(".editableExpenseTypeId").attr("value", id);
+                                         } else {
+                                             alert(response.message);
+                                         }
+                                     },
+                                     error: function (response) {
+                                         alert("server not good.");
+                                     },
+                                     complete: function (response) {
+
+                                     }
+                                 });
+
+                             });
+
+
+
+         $('#ExpenseTypeModelWindow').on('submit', '#expenseTypeModalForm', addEditETModalForm);
+
+         function addEditETModalForm(e) {
+            e.preventDefault();
+             var uri = $('#expenseTypeModalForm .exRejectUrl').data('uri');
+             var data = $('#expenseTypeModalForm').serialize();
+
+                  $.ajax({
+                     type: 'post',
+                     url: uri,
+                     data: data,
+                     success: function (response) {
+                         if (response.success === "true") {
+                             location.reload();
+                         } else {
+                             alert(response.message);
+                         }
+                     },
+                     error: function (response) {
+                         alert("Server error encountered");
+                     },
+                     complete: function (response) {
+
+                     }
+                  });
+         };
+
         </script>
+
+
+
     </body>
 </html>

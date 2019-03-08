@@ -63,7 +63,7 @@ public class CommonController extends Validate {
 
     @RequestMapping(value = "/changePassword", method = RequestMethod.POST)
     public ModelAndView changePasswordDoing(
-            @RequestParam("email") String email,
+
             @RequestParam("oldpassword") String oldPwd,
             @RequestParam("newpassword") String newPwd,
             @RequestParam("confrmpassword") String confrmPwd
@@ -71,7 +71,7 @@ public class CommonController extends Validate {
 
         ModelAndView mv = new ModelAndView("common/changePassword");
         Map<String, String> resp = new HashMap<>();
-        System.out.println("email ::" + email);
+
         System.out.println("oldPwd ::" + oldPwd);
         System.out.println("newPwd ::" + newPwd);
         System.out.println("confrmPwd ::" + confrmPwd);
@@ -80,14 +80,14 @@ public class CommonController extends Validate {
             resp.put("success", "false");
             resp.put("message", "New password and confirm password are not match.");
         }
-        Employee emp = employeeService.isEmlIdExist(email);
+        Employee emp =logedInEmployee();
         if (emp != null) {
             if (!(emp.getPassword().equalsIgnoreCase(oldPwd))) {
                 resp.put("success", "false");
                 resp.put("message", "Stored password and not same to given old password.");
             }
         }
-
+        mv.addObject("employeeRoleId",emp.getEmpRole().getId());
         emp.setPassword(oldPwd);
 
         return mv;
@@ -407,8 +407,6 @@ public class CommonController extends Validate {
 
     @RequestMapping(value = "/addNewVendor", method = RequestMethod.POST)
     public ModelAndView addVendor(ModelMap model, @ModelAttribute Vendor vendor) {
-
-
         System.out.println("-------------------------Comes here to save vendor start--------------------------------");
 
         ModelAndView mv = new ModelAndView();
@@ -441,7 +439,7 @@ public class CommonController extends Validate {
             List<Location> locationList = commonService.getAllLocations();
             mv.addObject("locationList", locationList);
             mv.addObject("mode", "Add");
-
+            mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
             mv.setViewName("common/vendorRegistor");
         }
         return mv;
@@ -453,9 +451,7 @@ public class CommonController extends Validate {
     public ModelAndView editVendorDetails(@PathVariable("vendor_Id") int vendor_Id) {
         System.out.println("comming id for edit" + vendor_Id);
         ModelAndView mv = new ModelAndView("common/vendorRegistor");
-
         Vendor vendor = commonService.getVendorDetailsByVendorID(vendor_Id);
-
 
         List<Location> locationList = commonService.getAllLocations();
         System.out.println(" vendor address " + vendor.getVendor_address());

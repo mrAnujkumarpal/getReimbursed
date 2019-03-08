@@ -57,13 +57,9 @@ public class ReportsController extends Validate {
     @RequestMapping("/expenseHistory/{id}")
     public ModelAndView expenseHistory(@PathVariable("id") int expStatus_id) {
         ModelAndView mv = new ModelAndView("reports/expenseHistory");
-        System.out.println("PUT LOGED-IN CODE NOW :::");
 
         ExpenseStatus es = expenseService.getExpenseStatusDetailsById(expStatus_id);
         List<Expense> ex = expenseService.getAllExpenseRelatedToMe(logedInEmployee(), es);
-
-        System.out.println("fetched list size" + ex.size());
-
 
         mv.addObject("payModeList",commonService.getAllPaymentMode());
         mv.addObject("allVendorsList", commonService.getAllendors());
@@ -72,8 +68,6 @@ public class ReportsController extends Validate {
         mv.addObject("reportName", myReportName(expStatus_id));
         mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
         mv.addObject("expenses", ex);
-
-
         return mv;
     }
 
@@ -92,21 +86,23 @@ public class ReportsController extends Validate {
     @RequestMapping(value = "/RejectExpenseDone", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> rejectExpenseDone(ModelMap model, HttpServletRequest request) {
-
+        System.out.println("inside RejectExpenseDone");
         Map<String, String> resp = new HashMap<>();
-        String expense_id = request.getParameter("exp_id").trim();
-        String exp_reject_reason = request.getParameter("exp_reject_reason").trim();
+        String expense_id = request.getParameter("expense_id").trim();
+        String exp_reject_reason = request.getParameter("reject_reason").trim();
 
         ExpenseStatus es = new ExpenseStatus();
-        System.out.println("comes here Controller " + expense_id);
-        System.out.println("exp_reject_reason" + exp_reject_reason);
+        System.out.println("expense_id " + expense_id);
+        System.out.println("reject_reason " + exp_reject_reason);
 
         Expense ex = expenseService.getExpenseById(Integer.parseInt(expense_id));
+
+        System.out.println(" ex not null ");
         if (ex != null) {
             es = expenseService.getExpenseStatusDetailsById(6);
             ex.setExpenseStatus(es);
             expenseService.saveExpense(ex);
-
+System.out.println(" expense updated ");
             DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             Date currentDate = new Date();
             System.out.println("current Date ::" + df.format(currentDate));
@@ -115,20 +111,19 @@ public class ReportsController extends Validate {
              *Find Employee from session
              */
             Employee employee = logedInEmployee();
-
             String rejectBy =employeeFullName(employee);
 
             ExpenseReject er = new ExpenseReject();
 
+            er.setExp_reject_By(employeeFullName(employee));
             er.setExp_reject_Date(currentDate);
-            er.setExp_reject_By(rejectBy);
             er.setExp_reject_reason(exp_reject_reason);
-            er.setEmployee(employee);
-            er.setExpense(ex);
+            er.setExpense_Id(Integer.parseInt(expense_id));
+            System.out.println(" all things are set");
 
             expenseService.updateExpAsReject(er);
         }
-
+        System.out.println("here...");
         resp.put("success", "true");
         resp.put("message", "This expense successfully rejected.");
         return resp;
@@ -140,9 +135,7 @@ public class ReportsController extends Validate {
 
         List<Expense> ex = new ArrayList<>();
         ExpenseStatus es = expenseService.getExpenseStatusDetailsById(2);
-        System.out.println("yes havs data 1");
-      //  Employee employee = employeeService.getEmployeeById(logedInEmployeeId());
-        //System.out.println("Fetched employee " + employee.getId());
+
         List<Employee> myTeamMembers = employeeService.getMyTeamMembers(logedInEmployee().getId());
         System.out.println("myTeamMembers " + myTeamMembers.size());
         myTeamMembers.remove(logedInEmployee());
@@ -169,7 +162,7 @@ public class ReportsController extends Validate {
         ModelAndView mv = new ModelAndView("reports/pendingExpenseHistory");
         List<Expense> ex = new ArrayList<>();
         ExpenseStatus es = expenseService.getExpenseStatusDetailsById(3);
-        Employee employee = employeeService.getEmployeeById(4);
+        Employee employee =logedInEmployee();
 
         List<Employee> myTeamMembers = employeeService.getMyTeamMembers(employee.getId());
         myTeamMembers.remove(employee);
@@ -185,7 +178,7 @@ public class ReportsController extends Validate {
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
         mv.addObject("reportName", "Pending for audit");
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId",employee.getEmpRole().getId());
         mv.addObject("expenses", ex);
         return mv;
     }
@@ -197,7 +190,7 @@ public class ReportsController extends Validate {
         List<Expense> ex = new ArrayList<>();
 
         ExpenseStatus es = expenseService.getExpenseStatusDetailsById(4);
-        Employee employee = employeeService.getEmployeeById(4);
+        Employee employee = logedInEmployee();
 
         List<Employee> myTeamMembers = employeeService.getMyTeamMembers(employee.getId());
         myTeamMembers.remove(employee);
@@ -211,7 +204,7 @@ public class ReportsController extends Validate {
         mv.addObject("allVendorsList", commonService.getAllendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId",employee.getEmpRole().getId());
         mv.addObject("reportName", "Pending for remburse");
         mv.addObject("expenses", ex);
         return mv;
