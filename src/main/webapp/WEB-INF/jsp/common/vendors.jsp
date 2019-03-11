@@ -33,6 +33,7 @@
                                 <th>Vendor Address</th>
                                 <th>Vendor Location</th>
                                 <th>Vendor Phone</th>
+                                <th>Reister By</th>
                                 <th>Event</th>
                             </tr>
                         </thead>
@@ -48,6 +49,7 @@
                                 </c:forEach>
                                 </td>
                                 <td>${aVL.vendor_phno}</td>
+                                <td>${aVL.created_By}</td>
                                  <td>
 
                                                                                <a  href="/editVendorDetails/${aVL.vendor_Id}">

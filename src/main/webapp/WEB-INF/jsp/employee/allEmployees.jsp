@@ -33,7 +33,7 @@ border-radius: 25px;
                            <table class="striped  responsive-table z-depth-1" id="EmpListTable">
                                <thead>
                                    <tr>
-                                       <th>ID</th>
+                                       <th>Emp ID</th>
                                        <th>Emp Role</th>
                                        <th>Full Name</th>
                                        <th>Mobile No</th>
@@ -48,7 +48,7 @@ border-radius: 25px;
                                    <c:forEach var="emp" items="${allEmployeesList}">
                                        <tr>
 
-                                           <td>${emp.id}</td>
+                                           <td><i>${emp.org_code}${emp.id}</i></td>
                                            <td>
                                              <c:forEach items="${roleList}" var="role">
                                                 <c:if test="${role.id==emp.empRole.id}">${role.empRole}</c:if>

@@ -54,6 +54,12 @@ public class ReportsController extends Validate {
     }
 
 
+    @RequestMapping(value = {"/activityMonitr"}, method = RequestMethod.GET)
+    public ModelAndView activityMonitr() {
+        ModelAndView mv = new ModelAndView("reports/remburshActivityMonetring");
+        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        return mv;
+    }
     @RequestMapping("/expenseHistory/{id}")
     public ModelAndView expenseHistory(@PathVariable("id") int expStatus_id) {
         ModelAndView mv = new ModelAndView("reports/expenseHistory");

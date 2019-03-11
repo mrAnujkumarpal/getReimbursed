@@ -34,8 +34,18 @@ public class Employee implements Serializable, UserDetails {
     public Date createdDate;
     @Column(name = "enable")
     public boolean enabled = true;
+    @Column(name = "Org_Name")
+    public String org_code ;
 
-  //  private  int  submittedTo, approvedTo, employeeApproverMappingId;
+    public String getOrg_code() {
+        return org_code;
+    }
+
+    public void setorg_code(String org_code) {
+        org_code = org_code;
+    }
+
+//  private  int  submittedTo, approvedTo, employeeApproverMappingId;
 
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JsonManagedReference

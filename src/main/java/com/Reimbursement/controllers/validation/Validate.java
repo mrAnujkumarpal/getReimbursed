@@ -37,6 +37,11 @@ public class Validate {
     Map<String, String> resp = new HashMap<>();
     String success = "false";
 
+    public final String Org_Name="Xebia";//Newgen//Oracle
+    public final String ORG_CODE="XI";//NG//OR
+
+
+
     public Map<String, String> validateExpense(Expense expense) {
 
         resp.put("success", "true");

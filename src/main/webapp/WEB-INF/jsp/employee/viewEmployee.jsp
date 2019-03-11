@@ -38,7 +38,7 @@
                                 <a href="/myTeamMembers/${employeeData.id}" class="text-capitalize right"><small> ${employeeData.fName} team</small></a>
                                  <span class="card-title text-capitalize flow-text left-align">${employeeData.fName} ${employeeData.lName}</span>
 
-                                <p><i class="material-icons">perm_identity</i>  :${showUploadDpForm eq true}-- ${showUploadDpForm eq true}   ${employeeRole}</p>
+                                <p><i class="material-icons">perm_identity</i>  :  ${employeeRole}</p>
                                 <p><i class="material-icons">perm_phone_msg</i> :  ${employeeData.mobile} </p>
                                 <p><i class="material-icons">email</i> :  ${employeeData.email}</p>
 

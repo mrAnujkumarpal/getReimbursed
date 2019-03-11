@@ -145,7 +145,8 @@ public class EmployeeController extends Validate {
             System.out.println("current Date ::" + df.format(currentDate));
 
             employee.setCreatedDate(currentDate);
-             employee.setPassword(employee.getPassword());
+            employee.setPassword(employee.getPassword());
+            employee.setorg_code(ORG_CODE);
             employeeService.addEmployee(employee);
             System.out.println("-------------------------Fetching start--------------------------------");
 

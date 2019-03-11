@@ -218,16 +218,16 @@ public class CommonController extends Validate {
         String role = request.getParameter("role_Name").trim();
         System.out.println("comes here common Controller " + role);
 
-        EmployeeRole rmpRl = new EmployeeRole();
+        EmployeeRole empRl = new EmployeeRole();
 
         DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
         Date currentDate = new Date();
         System.out.println("current Date ::" + df.format(currentDate));
 
-        rmpRl.setCreated_Date(currentDate);
-        rmpRl.setEmpRole(role);
+        empRl.setCreated_Date(currentDate);
+        empRl.setEmpRole(role);
 
-        employeeService.addNewRole(rmpRl);
+        employeeService.addNewRole(empRl);
 
 
         resp.put("success", "true");
@@ -282,8 +282,8 @@ public class CommonController extends Validate {
     @RequestMapping(value = "/viewAllLocations", method = RequestMethod.GET)
     public ModelAndView fetchAllLocations() {
         ModelAndView mv = new ModelAndView("common/location");
-        List<Location> locationList = commonService.getAllLocations();
-        mv.addObject("locationList", locationList);
+
+        mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
         return mv;
     }
@@ -316,7 +316,7 @@ public class CommonController extends Validate {
         System.out.println("current Date ::" + df.format(currentDate));
 
         location.setCreated_Date(currentDate);
-
+        location.setCreated_By(employeeFullName(logedInEmployee()));
         location.setLocation_name(name);
         commonService.addLocation(location);
 
@@ -352,8 +352,6 @@ public class CommonController extends Validate {
 
         Location loc = commonService.getLocationById(location_id);
 
-        System.out.println("Location_id()" + loc.getLocation_id());
-        System.out.println("Location_name()" + loc.getLocation_name());
 
         resp.put("success", "true");
         resp.put("id", loc.getLocation_id());
@@ -401,6 +399,7 @@ public class CommonController extends Validate {
         List<Location> locationList = commonService.getAllLocations();
 
         mv.addObject("locationList", locationList);
+        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
         mv.addObject("mode", "Add");
         return mv;
     }
@@ -431,13 +430,13 @@ public class CommonController extends Validate {
             Date currentDate = new Date();
             System.out.println("current Date ::" + df.format(currentDate));
             vendor.setCreated_Date(currentDate);
+            vendor.setCreated_By(employeeFullName(logedInEmployee()));
             commonService.addNewVendor(vendor);
 
             mv.addObject("success", true);
             mv.addObject("message", "Vendor successfully added.");
 
-            List<Location> locationList = commonService.getAllLocations();
-            mv.addObject("locationList", locationList);
+            mv.addObject("locationList", commonService.getAllLocations());
             mv.addObject("mode", "Add");
             mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
             mv.setViewName("common/vendorRegistor");
