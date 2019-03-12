@@ -149,23 +149,19 @@
             <div class="modal-content">
                 <form id="rejectReasonModalForm"  method="post">
                     <div class="input-field col s12">
-                        <input name="exp_id"   type="text" class="rejectableExpId hide">
-                    </div>
+                        <input name="expense_id"   type="text" class="rejectableExpId hide">
 
-                    <div class="input-field col s12">
-                        <input name="exp_reject_reason"  type="text">
-                        <label for="exp_reject_reason">Kindly mention reject reason</label>
-                    </div>
+                        <input name="reject_reason"  type="text">
+                        <label for="reject_reason">Kindly mention reject reason</label>
 
-                    <button id="rejectExpSubmitBtn" data-uri="<c:url value="/RejectExpenseDone"/>" class="btn waves-effect waves-light rejectExpURL" type="submit" name="action">  <i class="material-icons right">send</i> Reject  </button>
+                        <button id="rejectExpSubmitBtn" data-uri="<c:url value="/RejectExpenseDone"/>" class="btn waves-effect waves-light rejectExpURL" type="submit" name="action">  <i class="material-icons right">send</i> Reject  </button>
+                    </div>
                 </form>
             </div>
         </div>
 
         <script>
-
             $('#rejectResonModelWindow').on('submit', '#rejectReasonModalForm', rejectExpenseDone);
-
             function rejectExpenseDone(e) {
                 e.preventDefault();
                 var uri = $('#rejectReasonModalForm .rejectExpURL').data('uri');

@@ -26,7 +26,7 @@
 
 
      <h5 class="center login-form-text"> Login ${loginEmployee}</h5>
-    <form th:action="@{/login}" method="POST" class="form-signin">
+    <form th:action="@{/login}"  class="form-signin" method="POST">
 
         <div class="col-xs-6 col-lg-offset-3">
             <h3 class="form-signin-heading"  text="Sign-in"></h3>

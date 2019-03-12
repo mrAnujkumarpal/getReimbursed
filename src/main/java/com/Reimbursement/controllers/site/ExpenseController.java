@@ -13,7 +13,10 @@ import com.Reimbursement.service.commonServices.EmailService;
 import com.Reimbursement.service.empService.EmployeeService;
 import com.Reimbursement.service.expenseService.ExpenseService;
 import com.Reimbursement.service.reportService.ReportService;
+import com.Reimbursement.serviceImpl.expenseServiceImpl.XlsxReport;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +31,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -47,6 +52,11 @@ public class ExpenseController extends Validate {
 
     @Autowired
     private EmailService emailService;
+
+
+    @Autowired
+    private XlsxReport xlsxReport;
+
 
     @RequestMapping("/expenseType")
     public ModelAndView viewAllExpenseType() {
@@ -165,7 +175,7 @@ public class ExpenseController extends Validate {
 
         // Employee employee= employeeService.getEmployeeById(logedInEmployeeId());
         mv.addObject("payModeList", commonService.getAllPaymentMode());
-        mv.addObject("allVendorsList", commonService.getAllendors());
+        mv.addObject("allVendorsList", commonService.getAllVendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
         mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
@@ -186,7 +196,7 @@ public class ExpenseController extends Validate {
         } else {
             mv.setViewName("expense/createNew");
             mv.addObject("payModeList", commonService.getAllPaymentMode());
-            mv.addObject("allVendorsList", commonService.getAllendors());
+            mv.addObject("allVendorsList", commonService.getAllVendors());
             mv.addObject("locationList", commonService.getAllLocations());
             mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
             mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
@@ -315,7 +325,7 @@ public class ExpenseController extends Validate {
 
         mv.addObject("success", true);
         mv.addObject("payModeList", commonService.getAllPaymentMode());
-        mv.addObject("allVendorsList", commonService.getAllendors());
+        mv.addObject("allVendorsList", commonService.getAllVendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
         mv.addObject("employeeRoleId", emp.getEmpRole().getId());
@@ -482,17 +492,115 @@ System.out.println("++++++++++++++++++");
                 ids.add(Integer.parseInt(expenseIds[i].trim()));
             }
         }
-        //resp.put("success", "true");
-        // resp.put("message", "Expenses successfully submitted.");
         expenseService.submitExpenseToNextLavel(ids);
         ModelAndView mv = new ModelAndView("expense/createNew");
 
         mv.addObject("payModeList", commonService.getAllPaymentMode());
-        mv.addObject("allVendorsList", commonService.getAllendors());
+        mv.addObject("allVendorsList", commonService.getAllVendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
         mv.addObject("mode", "Add");
         return mv;
     }
+
+    @RequestMapping(value = {"/activityMonitoring"}, method = RequestMethod.GET)
+    public ModelAndView activityMonitr() {
+        System.out.println("comws here..");
+        ModelAndView mv = new ModelAndView("reports/monitor");
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        return mv;
+    }
+
+    @RequestMapping(value = {"/activityMonitoring"}, method = RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView activityMonitoring(HttpServletRequest request) {
+        System.out.println("comes here to do monitor");
+        ModelAndView mv = new ModelAndView("reports/monitor");
+
+        String exStatusID = request.getParameter("performedActivity").trim();
+        String fromDateStr=request.getParameter("to_date").trim();
+        String toDateSrt =request.getParameter("from_date").trim();
+        Date fromDate=stringToDate(fromDateStr);
+        Date toDate=stringToDate(toDateSrt);
+
+        if(fromDate.after(toDate)){
+            System.out.println("From  date will not be future date. ");
+        }
+        if(canNotFutureDate(toDate)){
+            System.out.println("Passed to date ");
+        }
+
+        List<Expense> expenseList = activityBetweenDte(exStatusID,fromDate,toDate);
+
+        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
+        mv.addObject("ckActivity",exStatusID);
+        mv.addObject("from_date",fromDateStr);
+        mv.addObject("to_date",toDateSrt);
+        mv.addObject("expenses", expenseList);
+
+        return mv;
+    }
+    @RequestMapping(value = "/getFile/{exStatusID}/{fromDate}/{toDate}", method = RequestMethod.GET)
+    public void downloadFile(HttpServletResponse response,@PathVariable("exStatusID") String exStatusID,
+                             @PathVariable("fromDate") String fromDateStr,
+                             @PathVariable("toDate") String toDateSrt) throws Exception {
+
+
+
+        System.out.println(exStatusID);
+        System.out.println(fromDateStr);
+        System.out.println(toDateSrt);
+
+        Date fromDate=stringToDate(fromDateStr);
+        Date toDate=stringToDate(toDateSrt);
+
+        XSSFWorkbook wb = null;
+        try {
+
+            List<Expense> expenseList = activityBetweenDte(exStatusID,fromDate,toDate);
+
+            wb = this.xlsxReport.generateXlsx( expenseList);
+            response.setContentType("application/vnd.ms-excel");
+            response.setHeader("Content-disposition", "attachment; filename=Approve/Audit_Expense.xlsx");
+            wb.write(response.getOutputStream());
+        } catch (IOException ioe) {
+            throw new RuntimeException("Error writing spreadsheet to output stream");
+        } finally {
+            if (wb != null) {
+                wb.close();
+            }
+        }
+    }
+    private List<Expense> activityBetweenDte(String exStatusID, Date fromDate, Date toDate) {
+        List<Expense> expenseList = new ArrayList<>();
+
+        Employee employee=logedInEmployee();
+
+
+        ExpenseStatus es = expenseService.getExpenseStatusDetailsById(Integer.parseInt(exStatusID));
+        List<Employee> myTeamMembers = employeeService.getMyTeamMembers(employee.getId());
+        myTeamMembers.remove(employee);
+
+        for (Employee emp : myTeamMembers) {
+            expenseList.addAll(expenseService.getAllExpenseRelatedToMe(emp, es));
+        }
+        System.out.println("Fetched list size" + expenseList.size());
+
+        List<Expense> tempExp = new ArrayList<>();
+        for(Expense exp: expenseList){
+            if(!(exp.getExp_Date().after(fromDate) && exp.getExp_Date().before(toDate))){
+                System.out.println("Removing expense " + exp.getExp_id());
+                tempExp.add(exp);
+            }
+        }
+        expenseList.removeAll(tempExp);
+        System.out.println("Final list size" + expenseList.size());
+
+
+        return expenseList;
+
+    }
+
 
 }

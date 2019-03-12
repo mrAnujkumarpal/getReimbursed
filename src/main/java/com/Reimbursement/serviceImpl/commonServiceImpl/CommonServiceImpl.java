@@ -44,7 +44,7 @@ public class CommonServiceImpl implements CommonService {
 
 
     @Override
-    public List<Vendor> getAllendors() {
+    public List<Vendor> getAllVendors() {
         return commonDaoService.getAllVendorsList();
     }
 

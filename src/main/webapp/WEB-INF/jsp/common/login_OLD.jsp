@@ -1,128 +1,108 @@
-<%--
-    Document   : homePage
-    Author     : Anuj
---%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    </head>
 
+<!DOCTYPE html>
+<!--
+Template Name: Materialize - Material Design Admin Template
+Author: PixInvent
+Website: http://www.pixinvent.com/
+Contact: hello@pixinvent.com
+Follow: www.twitter.com/pixinvents
+Like: www.facebook.com/pixinvents
+Purchase: https://themeforest.net/item/materialize-material-design-admin-template/11446068?ref=pixinvent
+Renew Support: https://themeforest.net/item/materialize-material-design-admin-template/11446068?ref=pixinvent
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
 
-    <body style="background-color:#e6e7e9;">
-    <style type="text/css">
-                        .error {
-                           background-color: #f2dede;
-                           color: #b71c1c;
-                           padding: 10px 0;
-                           text-align: center;
-                           border-radius: 7px;
-                           border: 1px solid #b71c1c;
-                        }
-                        .sucess{
-                           background-color:#dff0d8;
-                           color: #1b5e20 ;
-                           padding: 10px 0;
-                           text-align: center;
-                           border-radius: 7px;
-                           border :1px dotted #004d40;
-                        }
-                        body {
-                           background-image: url("assets/img/backgroung.jpg");
-                           background-color:#D30047;
-                           background-repeat: no-repeat;
-                        }
-    </style>
-
-
-        <div class="container-fluid">
-            <div class="row">
-               <div class="col s10 m6 l4   offset-m3 offset-l4  offset-s1 z-depth-4 card-panel">
-                    <div class="input-field col s12 center">
-                        <h5 class="center login-form-text"> Login ${loginEmployee}</h5>
-                     </div>
-                  <form class="login-form" method="POST" th:action="@{/login}"  >
-                            <div class="input-field col s10 offset-s1">
-                                <c:if test="${success ne null}">
-                                    <c:if test="${success eq  'true'}">
-                                        <div class="sucess text-center ">${message} </div>
-                                    </c:if>
-                                    <c:if test="${success eq  'false'}">
-                                        <div class="error alert-info text-center ">${message} </div>
-                                    </c:if>
-                                </c:if>
-                            </div>
-
-                    <div class="row margin">
-                      <div class="input-field col s12">
-                          <input name="email" type="email" class="validate" >
-                           <label for="email">Email</label>
-                      </div>
-                    </div>
-
-                    <div class="row margin">
-                      <div class="input-field col s12">
-                        <input type="password" name="password"/>
-                        <label for="Password">Password</label>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="input-field col s12">
-
-                       <button class="btn btn-sm btn-primary btn-block" name="Submit" value="Login" type="Submit">Login</button>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="input-field col s6 m6 l6">
-                        <p class="margin medium-small"><a href="/empRegistration">Register Now</a></p>
-                      </div>
-                      <div class="input-field col s6 m6 l6">
-                          <p class="margin right-align medium-small"><a href="page-forgot-password.html">Forgot password</a></p>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-
-            </div>
+-->
+<html class="loading" lang="en" data-textdirection="ltr">
+  <!-- BEGIN: Head-->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
+    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
+    <meta name="author" content="ThemeSelect">
+    <title>User Login | Materialize - Material Design Admin Template</title>
+    <link rel="apple-touch-icon" href="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/favicon/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/materialize-material-design-admin-template/app-assets/vendors/vendors.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/materialize-material-design-admin-template/app-assets/css/themes/vertical-modern-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/materialize-material-design-admin-template/app-assets/css/themes/vertical-modern-menu-template/style.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/materialize-material-design-admin-template/app-assets/css/pages/login.css">
+    <!-- END: Page Level CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/materialize-material-design-admin-template/app-assets/css/custom/custom.css">
+    <!-- END: Custom CSS-->
+  </head>
+  <!-- END: Head-->
+  <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 1-column login-bg  blank-page blank-page" data-open="click" data-menu="vertical-modern-menu" data-col="1-column">
+    <div class="row">
+      <div class="col s12">
+        <div class="container"><div id="login-page" class="row">
+  <div class="col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
+    <form class="login-form">
+      <div class="row">
+        <div class="input-field col s12">
+          <h5 class="ml-4">Sign in</h5>
         </div>
-
-
-
-
-    <!-- Floating Action Button -->
-    <div class="fixed-action-btn " style="bottom: 50px; right: 19px; ">
-        <a class="btn-floating btn-large z-depth-5">
-            <i class="fa fa-user" aria-hidden="true"></i>
-        </a>
-        <ul>
-            <li><a href="#" class="btn-floating red z-depth-5"><b>A</b></a></li>
-            <li><a href="#" class="btn-floating yellow darken-1 z-depth-5"><b>N</b></a></li>
-            <li><a href="#" class="btn-floating green z-depth-5"><b>U</b></a></li>
-            <li><a href="#" class="btn-floating blue z-depth-5"><b>J</b></a></li>
-        </ul>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="material-icons prefix pt-2">person_outline</i>
+          <input id="username" type="text">
+          <label for="username" class="center-align">Username</label>
+        </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="material-icons prefix pt-2">lock_outline</i>
+          <input id="password" type="password">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m12 l12 ml-2 mt-1">
+          <p>
+            <label>
+              <input type="checkbox" />
+              <span>Remember Me</span>
+            </label>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <a href="index.html" class="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12">Login</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 m6 l6">
+          <p class="margin medium-small"><a href="user-register.html">Register Now!</a></p>
+        </div>
+        <div class="input-field col s6 m6 l6">
+          <p class="margin right-align medium-small"><a href="user-forgot-password.html">Forgot password ?</a></p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+        </div>
+      </div>
     </div>
 
-    <!--Import jQuery before materialize.js-->
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
-    <script src="assets/js/main.js" type="text/javascript"></script>
-      <script>
-            $(document).ready(function () {
-                $('select').formSelect();
-            });
-             $( document ).ready(function()) {
-                         $(".dropdown-button").dropdown();
-                      });
-        </script>
-</body>
+    <!-- BEGIN VENDOR JS-->
+    <script src="../../../app-assets/js/vendors.min.js" type="text/javascript"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/js/plugins.js" type="text/javascript"></script>
+    <script src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/js/custom/custom-script.js" type="text/javascript"></script>
+    <!-- END THEME  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <!-- END PAGE LEVEL JS-->
+  </body>
 </html>

@@ -26,9 +26,9 @@
                         <div class="card-content">
                             <form  action="/activityMonitoring"  method="post">
                                 <select name="performedActivity" class="browser-default"Style="border:none; border-bottom:1px solid #111111;" >
-                                    <option value="1">Approved by me</option>
-                                    <option value="2">Audit by me</option>
-                                    <option value="3">Reimbursed by me </option>
+                                    <option value="3">Approved by me</option>
+                                    <option value="4">Audit by me</option>
+                                    <option value="5">Reimbursed by me </option>
                                 </select>
                                 <br/>
                                 <h6 class="green-text">From Date </h6>
@@ -56,13 +56,13 @@
                                     <table class="striped  responsive-table">
                                         <thead>
                                             <tr style="color:#fff; background-color:00888A;">
-                                                <th>Expense Id. </th>
+                                                <th>Expense No. </th>
                                                 <th>Expense Date</th>
                                                 <th>Created By</th>
-                                                <th>Expense Name </th>
+                                                <th>Expense Name</th>
                                                 <th>Amount</th>
                                                 <th>Expense Type</th>
-                                                <th>Bills</th>
+                                                <th>Availed Bill</th>
                                             </tr>
                                         </thead>
 
@@ -90,12 +90,13 @@
                                             </c:forEach>
                                         </tbody>
                                     </table>
-
                                     <div class="right-align">
-                                    <a href="/submitPerticularExpense/${aboutExpense.exp_id}" style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);"  class="btn-large waves-effect waves-light">
+                                    <a href="/getFile/${ckActivity}/${from_date}/${to_date}" id="downloadXlxs"
+                                    style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);"
+                                    class="btn-large waves-effect waves-light">
                                              <b>Download as xls</b> </a>
 
-                                    <a href="" data-target="ExpenseTypeModelWindow"  style="background: linear-gradient(to right, #FF5252 0%, #EB7077 50%, #f48fb1 100%); margin: 10px 0px;"  data-uri="<c:url value="/rejectExpense/${aboutExpense.exp_id}"/>"  class="btn-large modal-trigger  editExpenceTypeBtn">
+                                    <a href="" data-target="ExpenseTypeModelWindow"  style="background: linear-gradient(to right, #FF5252 0%, #EB7077 50%, #f48fb1 100%); margin: 10px 0px;"  class="btn-large modal-trigger  editExpenceTypeBtn">
                                             <b>Download as PDF</b></a>
                                     </div>
 
@@ -126,7 +127,7 @@
             });
 
 
-            $('#checkMyActivity').on('submit', '#monitorActivityForm', monitorActivity);
+            $('#downloadXlxs').on('submit', '#monitorActivityForm', monitorActivity);
 
             function monitorActivity(e) {
                 e.preventDefault();

@@ -54,12 +54,8 @@ public class ReportsController extends Validate {
     }
 
 
-    @RequestMapping(value = {"/activityMonitr"}, method = RequestMethod.GET)
-    public ModelAndView activityMonitr() {
-        ModelAndView mv = new ModelAndView("reports/remburshActivityMonetring");
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
-        return mv;
-    }
+
+
     @RequestMapping("/expenseHistory/{id}")
     public ModelAndView expenseHistory(@PathVariable("id") int expStatus_id) {
         ModelAndView mv = new ModelAndView("reports/expenseHistory");
@@ -68,7 +64,7 @@ public class ReportsController extends Validate {
         List<Expense> ex = expenseService.getAllExpenseRelatedToMe(logedInEmployee(), es);
 
         mv.addObject("payModeList",commonService.getAllPaymentMode());
-        mv.addObject("allVendorsList", commonService.getAllendors());
+        mv.addObject("allVendorsList", commonService.getAllVendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
         mv.addObject("reportName", myReportName(expStatus_id));
@@ -152,7 +148,7 @@ System.out.println(" expense updated ");
         System.out.println("Final fetched list size  " + ex.size());
 
         mv.addObject("payModeList",commonService.getAllPaymentMode());
-        mv.addObject("allVendorsList", commonService.getAllendors());
+        mv.addObject("allVendorsList", commonService.getAllVendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
         mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
@@ -180,7 +176,7 @@ System.out.println(" expense updated ");
 
 
         mv.addObject("payModeList",commonService.getAllPaymentMode());
-        mv.addObject("allVendorsList", commonService.getAllendors());
+        mv.addObject("allVendorsList", commonService.getAllVendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
         mv.addObject("reportName", "Pending for audit");
@@ -207,7 +203,7 @@ System.out.println(" expense updated ");
         System.out.println("Final fetched list size" + ex.size());
 
         mv.addObject("payModeList",commonService.getAllPaymentMode());
-        mv.addObject("allVendorsList", commonService.getAllendors());
+        mv.addObject("allVendorsList", commonService.getAllVendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
         mv.addObject("employeeRoleId",employee.getEmpRole().getId());

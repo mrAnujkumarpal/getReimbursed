@@ -380,7 +380,7 @@ public class CommonController extends Validate {
         ModelAndView mv = new ModelAndView("common/vendors");
 
         List<Location> locationList = commonService.getAllLocations();
-        List<Vendor> vendors = commonService.getAllendors();
+        List<Vendor> vendors = commonService.getAllVendors();
 
         mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
         mv.addObject("allVendorsList", vendors);

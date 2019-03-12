@@ -1,8 +1,9 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div class="navbar-fixed">
     <nav  style="background:  linear-gradient(to right, #6A1B58 0%, #6A1B58 40%, #300D2A 100%);">
         <div class="nav-wrapper">
             <a href="#!" class="brand-logo" style="margin:10px;">
-                <img class="responsive-img" style="max-height:80px;min-height:50px; margin-top:-15px;" src="/assets/img/anuj.png"/>
+                <img class="responsive-img" style="max-height:80px;min-height:50px; margin-top:-7px;" src="/assets/img/logo.PNG"/>
             </a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
@@ -21,7 +22,7 @@
                         <li><a href="/viewAllLocations">Location</a></li>
                         <li><a href="/expenseType">Expense Type</a></li>
                     </c:if>
-
+                     <li><a href="/activityMonitoring">Monitring</a></li>
                      <li><a class='dropdown-button' href='#' data-activates='vendor-dropdown' data-belowOrigin="true" data-constrainWidth="false">Vendor<i class="material-icons right">arrow_drop_down</i> </a></li>
                         <!-- Dropdown Structure -->
                         <ul id='vendor-dropdown' class='dropdown-content'>

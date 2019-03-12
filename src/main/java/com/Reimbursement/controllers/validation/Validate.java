@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.swing.text.html.parser.Entity;
+import java.text.ParseException;
 import java.util.Collections;
 import java.io.File;
 import java.security.MessageDigest;
@@ -257,7 +258,7 @@ public class Validate {
                 reportName = "Audited";
                 break;
             case 5:
-                reportName = "Rembrushed";
+                reportName = "Reimbursed";
                 break;
             case 6:
                 reportName = "Rejected";
@@ -301,4 +302,39 @@ public List sortedListBasedOnID(List al){
      return al;
 }
 
+
+
+
+
+    protected static boolean canNotFutureDate(final Date providedDate) {
+
+        Date currentDate = new Date(System.currentTimeMillis());
+
+        boolean t=false;
+        System.out.println("System Date: " + currentDate);
+        if (providedDate.after(currentDate)) {
+            System.out.println("providedDate " + providedDate + " is future date" + currentDate);
+            t=false;
+        }
+
+        if (providedDate.before(currentDate)) {
+            System.out.println("providedDate " + providedDate + " is Past date " + currentDate);
+            t=true;
+        }
+
+        return t;
+    }
+    protected static Date stringToDate(String dateInStr) {
+
+
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateType = null;
+        try {
+            dateType = df.parse(dateInStr);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateType;
+    }
 }

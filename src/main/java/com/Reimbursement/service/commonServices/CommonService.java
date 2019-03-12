@@ -20,7 +20,7 @@ public interface CommonService {
 
     public void deleteLocation(Location location);
 
-    public List<Vendor> getAllendors();
+    public List<Vendor> getAllVendors();
 
     public  Vendor addNewVendor(Vendor vendor);
 
