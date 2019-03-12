@@ -91,12 +91,12 @@
                                         </tbody>
                                     </table>
                                     <div class="right-align">
-                                    <a href="/getFile/${ckActivity}/${from_date}/${to_date}" id="downloadXlxs"
+                                    <a href="/getXLSXFile/${ckActivity}/${from_date}/${to_date}"
                                     style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);"
                                     class="btn-large waves-effect waves-light">
                                              <b>Download as xls</b> </a>
 
-                                    <a href="" data-target="ExpenseTypeModelWindow"  style="background: linear-gradient(to right, #FF5252 0%, #EB7077 50%, #f48fb1 100%); margin: 10px 0px;"  class="btn-large modal-trigger  editExpenceTypeBtn">
+                                    <a href="/getPDFFile/${ckActivity}/${from_date}/${to_date}"    style="background: linear-gradient(to right, #FF5252 0%, #EB7077 50%, #f48fb1 100%); margin: 10px 0px;"  class="btn-large modal-trigger  editExpenceTypeBtn">
                                             <b>Download as PDF</b></a>
                                     </div>
 

@@ -541,8 +541,24 @@ System.out.println("++++++++++++++++++");
 
         return mv;
     }
-    @RequestMapping(value = "/getFile/{exStatusID}/{fromDate}/{toDate}", method = RequestMethod.GET)
-    public void downloadFile(HttpServletResponse response,@PathVariable("exStatusID") String exStatusID,
+
+    @RequestMapping(value = "/getPDFFile/{exStatusID}/{fromDate}/{toDate}", method = RequestMethod.GET)
+    public void downloadPDFFile(HttpServletResponse response,@PathVariable("exStatusID") String exStatusID,
+                             @PathVariable("fromDate") String fromDateStr,
+                             @PathVariable("toDate") String toDateSrt) throws Exception {
+
+
+        System.out.println(exStatusID);
+        System.out.println(fromDateStr);
+        System.out.println(toDateSrt);
+
+        Date fromDate = stringToDate(fromDateStr);
+        Date toDate = stringToDate(toDateSrt);
+        List<Expense> expenseList = activityBetweenDte(exStatusID,fromDate,toDate);
+
+    }
+    @RequestMapping(value = "/getXLSXFile/{exStatusID}/{fromDate}/{toDate}", method = RequestMethod.GET)
+    public void downloadXLSXFile(HttpServletResponse response,@PathVariable("exStatusID") String exStatusID,
                              @PathVariable("fromDate") String fromDateStr,
                              @PathVariable("toDate") String toDateSrt) throws Exception {
 
@@ -572,6 +588,8 @@ System.out.println("++++++++++++++++++");
             }
         }
     }
+
+
     private List<Expense> activityBetweenDte(String exStatusID, Date fromDate, Date toDate) {
         List<Expense> expenseList = new ArrayList<>();
 

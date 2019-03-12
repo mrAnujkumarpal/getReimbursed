@@ -14,6 +14,8 @@ import org.apache.poi.xssf.usermodel.*;
 @Service
 public class XlsxReport {
 
+
+
     private static String [] columns = {
         "Expense No."
         , "Expense Date"
@@ -68,23 +70,29 @@ public class XlsxReport {
          return "ADMIN";
 
     }
-
-    private void writeExpenseInToFile(XSSFSheet sheet, List<Expense> expenseList){
+    private void writeExpenseInToFile(XSSFSheet sheet, List<Expense> expenseList) {
 
         System.out.println("Inside method....");
         int rowNum = 1;
-        for(Expense exp: expenseList){
+        for (Expense exp : expenseList) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue( exp.getExp_id());
-            row.createCell(1).setCellValue( exp.getExp_Date());
-            row.createCell(2).setCellValue( exp.getExp_amount());
-            row.createCell(3).setCellValue( exp.getBillable());
-            row.createCell(4).setCellValue( exp.getExp_createdBy());
-            row.createCell(5).setCellValue( exp.getExpenseType().getExpType_Name());
-            row.createCell(6).setCellValue( exp.getLocation().getLocation_name() );
-            row.createCell(7).setCellValue( exp.getPaymentMode().getPay_type());
+            row.createCell(0).setCellValue("#00-" + exp.getExp_id());
+            row.createCell(1).setCellValue(exp.getExp_Date());
+            row.createCell(2).setCellValue(exp.getExp_createdBy());
+            row.createCell(3).setCellValue(exp.getExp_name());
+            row.createCell(4).setCellValue(exp.getExpenseType().getExpType_Name());
+
+            String isBills = "Not Attached";
+            if (exp.getBillable())
+                isBills = "Attached";
+
+
+
+                row.createCell(5).setCellValue(isBills);
+                row.createCell(6).setCellValue(exp.getExp_amount());
+                row.createCell(7).setCellValue(exp.getPaymentMode().getPay_type());
+            }
         }
-    }
 
 }
 
