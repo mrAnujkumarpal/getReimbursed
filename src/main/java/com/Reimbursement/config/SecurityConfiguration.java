@@ -31,8 +31,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/viewAllLocations").hasAuthority("USER")
             .antMatchers("/expenseHistory/**").hasAuthority("USER")
             .antMatchers("/allVendors").hasAuthority("USER")
-            .antMatchers("/expenseHistory/**").hasAuthority("USER")
-            .antMatchers("/createEditExpense").hasAuthority("USER")
             .antMatchers("/expenseStatus").hasAuthority("USER")
             .antMatchers("/empRegistration").hasAuthority("USER")
             .antMatchers("/activityMonitoring/*").hasAuthority("USER")
