@@ -21,16 +21,12 @@
                                   color: #b71c1c;
                                   padding: 10px 0;
                                   text-align: center;
-                                  border-radius: 7px;
-                                  border: 1px solid #b71c1c;
                                }
                                .sucess{
                                   background-color:#dff0d8;
                                   color: #1b5e20 ;
                                   padding: 10px 0;
                                   text-align: center;
-                                  border-radius: 7px;
-                                  border :1px dotted #004d40;
                                }
 
                        .input-field input[type=date]:focus + label,

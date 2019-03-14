@@ -16,7 +16,7 @@
     <body>
     <style type="text/css">
                         body {
-                           background-image: url("assets/img/error-bck.png");
+                           background-color:#f5f5f5 ;
                         }
                         #panelBck{
                          box-shadow: 0 6px 20px 0 rgba(244, 143, 177, 0.5);

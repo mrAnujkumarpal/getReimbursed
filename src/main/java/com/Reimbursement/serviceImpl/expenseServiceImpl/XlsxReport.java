@@ -24,7 +24,7 @@ public class XlsxReport {
         , "Expense Type"
         , "Availed Bill"
         , "Amount"
-        , "Team"
+        , "Payment By"
     };
 
 

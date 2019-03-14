@@ -6,6 +6,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
         <style>
             .custom-checkbox {
                 padding: 0 3rem;
@@ -39,11 +40,11 @@
                     </div>
                     <div class="row">
                         <div class="col s12 m12 l12">
-                            <table class="striped responsive-table  z-depth-1"  id="ExpenseListTable">
+                            <table class="striped responsive-table z-depth-1"  id="myExpenseListTable">
                                 <thead>
                                     <tr style="color:#fff; background-color:00888A;">
                                         <th><input type="checkbox"  value="all" class="selectAllExpense"></th>
-                                        <th>ID</th>
+                                        <th>Expense ID</th>
                                         <th>Expense Name</th>
                                         <th>Expense Date<br/> <small><i> (yyyy-dd-mm) </i></small> </th>
                                         <th>Amount</th>
@@ -53,16 +54,16 @@
                                         <th>Expense<br>Status</th>
                                         <th>Bills</th>
                                         <th>Action
-                                        <c:if test = "${reportName == 'Created'}"></c:if>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                                            <c:if test = "${reportName == 'Created'}"></c:if>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                     <c:if test="${expenses ne null && not empty expenses}">
                                         <c:forEach items="${expenses}" var="exp">
                                             <tr>
                                                 <td><input type="checkbox" name="selectedExpense" value="${exp.exp_id}" class="selectExpense"></td>
-                                                <td>${exp.exp_id}</td>
+                                                <td>#00-${exp.exp_id}</td>
                                                 <td>${exp.exp_name}</td>
                                                 <td><fmt:formatDate pattern = "yyyy-MM-dd" value = "${exp.exp_Date}"/></td>
                                                 <td><fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${exp.exp_amount}" /></td>
@@ -104,13 +105,11 @@
                                                     </c:choose>
 
 
-                                                <c:if test = "${reportName == 'Created'}">
-
-                                                        <a  href="/submitPerticularExpense/${exp.exp_id}">
-                                                            <i class="material-icons" style="color:purple;">trending_up</i>
+                                                    <c:if test = "${reportName == 'Created'}">
+                                                        <a href=""   id="approveMyExpenseBtn" data-uri="<c:url value="/expense/approved/${exp.exp_id}"/>">
+                                                            <i class="material-icons" style="color:purple;">trending_up</i></i>
                                                         </a>
-
-                                                </c:if>
+                                                    </c:if>
                                             </tr>
                                         </c:forEach>
                                     </c:if>
@@ -148,9 +147,9 @@
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="/assets/js/main.js" type="text/javascript"></script>
-        <script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+        <script src="assets/js/main.js" type="text/javascript"></script>
+        <script type="text/javascript">
             $(document).ready(function () {
 
                 $(".button-collapse").sideNav();
@@ -162,7 +161,49 @@
             $('.dropdown-trigger').dropdown();
 
 
-            $('#ExpenseListTable').on('click', '.changeStatusExpenseBtn', changeStatusExpense);
+
+            $('#myExpenseListTable').on('click', '#approveMyExpenseBtn', approveMyExpNow);
+            function approveMyExpNow(e) {
+                e.preventDefault();
+                if (confirm("Do you really want to approve by your hand ? ")) {
+
+
+                    var url = $(this).data('uri');
+
+                    $.ajax({
+                        type: 'post',
+                        url: url,
+                        contentType: "application/json; charset=utf-8",
+                        success: function (response) {
+                            if (response.success === "true") {
+                                swal.fire({
+                                    text: 'Congratulation approved successfully !',
+                                    type: 'success',
+                                    icon: 'success'
+                                }).then(function () {
+                                    location.reload();
+
+                                });
+
+                            } else {
+                                alert(response.message);
+                            }
+                        },
+                        error: function (response) {
+                            swal("Oops", "We couldn't connect to the server!", "error");
+                        },
+                        complete: function (response) {
+
+                        }
+                    });
+                }
+            }
+            ;
+
+            <%--
+
+
+            $('#myExpenseListTable').on('click', '#approveMyExpenseBtn', changeStatusExpense);
 
             function changeStatusExpense(e) {
 
@@ -191,7 +232,7 @@
                     }
                 });
             }
-            ;
+            ;--%>
         </script>
     </body>
 </html>

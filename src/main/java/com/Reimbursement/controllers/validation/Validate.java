@@ -57,8 +57,10 @@ public class Validate {
         String venderName = vendor.getVendor_name();
         String venderPhNo = vendor.getVendor_phno();
         String vendorAdrs = vendor.getVendor_address();
-
-
+        int locId=vendor.getLocation().getLocation_id();
+        venderName.trim();
+        venderPhNo.trim();
+        vendorAdrs.trim();
 //        System.out.println(vendor.getLocation().getLocation_id());
 
         if (venderName.trim().isEmpty() || venderName.equals("") || venderPhNo.trim().isEmpty() || venderPhNo.equals("") ||
@@ -69,6 +71,11 @@ public class Validate {
             return resp;
         }
 
+        if (venderName.length() < 3) {
+            resp.put("success", success);
+            resp.put("message", "Please enter a valid name.");
+            return resp;
+        }
         try {
             Long.parseLong(venderPhNo);
         } catch (NumberFormatException ne) {
@@ -77,7 +84,7 @@ public class Validate {
             return resp;
         }
 
-        if (vendor.getLocation().getLocation_id() == 0) {
+        if (locId == 0) {
             resp.put("success", success);
             resp.put("message", "Please select vendor location.");
             return resp;

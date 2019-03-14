@@ -3,8 +3,8 @@ package com.Reimbursement.controllers.site;
 /**
  * Created by Anuj Kumar.
  */
+
 import com.Reimbursement.controllers.validation.Validate;
-import com.Reimbursement.models.commonModel.Location;
 import com.Reimbursement.models.commonModel.Vendor;
 import com.Reimbursement.models.empModel.Employee;
 import com.Reimbursement.models.expense.*;
@@ -12,17 +12,8 @@ import com.Reimbursement.service.commonServices.CommonService;
 import com.Reimbursement.service.commonServices.EmailService;
 import com.Reimbursement.service.empService.EmployeeService;
 import com.Reimbursement.service.expenseService.ExpenseService;
-import com.Reimbursement.service.reportService.ReportService;
 import com.Reimbursement.serviceImpl.expenseServiceImpl.XlsxReport;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -56,6 +47,7 @@ public class ExpenseController extends Validate {
 
     @Autowired
     private XlsxReport xlsxReport;
+    private ExpenseType et;
 
 
     @RequestMapping("/expenseType")
@@ -208,7 +200,9 @@ public class ExpenseController extends Validate {
     }
 
     @RequestMapping(value = "/createEditExpense", method = RequestMethod.POST)
-    public ModelAndView createEditExpense(ModelMap model, @ModelAttribute Expense expense, @RequestParam("pictureName") MultipartFile[] uploadingFiles) {
+    public ModelAndView createEditExpense(ModelMap model, @ModelAttribute Expense expense,
+                                          @RequestParam("pictureName") MultipartFile[] uploadingFiles) {
+
         DateFormat df = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
 
         ModelAndView mv = new ModelAndView("expense/createNew");
@@ -318,9 +312,9 @@ public class ExpenseController extends Validate {
             System.out.println("So you don't need to save bills ");
         }
         emailService.sendHTML_ExpenseMail(
-                empName, emp.getEmail(), addedExpense.getExp_amount(),
-                addedExpense.getExp_id(), empName,
-                addedExpense.getExpenseStatus().getExpStatus_Name()
+            empName, emp.getEmail(), addedExpense.getExp_amount(),
+            addedExpense.getExp_id(), empName,
+            addedExpense.getExpenseStatus().getExpStatus_Name()
         );
 
         mv.addObject("success", true);
@@ -348,16 +342,16 @@ public class ExpenseController extends Validate {
 
             int logedInempId = logedInEmployee().getId();
             if (expense.getEmployee().getId() == logedInempId
-                    || expense.getEmployee().getSubimitter_To().getId() == logedInempId
-                    || expense.getEmployee().getApprover_To().getId() == logedInempId) {
+                || expense.getEmployee().getSubimitter_To().getId() == logedInempId
+                || expense.getEmployee().getApprover_To().getId() == logedInempId) {
 
-                System.out.println(" Iside if condition ");
+                System.out.println(" In side if condition ");
                 mv.addObject("aboutExpense", expense);
 
-               if (expense.getExpenseStatus().getExpStatus_Id() == 6) {
+                if (expense.getExpenseStatus().getExpStatus_Id() == 6) {
                     System.out.println("this expense now is in rejected state");
                     mv.addObject("rejextExpDetails", expenseService.getExpenseRejectReasonData(expense.getExp_id()));
-System.out.println("++++++++++++++++++");
+
                 }
                 if (expense.getBillable()) {
                     System.out.println("find attached bill details.");
@@ -377,6 +371,12 @@ System.out.println("++++++++++++++++++");
                 } else {
                     System.out.println("Bills was not attached with this expense.");
                 }
+
+                /*
+                * TO Set view Reject and approved
+                * */
+
+
 
                 mv.setViewName("reports/viewparticularExpense");
             } else {
@@ -403,8 +403,8 @@ System.out.println("++++++++++++++++++");
             System.out.println("oldStatus :::::: " + oldStatus);
             int logedInEmployeeId = logedInEmployee().getId();
             if ((ex.getEmployee().getId() != logedInEmployeeId)
-                    || (ex.getEmployee().getId() == logedInEmployeeId
-                    && oldStatus == 1)) {
+                || (ex.getEmployee().getId() == logedInEmployeeId
+                && oldStatus == 1)) {
 
                 if (oldStatus < 5) {
                     int newStatus = oldStatus + 1;
@@ -415,7 +415,7 @@ System.out.println("++++++++++++++++++");
             } else {
                 System.out.println("Loged in employee id:::::: " + logedInEmployeeId);
                 System.out.println("Both are same and expense not in created state."
-                        + " that's you don't have rights to approved your own bolls. ");
+                    + " that's you don't have rights to approved your own bolls. ");
             }
             Employee emp = employeeService.getEmployeeById(ex.getEmployee().getId());
             String empName = employeeFullName(emp);
@@ -423,15 +423,62 @@ System.out.println("++++++++++++++++++");
             String byName = employeeFullName(logedInEmployee());
             System.out.println(empName + " This empliyee is differ from loged in emp " + logedInEmployeeId);
             emailService.sendHTML_ExpenseMail(
-                    empName, emp.getEmail(), ex.getExp_amount(),
-                    ex.getExp_id(), byName,
-                    ex.getExpenseStatus().getExpStatus_Name()
+                empName, emp.getEmail(), ex.getExp_amount(),
+                ex.getExp_id(), byName,
+                ex.getExpenseStatus().getExpStatus_Name()
             );
 
             return "redirect:/viewPerticularExpense/" + expense_Id;
         } else {
             return "redirect:/404";
         }
+    }
+
+    @RequestMapping(value = "/expense/approved/{exp_id}", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, String> expenseApproved(ModelMap model, @PathVariable String exp_id) {
+        System.out.println("inside rejectExpenseReasonForms");
+        Map<String, String> resp = new HashMap<>();
+
+        System.out.println("TO APPROVED EXPense " + exp_id);
+
+        int id = Integer.parseInt(exp_id);
+        Expense ex = expenseService.getExpenseById(id);
+        if (ex != null) {
+            System.out.println("Expense created by :::::: " + ex.getEmployee().getfName());
+            int oldStatus = ex.getExpenseStatus().getExpStatus_Id();
+            System.out.println("oldStatus :::::: " + oldStatus);
+            int logedInEmployeeId = logedInEmployee().getId();
+            if ((ex.getEmployee().getId() != logedInEmployeeId)
+                || (ex.getEmployee().getId() == logedInEmployeeId
+                && oldStatus == 1)) {
+
+                if (oldStatus < 5) {
+                    int newStatus = oldStatus + 1;
+                    ExpenseStatus es = expenseService.getExpenseStatusDetailsById(newStatus);
+                    ex.setExpenseStatus(es);
+                    expenseService.saveExpense(ex);
+                }
+            } else {
+                System.out.println("Loged in employee id:::::: " + logedInEmployeeId);
+                System.out.println("Both are same and expense not in created state."
+                    + " that's you don't have rights to approved your own bolls. ");
+            }
+            Employee emp = employeeService.getEmployeeById(ex.getEmployee().getId());
+            String empName = employeeFullName(emp);
+
+            String byName = employeeFullName(logedInEmployee());
+            System.out.println(empName + " This empliyee is differ from loged in emp " + logedInEmployeeId);
+            emailService.sendHTML_ExpenseMail(
+                empName, emp.getEmail(), ex.getExp_amount(),
+                ex.getExp_id(), byName,
+                ex.getExpenseStatus().getExpStatus_Name()
+            );
+        }
+
+        resp.put("success", "true");
+        return resp;
+
     }
 
     @RequestMapping(value = "/expense/rejectExpenseReasonForm", method = RequestMethod.GET)
@@ -518,34 +565,34 @@ System.out.println("++++++++++++++++++");
         ModelAndView mv = new ModelAndView("reports/monitor");
 
         String exStatusID = request.getParameter("performedActivity").trim();
-        String fromDateStr=request.getParameter("to_date").trim();
-        String toDateSrt =request.getParameter("from_date").trim();
-        Date fromDate=stringToDate(fromDateStr);
-        Date toDate=stringToDate(toDateSrt);
+        String fromDateStr = request.getParameter("to_date").trim();
+        String toDateSrt = request.getParameter("from_date").trim();
+        Date fromDate = stringToDate(fromDateStr);
+        Date toDate = stringToDate(toDateSrt);
 
-        if(fromDate.after(toDate)){
+        if (fromDate.after(toDate)) {
             System.out.println("From  date will not be future date. ");
         }
-        if(canNotFutureDate(toDate)){
+        if (canNotFutureDate(toDate)) {
             System.out.println("Passed to date ");
         }
 
-        List<Expense> expenseList = activityBetweenDte(exStatusID,fromDate,toDate);
+        List<Expense> expenseList = activityBetweenDte(exStatusID, fromDate, toDate);
 
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
-        mv.addObject("ckActivity",exStatusID);
-        mv.addObject("from_date",fromDateStr);
-        mv.addObject("to_date",toDateSrt);
+        mv.addObject("ckActivity", exStatusID);
+        mv.addObject("from_date", fromDateStr);
+        mv.addObject("to_date", toDateSrt);
         mv.addObject("expenses", expenseList);
 
         return mv;
     }
 
     @RequestMapping(value = "/getPDFFile/{exStatusID}/{fromDate}/{toDate}", method = RequestMethod.GET)
-    public void downloadPDFFile(HttpServletResponse response,@PathVariable("exStatusID") String exStatusID,
-                             @PathVariable("fromDate") String fromDateStr,
-                             @PathVariable("toDate") String toDateSrt) throws Exception {
+    public void downloadPDFFile(HttpServletResponse response, @PathVariable("exStatusID") String exStatusID,
+                                @PathVariable("fromDate") String fromDateStr,
+                                @PathVariable("toDate") String toDateSrt) throws Exception {
 
 
         System.out.println(exStatusID);
@@ -554,29 +601,29 @@ System.out.println("++++++++++++++++++");
 
         Date fromDate = stringToDate(fromDateStr);
         Date toDate = stringToDate(toDateSrt);
-        List<Expense> expenseList = activityBetweenDte(exStatusID,fromDate,toDate);
+        List<Expense> expenseList = activityBetweenDte(exStatusID, fromDate, toDate);
 
     }
-    @RequestMapping(value = "/getXLSXFile/{exStatusID}/{fromDate}/{toDate}", method = RequestMethod.GET)
-    public void downloadXLSXFile(HttpServletResponse response,@PathVariable("exStatusID") String exStatusID,
-                             @PathVariable("fromDate") String fromDateStr,
-                             @PathVariable("toDate") String toDateSrt) throws Exception {
 
+    @RequestMapping(value = "/getXLSXFile/{exStatusID}/{fromDate}/{toDate}", method = RequestMethod.GET)
+    public void downloadXLSXFile(HttpServletResponse response, @PathVariable("exStatusID") String exStatusID,
+                                 @PathVariable("fromDate") String fromDateStr,
+                                 @PathVariable("toDate") String toDateSrt) throws Exception {
 
 
         System.out.println(exStatusID);
         System.out.println(fromDateStr);
         System.out.println(toDateSrt);
 
-        Date fromDate=stringToDate(fromDateStr);
-        Date toDate=stringToDate(toDateSrt);
+        Date fromDate = stringToDate(fromDateStr);
+        Date toDate = stringToDate(toDateSrt);
 
         XSSFWorkbook wb = null;
         try {
 
-            List<Expense> expenseList = activityBetweenDte(exStatusID,fromDate,toDate);
+            List<Expense> expenseList = activityBetweenDte(exStatusID, fromDate, toDate);
 
-            wb = this.xlsxReport.generateXlsx( expenseList);
+            wb = this.xlsxReport.generateXlsx(expenseList);
             response.setContentType("application/vnd.ms-excel");
             response.setHeader("Content-disposition", "attachment; filename=Approve/Audit_Expense.xlsx");
             wb.write(response.getOutputStream());
@@ -593,7 +640,7 @@ System.out.println("++++++++++++++++++");
     private List<Expense> activityBetweenDte(String exStatusID, Date fromDate, Date toDate) {
         List<Expense> expenseList = new ArrayList<>();
 
-        Employee employee=logedInEmployee();
+        Employee employee = logedInEmployee();
 
 
         ExpenseStatus es = expenseService.getExpenseStatusDetailsById(Integer.parseInt(exStatusID));
@@ -606,8 +653,8 @@ System.out.println("++++++++++++++++++");
         System.out.println("Fetched list size" + expenseList.size());
 
         List<Expense> tempExp = new ArrayList<>();
-        for(Expense exp: expenseList){
-            if(!(exp.getExp_Date().after(fromDate) && exp.getExp_Date().before(toDate))){
+        for (Expense exp : expenseList) {
+            if (!(exp.getExp_Date().after(fromDate) && exp.getExp_Date().before(toDate))) {
                 System.out.println("Removing expense " + exp.getExp_id());
                 tempExp.add(exp);
             }

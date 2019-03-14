@@ -16,10 +16,11 @@
     <body>
     <style type="text/css">
                         body {
-                           background-image: url("assets/img/error-bck.png");
+                            background-color:#f5f5f5 ;
                         }
                         #panelBck{
                            background-color:#ff2e63;
+
                         }
 
     </style>

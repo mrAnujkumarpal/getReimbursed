@@ -30,13 +30,13 @@
                             <li><a href="/allVendors">View Vendors</a></li>
                         </ul>
 
-                <c:if test="${employeeRoleId == 2 || employeeRoleId == 3 ||employeeRoleId == 4 }">
+                <c:if test="${employeeRoleId == 2 || employeeRoleId == 3 ||employeeRoleId == 4||employeeRoleId == 5||employeeRoleId == 6}">
                     <li><a class='dropdown-button' href='#' data-activates='submittedReports-dropdown' data-belowOrigin="true" data-constrainWidth="false">Pending Reports<i class="material-icons right">arrow_drop_down</i> </a></li>
                     <!-- Dropdown Structure -->
                     <ul id='submittedReports-dropdown' class='dropdown-content'>
                       <li><a href="/pendingExpenseforApproval">Pending for Approval</a></li>
-                      <c:if test="${employeeRoleId == 3 || employeeRoleId == 4}"><li><a href="/pendingExpenseforAudit">Pending for Audit</a></li></c:if>
-                      <c:if test="${employeeRoleId == 4}"><li><a href="/pendingExpenseforRemburse">Pending for Reimburse</a></li></c:if>
+                      <c:if test="${employeeRoleId == 3 || employeeRoleId == 4 || employeeRoleId == 5 || employeeRoleId == 6}"><li><a href="/pendingExpenseforAudit">Pending for Audit</a></li></c:if>
+                      <c:if test="${employeeRoleId == 5 || employeeRoleId == 6}"><li><a href="/pendingExpenseforRemburse">Pending for Reimburse</a></li></c:if>
                     </ul>
                 </c:if>
 

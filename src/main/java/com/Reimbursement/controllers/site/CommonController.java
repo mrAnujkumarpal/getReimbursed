@@ -3,34 +3,24 @@ package com.Reimbursement.controllers.site;
  * Created by Anuj Kumar.
  */
 
+import com.Reimbursement.controllers.validation.Validate;
 import com.Reimbursement.dao.repo.employee.EmployeeRepository;
 import com.Reimbursement.models.commonModel.Location;
+import com.Reimbursement.models.commonModel.Vendor;
+import com.Reimbursement.models.empModel.Employee;
 import com.Reimbursement.models.empModel.EmployeeRole;
+import com.Reimbursement.service.commonServices.CommonService;
+import com.Reimbursement.service.empService.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
-import com.Reimbursement.controllers.validation.Validate;
-import com.Reimbursement.models.commonModel.Vendor;
-import com.Reimbursement.models.empModel.Employee;
-import com.Reimbursement.models.expense.*;
-import com.Reimbursement.service.commonServices.CommonService;
-import com.Reimbursement.service.empService.EmployeeService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping
@@ -45,14 +35,31 @@ public class CommonController extends Validate {
     @Autowired
     EmployeeRepository employeeRepository;
 
-
-
-    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
-       public ModelAndView defaultPage() {
-        ModelAndView mv = new ModelAndView("common/login");
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
+    public ModelAndView defaultPage() {
+        ModelAndView mv  = new ModelAndView("redirect:/login");
         return mv;
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error) {
+        System.out.println("comes here ");
+        String errorMessge = null;
+        if(error != null) {
+            errorMessge = "Invalid Username or Password !!";
+        }
+        ModelAndView mv = new ModelAndView("common/login");
+        mv.addObject("errorMessge",errorMessge);
+        mv.addObject("success",false);
+        return mv;
+    }
+
+    /*@RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+       public ModelAndView defaultloginPage() {
+        ModelAndView mv = new ModelAndView("common/login");
+        return mv;
+    }
+*/
 
     @RequestMapping(value = "/changePwd", method = RequestMethod.GET)
     public ModelAndView changePassword() {
@@ -438,9 +445,10 @@ public class CommonController extends Validate {
 
             mv.addObject("locationList", commonService.getAllLocations());
             mv.addObject("mode", "Add");
-            mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+
             mv.setViewName("common/vendorRegistor");
         }
+        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
         return mv;
     }
 

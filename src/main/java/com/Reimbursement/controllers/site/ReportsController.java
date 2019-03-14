@@ -44,7 +44,6 @@ public class ReportsController extends Validate {
     private EmployeeService employeeService;
 
 
-
     List<Expense> respectiveExpenseHistory(int expStatus_id) {
 
 
@@ -54,22 +53,28 @@ public class ReportsController extends Validate {
     }
 
 
-
-
     @RequestMapping("/expenseHistory/{id}")
     public ModelAndView expenseHistory(@PathVariable("id") int expStatus_id) {
-        ModelAndView mv = new ModelAndView("reports/expenseHistory");
+        ModelAndView mv = new ModelAndView();
 
         ExpenseStatus es = expenseService.getExpenseStatusDetailsById(expStatus_id);
-        List<Expense> ex = expenseService.getAllExpenseRelatedToMe(logedInEmployee(), es);
+        if (es != null) {
+            mv.setViewName("reports/expenseHistory");
+            List<Expense> ex = expenseService.getAllExpenseRelatedToMe(logedInEmployee(), es);
+            if (ex != null) {
 
-        mv.addObject("payModeList",commonService.getAllPaymentMode());
-        mv.addObject("allVendorsList", commonService.getAllVendors());
-        mv.addObject("locationList", commonService.getAllLocations());
-        mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
-        mv.addObject("reportName", myReportName(expStatus_id));
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
-        mv.addObject("expenses", ex);
+                mv.addObject("payModeList", commonService.getAllPaymentMode());
+                mv.addObject("allVendorsList", commonService.getAllVendors());
+                mv.addObject("locationList", commonService.getAllLocations());
+                mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
+                mv.addObject("reportName", myReportName(expStatus_id));
+                mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+            }
+            mv.addObject("expenses", ex);
+        } else {
+            mv.setViewName("redirect:/wrongAccess");
+        }
+
         return mv;
     }
 
@@ -104,7 +109,7 @@ public class ReportsController extends Validate {
             es = expenseService.getExpenseStatusDetailsById(6);
             ex.setExpenseStatus(es);
             expenseService.saveExpense(ex);
-System.out.println(" expense updated ");
+            System.out.println(" expense updated ");
             DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             Date currentDate = new Date();
             System.out.println("current Date ::" + df.format(currentDate));
@@ -113,7 +118,7 @@ System.out.println(" expense updated ");
              *Find Employee from session
              */
             Employee employee = logedInEmployee();
-            String rejectBy =employeeFullName(employee);
+            String rejectBy = employeeFullName(employee);
 
             ExpenseReject er = new ExpenseReject();
 
@@ -147,11 +152,11 @@ System.out.println(" expense updated ");
         }
         System.out.println("Final fetched list size  " + ex.size());
 
-        mv.addObject("payModeList",commonService.getAllPaymentMode());
+        mv.addObject("payModeList", commonService.getAllPaymentMode());
         mv.addObject("allVendorsList", commonService.getAllVendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         mv.addObject("reportName", "Pending for approval");
         mv.addObject("expenses", ex);
         return mv;
@@ -164,34 +169,6 @@ System.out.println(" expense updated ");
         ModelAndView mv = new ModelAndView("reports/pendingExpenseHistory");
         List<Expense> ex = new ArrayList<>();
         ExpenseStatus es = expenseService.getExpenseStatusDetailsById(3);
-        Employee employee =logedInEmployee();
-
-        List<Employee> myTeamMembers = employeeService.getMyTeamMembers(employee.getId());
-        myTeamMembers.remove(employee);
-
-        for (Employee emp : myTeamMembers) {
-            ex.addAll(expenseService.getAllExpenseRelatedToMe(emp, es));
-        }
-        System.out.println("Final fetched list size" + ex.size());
-
-
-        mv.addObject("payModeList",commonService.getAllPaymentMode());
-        mv.addObject("allVendorsList", commonService.getAllVendors());
-        mv.addObject("locationList", commonService.getAllLocations());
-        mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
-        mv.addObject("reportName", "Pending for audit");
-        mv.addObject("employeeRoleId",employee.getEmpRole().getId());
-        mv.addObject("expenses", ex);
-        return mv;
-    }
-
-    @RequestMapping("/pendingExpenseforRemburse")
-    public ModelAndView pendingExpenseforRemburse() {
-
-        ModelAndView mv = new ModelAndView("reports/pendingExpenseHistory");
-        List<Expense> ex = new ArrayList<>();
-
-        ExpenseStatus es = expenseService.getExpenseStatusDetailsById(4);
         Employee employee = logedInEmployee();
 
         List<Employee> myTeamMembers = employeeService.getMyTeamMembers(employee.getId());
@@ -202,12 +179,51 @@ System.out.println(" expense updated ");
         }
         System.out.println("Final fetched list size" + ex.size());
 
-        mv.addObject("payModeList",commonService.getAllPaymentMode());
+
+        mv.addObject("payModeList", commonService.getAllPaymentMode());
         mv.addObject("allVendorsList", commonService.getAllVendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
-        mv.addObject("employeeRoleId",employee.getEmpRole().getId());
-        mv.addObject("reportName", "Pending for remburse");
+        mv.addObject("reportName", "Pending for audit");
+        mv.addObject("employeeRoleId", employee.getEmpRole().getId());
+        mv.addObject("expenses", ex);
+        return mv;
+    }
+
+    @RequestMapping("/pendingExpenseforRemburse")
+    public ModelAndView pendingExpenseforRemburse() {
+
+        System.out.println("comes here pendingExpenseforRemburse ");
+        ModelAndView mv = new ModelAndView("reports/pendingExpenseHistory");
+        List<Expense> ex = new ArrayList<>();
+
+        ExpenseStatus es = expenseService.getExpenseStatusDetailsById(4);
+
+        Employee employee = logedInEmployee();
+        int empRoleId = employee.getEmpRole().getId();
+
+        if (empRoleId == 5 || empRoleId == 6) {
+            System.out.println("yes I am Admin or Finance. ");
+        }
+
+       /* List<Employee> myTeamMembers = employeeService.getMyTeamMembers(employee.getId());
+        myTeamMembers.remove(employee);
+
+        for (Employee emp : myTeamMembers) {
+            ex.addAll(expenseService.getAllExpenseRelatedToMe(emp, es));
+        }*/
+
+        ex = expenseService.getAllExpenseRelatedToMe(employee, es);
+
+
+        System.out.println("Final fetched list size" + ex.size());
+
+        mv.addObject("payModeList", commonService.getAllPaymentMode());
+        mv.addObject("allVendorsList", commonService.getAllVendors());
+        mv.addObject("locationList", commonService.getAllLocations());
+        mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
+        mv.addObject("employeeRoleId", empRoleId);
+        mv.addObject("reportName", "Pending for reimburse");
         mv.addObject("expenses", ex);
         return mv;
     }

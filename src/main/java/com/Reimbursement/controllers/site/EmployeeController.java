@@ -3,36 +3,25 @@ package com.Reimbursement.controllers.site;
  * Created by Anuj Kumar.
  */
 
+import com.Reimbursement.controllers.validation.Validate;
 import com.Reimbursement.models.empModel.EmpDP;
+import com.Reimbursement.models.empModel.Employee;
 import com.Reimbursement.models.empModel.EmployeeRole;
+import com.Reimbursement.service.commonServices.CommonService;
 import com.Reimbursement.service.commonServices.EmailService;
+import com.Reimbursement.service.empService.EmployeeService;
+import com.Reimbursement.service.expenseService.ExpenseService;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
-import com.Reimbursement.controllers.validation.Validate;
-import com.Reimbursement.models.commonModel.Vendor;
-import com.Reimbursement.models.empModel.Employee;
-import com.Reimbursement.service.commonServices.CommonService;
-import com.Reimbursement.service.empService.EmployeeService;
-import com.Reimbursement.service.expenseService.ExpenseService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class EmployeeController extends Validate {
@@ -115,6 +104,7 @@ public class EmployeeController extends Validate {
             mv.addObject("roleList", employeeService.getAllEmployeeRoles());
             mv.addObject("locationList", commonService.getAllLocations());
             mv.addObject("allEmployeesList", employeeService.getAllEmployees());
+            mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
             mv.setViewName("employee/registration");
         } else {
             System.out.println("My id " + employee.getId());
@@ -135,6 +125,7 @@ public class EmployeeController extends Validate {
                     mv.addObject("roleList", employeeService.getAllEmployeeRoles());
                     mv.addObject("locationList", commonService.getAllLocations());
                     mv.addObject("allEmployeesList", employeeService.getAllEmployees());
+                    mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
                     mv.setViewName("employee/registration");
                 }
             }

@@ -25,9 +25,9 @@
             </div>
             <div class="row">
                 <div class="col s12 m12">
-                    <table class="striped  responsive-table" id="vendorsListTable">
+                    <table class="striped  responsive-table z-depth-1" id="vendorsListTable">
                         <thead>
-                            <tr style="color:#4e342e">
+                            <tr  style="color:#fff; background-color:00888A;">
                                 <th>ID</th>
                                 <th>Vendor Name</th>
                                 <th>Vendor Address</th>

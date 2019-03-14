@@ -32,7 +32,7 @@
                                 </select>
                                 <br/>
                                 <h6 class="green-text">From Date </h6>
-                                <input type="date" name="to_date" class="datepicker red-text" value="">
+                                <input type="date" name="to_date" class="datepicker" value="">
                                 <h6 class="green-text">To Date</h6>
                                 <input type="date" name="from_date" class="datepicker" value="">
 

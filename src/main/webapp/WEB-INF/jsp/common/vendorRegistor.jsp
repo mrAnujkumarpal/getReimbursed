@@ -95,7 +95,6 @@
 
                                 <div class="col s12">
                                     <select class="browser-default" name="location" >
-                                        <option value="0">Choose Vendor location</option>
                                         <c:forEach items="${locationList}" var="ll">
                                             <option value="${ll.location_id}"<c:if test="${ll.location_id== vendor.location.location_id}">selected</c:if>> ${ll.location_name}</option>
                                         </c:forEach>
