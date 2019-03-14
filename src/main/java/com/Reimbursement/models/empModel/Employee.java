@@ -42,7 +42,7 @@ public class Employee implements Serializable, UserDetails {
     }
 
     public void setorg_code(String org_code) {
-        org_code = org_code;
+        this.org_code = org_code;
     }
 
 //  private  int  submittedTo, approvedTo, employeeApproverMappingId;
