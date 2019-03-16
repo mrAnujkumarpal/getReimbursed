@@ -23,10 +23,10 @@
                 <body>
 
                     <div class="container-fluid">
-                        <div class="row" style="margin-top:3%;">
+                        <div class="row">
                             <div class="col s12 m8 l6  offset-m2 offset-l3">
                                 <div class="center-align">
-                                    <img class="responsive-img center-align photo-border mt-10"  style="max-height:120px;" src="https://scala.io/2013/assets/images/partners/gold/logo-xebia.png">
+                                    <img class="responsive-img center-align photo-border mt-10"  style="max-height:200px;" src="https://react.sphere.it/wp-content/uploads/2016/12/logo-big-1.png">
                                 </div>
                                 <div class="card">
                                     <div class="col s12" style="border-bottom:1px solid #eeeeee; padding:10px;">

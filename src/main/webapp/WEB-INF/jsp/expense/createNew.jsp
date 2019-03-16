@@ -94,12 +94,12 @@
                                         <label for="exp_name">Expense Name</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input type="date" class="datepicker" value="2018-01-27 00:08:00"  name="expenseDate" placeholder="Select delivery time slot">
+                                        <input type="date" class="datepicker" value="${expense.exp_Date}"  name="expenseDate" placeholder="Select delivery time slot">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6" Style="margin-top:-2px;">
-                                        <input name="exp_amount" type="number" class="validate"  value="${expense.exp_amount}">
+                                        <input name="exp_amount" type="text" class="validate"  value="${expense.exp_amount}">
                                         <label for="exp_amount">Expense Amount</label>
                                     </div>
                                     <div class="col s6">

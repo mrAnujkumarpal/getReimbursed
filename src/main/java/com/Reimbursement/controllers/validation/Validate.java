@@ -29,7 +29,7 @@ public class Validate {
     EmployeeRepository employeeRepository;
 
 
-    private static String UPLOAD_DIRECTORY = "D:/iNTELI_jA/SpringBootMySQL-CRUD/src/main/webapp/assets/img/Bills";
+    private static String UPLOAD_DIRECTORY = "D:/iNTELI_jA/getReimbursed/src/main/webapp/assets/img/Bills";
 
     Pattern pattern;
     Matcher matcher;
@@ -38,17 +38,8 @@ public class Validate {
     Map<String, String> resp = new HashMap<>();
     String success = "false";
 
-    public final String Org_Name="Xebia";//Newgen//Oracle
-    public final String ORG_CODE="XI";//NG//OR
-
-
-
-    public Map<String, String> validateExpense(Expense expense) {
-
-        resp.put("success", "true");
-        resp.put("message", "Successfully added.");
-        return resp;
-    }
+    public final String Org_Name = "Xebia";//Newgen//Oracle
+    public final String ORG_CODE = "XI";//NG//OR
 
 
     public Map<String, String> validateVendor(Vendor vendor) {
@@ -57,15 +48,15 @@ public class Validate {
         String venderName = vendor.getVendor_name();
         String venderPhNo = vendor.getVendor_phno();
         String vendorAdrs = vendor.getVendor_address();
-        int locId=vendor.getLocation().getLocation_id();
+        int locId = vendor.getLocation().getLocation_id();
         venderName.trim();
         venderPhNo.trim();
         vendorAdrs.trim();
 //        System.out.println(vendor.getLocation().getLocation_id());
 
         if (venderName.trim().isEmpty() || venderName.equals("") || venderPhNo.trim().isEmpty() || venderPhNo.equals("") ||
-                vendorAdrs.trim().isEmpty() || vendorAdrs.equals("")
-                ) {
+            vendorAdrs.trim().isEmpty() || vendorAdrs.equals("")
+        ) {
             resp.put("success", success);
             resp.put("message", "All fields are required.");
             return resp;
@@ -105,9 +96,9 @@ public class Validate {
         String email = employee.getEmail().trim();
 
         if (fname.trim().isEmpty() || fname.equals("") || lName.trim().isEmpty() || lName.equals("") ||
-                mobileNo.trim().isEmpty() || mobileNo.equals("") || password.trim().isEmpty() || password.equals("") ||
-                email.trim().isEmpty() || email.equals("")
-                ) {
+            mobileNo.trim().isEmpty() || mobileNo.equals("") || password.trim().isEmpty() || password.equals("") ||
+            email.trim().isEmpty() || email.equals("")
+        ) {
             resp.put("success", success);
             resp.put("message", "All fields are required.");
             return resp;
@@ -169,7 +160,6 @@ public class Validate {
         }
 
 
-
         if (employee.getSubimitter_To().getId() == employee.getApprover_To().getId()) {
             resp.put("success", success);
             resp.put("message", "Submitter & approver can not same.");
@@ -190,7 +180,7 @@ public class Validate {
             MessageDigest sha = MessageDigest.getInstance("SHA-1");
             byte[] hashedBytes = sha.digest(input.getBytes());
             char[] digits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-                    'a', 'b', 'c', 'd', 'e', 'f', 'g'};
+                'a', 'b', 'c', 'd', 'e', 'f', 'g'};
             for (int idx = 0; idx < hashedBytes.length; idx++) {
                 byte b = hashedBytes[idx];
                 hash.append(digits[(b & 0xf0) >> 4]);
@@ -281,59 +271,55 @@ public class Validate {
         return reportName;
     }
 
-    public String employeeFullName(Employee emp){
+    public String employeeFullName(Employee emp) {
         String fnme = emp.getfName();
         String lname = emp.getlName();
         fnme = fnme.substring(0, 1).toUpperCase() + fnme.substring(1).toLowerCase();
         lname = lname.substring(0, 1).toUpperCase() + lname.substring(1).toLowerCase();
-        return  fnme + " " + lname;
+        return fnme + " " + lname;
 
     }
 
-    public  Employee logedInEmployee(){
+    public Employee logedInEmployee() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return    employeeRepository.findByEmail(authentication.getName());
+        return employeeRepository.findByEmail(authentication.getName());
     }
 
-public List sortedListBasedOnID(List al){
+    public List sortedListBasedOnID(List al) {
 
-     Collections.sort(al, new Comparator<Employee>() {
+        Collections.sort(al, new Comparator<Employee>() {
 
-        @Override
-        public int compare(Employee object1, Employee object2) {
-            return  object1.getId()- object2.getId();
+            @Override
+            public int compare(Employee object1, Employee object2) {
+                return object1.getId() - object2.getId();
 
-        }
-    });
+            }
+        });
 
-     return al;
-}
-
-
-
+        return al;
+    }
 
 
     protected static boolean isFutureDate(final Date providedDate) {
 
         Date currentDate = new Date(System.currentTimeMillis());
 
-        boolean t=false;
+        boolean t = false;
         System.out.println("System Date: " + currentDate);
         if (providedDate.after(currentDate)) {
             System.out.println("providedDate " + providedDate + " is future date" + currentDate);
-            t=false;
+            t = false;
         }
 
         if (providedDate.before(currentDate)) {
             System.out.println("providedDate " + providedDate + " is Past date " + currentDate);
-            t=true;
+            t = true;
         }
 
         return t;
     }
 
-    public static Date addDays(Date date, int days)
-    {
+    public static Date addDays(Date date, int days) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.DATE, days); //minus number would decrement the days
@@ -352,5 +338,46 @@ public List sortedListBasedOnID(List al){
             e.printStackTrace();
         }
         return dateType;
+    }
+
+
+    public Map<String, String> validateExpense(Expense expense) {
+
+        Map<String, String> response = new HashMap<>();
+        String title = expense.getExp_name().trim();
+
+        String message = "";
+        String description = expense.getExp_description();
+        boolean billable = expense.getBillable();
+        if (expense.getExp_Date() == null
+            || expense.getExpenseType() == null
+            || expense.getPaymentMode() == null
+            || expense.getLocation() == null
+            || expense.getVendor() == null
+            || expense.getExp_amount() == 0
+            || description.trim().isEmpty()
+            || description == null || title.isEmpty()
+        ) {
+            message = "All Fields are required !!";
+        } else {
+
+            Long amount = expense.getExp_amount();
+            int amt = amount.intValue();
+            if (title.length() < 3) {
+                message = "Title is too short";
+            } else if (title.length() > 45) {
+                message = "Title is too large write only in 45 characters. ";
+            } else if (amount == null || amount == 0) {
+                message = "Please enter the amount.";
+            } else if (amt < 10 || amt > 100000) {
+                message = "Please enter the amount in between  Rs. 10-to-1,00000 .";
+            } else {
+                success = "true";
+            }
+
+        }
+        response.put("success", success);
+        response.put("message", message);
+        return response;
     }
 }

@@ -203,32 +203,38 @@ public class ExpenseController extends Validate {
     public ModelAndView createEditExpense(
         ModelMap model, @ModelAttribute Expense expense, @RequestParam("pictureName") MultipartFile[] uploadingFiles) {
 
-        DateFormat df = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
+        Date currentDate = new Date();
+        Employee emp = logedInEmployee();
+
 
         ModelAndView mv = new ModelAndView("expense/createNew");
-        System.out.println("Expence date : " + expense.getExpenseDate());
-        String dteInStr = expense.getExpenseDate();
-        System.out.println("Expence dteInStr : " + dteInStr);
+        Map<String, String> validateExpense= validateExpense(expense);
 
-        System.out.println("::::::::::::::::::::::::::::::::::::::::::::: : " + expense.getPaymentMode());
-        Date dateObject = null;
+        String success = validateExpense.get("success");
+        String message = validateExpense.get("message");
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+        if (success.equalsIgnoreCase("false")) {
 
-        try {
-            dateObject = formatter.parse(dteInStr);
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        System.out.println(dteInStr + "\t" + dateObject);
-        expense.setExp_Date(dateObject);
+            mv.addObject("success", success);
+            mv.addObject("message", message);
 
-        System.out.println("------------------Check vendors-------------------------------------");
+
+
+            mv.addObject("payModeList", commonService.getAllPaymentMode());
+            mv.addObject("allVendorsList", commonService.getAllVendors());
+            mv.addObject("locationList", commonService.getAllLocations());
+            mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
+            mv.addObject("employeeRoleId", emp.getEmpRole().getId());
+            mv.addObject("mode", "Add");
+
+        }else{
+
+
+        expense.setExp_Date(stringToDate(expense.getExpenseDate()));
+
         int vid = expense.getVendor().getVendor_Id();
         System.out.println("Vendor id ::" + vid);
-
         Vendor addedVendor = new Vendor();
-
         if (expense.getVendor().getVendor_Id() == 2685) {
             System.out.println("you choose other so need to put vendor details.");
             String vendorname = expense.getVendor().getVendor_name();
@@ -237,9 +243,6 @@ public class ExpenseController extends Validate {
             if (vendor != null) {
                 System.out.println("Vendor not null . " + vendor.getLocation().getLocation_id());
 
-                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-                Date currentDate = new Date();
-                System.out.println("current Date ::" + dateFormat.format(currentDate));
                 vendor.setCreated_Date(currentDate);
                 addedVendor = commonService.addNewVendor(vendor);
             }
@@ -252,13 +255,9 @@ public class ExpenseController extends Validate {
             expense.setLocation(commonService.getLocationById(ven.getLocation().getLocation_id()));
         }
 
-        Date currentDate = new Date();
-        Date expDate = expense.getExp_Date();
-        System.out.println("current Date ::" + expDate);
-        System.out.println("Expense type id ::" + expense.getExpenseType().getExpType_Id());
 
-        Employee emp = logedInEmployee();
         String empName = employeeFullName(emp);
+
         expense.setEmployee(emp);
         expense.setExp_createdBy(empName);
 
@@ -311,12 +310,13 @@ public class ExpenseController extends Validate {
             System.out.println("Expense billable  : FALSE ");
             System.out.println("So you don't need to save bills ");
         }
-        emailService.sendHTML_ExpenseMail(
+      /*
+      emailService.sendHTML_ExpenseMail(
             empName, emp.getEmail(), addedExpense.getExp_amount(),
             addedExpense.getExp_id(), empName,
             addedExpense.getExpenseStatus().getExpStatus_Name()
         );
-
+*/
         mv.addObject("success", true);
         mv.addObject("payModeList", commonService.getAllPaymentMode());
         mv.addObject("allVendorsList", commonService.getAllVendors());
@@ -325,6 +325,9 @@ public class ExpenseController extends Validate {
         mv.addObject("employeeRoleId", emp.getEmpRole().getId());
         mv.addObject("mode", "Add");
         mv.addObject("message", "Expense successfully created.");
+
+
+    }
         return mv;
     }
 
@@ -348,7 +351,7 @@ public class ExpenseController extends Validate {
                 || expense.getEmployee().getSubimitter_To().getId() == logedInempId
                 || expense.getEmployee().getApprover_To().getId() == logedInempId
                 || (employee.getEmpRole().getId() == 6 && (expense.getExpenseStatus().getExpStatus_Id() == 4
-                || expense.getExpenseStatus().getExpStatus_Id()== 5))) {
+                || expense.getExpenseStatus().getExpStatus_Id() == 5))) {
 
                 System.out.println(" In side if condition ");
                 mv.addObject("aboutExpense", expense);
