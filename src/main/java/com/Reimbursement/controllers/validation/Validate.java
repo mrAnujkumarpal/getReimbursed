@@ -313,7 +313,7 @@ public List sortedListBasedOnID(List al){
 
 
 
-    protected static boolean canNotFutureDate(final Date providedDate) {
+    protected static boolean isFutureDate(final Date providedDate) {
 
         Date currentDate = new Date(System.currentTimeMillis());
 
@@ -331,6 +331,15 @@ public List sortedListBasedOnID(List al){
 
         return t;
     }
+
+    public static Date addDays(Date date, int days)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, days); //minus number would decrement the days
+        return cal.getTime();
+    }
+
     protected static Date stringToDate(String dateInStr) {
 
 

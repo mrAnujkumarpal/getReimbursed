@@ -17,6 +17,11 @@ public class ExpenseServiceImpl implements ExpenseService {
     private ExpenseDaoService expenseDaoService;
 
     @Override
+    public List<Expense> getAllExpenseByExpStatus(ExpenseStatus es) {
+        return expenseDaoService.getExpListByExpStatus(es);
+    }
+
+    @Override
     public List<ExpenseType> viewAllExpenseType() {
         return expenseDaoService.fetchAllExpenseType();
     }
@@ -123,5 +128,10 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public  boolean isExpenseTypeExist(ExpenseType et){
         return  expenseDaoService.findExpenseTypeByName(et.getExpType_Name());
+    }
+
+    @Override
+    public List<Expense> getAllInspectexpByMEAndExpStatusID(int empId, int expeStatusId) {
+        return expenseDaoService.allInspectExpByMEAndexpStatus(empId, expeStatusId);
     }
 }

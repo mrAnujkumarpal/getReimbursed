@@ -163,40 +163,52 @@
 
 
             $('#myExpenseListTable').on('click', '#approveMyExpenseBtn', approveMyExpNow);
+
             function approveMyExpNow(e) {
+
                 e.preventDefault();
-                if (confirm("Do you really want to approve by your hand ? ")) {
+                var url = $(this).data('uri');
 
+                Swal.fire({
+                    title: 'Are you sure ?',
+                    text: "You are approving this expense by your hand !",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4CAF50',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Approved it!'
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            type: 'post',
+                            url: url,
+                            contentType: "application/json; charset=utf-8",
+                            success: function (response) {
+                                if (response.success === "true") {
+                                    swal.fire({
+                                        text: 'Congratulation approved successfully !!',
+                                        type: 'success',
+                                        icon: 'success'
+                                    }).then(function () {
+                                        location.reload();
 
-                    var url = $(this).data('uri');
+                                    });
 
-                    $.ajax({
-                        type: 'post',
-                        url: url,
-                        contentType: "application/json; charset=utf-8",
-                        success: function (response) {
-                            if (response.success === "true") {
-                                swal.fire({
-                                    text: 'Congratulation approved successfully !',
-                                    type: 'success',
-                                    icon: 'success'
-                                }).then(function () {
-                                    location.reload();
+                                } else {
+                                    swal("Oops", response.message, "error")
+                                    // alert(response.message);
+                                }
+                            },
+                            error: function (response) {
+                                swal("Oops", "We couldn't connect to the server!", "error");
+                            },
+                            complete: function (response) {
 
-                                });
-
-                            } else {
-                                alert(response.message);
                             }
-                        },
-                        error: function (response) {
-                            swal("Oops", "We couldn't connect to the server!", "error");
-                        },
-                        complete: function (response) {
+                        });
+                    }
+                });
 
-                        }
-                    });
-                }
             }
             ;
 

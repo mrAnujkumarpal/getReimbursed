@@ -28,6 +28,33 @@ public class ExpenseDaoServiceImpl implements ExpenseDaoService {
     @Autowired
     ExpenseRejectRepository expenseRejectRepository;
 
+
+    @Override
+    public List<Expense> allInspectExpByMEAndexpStatus(int empId, int expeStatusId) {
+
+        List<Expense> al = new ArrayList<>();
+        if (expeStatusId == 5) {
+            //Check only Reimbursed by me
+            // from Expense where
+            al = expenseRepository.findAllReimburseExpenseByMeAnyExpenseStatus(empId);
+
+        } else {
+
+            //Check only Reimbursed by me
+            // from Expense where
+            al = expenseRepository.findAllRejectExpenseByMeAnyExpenseStatus(empId);
+
+        }
+
+        System.out.println("inside expDaoServiceImpl " + al.size());
+        return al;
+    }
+
+    @Override
+    public List<Expense> getExpListByExpStatus(ExpenseStatus es) {
+        return expenseRepository.findAllExpenseByExpenseStatus(es);
+    }
+
     @Override
     public List<ExpenseType> fetchAllExpenseType() {
         return expenseTypeRepository.findAllByEnabled(true);
@@ -96,6 +123,7 @@ public class ExpenseDaoServiceImpl implements ExpenseDaoService {
     @Override
     public void saveExpenseRejectReason(ExpenseReject er) {
         System.out.println(" inside expense dao service imps");
+
         expenseRejectRepository.save(er);
     }
 
@@ -110,8 +138,8 @@ public class ExpenseDaoServiceImpl implements ExpenseDaoService {
     }
 
     @Override
-    public  boolean findExpenseTypeByName(String etName){
-        return expenseTypeRepository.findExpenseTypeByName(etName) !=null;
+    public boolean findExpenseTypeByName(String etName) {
+        return expenseTypeRepository.findExpenseTypeByName(etName) != null;
     }
 
     @Override
@@ -132,10 +160,10 @@ public class ExpenseDaoServiceImpl implements ExpenseDaoService {
     @Override
     public int fetchMyPendingAmountExpense(Employee employee) {
         int sum = 0;
-        List<Expense> exp= new ArrayList<>();
+        List<Expense> exp = new ArrayList<>();
         for (int i = 2; i < 5; i++) {
-            ExpenseStatus es= findExpenseStatusDetailsById(i);
-            sum = sum + getSumAmountOfEmpByExpStatus(employee,es);
+            ExpenseStatus es = findExpenseStatusDetailsById(i);
+            sum = sum + getSumAmountOfEmpByExpStatus(employee, es);
         }
         System.out.println(" total pending sum " + sum);
         return sum;

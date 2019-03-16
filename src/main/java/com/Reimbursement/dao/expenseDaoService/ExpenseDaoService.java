@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface ExpenseDaoService {
 
+    public  List<Expense> getExpListByExpStatus(ExpenseStatus es);
+
+    public List<Expense> allInspectExpByMEAndexpStatus(int empId, int expeStatusId);
+
     public List<ExpenseType> fetchAllExpenseType();
 
     public void saveNewExpenseType(ExpenseType expenseType);
@@ -42,4 +46,8 @@ public interface ExpenseDaoService {
     public  int fetchMyPendingAmountExpense(Employee employee);
 
     public  boolean findExpenseTypeByName(String etName);
+
+
+
+
 }

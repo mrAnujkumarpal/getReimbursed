@@ -340,10 +340,15 @@ public class ExpenseController extends Validate {
             System.out.println("employe id-->" + expense.getEmployee().getId());
             String imgPath = "";
 
-            int logedInempId = logedInEmployee().getId();
+            Employee employee = logedInEmployee();
+            System.out.println(employee.getEmpRole().getId());
+            System.out.println(expense.getExpenseStatus().getExpStatus_Id() == 5);
+            int logedInempId = employee.getId();
             if (expense.getEmployee().getId() == logedInempId
                 || expense.getEmployee().getSubimitter_To().getId() == logedInempId
-                || expense.getEmployee().getApprover_To().getId() == logedInempId) {
+                || expense.getEmployee().getApprover_To().getId() == logedInempId
+                || (employee.getEmpRole().getId() == 6 && (expense.getExpenseStatus().getExpStatus_Id() == 4
+                || expense.getExpenseStatus().getExpStatus_Id()== 5))) {
 
                 System.out.println(" In side if condition ");
                 mv.addObject("aboutExpense", expense);
@@ -373,9 +378,8 @@ public class ExpenseController extends Validate {
                 }
 
                 /*
-                * TO Set view Reject and approved
-                * */
-
+                 * TO Set view Reject and approved
+                 * */
 
 
                 mv.setViewName("reports/viewparticularExpense");
@@ -383,7 +387,7 @@ public class ExpenseController extends Validate {
                 mv = new ModelAndView("redirect:/wrongAccess");
             }
 
-            mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+            mv.addObject("employeeRoleId", employee.getEmpRole().getId());
             mv.addObject("payModeList", commonService.getAllPaymentMode());
             System.out.println("comming expense details " + expense.getExp_id());
         } else {
@@ -401,13 +405,30 @@ public class ExpenseController extends Validate {
             System.out.println("Expense created by :::::: " + ex.getEmployee().getfName());
             int oldStatus = ex.getExpenseStatus().getExpStatus_Id();
             System.out.println("oldStatus :::::: " + oldStatus);
-            int logedInEmployeeId = logedInEmployee().getId();
+            Employee employee = logedInEmployee();
+            int logedInEmployeeId = employee.getId();
+            Date currentDate = new Date();
             if ((ex.getEmployee().getId() != logedInEmployeeId)
                 || (ex.getEmployee().getId() == logedInEmployeeId
                 && oldStatus == 1)) {
 
-                if (oldStatus < 5) {
+                if (oldStatus <= 5) {
                     int newStatus = oldStatus + 1;
+
+                    if (newStatus == 2)
+                        ex.setExp_submittedDate(currentDate);
+
+                    if (newStatus == 3)
+                        ex.setExp_approvedDate(currentDate);
+
+                    if (newStatus == 4)
+                        ex.setExp_auditedDate(currentDate);
+
+                    if (newStatus == 5) {
+                        ex.setExp_reimbursedDate(currentDate);
+                        ex.setExp_rembrsByEmpId(logedInEmployeeId);
+                    }
+
                     ExpenseStatus es = expenseService.getExpenseStatusDetailsById(newStatus);
                     ex.setExpenseStatus(es);
                     expenseService.saveExpense(ex);
@@ -422,12 +443,12 @@ public class ExpenseController extends Validate {
 
             String byName = employeeFullName(logedInEmployee());
             System.out.println(empName + " This empliyee is differ from loged in emp " + logedInEmployeeId);
-            emailService.sendHTML_ExpenseMail(
+        /*    emailService.sendHTML_ExpenseMail(
                 empName, emp.getEmail(), ex.getExp_amount(),
                 ex.getExp_id(), byName,
                 ex.getExpenseStatus().getExpStatus_Name()
             );
-
+*/
             return "redirect:/viewPerticularExpense/" + expense_Id;
         } else {
             return "redirect:/404";
@@ -449,34 +470,67 @@ public class ExpenseController extends Validate {
             int oldStatus = ex.getExpenseStatus().getExpStatus_Id();
             System.out.println("oldStatus :::::: " + oldStatus);
             int logedInEmployeeId = logedInEmployee().getId();
-            if ((ex.getEmployee().getId() != logedInEmployeeId)
-                || (ex.getEmployee().getId() == logedInEmployeeId
-                && oldStatus == 1)) {
 
-                if (oldStatus < 5) {
-                    int newStatus = oldStatus + 1;
-                    ExpenseStatus es = expenseService.getExpenseStatusDetailsById(newStatus);
-                    ex.setExpenseStatus(es);
-                    expenseService.saveExpense(ex);
-                }
+            if (oldStatus == 5) {
+                System.out.println("this is already in reimbursed state ");
+                resp.put("success", "false");
+                resp.put("message", exp_id + "Already reimbursed !!");
             } else {
-                System.out.println("Loged in employee id:::::: " + logedInEmployeeId);
-                System.out.println("Both are same and expense not in created state."
-                    + " that's you don't have rights to approved your own bolls. ");
-            }
-            Employee emp = employeeService.getEmployeeById(ex.getEmployee().getId());
-            String empName = employeeFullName(emp);
+                Date currentDate = new Date();
+                if ((ex.getEmployee().getId() != logedInEmployeeId)
+                    || (ex.getEmployee().getId() == logedInEmployeeId
+                    && oldStatus == 1)) {
 
-            String byName = employeeFullName(logedInEmployee());
-            System.out.println(empName + " This empliyee is differ from loged in emp " + logedInEmployeeId);
-            emailService.sendHTML_ExpenseMail(
-                empName, emp.getEmail(), ex.getExp_amount(),
-                ex.getExp_id(), byName,
-                ex.getExpenseStatus().getExpStatus_Name()
-            );
+                    if (oldStatus < 5) {
+                        int newStatus = oldStatus + 1;
+
+                        if (newStatus == 2)
+                            ex.setExp_submittedDate(currentDate);
+
+                        if (newStatus == 3)
+                            ex.setExp_approvedDate(currentDate);
+
+                        if (newStatus == 4)
+                            ex.setExp_auditedDate(currentDate);
+
+                        if (newStatus == 5) {
+                            ex.setExp_reimbursedDate(currentDate);
+                            ex.setExp_rembrsByEmpId(logedInEmployeeId);
+                        }
+
+                        System.out.println("now increese");
+                        ExpenseStatus es = expenseService.getExpenseStatusDetailsById(newStatus);
+                        ex.setExpenseStatus(es);
+                        expenseService.saveExpense(ex);
+
+
+                        Employee emp = employeeService.getEmployeeById(ex.getEmployee().getId());
+                        String empName = employeeFullName(emp);
+
+                        String byName = employeeFullName(logedInEmployee());
+                        System.out.println(empName + " This empliyee is differ from loged in emp " + logedInEmployeeId);
+                   /* emailService.sendHTML_ExpenseMail(
+                        empName, emp.getEmail(), ex.getExp_amount(),
+                        ex.getExp_id(), byName,
+                        ex.getExpenseStatus().getExpStatus_Name()
+                    );*/
+                        resp.put("success", "true");
+                    }
+                } else {
+                    System.out.println("Loged in employee id:::::: " + logedInEmployeeId);
+                    System.out.println("Both are same and expense not in created state."
+                        + " that's you don't have rights to approved your own bolls. ");
+
+                    resp.put("success", "false");
+                    resp.put("message", "You can not approve own expense !!");
+                }
+
+            }
+
+        } else {
+            resp.put("success", "false");
         }
 
-        resp.put("success", "true");
         return resp;
 
     }
@@ -552,9 +606,10 @@ public class ExpenseController extends Validate {
 
     @RequestMapping(value = {"/activityMonitoring"}, method = RequestMethod.GET)
     public ModelAndView activityMonitr() {
-        System.out.println("comws here..");
+        System.out.println("comes here..activityMonitr");
         ModelAndView mv = new ModelAndView("reports/monitor");
         mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        mv.addObject("allExpStatus", expenseService.viewAllExpenseStatus());
         return mv;
     }
 
@@ -563,21 +618,27 @@ public class ExpenseController extends Validate {
     public ModelAndView activityMonitoring(HttpServletRequest request) {
         System.out.println("comes here to do monitor");
         ModelAndView mv = new ModelAndView("reports/monitor");
-
         String exStatusID = request.getParameter("performedActivity").trim();
-        String fromDateStr = request.getParameter("to_date").trim();
-        String toDateSrt = request.getParameter("from_date").trim();
+
+        String fromDateStr = request.getParameter("from_date").trim();
+        String toDateSrt = request.getParameter("to_date").trim();
+
         Date fromDate = stringToDate(fromDateStr);
         Date toDate = stringToDate(toDateSrt);
 
-        if (fromDate.after(toDate)) {
+        if (fromDate.after(toDate))
             System.out.println("From  date will not be future date. ");
-        }
-        if (canNotFutureDate(toDate)) {
-            System.out.println("Passed to date ");
-        }
+
+        if (isFutureDate(toDate))
+            System.out.println("Give date is correct not a future date");
+
 
         List<Expense> expenseList = activityBetweenDte(exStatusID, fromDate, toDate);
+
+        System.out.println(" finally time exStatusID " + exStatusID);
+        System.out.println(" fromDateStr " + fromDateStr);
+        System.out.println(" toDateSrt " + toDateSrt);
+        System.out.println(" expenseList " + expenseList);
 
         mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
@@ -585,6 +646,7 @@ public class ExpenseController extends Validate {
         mv.addObject("from_date", fromDateStr);
         mv.addObject("to_date", toDateSrt);
         mv.addObject("expenses", expenseList);
+        mv.addObject("allExpStatus", expenseService.viewAllExpenseStatus());
 
         return mv;
     }
@@ -641,24 +703,112 @@ public class ExpenseController extends Validate {
         List<Expense> expenseList = new ArrayList<>();
 
         Employee employee = logedInEmployee();
+        int ckStatusId = Integer.parseInt(exStatusID);
+
+        /*Below code to including 1 day (current day as well)
+         * */
+        System.out.println("$$$---> B4 date " + toDate);
+        toDate = addDays(toDate, 1);
+
+        System.out.println("$$$---> Now date " + toDate);
+
+        System.out.println(" Fetched for exp id " + ckStatusId);
+        if (ckStatusId == 1 || ckStatusId == 2) {
+            expenseList = expenseService.fetchAllexpCreatedByMe(employee);
+        } else {
+            System.out.println("Get expense list according to selected activity b/w date.");
+            List<Employee> myTeamMembers = new ArrayList<>();
+            if (ckStatusId == 3 || ckStatusId == 4) {
+
+                if (ckStatusId == 3) {
+                    myTeamMembers = employeeService.myTeamMembersTL(employee.getId());
+                } else {
+                    myTeamMembers = employeeService.myTeamMembersManager(employee.getId());
+                }
+
+                for (Employee emp : myTeamMembers) {
+                    expenseList.addAll(expenseService.fetchAllexpCreatedByMe(emp));
+                }
+
+            } else if (ckStatusId == 5 || ckStatusId == 6) {
+                //  expenseList = expenseService.getAllExpenseByExpStatus(expenseService.getExpenseStatusDetailsById(expeStatusId));
+
+                expenseList = expenseService.getAllInspectexpByMEAndExpStatusID(employee.getId(), ckStatusId);
+
+                System.out.println("==========");
+                System.out.println("=  expenseList size ==" + expenseList.size());
+
+                ArrayList al = new ArrayList();
+
+                if (expenseList.size() > 0) {
+                    for (Expense exp : expenseList) {
+
+                    }
+
+                }
+
+            }
+
+            //  ExpenseStatus es = expenseService.getExpenseStatusDetailsById(expeStatusId);
+            //  List<Employee> myTeamMember = employeeService.getMyTeamMembers(employee.getId());
+            // myTeamMembers.remove(employee);
 
 
-        ExpenseStatus es = expenseService.getExpenseStatusDetailsById(Integer.parseInt(exStatusID));
-        List<Employee> myTeamMembers = employeeService.getMyTeamMembers(employee.getId());
-        myTeamMembers.remove(employee);
-
-        for (Employee emp : myTeamMembers) {
-            expenseList.addAll(expenseService.getAllExpenseRelatedToMe(emp, es));
+            System.out.println("Fetched list size" + expenseList.size());
         }
-        System.out.println("Fetched list size" + expenseList.size());
-
+        System.out.println("Below block is common to execute for all size " + expenseList.size());
         List<Expense> tempExp = new ArrayList<>();
-        for (Expense exp : expenseList) {
-            if (!(exp.getExp_Date().after(fromDate) && exp.getExp_Date().before(toDate))) {
-                System.out.println("Removing expense " + exp.getExp_id());
-                tempExp.add(exp);
+
+        if (expenseList.size() > 0) {
+            for (Expense exp : expenseList) {
+                if (ckStatusId == 1) {
+                    if (exp.getExp_createdDate() != null) {
+                        if (!(exp.getExp_createdDate().after(fromDate) && exp.getExp_createdDate().before(toDate))) {
+                            System.out.println("Removing created " + exp.getExp_id());
+                            tempExp.add(exp);
+                        }
+                    }
+                } else {
+                    if (ckStatusId == 2) {
+                        if (exp.getExp_submittedDate() != null) {
+                            if (!(exp.getExp_submittedDate().after(fromDate) && exp.getExp_submittedDate().before(toDate))) {
+                                System.out.println("Removing submitted " + exp.getExp_id());
+                                tempExp.add(exp);
+                            }
+                        }
+                    } else if (ckStatusId == 3) {
+                        if (exp.getExp_approvedDate() != null) {
+                            if (!(exp.getExp_approvedDate().after(fromDate) && exp.getExp_approvedDate().before(toDate))) {
+                                System.out.println("Removing approved " + exp.getExp_id());
+                                tempExp.add(exp);
+                            }
+                        }
+                    } else if (ckStatusId == 4) {
+                        if (exp.getExp_auditedDate() != null) {
+                            if (!(exp.getExp_auditedDate().after(fromDate) && exp.getExp_auditedDate().before(toDate))) {
+                                System.out.println("Removing audited " + exp.getExp_id());
+                                tempExp.add(exp);
+                            }
+                        }
+                    } else if (ckStatusId == 5) {
+                        if (exp.getExp_rejectedDate() != null) {
+                            if (!(exp.getExp_reimbursedDate().after(fromDate) && exp.getExp_reimbursedDate().before(toDate))) {
+                                System.out.println("Removing getExp_reimbursedDate " + exp.getExp_id());
+                                tempExp.add(exp);
+                            }
+                        }
+                    } else {
+                        if (exp.getExp_rejectedDate() != null) {
+                            if (!(exp.getExp_rejectedDate().after(fromDate) && exp.getExp_rejectedDate().before(toDate))) {
+                                System.out.println("Removing getExp_reimbursedDate " + exp.getExp_id());
+                                tempExp.add(exp);
+                            }
+                        }
+                    }
+                }
             }
         }
+
         expenseList.removeAll(tempExp);
         System.out.println("Final list size" + expenseList.size());
 

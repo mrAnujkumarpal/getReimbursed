@@ -22,13 +22,13 @@ public interface ExpenseService {
 
     public Expense saveExpense(Expense expense);
 
-    public ExpenseStatus getExpenseStatusDetailsById(int esId);
-
-    public void saveExpenseBills(ExpensePicture ep);
+    public List<Expense> getAllExpenseByExpStatus(ExpenseStatus es);
 
     public List<Expense> getAllExpenseRelatedToMe(Employee employee, ExpenseStatus es);
 
     public List<Expense> fetchAllexpCreatedByMe(Employee employee);
+
+    public List<Expense> getAllInspectexpByMEAndExpStatusID(int empId, int expeStatusId);
 
     public Expense getExpenseById(int exp_Id);
 
@@ -46,5 +46,9 @@ public interface ExpenseService {
 
     public  boolean isExpenseTypeExist(ExpenseType et);
 
+
+    public ExpenseStatus getExpenseStatusDetailsById(int esId);
+
+    public void saveExpenseBills(ExpensePicture ep);
 
 }

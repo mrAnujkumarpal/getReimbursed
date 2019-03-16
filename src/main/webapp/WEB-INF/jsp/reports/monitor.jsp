@@ -2,8 +2,8 @@
     Document   : homePage
     Author     : Anuj
 --%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -22,19 +22,25 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col s12 m4 l3">
-                    <div class="card" >
-                        <div class="card-content">
+                    <div class="card">
+                    <div class="col s12" style="border-bottom:1px solid #eeeeee;">
+                    <h6 class="ml-4"><i class="Tiny material-icons">event_note</i> Monitor your activity.</h6>
+                    </div>
+                       <div class="card-content">
+
                             <form  action="/activityMonitoring"  method="post">
                                 <select name="performedActivity" class="browser-default"Style="border:none; border-bottom:1px solid #111111;" >
-                                    <option value="3">Approved by me</option>
-                                    <option value="4">Audit by me</option>
-                                    <option value="5">Reimbursed by me </option>
+                                     <c:forEach items="${allExpStatus}" var="aES">
+                                             <option value="${aES.expStatus_Id}" <c:if test="${aES.expStatus_Id == ckActivity}">selected</c:if> >${aES.expStatus_Name} by me</option>
+                                     </c:forEach>
                                 </select>
                                 <br/>
                                 <h6 class="green-text">From Date </h6>
-                                <input type="date" name="to_date" class="datepicker" value="">
+                                <input type="date" name="from_date" placeholder="mm/dd/yyyy" class="datepicker" value="${from_date}">
+
                                 <h6 class="green-text">To Date</h6>
-                                <input type="date" name="from_date" class="datepicker" value="">
+
+                                <input type="date" name="to_date"  placeholder="mm/dd/yyyy"  class="datepicker" value="${to_date}">
 
                                 <button href="#" style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);"  class="btn waves-effect waves-light col s12">Show me</button>
 
@@ -57,6 +63,12 @@
                                         <thead>
                                             <tr style="color:#fff; background-color:00888A;">
                                                 <th>Expense No. </th>
+                                                <c:if test="${ckActivity == 1}">  <th>Created Date</th></c:if>
+                                                <c:if test="${ckActivity == 2}">  <th>Submitted Date</th></c:if>
+                                                <c:if test="${ckActivity == 3}">  <th>Approved Date</th></c:if>
+                                                <c:if test="${ckActivity == 4}">  <th>Audited Date</th></c:if>
+                                                <c:if test="${ckActivity == 5}">  <th>Reimburse Date</th></c:if>
+                                                <c:if test="${ckActivity == 6}">  <th>Rejected Date</th></c:if>
                                                 <th>Expense Date</th>
                                                 <th>Created By</th>
                                                 <th>Expense Name</th>
@@ -70,6 +82,13 @@
                                             <c:forEach items="${expenses}" var="exp">
                                                 <tr>
                                                     <td>#00-${exp.exp_id}</td>
+                                                    <c:if test="${ckActivity == 1}"> <td><fmt:formatDate type = "date"  value = "${exp.exp_createdDate}" /></td></c:if>
+                                                    <c:if test="${ckActivity == 2}"> <td><fmt:formatDate type = "date"  value = "${exp.exp_submittedDate}" /></td></c:if>
+                                                    <c:if test="${ckActivity == 3}"> <td><fmt:formatDate type = "date"  value = "${exp.exp_approvedDate}" /></td></c:if>
+                                                    <c:if test="${ckActivity == 4}"> <td><fmt:formatDate type = "date"  value = "${exp.exp_auditedDate}" /></td></c:if>
+                                                    <c:if test="${ckActivity == 5}"> <td><fmt:formatDate type = "date"  value = "${exp.exp_reimbursedDate}" /></td></c:if>
+                                                    <c:if test="${ckActivity == 6}"> <td><fmt:formatDate type = "date"  value = "${exp.exp_rejectedDate}" /></td></c:if>
+
                                                     <td><fmt:formatDate type = "date"  value = "${exp.exp_Date}" /></td>
                                                     <td>${exp.exp_createdBy}</td>
                                                     <td>${exp.exp_name}</td>

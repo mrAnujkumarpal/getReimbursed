@@ -30,7 +30,6 @@ public class Expense implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date exp_createdDate;
 
-
     @Column(name = "CreatedBy")
     private String exp_createdBy;
 
@@ -62,6 +61,91 @@ public class Expense implements Serializable {
     @Column(name = "Amount")
     private long exp_amount;
 
+
+    @Column(name = "submitted_Date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date exp_submittedDate;
+
+    @Column(name = "approved_Date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date exp_approvedDate;
+
+    @Column(name = "audited_Date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date exp_auditedDate;
+
+    @Column(name = "reimbursed_Date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date exp_reimbursedDate;
+
+    @Column(name = "rejected_Date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date exp_rejectedDate;
+
+
+    @Column(name = "reimbursByEmpId")
+    private int exp_rembrsByEmpId;
+
+
+    @Column(name = "rejectByEmpId")
+    private int exp_rejectByEmpId;
+
+
+    public Date getExp_rejectedDate() {
+        return exp_rejectedDate;
+    }
+
+    public void setExp_rejectedDate(Date exp_rejectedDate) {
+        this.exp_rejectedDate = exp_rejectedDate;
+    }
+
+    public int getExp_rembrsByEmpId() {
+        return exp_rembrsByEmpId;
+    }
+
+    public void setExp_rembrsByEmpId(int exp_rembrsByEmpId) {
+        this.exp_rembrsByEmpId = exp_rembrsByEmpId;
+    }
+
+    public int getExp_rejectByEmpId() {
+        return exp_rejectByEmpId;
+    }
+
+    public void setExp_rejectByEmpId(int exp_rejectByEmpId) {
+        this.exp_rejectByEmpId = exp_rejectByEmpId;
+    }
+
+    public Date getExp_submittedDate() {
+        return exp_submittedDate;
+    }
+
+    public void setExp_submittedDate(Date exp_submittedDate) {
+        this.exp_submittedDate = exp_submittedDate;
+    }
+
+    public Date getExp_approvedDate() {
+        return exp_approvedDate;
+    }
+
+    public void setExp_approvedDate(Date exp_approvedDate) {
+        this.exp_approvedDate = exp_approvedDate;
+    }
+
+    public Date getExp_auditedDate() {
+        return exp_auditedDate;
+    }
+
+    public void setExp_auditedDate(Date exp_auditedDate) {
+        this.exp_auditedDate = exp_auditedDate;
+    }
+
+    public Date getExp_reimbursedDate() {
+        return exp_reimbursedDate;
+    }
+
+    public void setExp_reimbursedDate(Date exp_reimbursedDate) {
+        this.exp_reimbursedDate = exp_reimbursedDate;
+    }
 
     @OneToOne(cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
     private Employee employee;

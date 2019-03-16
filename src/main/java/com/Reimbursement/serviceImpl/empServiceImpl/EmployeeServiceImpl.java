@@ -20,6 +20,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeDaoService employeeDaoService;
 
+    @Override
+    public List<Employee> myTeamMembersTL(int empId) {
+        return employeeDaoService.myTeamAsTl(empId);
+    }
+
+    @Override
+    public List<Employee> myTeamMembersManager(int empId) {
+        return employeeDaoService.myTeamAsManager(empId);
+    }
+
+
     public void addEmployee(Employee employee) {
          employeeDaoService.addEmployee(employee);
     }
@@ -82,13 +93,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> getMyTeamMembers(int empl_Id){
-        return employeeDaoService.findMyTeamMembers(empl_Id);
-    }
+    public List<Employee> getMyTeamMembers(int empl_Id){ return employeeDaoService.findMyTeamMembers(empl_Id);}
+
 
     @Override
-    public boolean isEmployeeRoleExist(EmployeeRole employeeRole){
-        return employeeDaoService.findEmployeeRoleByName(employeeRole.getEmpRole());
-    }
+    public boolean isEmployeeRoleExist(EmployeeRole employeeRole){ return employeeDaoService.findEmployeeRoleByName(employeeRole.getEmpRole());}
+
 
 }

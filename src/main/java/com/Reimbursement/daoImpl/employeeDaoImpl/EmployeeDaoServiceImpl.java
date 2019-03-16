@@ -32,6 +32,21 @@ public class EmployeeDaoServiceImpl implements EmployeeDaoService {
    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+
+    @Override
+    public List<Employee> myTeamAsTl(int empId) {
+
+        Employee me = employeeRepository.findOne(empId);
+        return employeeRepository.findBySubmitterToAndEnabled(me, true);
+    }
+
+    @Override
+    public List<Employee> myTeamAsManager(int empId) {
+
+        Employee me = employeeRepository.findOne(empId);
+        return  employeeRepository.findByApproverToAndEnabled(me, true);
+    }
+
     public void addEmployee(Employee employee) {
         employee.setPassword(passwordEncoder.encode(employee.getPassword()));
         employeeRepository.save(employee);

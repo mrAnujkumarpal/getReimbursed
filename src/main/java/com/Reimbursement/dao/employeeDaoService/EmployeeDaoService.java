@@ -13,29 +13,41 @@ public interface EmployeeDaoService {
 
     public void addEmployee(Employee employee);
 
-    public List<EmployeeRole> getAllEmployeeRoles();
-
-    public List<Employee> getAlEmployees();
-
     public Employee getEmployeeById(int employeeId);
 
-    public EmployeeRole getEmployeeRoleByRoleId(int empRoleId);
+    public List<Employee> getAlEmployees();
 
     public void deleteEmployee(Employee employee);
 
     public Employee isEmployeeMailIDExist(String empMailId);
 
-    public void addEmpPhoto(EmpDP empDP);
+    public List<Employee> findMyTeamMembers(int empl_Id);
 
-    public List<EmpDP> getAllEmpDPs();
+    public boolean findEmployeeRoleByName(String locationName);
+
+
+    public  List<Employee> myTeamAsTl(int empId);
+
+    public  List<Employee> myTeamAsManager(int empId);
+
+
+    public List<EmployeeRole> getAllEmployeeRoles();
+
+    public EmployeeRole getEmployeeRoleByRoleId(int empRoleId);
 
     public void deleteEmployeeRoleByID(int role_id);
 
     public void addNewEmployeeRole(EmployeeRole employeeRole);
 
+
+
+    public void addEmpPhoto(EmpDP empDP);
+
+    public List<EmpDP> getAllEmpDPs();
+
     public EmpDP findEmpDPByEmployeeID(int empId);
 
-    public List<Employee> findMyTeamMembers(int empl_Id);
 
-    public boolean findEmployeeRoleByName(String locationName);
+
+
 }

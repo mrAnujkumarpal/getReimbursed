@@ -18,4 +18,15 @@ public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
     List<Expense> findAllCreatedByMeee(Employee employee);
 
 
+    @Query("from Expense where expenseStatus=?1")
+    List<Expense> findAllExpenseByExpenseStatus(ExpenseStatus expenseStatus);
+
+
+    @Query("from Expense where exp_rembrsByEmpId=?1")
+    List<Expense> findAllReimburseExpenseByMeAnyExpenseStatus(int empId);
+
+
+    @Query("from Expense where exp_rejectByEmpId=?1")
+    List<Expense> findAllRejectExpenseByMeAnyExpenseStatus(int empId);
+
 }

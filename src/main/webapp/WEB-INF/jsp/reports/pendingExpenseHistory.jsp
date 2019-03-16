@@ -15,11 +15,6 @@
     </head>
     <body>
         <style>
-            #AddNewBtn{
-                background: linear-gradient(45deg, #FF5252 0%, #f48fb1 100%);
-                box-shadow: 0 6px 20px 0 rgba(244, 143, 177, 0.5);
-                border-radius: 25px;
-            }
             #rejectExpSubmitBtn{background: linear-gradient(45deg, #8e24aa 0%, #ff6e40 100%);}
         </style>
         <%@include file="/WEB-INF/jsp/employee/header.jsp"%>
@@ -28,7 +23,7 @@
             <c:choose>
                 <c:when test="${expenses ne null && not empty expenses}">
                     <div class="row">
-                        <div class="col s12 m12 l12"><h5 class="left-align">Expenses ${reportName}</h5></div>
+                        <div class="col s12 m12 l12"><h5 class="left-align"><u>Expenses</u> : <i>${reportName}</i></h5></div>
                     </div>
                     <div class="row">
                         <div class="col s12 m12">
@@ -182,8 +177,14 @@
                     data: data,
                     success: function (response) {
                         if (response.success === "true") {
+                                swal.fire({
+                                        text: 'Expense rejected successfully !',
+                                        type: 'success',
+                                        icon: 'success'
+                                    }).then(function () {
+                                        location.reload();
 
-                            location.reload();
+                                    });
                         } else {
                             alert(response.message);
                         }
@@ -200,38 +201,49 @@
             $('#allExpenseList').on('click', '#approveExpenseBtn', approveExpNow);
             function approveExpNow(e) {
                 e.preventDefault();
-                if (confirm("Do you really want to approve by your hand ? ")) {
+                var url = $(this).data('uri');
 
+                Swal.fire({
+                    title: 'Are you sure ?',
+                    text: "You are approving this expense by your hand !",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4CAF50',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Approved it!'
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            type: 'post',
+                            url: url,
+                            contentType: "application/json; charset=utf-8",
+                            success: function (response) {
+                                if (response.success === "true") {
+                                    swal.fire({
+                                        text: 'Congratulation approved successfully !',
+                                        type: 'success',
+                                        icon: 'success'
+                                    }).then(function () {
+                                        location.reload();
 
-                    var url = $(this).data('uri');
+                                    });
 
-                    $.ajax({
-                        type: 'post',
-                        url: url,
-                        contentType: "application/json; charset=utf-8",
-                        success: function (response) {
-                            if (response.success === "true") {
-                            swal.fire({
-                                          text: 'Congratulation approved successfully !',
-                                          type: 'success',
-                                          icon: 'success'
-                                        }).then(function() {
-                                           location.reload();
+                                } else {
+                                    swal("Oops", response.message, "error")
+                                    // alert(response.message);
+                                }
+                            },
+                            error: function (response) {
+                                swal("Oops", "We couldn't connect to the server!", "error");
+                            },
+                            complete: function (response) {
 
-                                        });
-
-                            } else {
-                            alert(response.message);
                             }
-                        },
-                        error: function (response) {
-                        swal("Oops", "We couldn't connect to the server!", "error");
-                        },
-                        complete: function (response) {
+                        });
+                    }
+                });
 
-                        }
-                    });
-                }
+
             }
             ;
         </script>

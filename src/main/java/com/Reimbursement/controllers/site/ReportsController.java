@@ -108,12 +108,14 @@ public class ReportsController extends Validate {
         if (ex != null) {
             es = expenseService.getExpenseStatusDetailsById(6);
             ex.setExpenseStatus(es);
-            expenseService.saveExpense(ex);
-            System.out.println(" expense updated ");
+
             DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             Date currentDate = new Date();
             System.out.println("current Date ::" + df.format(currentDate));
-
+            ex.setExp_rejectedDate(currentDate);
+            ex.setExp_rejectByEmpId(logedInEmployee().getId());
+            expenseService.saveExpense(ex);
+            System.out.println(" expense updated ");
             /*
              *Find Employee from session
              */
@@ -213,10 +215,9 @@ public class ReportsController extends Validate {
             ex.addAll(expenseService.getAllExpenseRelatedToMe(emp, es));
         }*/
 
-        ex = expenseService.getAllExpenseRelatedToMe(employee, es);
+        ex = expenseService.getAllExpenseByExpStatus(es);
 
 
-        System.out.println("Final fetched list size" + ex.size());
 
         mv.addObject("payModeList", commonService.getAllPaymentMode());
         mv.addObject("allVendorsList", commonService.getAllVendors());
