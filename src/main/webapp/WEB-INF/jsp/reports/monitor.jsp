@@ -6,16 +6,13 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <title>Monitoring | EMS</title> 
     </head>
     <body>
         <style>
-        body{
-        background-color:#f5f5f5 ;
-        }
+            body{
+                background-color:#f5f5f5 ;
+            }
         </style>
         <%@include file="/WEB-INF/jsp/employee/header.jsp"%>
         <%@include file="/WEB-INF/jsp/employee/footer.jsp"%>
@@ -23,16 +20,22 @@
             <div class="row">
                 <div class="col s12 m4 l3">
                     <div class="card">
-                    <div class="col s12" style="border-bottom:1px solid #eeeeee;">
-                    <h6 class="ml-4"><i class="Tiny material-icons">event_note</i> Monitor your activity.</h6>
-                    </div>
-                       <div class="card-content">
+                        <div class="col s12" style="border-bottom:1px solid #eeeeee;">
+                            <h6 class="ml-4"><i class="Tiny material-icons">event_note</i> Monitor your activity.</h6>
+                        </div>
+                        <div class="col s12">
+                            <c:if test="${success eq  'false'}">
+                                <h6 class="error alert-info text-center ">${message} </h6>
+                            </c:if>
+                        </div>  
+
+                        <div class="card-content">
 
                             <form  action="/activityMonitoring"  method="post">
                                 <select name="performedActivity" class="browser-default"Style="border:none; border-bottom:1px solid #111111;" >
-                                     <c:forEach items="${allExpStatus}" var="aES">
-                                             <option value="${aES.expStatus_Id}" <c:if test="${aES.expStatus_Id == ckActivity}">selected</c:if> >${aES.expStatus_Name} by me</option>
-                                     </c:forEach>
+                                    <c:forEach items="${allExpStatus}" var="aES">
+                                        <option value="${aES.expStatus_Id}" <c:if test="${aES.expStatus_Id == ckActivity}">selected</c:if> >${aES.expStatus_Name} by me</option>
+                                    </c:forEach>
                                 </select>
                                 <br/>
                                 <h6 class="green-text">From Date </h6>
@@ -69,16 +72,16 @@
                                                 <c:if test="${ckActivity == 4}">  <th>Audited Date</th></c:if>
                                                 <c:if test="${ckActivity == 5}">  <th>Reimburse Date</th></c:if>
                                                 <c:if test="${ckActivity == 6}">  <th>Rejected Date</th></c:if>
-                                                <th>Expense Date</th>
-                                                <th>Created By</th>
-                                                <th>Expense Name</th>
-                                                <th>Amount</th>
-                                                <th>Expense Type</th>
-                                                <th>Availed Bill</th>
-                                            </tr>
-                                        </thead>
+                                                    <th>Expense Date</th>
+                                                    <th>Expense Name</th>
+                                                    <th>Created By</th>                                                    
+                                                    <th>Expense Type</th>
+                                                    <th>Availed Bill</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
 
-                                        <tbody style="color:#004d40">
+                                            <tbody style="color:#004d40">
                                             <c:forEach items="${expenses}" var="exp">
                                                 <tr>
                                                     <td>#00-${exp.exp_id}</td>
@@ -88,34 +91,33 @@
                                                     <c:if test="${ckActivity == 4}"> <td><fmt:formatDate type = "date"  value = "${exp.exp_auditedDate}" /></td></c:if>
                                                     <c:if test="${ckActivity == 5}"> <td><fmt:formatDate type = "date"  value = "${exp.exp_reimbursedDate}" /></td></c:if>
                                                     <c:if test="${ckActivity == 6}"> <td><fmt:formatDate type = "date"  value = "${exp.exp_rejectedDate}" /></td></c:if>
-
                                                     <td><fmt:formatDate type = "date"  value = "${exp.exp_Date}" /></td>
-                                                    <td>${exp.exp_createdBy}</td>
                                                     <td>${exp.exp_name}</td>
-                                                    <td><fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${exp.exp_amount}" /></td>
+                                                    <td>${exp.exp_createdBy}</td>                                                  
                                                     <td>
                                                         <c:forEach items="${expenseTypeList}" var="et">
                                                             <c:if test="${et.expType_Id==exp.expenseType.expType_Id}">${et.expType_Name}</c:if>
                                                         </c:forEach>
                                                     </td>
-
                                                     <td>
                                                         <c:choose>
                                                             <c:when test="${exp.billable eq true}">Yes </c:when>
                                                             <c:otherwise> Not</c:otherwise>
                                                         </c:choose>
                                                     </td>
+                                                    <td><fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${exp.exp_amount}" /></td>
+
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
                                     </table>
                                     <div class="right-align">
-                                    <a href="/getXLSXFile/${ckActivity}/${from_date}/${to_date}"
-                                    style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);"
-                                    class="btn-large waves-effect waves-light">
-                                             <b>Download as xls</b> </a>
+                                        <a href="/getXLSXFile/${ckActivity}/${from_date}/${to_date}"
+                                           style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);"
+                                           class="btn-large waves-effect waves-light">
+                                            <b>Download as xls</b> </a>
 
-                                    <a href="/getPDFFile/${ckActivity}/${from_date}/${to_date}"    style="background: linear-gradient(to right, #FF5252 0%, #EB7077 50%, #f48fb1 100%); margin: 10px 0px;"  class="btn-large modal-trigger  editExpenceTypeBtn">
+                                        <a href="/getPDFFile/${ckActivity}/${from_date}/${to_date}"    style="background: linear-gradient(to right, #FF5252 0%, #EB7077 50%, #f48fb1 100%); margin: 10px 0px;"  class="btn-large modal-trigger  editExpenceTypeBtn">
                                             <b>Download as PDF</b></a>
                                     </div>
 

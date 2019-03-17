@@ -28,22 +28,28 @@ public class ExpenseDaoServiceImpl implements ExpenseDaoService {
     @Autowired
     ExpenseRejectRepository expenseRejectRepository;
 
-
     @Override
     public List<Expense> allInspectExpByMEAndexpStatus(int empId, int expeStatusId) {
 
         List<Expense> al = new ArrayList<>();
-        if (expeStatusId == 5) {
-            //Check only Reimbursed by me
-            // from Expense where
-            al = expenseRepository.findAllReimburseExpenseByMeAnyExpenseStatus(empId);
 
-        } else {
-
-            //Check only Reimbursed by me
-            // from Expense where
-            al = expenseRepository.findAllRejectExpenseByMeAnyExpenseStatus(empId);
-
+        switch (expeStatusId) {
+            case 2:
+                al = expenseRepository.findAllSubmitExpenseByMeAndExpenseStatus(empId);
+                break;
+            case 3:
+                al = expenseRepository.findAllApproveExpenseByMeAndExpenseStatus(empId);
+                break;
+            case 4:
+                al = expenseRepository.findAllAuditExpenseByMeAndExpenseStatus(empId);
+            case 5:
+                al = expenseRepository.findAllReimburseExpenseByMeAndExpenseStatus(empId);
+                break;
+            case 6:
+                al = expenseRepository.findAllRejectExpenseByMeAndExpenseStatus(empId);
+                break;
+            default:
+                break;
         }
 
         System.out.println("inside expDaoServiceImpl " + al.size());
@@ -107,18 +113,15 @@ public class ExpenseDaoServiceImpl implements ExpenseDaoService {
         return expenseRepository.findAllExpenseByEmployeeAndExpenseStatus(employee, es);
     }
 
-
     @Override
     public List<Expense> expanseCreatedByeMe(Employee employee) {
         return expenseRepository.findAllCreatedByMeee(employee);
     }
 
-
     @Override
     public Expense getExpenseByExpId(int exp_Id) {
         return expenseRepository.findOne(exp_Id);
     }
-
 
     @Override
     public void saveExpenseRejectReason(ExpenseReject er) {

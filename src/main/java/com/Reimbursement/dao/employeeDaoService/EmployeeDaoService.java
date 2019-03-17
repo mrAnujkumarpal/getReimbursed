@@ -25,7 +25,6 @@ public interface EmployeeDaoService {
 
     public boolean findEmployeeRoleByName(String locationName);
 
-
     public  List<Employee> myTeamAsTl(int empId);
 
     public  List<Employee> myTeamAsManager(int empId);

@@ -1,6 +1,5 @@
 package com.Reimbursement.controllers.validation;
 
-
 import com.Reimbursement.dao.repo.employee.EmployeeRepository;
 import com.Reimbursement.models.commonModel.Vendor;
 import com.Reimbursement.models.empModel.Employee;
@@ -8,9 +7,6 @@ import com.Reimbursement.models.expense.Expense;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.swing.text.html.parser.Entity;
 import java.text.ParseException;
 import java.util.Collections;
 import java.io.File;
@@ -24,10 +20,8 @@ import java.util.regex.Pattern;
 
 public class Validate {
 
-
     @Autowired
     EmployeeRepository employeeRepository;
-
 
     private static String UPLOAD_DIRECTORY = "D:/iNTELI_jA/getReimbursed/src/main/webapp/assets/img/Bills";
 
@@ -41,22 +35,19 @@ public class Validate {
     public final String Org_Name = "Xebia";//Newgen//Oracle
     public final String ORG_CODE = "XI";//NG//OR
 
-
     public Map<String, String> validateVendor(Vendor vendor) {
-
 
         String venderName = vendor.getVendor_name();
         String venderPhNo = vendor.getVendor_phno();
         String vendorAdrs = vendor.getVendor_address();
         int locId = vendor.getLocation().getLocation_id();
-        venderName.trim();
-        venderPhNo.trim();
-        vendorAdrs.trim();
+        venderName = venderName.trim();
+        venderPhNo = venderPhNo.trim();
+        vendorAdrs = vendorAdrs.trim();
 //        System.out.println(vendor.getLocation().getLocation_id());
 
-        if (venderName.trim().isEmpty() || venderName.equals("") || venderPhNo.trim().isEmpty() || venderPhNo.equals("") ||
-            vendorAdrs.trim().isEmpty() || vendorAdrs.equals("")
-        ) {
+        if (venderName.trim().isEmpty() || venderName.equals("") || venderPhNo.trim().isEmpty() || venderPhNo.equals("")
+                || vendorAdrs.trim().isEmpty() || vendorAdrs.equals("")) {
             resp.put("success", success);
             resp.put("message", "All fields are required.");
             return resp;
@@ -88,26 +79,24 @@ public class Validate {
 
     public Map<String, String> validateEmployee(Employee employee) {
 
-
         String fname = employee.getfName();
         String lName = employee.getlName();
         String mobileNo = employee.getMobile();
         String password = employee.getPassword().trim();
         String email = employee.getEmail().trim();
 
-        if (fname.trim().isEmpty() || fname.equals("") || lName.trim().isEmpty() || lName.equals("") ||
-            mobileNo.trim().isEmpty() || mobileNo.equals("") || password.trim().isEmpty() || password.equals("") ||
-            email.trim().isEmpty() || email.equals("")
-        ) {
+        if (fname.trim().isEmpty() || fname.equals("") || lName.trim().isEmpty() || lName.equals("")
+                || mobileNo.trim().isEmpty() || mobileNo.equals("") || password.trim().isEmpty() || password.equals("")
+                || email.trim().isEmpty() || email.equals("")) {
             resp.put("success", success);
             resp.put("message", "All fields are required.");
             return resp;
         }
-        fname.trim();
-        lName.trim();
-        mobileNo.trim();
-        password.trim();
-        email.trim();
+        fname = fname.trim();
+        lName = lName.trim();
+        mobileNo = mobileNo.trim();
+        password = password.trim();
+        email = email.trim();
         if (fname.length() < 3) {
             resp.put("success", success);
             resp.put("message", "First name is too short.");
@@ -125,7 +114,6 @@ public class Validate {
             resp.put("message", "Please enter a valid name, digits or special characters are not allowed.");
             return resp;
         }
-
 
         if (password.length() < 6) {
             resp.put("success", success);
@@ -159,19 +147,16 @@ public class Validate {
             return resp;
         }
 
-
         if (employee.getSubimitter_To().getId() == employee.getApprover_To().getId()) {
             resp.put("success", success);
             resp.put("message", "Submitter & approver can not same.");
             return resp;
         }
 
-
         resp.put("success", "true");
         resp.put("message", "Successfully added.");
         return resp;
     }
-
 
     public static String generateHash(String input) {
         StringBuilder hash = new StringBuilder();
@@ -218,11 +203,9 @@ public class Validate {
         }
         UPLOAD_DIRECTORY = targetPath + "/";
 
-
         return UPLOAD_DIRECTORY;
 
     }
-
 
     public static String DIFFERENCIATE_BILL() {
 
@@ -239,7 +222,7 @@ public class Validate {
 
     public String myReportName(int expStatus_id) {
 
-        String reportName = "";
+        String reportName;
         // switch statement with int data type
         switch (expStatus_id) {
             case 1:
@@ -287,33 +270,21 @@ public class Validate {
 
     public List sortedListBasedOnID(List al) {
 
-        Collections.sort(al, new Comparator<Employee>() {
-
-            @Override
-            public int compare(Employee object1, Employee object2) {
-                return object1.getId() - object2.getId();
-
-            }
-        });
+        Collections.sort(al, (Employee object1, Employee object2) -> object1.getId() - object2.getId());
 
         return al;
     }
 
-
     protected static boolean isFutureDate(final Date providedDate) {
 
         Date currentDate = new Date(System.currentTimeMillis());
-
         boolean t = false;
-        System.out.println("System Date: " + currentDate);
         if (providedDate.after(currentDate)) {
-            System.out.println("providedDate " + providedDate + " is future date" + currentDate);
-            t = false;
+            t = true;
         }
 
         if (providedDate.before(currentDate)) {
-            System.out.println("providedDate " + providedDate + " is Past date " + currentDate);
-            t = true;
+            t = false;
         }
 
         return t;
@@ -328,18 +299,15 @@ public class Validate {
 
     protected static Date stringToDate(String dateInStr) {
 
-
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date dateType = null;
         try {
             dateType = df.parse(dateInStr);
 
         } catch (ParseException e) {
-            e.printStackTrace();
         }
         return dateType;
     }
-
 
     public Map<String, String> validateExpense(Expense expense) {
 
@@ -349,15 +317,23 @@ public class Validate {
         String message = "";
         String description = expense.getExp_description();
         boolean billable = expense.getBillable();
-        if (expense.getExp_Date() == null
-            || expense.getExpenseType() == null
-            || expense.getPaymentMode() == null
-            || expense.getLocation() == null
-            || expense.getVendor() == null
-            || expense.getExp_amount() == 0
-            || description.trim().isEmpty()
-            || description == null || title.isEmpty()
-        ) {
+
+        System.out.println(expense.getExpenseDate() == null);
+        System.out.println(expense.getExpenseType() == null);
+        System.out.println(expense.getPaymentMode() == null);
+        System.out.println(expense.getVendor() == null);
+        System.out.println(expense.getExp_amount() == 0);
+        System.out.println(description.trim().isEmpty());
+        System.out.println(description == null);
+        System.out.println(title.isEmpty());
+
+        if (expense.getExpenseDate() == null
+                || expense.getExpenseType() == null
+                || expense.getPaymentMode() == null
+                || expense.getVendor() == null
+                || expense.getExp_amount() == 0
+                || description.trim().isEmpty()
+                || description == null || title.isEmpty()) {
             message = "All Fields are required !!";
         } else {
 
@@ -374,6 +350,10 @@ public class Validate {
             } else {
                 success = "true";
             }
+
+        }
+        if (expense.getExp_Date() != null) {
+            System.out.println("inside here dte not null");
 
         }
         response.put("success", success);

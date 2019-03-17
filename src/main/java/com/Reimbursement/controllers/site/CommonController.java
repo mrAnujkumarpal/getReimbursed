@@ -1,8 +1,8 @@
 package com.Reimbursement.controllers.site;
+
 /**
  * Created by Anuj Kumar.
  */
-
 import com.Reimbursement.controllers.validation.Validate;
 import com.Reimbursement.dao.repo.employee.EmployeeRepository;
 import com.Reimbursement.models.commonModel.Location;
@@ -37,7 +37,7 @@ public class CommonController extends Validate {
 
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
-        ModelAndView mv  = new ModelAndView("redirect:/login");
+        ModelAndView mv = new ModelAndView("redirect:/login");
         return mv;
     }
 
@@ -45,12 +45,12 @@ public class CommonController extends Validate {
     public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error) {
         System.out.println("comes here ");
         String errorMessge = null;
-        if(error != null) {
+        if (error != null) {
             errorMessge = "Invalid Username or Password !!";
         }
         ModelAndView mv = new ModelAndView("common/login");
-        mv.addObject("errorMessge",errorMessge);
-        mv.addObject("success",false);
+        mv.addObject("errorMessge", errorMessge);
+        mv.addObject("success", false);
         return mv;
     }
 
@@ -59,18 +59,16 @@ public class CommonController extends Validate {
         ModelAndView mv = new ModelAndView("common/login");
         return mv;
     }
-*/
-
+     */
     @RequestMapping(value = "/changePwd", method = RequestMethod.GET)
     public ModelAndView changePassword() {
         ModelAndView mv = new ModelAndView("common/changePassword");
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return mv;
     }
 
     @RequestMapping(value = "/changePassword", method = RequestMethod.POST)
     public ModelAndView changePasswordDoing(
-
             @RequestParam("oldpassword") String oldPwd,
             @RequestParam("newpassword") String newPwd,
             @RequestParam("confrmpassword") String confrmPwd
@@ -87,40 +85,37 @@ public class CommonController extends Validate {
             resp.put("success", "false");
             resp.put("message", "New password and confirm password are not match.");
         }
-        Employee emp =logedInEmployee();
+        Employee emp = logedInEmployee();
         if (emp != null) {
             if (!(emp.getPassword().equalsIgnoreCase(oldPwd))) {
                 resp.put("success", "false");
                 resp.put("message", "Stored password and not same to given old password.");
             }
         }
-        mv.addObject("employeeRoleId",emp.getEmpRole().getId());
+        mv.addObject("employeeRoleId", emp.getEmpRole().getId());
         emp.setPassword(oldPwd);
 
         return mv;
     }
 
     @RequestMapping(value = "/default")
-    public ModelAndView deafultAfterLogin(){
+    public ModelAndView deafultAfterLogin() {
         System.out.println(" ------------------------------ ");
         ModelAndView modelAndView = new ModelAndView();
 
-
-      int empID=logedInEmployee().getId();
+        int empID = logedInEmployee().getId();
         System.out.println("ID " + empID);
-        if(empID != 0){
+        if (empID != 0) {
             String url = "viewEmployeeDetails/" + empID;
             System.out.println("url ::" + url);
             modelAndView = new ModelAndView("redirect:" + url);
-        }else {
-            modelAndView.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        } else {
+            modelAndView.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
             modelAndView.setViewName("errors/404");
-             }
+        }
 
         return modelAndView;
     }
-
-
 
     /*
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -190,30 +185,31 @@ public class CommonController extends Validate {
         return mv;
     }
 
-    */
+     */
     @GetMapping(value = "/wrongAccess")
-    public ModelAndView wrongAccess(){
+    public ModelAndView wrongAccess() {
         System.out.println("Inside wrong access. ");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("errors/505");
-        modelAndView.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        modelAndView.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return modelAndView;
     }
 
     @GetMapping(value = "/access-denied")
-    public ModelAndView accessDenied(){
+    public ModelAndView accessDenied() {
         System.out.println("Inside accsss denied method. ");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("errors/500");
-        modelAndView.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        modelAndView.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return modelAndView;
     }
+
     @RequestMapping(value = "/viewAllRoles", method = RequestMethod.GET)
     public ModelAndView fetchAllRoles() {
         ModelAndView mv = new ModelAndView("common/employeeRole");
         List<EmployeeRole> erl = employeeService.getAllEmployeeRoles();
         mv.addObject("roleList", erl);
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return mv;
     }
 
@@ -235,7 +231,6 @@ public class CommonController extends Validate {
         empRl.setEmpRole(role);
 
         employeeService.addNewRole(empRl);
-
 
         resp.put("success", "true");
         resp.put("message", role + " as new role added successfully.");
@@ -291,21 +286,21 @@ public class CommonController extends Validate {
         ModelAndView mv = new ModelAndView("common/location");
 
         mv.addObject("locationList", commonService.getAllLocations());
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return mv;
     }
 
     @RequestMapping(value = "/404", method = RequestMethod.GET)
     public ModelAndView error404() {
         ModelAndView mv = new ModelAndView("errors/404");
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return mv;
     }
 
     @RequestMapping(value = "/500", method = RequestMethod.GET)
     public ModelAndView error500() {
         ModelAndView mv = new ModelAndView("errors/500");
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return mv;
     }
 
@@ -326,7 +321,6 @@ public class CommonController extends Validate {
         location.setCreated_By(employeeFullName(logedInEmployee()));
         location.setLocation_name(name);
         commonService.addLocation(location);
-
 
         resp.put("success", "true");
         resp.put("message", name + " as new location successfully added.");
@@ -350,7 +344,6 @@ public class CommonController extends Validate {
         return resp;
     }
 
-
     @RequestMapping(value = "/common/editLocation/{location_id}", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> editExistLocation(ModelMap model, @PathVariable int location_id) {
@@ -359,13 +352,11 @@ public class CommonController extends Validate {
 
         Location loc = commonService.getLocationById(location_id);
 
-
         resp.put("success", "true");
         resp.put("id", loc.getLocation_id());
         resp.put("name", loc.getLocation_name());
         return resp;
     }
-
 
     @RequestMapping(value = "common/deleteLocation/{location_id}", method = RequestMethod.GET)
     @ResponseBody
@@ -389,7 +380,7 @@ public class CommonController extends Validate {
         List<Location> locationList = commonService.getAllLocations();
         List<Vendor> vendors = commonService.getAllVendors();
 
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         mv.addObject("allVendorsList", vendors);
         mv.addObject("locationList", locationList);
         return mv;
@@ -406,19 +397,18 @@ public class CommonController extends Validate {
         List<Location> locationList = commonService.getAllLocations();
 
         mv.addObject("locationList", locationList);
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         mv.addObject("mode", "Add");
         return mv;
     }
 
     @RequestMapping(value = "/addNewVendor", method = RequestMethod.POST)
     public ModelAndView addVendor(ModelMap model, @ModelAttribute Vendor vendor) {
-        System.out.println("-------------------------Comes here to save vendor start--------------------------------");
 
+        Date currentDate = new Date();
         ModelAndView mv = new ModelAndView();
 
         Map<String, String> validateVendor = validateVendor(vendor);
-
         String success = validateVendor.get("success");
         String message = validateVendor.get("message");
 
@@ -427,48 +417,54 @@ public class CommonController extends Validate {
             mv.addObject("message", message);
 
             List<Location> locationList = commonService.getAllLocations();
-
             mv.addObject("locationList", locationList);
             mv.addObject("mode", "Add");
 
-            mv.setViewName("common/vendorRegistor");
         } else {
-            DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-            Date currentDate = new Date();
-            System.out.println("current Date ::" + df.format(currentDate));
-            vendor.setCreated_Date(currentDate);
-            vendor.setCreated_By(employeeFullName(logedInEmployee()));
-            commonService.addNewVendor(vendor);
+            Vendor fetchVendor = new Vendor();
+            int vendor_Id = vendor.getVendor_Id();
+            if (vendor_Id != 0) {
+                fetchVendor = commonService.getVendorDetailsByVendorID(vendor_Id);
+                fetchVendor.setCreated_Date(currentDate);
+                fetchVendor.setVendor_name(vendor.getVendor_name());
+                fetchVendor.setVendor_address(vendor.getVendor_address());
+                fetchVendor.setCreated_By(employeeFullName(logedInEmployee()));
+                commonService.addNewVendor(fetchVendor);
+                mv.addObject("mode", "Edit");
+                mv.addObject("message", "Vendor successfully edited.");
+            } else {
+
+                vendor.setCreated_Date(currentDate);
+                vendor.setCreated_By(employeeFullName(logedInEmployee()));
+                commonService.addNewVendor(vendor);
+                mv.addObject("mode", "Add");
+                mv.addObject("message", "Vendor successfully added.");
+            }
 
             mv.addObject("success", true);
-            mv.addObject("message", "Vendor successfully added.");
-
             mv.addObject("locationList", commonService.getAllLocations());
-            mv.addObject("mode", "Add");
-
-            mv.setViewName("common/vendorRegistor");
         }
-        mv.addObject("employeeRoleId",logedInEmployee().getEmpRole().getId());
+
+        mv.setViewName("common/vendorRegistor");
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return mv;
     }
-
 
     @RequestMapping(value = "/editVendorDetails/{vendor_Id}", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView editVendorDetails(@PathVariable("vendor_Id") int vendor_Id) {
-        System.out.println("comming id for edit" + vendor_Id);
+
         ModelAndView mv = new ModelAndView("common/vendorRegistor");
         Vendor vendor = commonService.getVendorDetailsByVendorID(vendor_Id);
 
         List<Location> locationList = commonService.getAllLocations();
         System.out.println(" vendor address " + vendor.getVendor_address());
-
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         mv.addObject("locationList", locationList);
         mv.addObject("vendor", vendor);
         mv.addObject("mode", "Edit");
         return mv;
     }
-
 
     @RequestMapping(value = "/deleteVendor/{vendor_Id}", method = RequestMethod.GET)
     @ResponseBody
@@ -476,11 +472,11 @@ public class CommonController extends Validate {
         Map<String, String> resp = new HashMap<>();
 
         Vendor vendor = commonService.getVendorDetailsByVendorID(vendor_Id);
-        if (vendor != null)
+        if (vendor != null) {
             commonService.deleteVendorByVendorId(vendor);
+        }
         resp.put("success", "true");
         return resp;
     }
-
 
 }

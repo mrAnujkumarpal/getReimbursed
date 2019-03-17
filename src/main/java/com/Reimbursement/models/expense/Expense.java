@@ -1,6 +1,5 @@
 package com.Reimbursement.models.expense;
 
-
 import com.Reimbursement.models.commonModel.Location;
 import com.Reimbursement.models.commonModel.PaymentMode;
 import com.Reimbursement.models.commonModel.Vendor;
@@ -10,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -48,7 +46,6 @@ public class Expense implements Serializable {
 
 //    @Column(name = "PaymentMode_id")
 //    private int exp_paymentMode;
-
     @Column(name = "Reimbursed")
     private Boolean reimbursed;
 
@@ -61,6 +58,23 @@ public class Expense implements Serializable {
     @Column(name = "Amount")
     private long exp_amount;
 
+    @Transient
+    private String expenseDate;
+
+    @Column(name = "submitByEmpId")
+    private int exp_submitByEmpId;
+
+    @Column(name = "reimbursByEmpId")
+    private int exp_rembrsByEmpId;
+
+    @Column(name = "rejectByEmpId")
+    private int exp_rejectByEmpId;
+
+    @Column(name = "approveByEmpId")
+    private int exp_approveByEmpId;
+
+    @Column(name = "auditByEmpId")
+    private int exp_auditByEmpId;
 
     @Column(name = "submitted_Date")
     @Temporal(TemporalType.TIMESTAMP)
@@ -80,16 +94,8 @@ public class Expense implements Serializable {
 
     @Column(name = "rejected_Date")
     @Temporal(TemporalType.TIMESTAMP)
+
     private Date exp_rejectedDate;
-
-
-    @Column(name = "reimbursByEmpId")
-    private int exp_rembrsByEmpId;
-
-
-    @Column(name = "rejectByEmpId")
-    private int exp_rejectByEmpId;
-
 
     public Date getExp_rejectedDate() {
         return exp_rejectedDate;
@@ -147,10 +153,10 @@ public class Expense implements Serializable {
         this.exp_reimbursedDate = exp_reimbursedDate;
     }
 
-    @OneToOne(cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Employee employee;
 
-    @OneToOne(cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Location location;
 
     @OneToOne(cascade = CascadeType.DETACH)
@@ -159,10 +165,10 @@ public class Expense implements Serializable {
     @OneToOne(cascade = CascadeType.DETACH)
     private ExpenseType expenseType;
 
-    @OneToOne(cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private ExpenseStatus expenseStatus;
 
-    @OneToOne(cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private ExpensePicture expensePicture;
 
     public PaymentMode getPaymentMode() {
@@ -173,7 +179,7 @@ public class Expense implements Serializable {
         this.paymentMode = paymentMode;
     }
 
-    @OneToOne(cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private PaymentMode paymentMode;
 
     public String getExpenseDate() {
@@ -183,8 +189,6 @@ public class Expense implements Serializable {
     public void setExpenseDate(String expenseDate) {
         this.expenseDate = expenseDate;
     }
-    @Transient
-    private String expenseDate;
 
     public int getExp_id() {
         return exp_id;
@@ -234,14 +238,13 @@ public class Expense implements Serializable {
         this.exp_description = exp_description;
     }
 
-/*    public int getExp_paymentMode() {
+    /*    public int getExp_paymentMode() {
         return exp_paymentMode;
     }
 
     public void setExp_paymentMode(int exp_paymentMode) {
         this.exp_paymentMode = exp_paymentMode;
     }*/
-
     public Boolean getReimbursed() {
         return reimbursed;
     }
@@ -337,4 +340,29 @@ public class Expense implements Serializable {
     public void setExpensePicture(ExpensePicture expensePicture) {
         this.expensePicture = expensePicture;
     }
+
+    public int getExp_approveByEmpId() {
+        return exp_approveByEmpId;
+    }
+
+    public void setExp_approveByEmpId(int exp_approveByEmpId) {
+        this.exp_approveByEmpId = exp_approveByEmpId;
+    }
+
+    public int getExp_auditByEmpId() {
+        return exp_auditByEmpId;
+    }
+
+    public void setExp_auditByEmpId(int exp_auditByEmpId) {
+        this.exp_auditByEmpId = exp_auditByEmpId;
+    }
+
+    public int getExp_submitByEmpId() {
+        return exp_submitByEmpId;
+    }
+
+    public void setExp_submitByEmpId(int exp_submitByEmpId) {
+        this.exp_submitByEmpId = exp_submitByEmpId;
+    }
+
 }

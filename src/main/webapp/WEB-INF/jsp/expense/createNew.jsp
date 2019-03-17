@@ -4,12 +4,10 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <title>Create Expense | EMS</title> 
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
     </head>
@@ -67,14 +65,26 @@
                 }
             }
             ;
+
+            function validateForm() {
+                var x = document.forms["createEditExpense"]["exp_amount"].value;
+                if (x == "") {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Kindly mention expense amount.!'
+                    });
+                    return false;
+                }
+            }
         </script>
         <div class="container-fluid" id="pageBody">
             <div class="row" style="margin-top: 10px;">
-                <form    method="post" action="/createEditExpense" enctype="multipart/form-data">
+                <form  onsubmit="return validateForm()" name="createEditExpense"  method="post" action="/createEditExpense" enctype="multipart/form-data">
                     <div class="col s12 m6 l6">
                         <div class="z-depth-1">
                             <div class="input-field col s12 center">
-                                <h5 class="center login-form-text">Create New Expense</h5>
+                                <h5 class="center login-form-text">${mode} Expense</h5>
                             </div>
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">
@@ -94,7 +104,7 @@
                                         <label for="exp_name">Expense Name</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input type="date" class="datepicker" value="${expense.exp_Date}"  name="expenseDate" placeholder="Select delivery time slot">
+                                        <input type="date" class="datepicker" value="${expense.expenseDate}"  name="expenseDate" placeholder="Select delivery time slot">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -104,10 +114,10 @@
                                     </div>
                                     <div class="col s6">
                                         <select name="paymentMode" class="browser-default"Style="border:none; border-bottom:1px solid #111111;" >
-                                           <option value="0">Payment mode</option>
-                                           <c:forEach items="${payModeList}" var="pML">
-                                               <option value="${pML.pay_Id}" <c:if test="${pML.pay_Id == expense.paymentMode.pay_Id}">selected</c:if> > ${pML.pay_type}</option>
-                                           </c:forEach>
+                                            <option value="0">Payment mode</option>
+                                            <c:forEach items="${payModeList}" var="pML">
+                                                <option value="${pML.pay_Id}" <c:if test="${pML.pay_Id == expense.paymentMode.pay_Id}">selected</c:if> > ${pML.pay_type}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -154,7 +164,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <button href="#" class="btn waves-effect waves-light col s12"style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);" >Add Expense</button>
+                                    <button href="#" class="btn waves-effect waves-light col s12"style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);" >${mode} Expense</button>
                                 </div>
                             </div>
                             <h5>&nbsp;</h5>
@@ -185,15 +195,15 @@
             </div>
         </div>
         <script type="text/javascript">
-(function($){
-    $(function(){
-      $('.button-collapse').sideNav();
-      $('.parallax').parallax();
-    });
-   })(jQuery);
+            (function ($) {
+                $(function () {
+                    $('.button-collapse').sideNav();
+                    $('.parallax').parallax();
+                });
+            })(jQuery);
 
 
-             $('#textarea').trigger('autoresize');
+            $('#textarea').trigger('autoresize');
 
             $("#fileupload").change(function () {
                 if (typeof (FileReader) != "undefined") {

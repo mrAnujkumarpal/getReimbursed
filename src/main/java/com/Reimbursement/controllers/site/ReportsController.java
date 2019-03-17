@@ -1,6 +1,5 @@
 package com.Reimbursement.controllers.site;
 
-
 import com.Reimbursement.controllers.validation.Validate;
 import com.Reimbursement.models.empModel.Employee;
 import com.Reimbursement.models.expense.Expense;
@@ -25,9 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Created by Anuj Kumar on 09/08/2018.
+ * Created by Anuj Kumar on 09/03/2019.
  */
-
 @Controller
 public class ReportsController extends Validate {
 
@@ -43,15 +41,12 @@ public class ReportsController extends Validate {
     @Autowired
     private EmployeeService employeeService;
 
-
     List<Expense> respectiveExpenseHistory(int expStatus_id) {
-
 
         List<Expense> el = new ArrayList<>();
 
         return el;
     }
-
 
     @RequestMapping("/expenseHistory/{id}")
     public ModelAndView expenseHistory(@PathVariable("id") int expStatus_id) {
@@ -89,7 +84,6 @@ public class ReportsController extends Validate {
         return resp;
     }
 
-
     @RequestMapping(value = "/RejectExpenseDone", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> rejectExpenseDone(ModelMap model, HttpServletRequest request) {
@@ -109,9 +103,7 @@ public class ReportsController extends Validate {
             es = expenseService.getExpenseStatusDetailsById(6);
             ex.setExpenseStatus(es);
 
-            DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             Date currentDate = new Date();
-            System.out.println("current Date ::" + df.format(currentDate));
             ex.setExp_rejectedDate(currentDate);
             ex.setExp_rejectByEmpId(logedInEmployee().getId());
             expenseService.saveExpense(ex);
@@ -145,25 +137,25 @@ public class ReportsController extends Validate {
         List<Expense> ex = new ArrayList<>();
         ExpenseStatus es = expenseService.getExpenseStatusDetailsById(2);
 
-        List<Employee> myTeamMembers = employeeService.getMyTeamMembers(logedInEmployee().getId());
+        Employee employee = logedInEmployee();
+        List<Employee> myTeamMembers = employeeService.myTeamMembersTL(employee.getId());
         System.out.println("myTeamMembers " + myTeamMembers.size());
         myTeamMembers.remove(logedInEmployee());
         System.out.println("removed itself");
-        for (Employee emp : myTeamMembers) {
+        myTeamMembers.forEach((emp) -> {
             ex.addAll(expenseService.getAllExpenseRelatedToMe(emp, es));
-        }
+        });
         System.out.println("Final fetched list size  " + ex.size());
 
         mv.addObject("payModeList", commonService.getAllPaymentMode());
         mv.addObject("allVendorsList", commonService.getAllVendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
-        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", employee.getEmpRole().getId());
         mv.addObject("reportName", "Pending for approval");
         mv.addObject("expenses", ex);
         return mv;
     }
-
 
     @RequestMapping("/pendingExpenseforAudit")
     public ModelAndView pendingExpenseforAudit() {
@@ -173,14 +165,13 @@ public class ReportsController extends Validate {
         ExpenseStatus es = expenseService.getExpenseStatusDetailsById(3);
         Employee employee = logedInEmployee();
 
-        List<Employee> myTeamMembers = employeeService.getMyTeamMembers(employee.getId());
+        List<Employee> myTeamMembers = employeeService.myTeamMembersManager(employee.getId());
         myTeamMembers.remove(employee);
 
         for (Employee emp : myTeamMembers) {
             ex.addAll(expenseService.getAllExpenseRelatedToMe(emp, es));
         }
         System.out.println("Final fetched list size" + ex.size());
-
 
         mv.addObject("payModeList", commonService.getAllPaymentMode());
         mv.addObject("allVendorsList", commonService.getAllVendors());
@@ -208,16 +199,13 @@ public class ReportsController extends Validate {
             System.out.println("yes I am Admin or Finance. ");
         }
 
-       /* List<Employee> myTeamMembers = employeeService.getMyTeamMembers(employee.getId());
+        /* List<Employee> myTeamMembers = employeeService.getMyTeamMembers(employee.getId());
         myTeamMembers.remove(employee);
 
         for (Employee emp : myTeamMembers) {
             ex.addAll(expenseService.getAllExpenseRelatedToMe(emp, es));
         }*/
-
         ex = expenseService.getAllExpenseByExpStatus(es);
-
-
 
         mv.addObject("payModeList", commonService.getAllPaymentMode());
         mv.addObject("allVendorsList", commonService.getAllVendors());

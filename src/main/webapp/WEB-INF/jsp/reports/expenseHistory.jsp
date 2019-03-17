@@ -1,30 +1,25 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
-        <style>
-            .custom-checkbox {
-                padding: 0 3rem;
-                display: inline-block;
-            }
-            #submitControlBtn{
-                background-color:#fff;
-                color:#ff3366;
-                border:1px solid #ff3366;
-            }
-            #submitControlBtn:hover{
-                background-color:#ff3366;
-                color:#fff;
-                font-weight:bold;
-            }
-            body { background-color:#fafafa;}
-        </style>
-    </head>
+    <head><title>Expense History | EMS</title></head>
+    <style>
+        .custom-checkbox {
+            padding: 0 3rem;
+            display: inline-block;
+        }
+        #submitControlBtn{
+            background-color:#fff;
+            color:#ff3366;
+            border:1px solid #ff3366;
+        }
+        #submitControlBtn:hover{
+            background-color:#ff3366;
+            color:#fff;
+            font-weight:bold;
+        }
+        body { background-color:#fafafa;}
+    </style>
+
     <body>
         <%@include file="/WEB-INF/jsp/employee/header.jsp"%>
         <div class="container-fluid">
@@ -195,7 +190,7 @@
                                     });
 
                                 } else {
-                                    swal("Oops", response.message, "error")
+                                    swal("Oops", response.message, "error");
                                     // alert(response.message);
                                 }
                             },
@@ -212,39 +207,7 @@
             }
             ;
 
-            <%--
 
-
-            $('#myExpenseListTable').on('click', '#approveMyExpenseBtn', changeStatusExpense);
-
-            function changeStatusExpense(e) {
-
-                var value = [];
-                $.each($('.selectExpense:checked'), function () {
-                    value.push($(this).val());
-                });
-                var url = $(this).data('uri');
-                alert(url);
-                $.ajax({
-                    type: 'get',
-                    url: url,
-                    data: {expenseIds: value},
-                    success: function (response) {
-                        if (response.success === "true") {
-                            location.reload();
-                        } else {
-                            alert(response.message);
-                        }
-                    },
-                    error: function (response) {
-                        alert("Server error encountered");
-                    },
-                    complete: function (response) {
-
-                    }
-                });
-            }
-            ;--%>
         </script>
     </body>
 </html>

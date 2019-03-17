@@ -1,17 +1,12 @@
 <%--
-    Document   : homePage
+    Document   : Add new vendor
     Author     : Anuj
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
-
+        <title>Vendor Registration | EMS</title>
     </head>
 
 
@@ -21,16 +16,12 @@
             color: #b71c1c;
             padding: 10px 0;
             text-align: center;
-            border-radius: 5px;
-            border: 1px solid #b71c1c;
         }
         .sucess{
             background-color:#dff0d8;
             color: #1b5e20 ;
             padding: 10px 0;
             text-align: center;
-            border-radius: 5px;
-            border :1px solid #004d40;
         }
 
         .input-field input[type=date]:focus + label,
@@ -52,14 +43,14 @@
         h5{color:#8d2929;}
     </style>
     <body>
-         <%@include file="/WEB-INF/jsp/employee/header.jsp"%>
-         <%@include file="/WEB-INF/jsp/employee/footer.jsp"%>
+        <%@include file="/WEB-INF/jsp/employee/header.jsp"%>
+        <%@include file="/WEB-INF/jsp/employee/footer.jsp"%>
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col s12 m8   offset-m2   z-depth-4 card-panel" id="panelBck">
                     <div class="input-field col s12 center">
-                        <h5 class="center login-form-text"> Vendor Registration</h5>
+                        <h5 class="center login-form-text">${mode} Vendor</h5>
                     </div>
 
                     <form  method="post" action="/addNewVendor">
@@ -75,7 +66,7 @@
                                 </c:if>
                             </div>
                             <div class="row">
-                                <input  name="vendor.vendor_Id" type="hidden" value="${vendor.vendor_Id}">
+                                <input  name="vendor_Id" type="hidden" value="${vendor.vendor_Id}">
 
                                 <div class="input-field col s6">
                                     <input name="vendor_name" type="text" class="validate"  value="${vendor.vendor_name}">
@@ -84,7 +75,7 @@
 
                                 <div class="input-field col s6">
                                     <input name="vendor_phno" type="text" class="validate"  value="${vendor.vendor_phno}" data-length="10">
-                                    <label for="vendor_phno">Vendor contsct no.</label>
+                                    <label for="vendor_phno">Vendor contact no.</label>
                                 </div>
 
 

@@ -5,14 +5,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
-
-    </head>
+    <head><title>${reportName} Expense | EMS</title></head>
     <body>
         <style>
             #rejectExpSubmitBtn{background: linear-gradient(45deg, #8e24aa 0%, #ff6e40 100%);}
@@ -177,14 +170,14 @@
                     data: data,
                     success: function (response) {
                         if (response.success === "true") {
-                                swal.fire({
-                                        text: 'Expense rejected successfully !',
-                                        type: 'success',
-                                        icon: 'success'
-                                    }).then(function () {
-                                        location.reload();
+                            swal.fire({
+                                text: 'Expense rejected successfully !',
+                                type: 'success',
+                                icon: 'success'
+                            }).then(function () {
+                                location.reload();
 
-                                    });
+                            });
                         } else {
                             alert(response.message);
                         }

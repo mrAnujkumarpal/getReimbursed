@@ -15,7 +15,7 @@
         <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="http://demo.geekslabs.com/materialize/v3.0/default/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
         <link href="http://demo.geekslabs.com/materialize/v3.0/default/css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-     </head>
+    </head>
 
     <body>
 

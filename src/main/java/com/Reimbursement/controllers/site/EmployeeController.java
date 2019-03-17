@@ -1,8 +1,8 @@
 package com.Reimbursement.controllers.site;
+
 /**
  * Created by Anuj Kumar.
  */
-
 import com.Reimbursement.models.empModel.EmpDP;
 import com.Reimbursement.models.empModel.EmployeeRole;
 import com.Reimbursement.service.commonServices.EmailService;
@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.Reimbursement.controllers.validation.Validate;
-import com.Reimbursement.models.commonModel.Vendor;
 import com.Reimbursement.models.empModel.Employee;
 import com.Reimbursement.service.commonServices.CommonService;
 import com.Reimbursement.service.empService.EmployeeService;
 import com.Reimbursement.service.expenseService.ExpenseService;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,7 +56,6 @@ public class EmployeeController extends Validate {
 
         ModelAndView mv = new ModelAndView("employee/allEmployees");
 
-
         mv.addObject("roleList", employeeService.getAllEmployeeRoles());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("allEmployeesList", employeeService.getAllEmployees());
@@ -69,7 +68,7 @@ public class EmployeeController extends Validate {
     public ModelAndView employeeRegistration() {
         ModelAndView mv = new ModelAndView("employee/registration");
         Employee employee = new Employee();
-/*
+        /*
 
         List<Employee> empls = employeeService.getAllEmployees();
 
@@ -82,7 +81,7 @@ public class EmployeeController extends Validate {
 
 
         System.out.println(" after remove size " + empls.size());
-*/
+         */
 
         mv.addObject("roleList", employeeService.getAllEmployeeRoles());
         mv.addObject("locationList", commonService.getAllLocations());
@@ -122,8 +121,8 @@ public class EmployeeController extends Validate {
                 if (isMailIdExit != null) {
                     System.out.println(" isMailIdExit " + true);
 
-                    message = "alreadyRegistered\", \"" +
-                            "Oops!  There is already a user registered with the email provided.";
+                    message = "alreadyRegistered\", \""
+                            + "Oops!  There is already a user registered with the email provided.";
                     success = "false";
                     mv.addObject("success", success);
                     mv.addObject("message", message);
@@ -149,8 +148,8 @@ public class EmployeeController extends Validate {
             System.out.println("-------------------------Fetching start--------------------------------");
 
             String userName = employeeFullName(employee);
-            System.out.println("userName " + userName );
-            System.out.println("now going to send email... "  +  employee.getEmail());
+            System.out.println("userName " + userName);
+            System.out.println("now going to send email... " + employee.getEmail());
             emailService.sendHTML_RegistrationMail(userName, employee.getEmail());
             mv.setViewName("redirect:/viewAllEmployees");
         }
@@ -158,30 +157,28 @@ public class EmployeeController extends Validate {
         return mv;
     }
 
-
     @RequestMapping(value = {"viewEmployeeDetails/{id}"}, method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView viewEmployeeDetails(@PathVariable("id") int employeeId) {
         System.out.println("comming id " + employeeId);
-       ModelAndView mv = new ModelAndView();
+        ModelAndView mv = new ModelAndView();
 
         Employee employee = employeeService.getEmployeeById(employeeId);
-        List<Integer> myTeamMembersID=new ArrayList<>();
-            List<Employee> myTeamMembers = employeeService.getMyTeamMembers(logedInEmployee().getId());
-                for(Employee myTeam: myTeamMembers)
-                    myTeamMembersID.add(myTeam.getId());
-
-
-            System.out.println(" employee find  :: " + employee);
-        if(myTeamMembersID.contains(employeeId)) {
+        List<Integer> myTeamMembersID = new ArrayList<>();
+        List<Employee> myTeamMembers = employeeService.getMyTeamMembers(logedInEmployee().getId());
+        myTeamMembers.forEach((myTeam) -> {
+            myTeamMembersID.add(myTeam.getId());
+        });
+        int employeeRoleId = logedInEmployee().getEmpRole().getId();
+        System.out.println("employeeRoleId " + employeeRoleId);
+        if (myTeamMembersID.contains(employeeId) || employeeRoleId == 6) {
             EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
             if (empDP != null) {
                 byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
                 String base64Encoded = "";
                 try {
                     base64Encoded = new String(encodeBase64, "UTF-8");
-                } catch (Exception e1) {
-                    e1.printStackTrace();
+                } catch (UnsupportedEncodingException e1) {
                 }
                 empDP.setBase64(base64Encoded);
             }
@@ -198,18 +195,16 @@ public class EmployeeController extends Validate {
             int rmbSDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.getExpenseStatusDetailsById(5));
             mv.addObject("rmbSDAmount", rmbSDAmount);
 
-            int employeeRoleId = employee.getEmpRole().getId();
-            System.out.println("employeeRoleId " + employeeRoleId);
             EmployeeRole er = employeeService.getEmployeeRoleByRoleId(employeeRoleId);
-            if(logedInEmployee().getId()== employee.getId()){
-                mv.addObject("showUploadDpForm",true);
+            if (logedInEmployee().getId() == employee.getId()) {
+                mv.addObject("showUploadDpForm", true);
             }
             mv.addObject("empImage", empDP);
             mv.addObject("employeeRole", er.getEmpRole());
             mv.addObject("employeeRoleId", employeeRoleId);
             mv.addObject("employeeData", employee);
             mv.setViewName("employee/viewEmployee");
-        }else{
+        } else {
             mv.setViewName("redirect:/wrongAccess");
         }
         return mv;
@@ -219,16 +214,20 @@ public class EmployeeController extends Validate {
     @ResponseBody
     public ModelAndView editEmployeeDetails(@PathVariable("id") int employeeId) {
         System.out.println("comming id for edit" + employeeId);
-        ModelAndView mv = new ModelAndView("employee/registration");
-        Employee employee = employeeService.getEmployeeById(employeeId);
+        ModelAndView mv = new ModelAndView();
+        if (logedInEmployee().getEmpRole().getId() != 6) {
+            mv.setViewName("redirect:/wrongAccess");
+        } else {
 
-        System.out.println("comming id from DB ::" + employee.getId());
-
-        mv.addObject("roleList", employeeService.getAllEmployeeRoles());
-        mv.addObject("allEmployeesList", employeeService.getAllEmployees());
-        mv.addObject("locationList", commonService.getAllLocations());
-        mv.addObject("employee", employee);
-
+            mv.setViewName("employee/registration");
+            Employee employee = employeeService.getEmployeeById(employeeId);
+            System.out.println("comming id from DB ::" + employee.getId());
+            mv.addObject("roleList", employeeService.getAllEmployeeRoles());
+            mv.addObject("allEmployeesList", employeeService.getAllEmployees());
+            mv.addObject("locationList", commonService.getAllLocations());
+            mv.addObject("employee", employee);
+        }
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return mv;
     }
 
@@ -247,15 +246,14 @@ public class EmployeeController extends Validate {
         return response;
     }
 
-
     @RequestMapping(value = "/viewEmployeeDetails/doUploadEmpDP", method = RequestMethod.POST)
     public ModelAndView doUploadEmpDP(@RequestParam("empPhoto") MultipartFile fileUpload) {
 
         System.out.println("Comes here..........doUploadEmpDP:");
 
         ModelAndView mv = new ModelAndView("employee/uploadEmployeeDp");
-        Employee employee= logedInEmployee();
-        if (fileUpload.getSize()> 0 && (!fileUpload.getOriginalFilename().isEmpty()) ) {
+        Employee employee = logedInEmployee();
+        if (fileUpload.getSize() > 0 && (!fileUpload.getOriginalFilename().isEmpty())) {
             System.out.println("Saving file name : " + fileUpload.getOriginalFilename());
             System.out.println("Saving file size : " + fileUpload.getSize());
             EmpDP empDP = new EmpDP();
@@ -263,40 +261,37 @@ public class EmployeeController extends Validate {
             empDP.setEmpDPType(fileUpload.getContentType());
             try {
                 empDP.setEmpDPData(fileUpload.getBytes());
-            } catch (Exception e) {
+            } catch (IOException e) {
                 System.out.println("Catch block : " + e.getMessage());
             }
 
-            EmpDP  fetchedEmpDp= employeeService.findDPByEmployeeId(employee.getId());
-            if(fetchedEmpDp!=null){
+            EmpDP fetchedEmpDp = employeeService.findDPByEmployeeId(employee.getId());
+            if (fetchedEmpDp != null) {
                 fetchedEmpDp.setEmpDPName(fileUpload.getOriginalFilename());
                 fetchedEmpDp.setEmpDPType(fileUpload.getContentType());
                 try {
                     fetchedEmpDp.setEmpDPData(fileUpload.getBytes());
-                } catch (Exception e) {
+                } catch (IOException e) {
                     System.out.println("FetchedEmpDp Catch block : " + e.getMessage());
                 }
                 employeeService.addEmpPhoto(fetchedEmpDp);
-            }else{
+            } else {
                 employeeService.addEmpPhoto(empDP);
             }
 
-        }else{
+        } else {
             System.out.println("Select any image to upload.");
         }
 
-        EmpDP edp= employeeService.findDPByEmployeeId(employee.getId());
+        EmpDP edp = employeeService.findDPByEmployeeId(employee.getId());
         byte[] encodeBase64 = Base64.encodeBase64(edp.getEmpDPData());
         String base64Encoded = "";
         try {
             base64Encoded = new String(encodeBase64, "UTF-8");
-        } catch (Exception e1) {
-            e1.printStackTrace();
+        } catch (UnsupportedEncodingException e1) {
         }
         edp.setBase64(base64Encoded);
         System.out.println(edp.getEmpDPName() + " - " + edp.getEmpDPType());
-
-
 
         /*
         List<EmpDP> edp = employeeService.getAllEmpDPDetails();
@@ -313,8 +308,8 @@ public class EmployeeController extends Validate {
             System.out.println(e.getEmpDPName() + " - " + e.getEmpDPType());
         }
         mv.addObject("dpData", edp);
-        */
-        mv.addObject("employeeRoleId",employee.getEmpRole().getId());
+         */
+        mv.addObject("employeeRoleId", employee.getEmpRole().getId());
         mv.addObject("dpData", edp);
         mv.addObject("uploadStatus", true);
         mv.addObject("uploadMsg", "Employee photo uploaded successfully.");
@@ -350,24 +345,26 @@ public class EmployeeController extends Validate {
 
                 return mv;
             }
-    */
+     */
     @RequestMapping("/uploadDp")
     public ModelAndView doHome() {
         ModelAndView mv = new ModelAndView("employee/uploadEmployeeDp");
         List<EmpDP> edp = employeeService.getAllEmpDPDetails();
 
         System.out.println(" All detaila " + edp.size());
-        for (EmpDP e : edp) {
+        edp.stream().map((e) -> {
             byte[] encodeBase64 = Base64.encodeBase64(e.getEmpDPData());
             String base64Encoded = "";
             try {
                 base64Encoded = new String(encodeBase64, "UTF-8");
-            } catch (Exception e1) {
-                e1.printStackTrace();
+            } catch (UnsupportedEncodingException e1) {
+                System.out.println("EXCEPTION");
             }
             e.setBase64(base64Encoded);
+            return e;
+        }).forEachOrdered((e) -> {
             System.out.println(e.getEmpDPName() + " - " + e.getEmpDPType());
-        }
+        });
 
         mv.addObject("dpData", edp);
         return mv;
@@ -376,27 +373,24 @@ public class EmployeeController extends Validate {
     @RequestMapping(value = "/myTeamMembers/{employeeId}")
     public ModelAndView myTeamMembers(@PathVariable("employeeId") int employeeId) {
         ModelAndView mv = new ModelAndView();
-        List<Integer> myTeamMembersID=new ArrayList<>();
+        List<Integer> myTeamMembersID = new ArrayList<>();
         List<Employee> myTeamMembers = employeeService.getMyTeamMembers(logedInEmployee().getId());
-        for(Employee myTeam: myTeamMembers)
+        for (Employee myTeam : myTeamMembers) {
             myTeamMembersID.add(myTeam.getId());
+        }
 
-        if(myTeamMembersID.contains(employeeId)) {
+        if (myTeamMembersID.contains(employeeId)) {
             mv.setViewName("employee/allEmployees");
-              myTeamMembers = employeeService.getMyTeamMembers(employeeId);
+            myTeamMembers = employeeService.getMyTeamMembers(employeeId);
 
             mv.addObject("roleList", employeeService.getAllEmployeeRoles());
             mv.addObject("locationList", commonService.getAllLocations());
-            mv.addObject("allEmployeesList",sortedListBasedOnID( myTeamMembers));
+            mv.addObject("allEmployeesList", sortedListBasedOnID(myTeamMembers));
             mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
-        }else{
+        } else {
             mv.setViewName("redirect:/wrongAccess");
         }
         return mv;
     }
 
-
 }
-
-
-
