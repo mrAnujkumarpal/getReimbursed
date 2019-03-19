@@ -20,6 +20,8 @@ import java.util.*;
 
 import com.Reimbursement.controllers.validation.Validate;
 import com.Reimbursement.models.empModel.Employee;
+import com.Reimbursement.models.expense.Expense;
+import com.Reimbursement.models.expense.ExpenseStatus;
 import com.Reimbursement.service.commonServices.CommonService;
 import com.Reimbursement.service.empService.EmployeeService;
 import com.Reimbursement.service.expenseService.ExpenseService;
@@ -82,12 +84,16 @@ public class EmployeeController extends Validate {
 
         System.out.println(" after remove size " + empls.size());
          */
+        if (logedInEmployee().getEmpRole().getId() == 6) {
+            mv.addObject("roleList", employeeService.getAllEmployeeRoles());
+            mv.addObject("locationList", commonService.getAllLocations());
+            mv.addObject("allEmployeesList", employeeService.getAllEmployees());
+            mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+            mv.addObject("employee", employee);
 
-        mv.addObject("roleList", employeeService.getAllEmployeeRoles());
-        mv.addObject("locationList", commonService.getAllLocations());
-        mv.addObject("allEmployeesList", employeeService.getAllEmployees());
-        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
-        mv.addObject("employee", employee);
+        } else {
+            mv.setViewName("redirect:/wrongAccess");
+        }
 
         return mv;
     }
@@ -199,6 +205,62 @@ public class EmployeeController extends Validate {
             if (logedInEmployee().getId() == employee.getId()) {
                 mv.addObject("showUploadDpForm", true);
             }
+//************************************************************************************************
+            int tlNotification = 0;
+            int mngrNotification = 0;
+            int finNotification = 0;
+            List<Expense> ex = new ArrayList<>();
+            //   List<Employee> myTeamMembers = new ArrayList<>();
+            ExpenseStatus es = new ExpenseStatus();
+            switch (employeeRoleId) {
+                case 1:
+                    System.out.println("Developer");
+                    break;
+                case 2:
+                    System.out.println("Approver $$$$$$$$$$$$");
+
+                    es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
+
+                    myTeamMembers = employeeService.myTeamMembersTL(logedInEmployee().getId());
+                    myTeamMembers.remove(logedInEmployee());
+                    for (Employee empfromlist : myTeamMembers) {
+                        ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
+                    }
+                    System.out.println("Final fetched list size  Approver" + ex.size());
+                    tlNotification = ex.size();
+                    break;
+                case 3:
+
+                    System.out.println("Auditor");
+                    es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
+                    myTeamMembers = employeeService.myTeamMembersTL(logedInEmployee().getId());
+                    myTeamMembers.remove(logedInEmployee());
+                    for (Employee empfromlist : myTeamMembers) {
+                        ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
+                    }
+                    System.out.println("Final fetched list size Auditor " + ex.size());
+                    mngrNotification = ex.size();
+                    System.out.println("mngrNotification");
+                    break;
+                case 4:
+                    System.out.println("Manager no rights");
+                    break;
+                case 5:
+                    break;
+                case 6:
+
+                    break;
+                default:
+                    System.out.println("Else");
+                    break;
+            }
+            System.out.println("tlNotification " + tlNotification);
+            System.out.println("mngrNotification " + mngrNotification);
+            System.out.println("finNotification " + finNotification);
+            mv.addObject("tlNotification", tlNotification);
+            mv.addObject("mngrNotification", mngrNotification);
+            mv.addObject("finNotification", finNotification);
+//******************************************************************************************
             mv.addObject("empImage", empDP);
             mv.addObject("employeeRole", er.getEmpRole());
             mv.addObject("employeeRoleId", employeeRoleId);

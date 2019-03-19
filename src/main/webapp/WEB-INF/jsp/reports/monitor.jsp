@@ -109,6 +109,14 @@
 
                                                 </tr>
                                             </c:forEach>
+                                            <tr><td colspan="8"></td> </tr>
+                                            <tr class="border-none">
+                                                <td colspan="4"></td>
+                                                <td colspan="2" class=" pl-1">Grand Total</td>
+                                                <td colspan="2" class=" strong right-align">
+                                                    <fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${grandTotal}" />
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                     <div class="right-align">

@@ -156,7 +156,6 @@ public class ExpenseDaoServiceImpl implements ExpenseDaoService {
             }
         }
         // return  expenseDaoService.getCreatedSumAmountOfEmp(employee);
-        System.out.println(" total created sum " + sum);
         return sum;
     }
 

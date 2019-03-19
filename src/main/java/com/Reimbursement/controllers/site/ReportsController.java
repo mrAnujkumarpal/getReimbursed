@@ -216,4 +216,29 @@ public class ReportsController extends Validate {
         mv.addObject("expenses", ex);
         return mv;
     }
+
+    @RequestMapping(value = "/default")
+    public ModelAndView deafultAfterLogin() {
+        System.out.println(" ------------------------------ ");
+        ModelAndView modelAndView = new ModelAndView();
+
+        Employee emp = logedInEmployee();
+        int employeeID = emp.getId();
+        int empRoleId = emp.getEmpRole().getId();
+
+        System.out.println("employeeID " + employeeID);
+        if (employeeID != 0) {
+            String url = "viewEmployeeDetails/" + employeeID;
+            System.out.println("url ::" + url);
+            modelAndView = new ModelAndView("redirect:" + url);
+
+        } else {
+
+            modelAndView.addObject("employeeRoleId", empRoleId);
+            modelAndView.setViewName("errors/404");
+        }
+
+        return modelAndView;
+    }
+
 }

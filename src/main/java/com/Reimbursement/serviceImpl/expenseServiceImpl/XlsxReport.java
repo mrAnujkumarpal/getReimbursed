@@ -10,7 +10,7 @@ import org.apache.poi.xssf.usermodel.*;
 @Service
 public class XlsxReport {
 
-    public XSSFWorkbook generateXlsx(List<Expense> expenseList, int clkID, String colNameInReport) throws Exception {
+    public XSSFWorkbook generateXlsx(List<Expense> expenseList, int clkID, String colNameInReport, int grandTotal) throws Exception {
 
         System.out.println(" size of list " + expenseList.size());
 
@@ -49,7 +49,7 @@ public class XlsxReport {
             cell.setCellValue(columns[i]);
         }
 
-        writeExpenseInToFile(sheet, expenseList, clkID);
+        writeExpenseInToFile(sheet, expenseList, clkID, grandTotal);
 
         for (int i = 0;
                 i < columns.length;
@@ -64,7 +64,7 @@ public class XlsxReport {
         return workbook;
     }
 
-    private void writeExpenseInToFile(XSSFSheet sheet, List<Expense> expenseList, int clkID) {
+    private void writeExpenseInToFile(XSSFSheet sheet, List<Expense> expenseList, int clkID, int grandTotal) {
 
         System.out.println("Inside method....");
         int rowNum = 1;
@@ -106,6 +106,19 @@ public class XlsxReport {
             row.createCell(7).setCellValue(isBills);
             row.createCell(8).setCellValue(exp.getExp_amount());
         }
+        System.out.println(" roww no " + rowNum);
+        rowNum++;
+        Row row = sheet.createRow(rowNum++);
+        row.createCell(0).setCellValue("");
+        row.createCell(1).setCellValue("");
+        row.createCell(2).setCellValue("");
+        row.createCell(3).setCellValue("");
+        row.createCell(4).setCellValue("");
+
+        row.createCell(5).setCellValue("Total");
+        row.createCell(6).setCellValue("");
+        row.createCell(7).setCellValue("");
+        row.createCell(8).setCellValue(grandTotal);
     }
 
 }

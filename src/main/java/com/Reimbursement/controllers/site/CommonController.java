@@ -98,25 +98,7 @@ public class CommonController extends Validate {
         return mv;
     }
 
-    @RequestMapping(value = "/default")
-    public ModelAndView deafultAfterLogin() {
-        System.out.println(" ------------------------------ ");
-        ModelAndView modelAndView = new ModelAndView();
-
-        int empID = logedInEmployee().getId();
-        System.out.println("ID " + empID);
-        if (empID != 0) {
-            String url = "viewEmployeeDetails/" + empID;
-            System.out.println("url ::" + url);
-            modelAndView = new ModelAndView("redirect:" + url);
-        } else {
-            modelAndView.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
-            modelAndView.setViewName("errors/404");
-        }
-
-        return modelAndView;
-    }
-
+ 
     /*
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView login(ModelMap model, @ModelAttribute Employee employee,HttpSession session) {
