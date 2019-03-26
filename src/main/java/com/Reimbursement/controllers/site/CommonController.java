@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 @RequestMapping
@@ -35,6 +37,8 @@ public class CommonController extends Validate {
     @Autowired
     EmployeeRepository employeeRepository;
 
+    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+ 
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
         ModelAndView mv = new ModelAndView("redirect:/login");
@@ -369,6 +373,9 @@ public class CommonController extends Validate {
     }
 
     @RequestMapping(value = "/addNewVendor", method = RequestMethod.GET)
+    
+    
+    
     public ModelAndView addNewVendor(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("common/vendorRegistor");
         Enumeration<String> enumeration = request.getParameterNames();
@@ -386,7 +393,7 @@ public class CommonController extends Validate {
 
     @RequestMapping(value = "/addNewVendor", method = RequestMethod.POST)
     public ModelAndView addVendor(ModelMap model, @ModelAttribute Vendor vendor) {
-
+        System.out.println("comes here ...");
         Date currentDate = new Date();
         ModelAndView mv = new ModelAndView();
 
@@ -415,7 +422,7 @@ public class CommonController extends Validate {
                 mv.addObject("mode", "Edit");
                 mv.addObject("message", "Vendor successfully edited.");
             } else {
-
+            System.out.println("add new vendor not update...");
                 vendor.setCreated_Date(currentDate);
                 vendor.setCreated_By(employeeFullName(logedInEmployee()));
                 commonService.addNewVendor(vendor);

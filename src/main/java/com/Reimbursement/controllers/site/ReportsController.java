@@ -19,9 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
+import static org.hibernate.annotations.common.util.impl.LoggerFactory.logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by Anuj Kumar on 09/03/2019.
@@ -40,6 +41,8 @@ public class ReportsController extends Validate {
 
     @Autowired
     private EmployeeService employeeService;
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     List<Expense> respectiveExpenseHistory(int expStatus_id) {
 
@@ -219,17 +222,17 @@ public class ReportsController extends Validate {
 
     @RequestMapping(value = "/default")
     public ModelAndView deafultAfterLogin() {
-        System.out.println(" ------------------------------ ");
+        log.info(" ------------------------------ ");
         ModelAndView modelAndView = new ModelAndView();
 
         Employee emp = logedInEmployee();
         int employeeID = emp.getId();
         int empRoleId = emp.getEmpRole().getId();
 
-        System.out.println("employeeID " + employeeID);
+        log.info("employeeID " + employeeID);
         if (employeeID != 0) {
             String url = "viewEmployeeDetails/" + employeeID;
-            System.out.println("url ::" + url);
+            log.info("url ::" + url);
             modelAndView = new ModelAndView("redirect:" + url);
 
         } else {
@@ -237,7 +240,7 @@ public class ReportsController extends Validate {
             modelAndView.addObject("employeeRoleId", empRoleId);
             modelAndView.setViewName("errors/404");
         }
-
+        log.info("Now return");
         return modelAndView;
     }
 

@@ -66,7 +66,14 @@
                                 </c:if>
                             </div>
                             <div class="row">
-                                <input  name="vendor_Id" type="hidden" value="${vendor.vendor_Id}">
+                                <c:choose>
+                                    <c:when test="${mode eq 'Edit'}">
+                                        <input  name="vendor_Id" class="hide" type="number" value="${vendor.vendor_Id}">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <input  name="vendor_Id" class="hide" type="number" value="0">
+                                    </c:otherwise>
+                                </c:choose>
 
                                 <div class="input-field col s6">
                                     <input name="vendor_name" type="text" class="validate"  value="${vendor.vendor_name}">

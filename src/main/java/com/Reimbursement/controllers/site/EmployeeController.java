@@ -27,6 +27,8 @@ import com.Reimbursement.service.empService.EmployeeService;
 import com.Reimbursement.service.expenseService.ExpenseService;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,6 +48,8 @@ public class EmployeeController extends Validate {
 
     @Autowired
     private ExpenseService expenseService;
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("/home")
     public ModelAndView commanHome() {
@@ -71,17 +75,12 @@ public class EmployeeController extends Validate {
         ModelAndView mv = new ModelAndView("employee/registration");
         Employee employee = new Employee();
         /*
-
         List<Employee> empls = employeeService.getAllEmployees();
-
         System.out.println(" B4 remove size " + empls.size());
-
         for (Employee emp : empls) {
             if ((emp.getEmpRole().getId() == 1))
                 empls.remove(emp);
         }
-
-
         System.out.println(" after remove size " + empls.size());
          */
         if (logedInEmployee().getEmpRole().getId() == 6) {
@@ -156,7 +155,7 @@ public class EmployeeController extends Validate {
             String userName = employeeFullName(employee);
             System.out.println("userName " + userName);
             System.out.println("now going to send email... " + employee.getEmail());
-            emailService.sendHTML_RegistrationMail(userName, employee.getEmail());
+//            emailService.sendHTML_RegistrationMail(userName, employee.getEmail());
             mv.setViewName("redirect:/viewAllEmployees");
         }
         System.out.println(":::::::::::::::::::::::::::::::::::::::::");
@@ -166,7 +165,7 @@ public class EmployeeController extends Validate {
     @RequestMapping(value = {"viewEmployeeDetails/{id}"}, method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView viewEmployeeDetails(@PathVariable("id") int employeeId) {
-        System.out.println("comming id " + employeeId);
+        log.info("viewEmployeeDetails comming id " + employeeId);
         ModelAndView mv = new ModelAndView();
 
         Employee employee = employeeService.getEmployeeById(employeeId);
@@ -176,7 +175,7 @@ public class EmployeeController extends Validate {
             myTeamMembersID.add(myTeam.getId());
         });
         int employeeRoleId = logedInEmployee().getEmpRole().getId();
-        System.out.println("employeeRoleId " + employeeRoleId);
+        log.info("employeeRoleId " + employeeRoleId);
         if (myTeamMembersID.contains(employeeId) || employeeRoleId == 6) {
             EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
             if (empDP != null) {
@@ -226,7 +225,7 @@ public class EmployeeController extends Validate {
                     for (Employee empfromlist : myTeamMembers) {
                         ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
                     }
-                    System.out.println("Final fetched list size  Approver" + ex.size());
+                    log.info("Final fetched list size  Approver" + ex.size());
                     tlNotification = ex.size();
                     break;
                 case 3:
@@ -240,10 +239,10 @@ public class EmployeeController extends Validate {
                     }
                     System.out.println("Final fetched list size Auditor " + ex.size());
                     mngrNotification = ex.size();
-                    System.out.println("mngrNotification");
+                    log.info("mngrNotification");
                     break;
                 case 4:
-                    System.out.println("Manager no rights");
+                    log.info("Manager no rights");
                     break;
                 case 5:
                     break;
@@ -251,16 +250,17 @@ public class EmployeeController extends Validate {
 
                     break;
                 default:
-                    System.out.println("Else");
+                    log.info("Else");
                     break;
             }
-            System.out.println("tlNotification " + tlNotification);
-            System.out.println("mngrNotification " + mngrNotification);
-            System.out.println("finNotification " + finNotification);
+            log.info("tlNotification " + tlNotification);
+            log.info("mngrNotification " + mngrNotification);
+            log.info("finNotification " + finNotification);
             mv.addObject("tlNotification", tlNotification);
             mv.addObject("mngrNotification", mngrNotification);
             mv.addObject("finNotification", finNotification);
 //******************************************************************************************
+
             mv.addObject("empImage", empDP);
             mv.addObject("employeeRole", er.getEmpRole());
             mv.addObject("employeeRoleId", employeeRoleId);
@@ -269,6 +269,7 @@ public class EmployeeController extends Validate {
         } else {
             mv.setViewName("redirect:/wrongAccess");
         }
+        log.info("Now return here ");
         return mv;
     }
 
@@ -310,8 +311,6 @@ public class EmployeeController extends Validate {
 
     @RequestMapping(value = "/viewEmployeeDetails/doUploadEmpDP", method = RequestMethod.POST)
     public ModelAndView doUploadEmpDP(@RequestParam("empPhoto") MultipartFile fileUpload) {
-
-        System.out.println("Comes here..........doUploadEmpDP:");
 
         ModelAndView mv = new ModelAndView("employee/uploadEmployeeDp");
         Employee employee = logedInEmployee();
