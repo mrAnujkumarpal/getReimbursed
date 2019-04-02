@@ -325,7 +325,7 @@ public class ExpenseController extends Validate {
             mv.addObject("employeeRoleId", emp.getEmpRole().getId());
             mv.addObject("mode", "Add");
             mv.addObject("message", "Expense successfully created.");
-
+            mv.addObject("expense", new Expense());
         }
         System.out.println(" Finally comes here..");
 
@@ -814,6 +814,5 @@ public class ExpenseController extends Validate {
         return expenseList;
 
     }
-
 
 }

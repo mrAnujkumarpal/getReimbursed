@@ -121,7 +121,7 @@
                                 <div class="col s6">
                                     <select class="browser-default"   name="subimitter_To">
                                         <option value="0">Choose submitter to</option>
-                                        <c:forEach var="empl" items="${allEmployeesList}">
+                                        <c:forEach var="empl" items="${submitterToList}">
                                             <option value="${empl.id}"<c:if test="${empl.id==employee.subimitter_To.id}">selected</c:if>>${empl.fName} ${empl.lName} </option>
                                         </c:forEach>
                                     </select>
@@ -130,13 +130,12 @@
                                 <div class="col s6">
                                     <select class="browser-default"   name="approver_To">
                                         <option value="0">Choose approver to</option>
-                                        <c:forEach var="empl" items="${allEmployeesList}">
+                                        <c:forEach var="empl" items="${approverToList}">
                                             <option value="${empl.id}"<c:if test="${empl.id==employee.approver_To.id}">selected</c:if>>${empl.fName} ${empl.lName} </option>
                                         </c:forEach>
                                     </select>
                                 </div>
                             </div>
-
                         </div>
                         <div class="row">
                             <div class="input-field col s12">

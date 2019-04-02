@@ -427,7 +427,7 @@ public class CommonController extends Validate {
                 mv.addObject("mode", "Add");
                 mv.addObject("message", "Vendor successfully added.");
             }
-
+            mv.addObject("vendor", new Vendor());
             mv.addObject("success", true);
             mv.addObject("locationList", commonService.getAllLocations());
         }

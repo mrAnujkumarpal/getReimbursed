@@ -72,24 +72,27 @@ public class EmployeeController extends Validate {
 
     @RequestMapping(value = "/empRegistration", method = RequestMethod.GET)
     public ModelAndView employeeRegistration() {
-        ModelAndView mv = new ModelAndView("employee/registration");
-        Employee employee = new Employee();
-        /*
-        List<Employee> empls = employeeService.getAllEmployees();
-        System.out.println(" B4 remove size " + empls.size());
-        for (Employee emp : empls) {
-            if ((emp.getEmpRole().getId() == 1))
-                empls.remove(emp);
-        }
-        System.out.println(" after remove size " + empls.size());
-         */
+        ModelAndView mv = new ModelAndView();
+
         if (logedInEmployee().getEmpRole().getId() == 6) {
+            List<Employee> empls = employeeService.getAllEmployees();
+            List<Employee> submitterToList = new ArrayList<>();
+            List<Employee> approverToList = new ArrayList<>();
+            System.out.println(" B4 remove size " + empls.size());
+            empls.stream().filter((emp) -> ((emp.getEmpRole().getId() != 1))).map((emp) -> {
+                submitterToList.add(emp);
+                return emp;
+            }).filter((emp) -> ((emp.getEmpRole().getId() != 2))).forEachOrdered((emp) -> {
+                approverToList.add(emp);
+            });
+
             mv.addObject("roleList", employeeService.getAllEmployeeRoles());
             mv.addObject("locationList", commonService.getAllLocations());
-            mv.addObject("allEmployeesList", employeeService.getAllEmployees());
+            mv.addObject("submitterToList", submitterToList);
+            mv.addObject("approverToList", approverToList);
             mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
-            mv.addObject("employee", employee);
-
+            mv.addObject("employee", new Employee());
+            mv.setViewName("employee/registration");
         } else {
             mv.setViewName("redirect:/wrongAccess");
         }
@@ -108,13 +111,25 @@ public class EmployeeController extends Validate {
 
         if (success.equalsIgnoreCase("false")) {
 
+            List<Employee> empls = employeeService.getAllEmployees();
+            List<Employee> submitterToList = new ArrayList<>();
+            List<Employee> approverToList = new ArrayList<>();
+            System.out.println(" B4 remove size " + empls.size());
+            empls.stream().filter((emp) -> ((emp.getEmpRole().getId() != 1))).map((emp) -> {
+                submitterToList.add(emp);
+                return emp;
+            }).filter((emp) -> ((emp.getEmpRole().getId() != 2))).forEachOrdered((emp) -> {
+                approverToList.add(emp);
+            });
+
             mv.addObject("success", success);
             mv.addObject("message", message);
             mv.addObject("employee", employee);
 
             mv.addObject("roleList", employeeService.getAllEmployeeRoles());
             mv.addObject("locationList", commonService.getAllLocations());
-            mv.addObject("allEmployeesList", employeeService.getAllEmployees());
+            mv.addObject("submitterToList", submitterToList);
+            mv.addObject("approverToList", approverToList);
             mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
             mv.setViewName("employee/registration");
         } else {
@@ -126,6 +141,17 @@ public class EmployeeController extends Validate {
                 if (isMailIdExit != null) {
                     System.out.println(" isMailIdExit " + true);
 
+                    List<Employee> empls = employeeService.getAllEmployees();
+                    List<Employee> submitterToList = new ArrayList<>();
+                    List<Employee> approverToList = new ArrayList<>();
+                    System.out.println(" B4 remove size " + empls.size());
+                    empls.stream().filter((emp) -> ((emp.getEmpRole().getId() != 1))).map((emp) -> {
+                        submitterToList.add(emp);
+                        return emp;
+                    }).filter((emp) -> ((emp.getEmpRole().getId() != 2))).forEachOrdered((emp) -> {
+                        approverToList.add(emp);
+                    });
+
                     message = "alreadyRegistered\", \""
                             + "Oops!  There is already a user registered with the email provided.";
                     success = "false";
@@ -135,7 +161,8 @@ public class EmployeeController extends Validate {
 
                     mv.addObject("roleList", employeeService.getAllEmployeeRoles());
                     mv.addObject("locationList", commonService.getAllLocations());
-                    mv.addObject("allEmployeesList", employeeService.getAllEmployees());
+                    mv.addObject("submitterToList", submitterToList);
+                    mv.addObject("approverToList", approverToList);
                     mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
                     mv.setViewName("employee/registration");
                 }
