@@ -54,6 +54,7 @@
                                 <div class="center-align">
                                     <c:choose>
                                         <c:when test="${empImage ne null && not empty empImage}">
+
                                             <img  class="circle responsive-img activator z-depth-5" width="150" style="max-height:160px; min-height: 150px;" src="data:image/jpeg;base64,${empImage.base64}"/>
                                         </c:when>
                                         <c:otherwise>
@@ -232,5 +233,8 @@
                         $("#changeDPForm").toggle();
                     });
                 </script>
-                </body>
-                </html>
+
+            </div>
+        </div>
+    </body>
+</html>
