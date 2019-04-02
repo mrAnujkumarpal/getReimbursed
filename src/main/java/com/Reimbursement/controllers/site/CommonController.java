@@ -38,7 +38,7 @@ public class CommonController extends Validate {
     EmployeeRepository employeeRepository;
 
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
- 
+
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
         ModelAndView mv = new ModelAndView("redirect:/login");
@@ -58,11 +58,12 @@ public class CommonController extends Validate {
         return mv;
     }
 
-    /*@RequestMapping(value = {"/login"}, method = RequestMethod.GET)
-       public ModelAndView defaultloginPage() {
+    /*
+        @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+        public ModelAndView defaultloginPage() {
         ModelAndView mv = new ModelAndView("common/login");
         return mv;
-    }
+        }
      */
     @RequestMapping(value = "/changePwd", method = RequestMethod.GET)
     public ModelAndView changePassword() {
@@ -102,7 +103,6 @@ public class CommonController extends Validate {
         return mv;
     }
 
- 
     /*
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView login(ModelMap model, @ModelAttribute Employee employee,HttpSession session) {
@@ -373,9 +373,7 @@ public class CommonController extends Validate {
     }
 
     @RequestMapping(value = "/addNewVendor", method = RequestMethod.GET)
-    
-    
-    
+
     public ModelAndView addNewVendor(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("common/vendorRegistor");
         Enumeration<String> enumeration = request.getParameterNames();
@@ -422,7 +420,7 @@ public class CommonController extends Validate {
                 mv.addObject("mode", "Edit");
                 mv.addObject("message", "Vendor successfully edited.");
             } else {
-            System.out.println("add new vendor not update...");
+                System.out.println("add new vendor not update...");
                 vendor.setCreated_Date(currentDate);
                 vendor.setCreated_By(employeeFullName(logedInEmployee()));
                 commonService.addNewVendor(vendor);

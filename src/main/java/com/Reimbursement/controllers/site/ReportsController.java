@@ -240,7 +240,7 @@ public class ReportsController extends Validate {
             modelAndView.addObject("employeeRoleId", empRoleId);
             modelAndView.setViewName("errors/404");
         }
-        log.info("Now return");
+        log.info("Now return ");
         return modelAndView;
     }
 
