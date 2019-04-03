@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -19,32 +18,32 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     AppUserDetailsService appUserDetailsService;
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-            .antMatchers("/").permitAll()
-            .antMatchers("/login").permitAll()
-            .antMatchers("/home").hasAuthority("USER")
-            .antMatchers("/myProfile").hasAuthority("USER")
-            .antMatchers("/viewAllLocations").hasAuthority("USER")
-            .antMatchers("/expenseHistory/**").hasAuthority("USER")
-            .antMatchers("/allVendors").hasAuthority("USER")
-            .antMatchers("/expenseStatus").hasAuthority("USER")
-            .antMatchers("/empRegistration").hasAuthority("USER")
-            .antMatchers("/activityMonitoring/*").hasAuthority("USER")
-            .antMatchers("/empRegistration/*").hasAuthority("USER")
-            .anyRequest()
-            .authenticated().and().csrf().disable().formLogin()
-            .loginPage("/login").failureUrl("/login?error=true")
-            .defaultSuccessUrl("/default")
-            .usernameParameter("email")
-            .passwordParameter("password")
-            .and().logout()
-            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-            .logoutSuccessUrl("/login").and().exceptionHandling()
-            .accessDeniedPage("/access-denied");
+                .antMatchers("/").permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/home").hasAuthority("USER")
+                .antMatchers("/myProfile").hasAuthority("USER")
+                .antMatchers("/viewAllLocations").hasAuthority("USER")
+                .antMatchers("/expenseHistory/**").hasAuthority("USER")
+                .antMatchers("/allVendors").hasAuthority("USER")
+                .antMatchers("/viewEmployeeDetails/*").hasAuthority("USER")
+                .antMatchers("/expenseStatus").hasAuthority("USER")
+                .antMatchers("/empRegistration").hasAuthority("USER")
+                .antMatchers("/activityMonitoring/*").hasAuthority("USER")
+                .antMatchers("/empRegistration/*").hasAuthority("USER")
+                .anyRequest()
+                .authenticated().and().csrf().disable().formLogin()
+                .loginPage("/login").failureUrl("/login?error=true")
+                .defaultSuccessUrl("/default")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .and().logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login").and().exceptionHandling()
+                .accessDeniedPage("/access-denied");
     }
 
     @Autowired
