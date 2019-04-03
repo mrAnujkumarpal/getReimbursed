@@ -205,6 +205,7 @@ public class EmployeeController extends Validate {
             System.out.println("employeeRoleId " + employeeRoleId);
             if (myTeamMembersID.contains(employeeId) || employeeRoleId == 6) {
                 System.out.println("Indie loong if");
+                mv.setViewName("employee/viewEmployee");
                 EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
                 if (empDP != null) {
                     byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
@@ -297,7 +298,7 @@ public class EmployeeController extends Validate {
                 mv.addObject("employeeRole", er.getEmpRole());
                 mv.addObject("employeeRoleId", employeeRoleId);
                 mv.addObject("employeeData", employee);
-                mv.setViewName("employee/viewEmployee");
+               
             } else {
                 System.out.println("INSIDE ELSE WRONG ACCESS");
                 mv.setViewName("redirect:/wrongAccess");
