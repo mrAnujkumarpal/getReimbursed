@@ -227,6 +227,7 @@ public class EmployeeController extends Validate {
                 if (logedInEmployee().getId() == employee.getId()) {
                     mv.addObject("showUploadDpForm", true);
                 }
+                mv.addObject("employeeData", employee);
                 System.out.println("Start Notification code ");
 //************************************************************************************************
                 int tlNotification = 0;
@@ -310,7 +311,6 @@ public class EmployeeController extends Validate {
                 mv.addObject("empImage", empDP);
                 mv.addObject("employeeRole", er.getEmpRole());
                 mv.addObject("employeeRoleId", employeeRoleId);
-                mv.addObject("employeeData", employee);
 
             } else {
                 System.out.println("INSIDE ELSE WRONG ACCESS");
