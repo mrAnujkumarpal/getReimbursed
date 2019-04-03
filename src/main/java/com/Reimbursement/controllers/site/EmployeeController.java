@@ -26,6 +26,7 @@ import com.Reimbursement.models.expense.ExpenseStatus;
 import com.Reimbursement.service.commonServices.CommonService;
 import com.Reimbursement.service.empService.EmployeeService;
 import com.Reimbursement.service.expenseService.ExpenseService;
+import java.awt.BorderLayout;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import org.slf4j.Logger;
@@ -203,6 +204,7 @@ public class EmployeeController extends Validate {
             int employeeRoleId = logedInEmployee().getEmpRole().getId();
             System.out.println("employeeRoleId " + employeeRoleId);
             if (myTeamMembersID.contains(employeeId) || employeeRoleId == 6) {
+                System.out.println("Indie loong if");
                 EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
                 if (empDP != null) {
                     byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
@@ -213,7 +215,7 @@ public class EmployeeController extends Validate {
                     }
                     empDP.setBase64(base64Encoded);
                 }
- 
+
                 //1. sum(amount) exp.status_Id=2;  for created
                 int crTDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.getExpenseStatusDetailsById(1));
                 mv.addObject("crTDAmount", crTDAmount);
@@ -225,6 +227,10 @@ public class EmployeeController extends Validate {
                 //3. sum(amount) exp.status_Id=4; for rembuirshment
                 int rmbSDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.getExpenseStatusDetailsById(5));
                 mv.addObject("rmbSDAmount", rmbSDAmount);
+
+                System.out.println("crTDAmount " + crTDAmount);
+                System.out.println("penDNGAmnt " + penDNGAmnt);
+                System.out.println("rmbSDAmount " + rmbSDAmount);
 
                 EmployeeRole er = employeeService.getEmployeeRoleByRoleId(employeeRoleId);
                 if (logedInEmployee().getId() == employee.getId()) {
@@ -273,7 +279,7 @@ public class EmployeeController extends Validate {
                     case 5:
                         break;
                     case 6:
-
+                        System.out.println("Admin no rights");
                         break;
                     default:
                         System.out.println("Else");
@@ -293,13 +299,14 @@ public class EmployeeController extends Validate {
                 mv.addObject("employeeData", employee);
                 mv.setViewName("employee/viewEmployee");
             } else {
+                System.out.println("INSIDE ELSE WRONG ACCESS");
                 mv.setViewName("redirect:/wrongAccess");
             }
         } catch (Exception e) {
             e.getMessage();
 
         }
-        System.out.println("Now return here ");
+        System.out.println("Now return here " + mv.getViewName());
         return mv;
     }
 
@@ -383,7 +390,7 @@ public class EmployeeController extends Validate {
         }
         edp.setBase64(base64Encoded);
         System.out.println(edp.getEmpDPName() + " - " + edp.getEmpDPType());
- 
+
         /*
         List<EmpDP> edp = employeeService.getAllEmpDPDetails();
         System.out.println(" All detaila " + edp.size());
