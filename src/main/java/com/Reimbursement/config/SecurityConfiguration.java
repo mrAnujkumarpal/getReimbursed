@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
             .antMatchers("/").permitAll()
             .antMatchers("/login").permitAll()
-            .antMatchers("/home/**").hasAuthority("USER")
+            .antMatchers("/home").hasAuthority("USER")
             .antMatchers("/myProfile").hasAuthority("USER")
             .antMatchers("/viewAllLocations").hasAuthority("USER")
             .antMatchers("/expenseHistory/**").hasAuthority("USER")
@@ -53,7 +53,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         System.out.println("here 1");
         auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder);
         System.out.println(" configureGlobal " + passwordEncoder);
-        // auth.userDetailsService(myAppUserDetailsService).passwordEncoder(passwordEncoder);
     }
 
 }

@@ -231,12 +231,13 @@ public class ReportsController extends Validate {
 
         log.info("employeeID " + employeeID);
         if (employeeID != 0) {
+            System.err.println("Inside IF of default method");
             String url = "viewEmployeeDetails/" + employeeID;
             log.info("url ::" + url);
-            modelAndView = new ModelAndView("redirect:" + url);
+            modelAndView.setViewName("redirect:" + url);
 
         } else {
-
+            System.err.println("Inside else of default method");
             modelAndView.addObject("employeeRoleId", empRoleId);
             modelAndView.setViewName("errors/404");
         }

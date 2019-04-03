@@ -6,6 +6,7 @@ package com.Reimbursement.controllers.site;
 import com.Reimbursement.models.empModel.EmpDP;
 import com.Reimbursement.models.empModel.EmployeeRole;
 import com.Reimbursement.service.commonServices.EmailService;
+import com.itextpdf.text.pdf.PdfName;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -194,108 +195,112 @@ public class EmployeeController extends Validate {
     public ModelAndView viewEmployeeDetails(@PathVariable("id") int employeeId) {
         log.info("viewEmployeeDetails comming id " + employeeId);
         ModelAndView mv = new ModelAndView();
-
-        Employee employee = employeeService.getEmployeeById(employeeId);
-        List<Integer> myTeamMembersID = new ArrayList<>();
-        List<Employee> myTeamMembers = employeeService.getMyTeamMembers(logedInEmployee().getId());
-        myTeamMembers.forEach((myTeam) -> {
-            myTeamMembersID.add(myTeam.getId());
-        });
-        int employeeRoleId = logedInEmployee().getEmpRole().getId();
-        log.info("employeeRoleId " + employeeRoleId);
-        if (myTeamMembersID.contains(employeeId) || employeeRoleId == 6) {
-            EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
-            if (empDP != null) {
-                byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
-                String base64Encoded = "";
-                try {
-                    base64Encoded = new String(encodeBase64, "UTF-8");
-                } catch (UnsupportedEncodingException e1) {
-                }
-                empDP.setBase64(base64Encoded);
+try {
+    Employee employee = employeeService.getEmployeeById(employeeId);
+    List<Integer> myTeamMembersID = new ArrayList<>();
+    List<Employee> myTeamMembers = employeeService.getMyTeamMembers(logedInEmployee().getId());
+    myTeamMembers.forEach((myTeam) -> {
+        myTeamMembersID.add(myTeam.getId());
+    });
+    int employeeRoleId = logedInEmployee().getEmpRole().getId();
+    log.info("employeeRoleId " + employeeRoleId);
+    if (myTeamMembersID.contains(employeeId) || employeeRoleId == 6) {
+        EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
+        if (empDP != null) {
+            byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
+            String base64Encoded = "";
+            try {
+                base64Encoded = new String(encodeBase64, "UTF-8");
+            } catch (UnsupportedEncodingException e1) {
             }
+            empDP.setBase64(base64Encoded);
+        }
 
-            //1. sum(amount) exp.status_Id=2;  for created
-            int crTDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.getExpenseStatusDetailsById(1));
-            mv.addObject("crTDAmount", crTDAmount);
+        //1. sum(amount) exp.status_Id=2;  for created
+        int crTDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.getExpenseStatusDetailsById(1));
+        mv.addObject("crTDAmount", crTDAmount);
 
-            //2. sum(amount) exp.status_Id=3; for remaining all
-            int penDNGAmnt = expenseService.getMyPendingAmount(employee);
-            mv.addObject("penDNGAmnt", penDNGAmnt);
+        //2. sum(amount) exp.status_Id=3; for remaining all
+        int penDNGAmnt = expenseService.getMyPendingAmount(employee);
+        mv.addObject("penDNGAmnt", penDNGAmnt);
 
-            //3. sum(amount) exp.status_Id=4; for rembuirshment
-            int rmbSDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.getExpenseStatusDetailsById(5));
-            mv.addObject("rmbSDAmount", rmbSDAmount);
+        //3. sum(amount) exp.status_Id=4; for rembuirshment
+        int rmbSDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.getExpenseStatusDetailsById(5));
+        mv.addObject("rmbSDAmount", rmbSDAmount);
 
-            EmployeeRole er = employeeService.getEmployeeRoleByRoleId(employeeRoleId);
-            if (logedInEmployee().getId() == employee.getId()) {
-                mv.addObject("showUploadDpForm", true);
-            }
+        EmployeeRole er = employeeService.getEmployeeRoleByRoleId(employeeRoleId);
+        if (logedInEmployee().getId() == employee.getId()) {
+            mv.addObject("showUploadDpForm", true);
+        }
 //************************************************************************************************
-            int tlNotification = 0;
-            int mngrNotification = 0;
-            int finNotification = 0;
-            List<Expense> ex = new ArrayList<>();
-            //   List<Employee> myTeamMembers = new ArrayList<>();
-            ExpenseStatus es = new ExpenseStatus();
-            switch (employeeRoleId) {
-                case 1:
-                    System.out.println("Developer");
-                    break;
-                case 2:
-                    System.out.println("Approver $$$$$$$$$$$$");
+        int tlNotification = 0;
+        int mngrNotification = 0;
+        int finNotification = 0;
+        List<Expense> ex = new ArrayList<>();
+        //   List<Employee> myTeamMembers = new ArrayList<>();
+        ExpenseStatus es = new ExpenseStatus();
+        switch (employeeRoleId) {
+            case 1:
+                System.out.println("Developer");
+                break;
+            case 2:
+                System.out.println("Approver $$$$$$$$$$$$");
 
-                    es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
+                es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
 
-                    myTeamMembers = employeeService.myTeamMembersTL(logedInEmployee().getId());
-                    myTeamMembers.remove(logedInEmployee());
-                    for (Employee empfromlist : myTeamMembers) {
-                        ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
-                    }
-                    log.info("Final fetched list size  Approver" + ex.size());
-                    tlNotification = ex.size();
-                    break;
-                case 3:
+                myTeamMembers = employeeService.myTeamMembersTL(logedInEmployee().getId());
+                myTeamMembers.remove(logedInEmployee());
+                for (Employee empfromlist : myTeamMembers) {
+                    ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
+                }
+                log.info("Final fetched list size  Approver" + ex.size());
+                tlNotification = ex.size();
+                break;
+            case 3:
 
-                    System.out.println("Auditor");
-                    es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
-                    myTeamMembers = employeeService.myTeamMembersTL(logedInEmployee().getId());
-                    myTeamMembers.remove(logedInEmployee());
-                    for (Employee empfromlist : myTeamMembers) {
-                        ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
-                    }
-                    System.out.println("Final fetched list size Auditor " + ex.size());
-                    mngrNotification = ex.size();
-                    log.info("mngrNotification");
-                    break;
-                case 4:
-                    log.info("Manager no rights");
-                    break;
-                case 5:
-                    break;
-                case 6:
+                System.out.println("Auditor");
+                es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
+                myTeamMembers = employeeService.myTeamMembersTL(logedInEmployee().getId());
+                myTeamMembers.remove(logedInEmployee());
+                for (Employee empfromlist : myTeamMembers) {
+                    ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
+                }
+                System.out.println("Final fetched list size Auditor " + ex.size());
+                mngrNotification = ex.size();
+                log.info("mngrNotification");
+                break;
+            case 4:
+                log.info("Manager no rights");
+                break;
+            case 5:
+                break;
+            case 6:
 
-                    break;
-                default:
-                    log.info("Else");
-                    break;
-            }
-            log.info("tlNotification " + tlNotification);
-            log.info("mngrNotification " + mngrNotification);
-            log.info("finNotification " + finNotification);
-            mv.addObject("tlNotification", tlNotification);
-            mv.addObject("mngrNotification", mngrNotification);
-            mv.addObject("finNotification", finNotification);
+                break;
+            default:
+                log.info("Else");
+                break;
+        }
+        log.info("tlNotification " + tlNotification);
+        log.info("mngrNotification " + mngrNotification);
+        log.info("finNotification " + finNotification);
+        mv.addObject("tlNotification", tlNotification);
+        mv.addObject("mngrNotification", mngrNotification);
+        mv.addObject("finNotification", finNotification);
 //******************************************************************************************
 
-            mv.addObject("empImage", empDP);
-            mv.addObject("employeeRole", er.getEmpRole());
-            mv.addObject("employeeRoleId", employeeRoleId);
-            mv.addObject("employeeData", employee);
-            mv.setViewName("employee/viewEmployee");
-        } else {
-            mv.setViewName("redirect:/wrongAccess");
-        }
+        mv.addObject("empImage", empDP);
+        mv.addObject("employeeRole", er.getEmpRole());
+        mv.addObject("employeeRoleId", employeeRoleId);
+        mv.addObject("employeeData", employee);
+        mv.setViewName("employee/viewEmployee");
+    } else {
+        mv.setViewName("redirect:/wrongAccess");
+    }
+}catch (Exception e){
+    e.getMessage();
+
+}
         log.info("Now return here ");
         return mv;
     }
