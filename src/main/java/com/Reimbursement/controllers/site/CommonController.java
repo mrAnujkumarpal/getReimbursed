@@ -37,7 +37,7 @@ public class CommonController extends Validate {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+  //  private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public ModelAndView defaultPage() {

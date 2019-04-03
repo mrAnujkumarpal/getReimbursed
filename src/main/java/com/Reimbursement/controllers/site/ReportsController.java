@@ -42,7 +42,7 @@ public class ReportsController extends Validate {
     @Autowired
     private EmployeeService employeeService;
 
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
+ //   private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     List<Expense> respectiveExpenseHistory(int expStatus_id) {
 
@@ -220,28 +220,28 @@ public class ReportsController extends Validate {
         return mv;
     }
 
-    @RequestMapping(value = "/default")
+    @RequestMapping(value = "/default", method = RequestMethod.GET)
     public ModelAndView deafultAfterLogin() {
-        log.info(" ------------------------------ ");
+        System.out.println(" ------------------------------ ");
         ModelAndView modelAndView = new ModelAndView();
 
         Employee emp = logedInEmployee();
         int employeeID = emp.getId();
         int empRoleId = emp.getEmpRole().getId();
 
-        log.info("employeeID " + employeeID);
+        System.out.println("employeeID " + employeeID);
         if (employeeID != 0) {
-            System.err.println("Inside IF of default method");
+            System.out.println("Inside IF of default method");
             String url = "viewEmployeeDetails/" + employeeID;
-            log.info("url ::" + url);
+            System.out.println("url ::" + url);
             modelAndView.setViewName("redirect:" + url);
 
         } else {
-            System.err.println("Inside else of default method");
+            System.out.println("Inside else of default method");
             modelAndView.addObject("employeeRoleId", empRoleId);
             modelAndView.setViewName("errors/404");
         }
-        log.info("Now return ");
+        System.out.println("Now return ");
         return modelAndView;
     }
 

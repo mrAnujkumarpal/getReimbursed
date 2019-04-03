@@ -55,7 +55,7 @@
                                     <c:choose>
                                         <c:when test="${empImage ne null && not empty empImage}">
 
-                                            <img  class="circle responsive-img activator z-depth-5" width="150" style="max-height:160px; min-height: 150px;" src="data:image/jpeg;base64,${empImage.base64}"/>
+                                            <!--<img  class="circle responsive-img activator z-depth-5" width="150" style="max-height:160px; min-height: 150px;" src="data:image/jpeg;base64,${empImage.base64}"/>-->
                                         </c:when>
                                         <c:otherwise>
                                             <img class="circle  responsive-img z-depth-5"  src="/assets/img/noImage.jpg" style='max-height:200px;'>
@@ -151,7 +151,6 @@
 
                                             </c:if>
                                         </div>
-
                                     </div>
 
                                     <c:if test="${showUploadDpForm eq true}">
@@ -170,59 +169,16 @@
                                             </form>
                                         </div>
                                     </c:if>
-
                                 </div>
-
                             </div>
-
                         </div>
-
-                        <%--                <div class="col s12 m6 l4   offset-m3 offset-l4">
-                                            <div class="card z-depth-2">
-                                                <div class="card-image waves-effect waves-block waves-light">
-                        <c:choose>
-                            <c:when test="${empImage ne null && not empty empImage}">
-                                <img class="responsive-img" style='max-height:700px;'  src="data:image/jpeg;base64,${empImage.base64}">
-                                <span class="card-title">  ${employeeData.id}</span>
-                            </c:when>
-                            <c:otherwise>
-                                <img class="responsive-img"  src="/assets/img/noImage.jpg" style='max-height:320px;'>
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
-                    <div class="card-content"  style="text-transform: capitalize" style="border-top:1px solid #f1f3e9;">
-                        <a href="/myTeamMembers/${employeeData.id}" class="right"><small> ${employeeData.fName} team</small></a>
-                        <span class="card-title  flow-text left-align">${employeeData.fName} ${employeeData.lName}</span>
-
-                <p><i class="material-icons">perm_identity</i>  :  ${employeeRole}</p>
-                <p><i class="material-icons">perm_phone_msg</i> :  ${employeeData.mobile} </p>
-                <p><i class="material-icons">email</i> :<span  style="text-transform: none; color:blue;">  ${employeeData.email} </span></p>
-
-                <ul id="tabs-swipe-demo" class="tabs">
-                    <li class="tab col s3 m4 l4"><a href="#test-swipe-Created">Created</a></li>
-                    <li class="tab col s3 m4 l4"><a class="active" href="#test-swipe-Pending">Pending</a></li>
-                    <li class="tab col s6 m4 l4"><a href="#test-swipe-Rembrsd">Reimbursed</a></li>
-                </ul>
-                <div id="test-swipe-Created" class="col s12"> <h6 class="left-align blue-text">
-                        <i class="fa fa-inr"></i> <fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${crTDAmount}"/></h6></div>
-                <div id="test-swipe-Pending" class="col s12"><h6 class="center-align red-text">
-                        <i class="fa fa-inr"></i> <fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${penDNGAmnt}"/></h6></div>
-                <div id="test-swipe-Rembrsd" class="col s12"><h6 class="right-align green-text">
-                        <i class="fa fa-inr"></i> <fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${rmbSDAmount}"/></h6></div>
-                <p> &nbsp; </p>
-            </div>
-        </div>
-    </div>--%>
-
                     </div>
                 </div>
-
 
                 <!--Import jQuery before materialize.js-->
 
                 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
-                <script src="assets/js/main.js" type="text/javascript"></script>
                 <script>
                     $(document).ready(function () {
                         $('select').formSelect();
