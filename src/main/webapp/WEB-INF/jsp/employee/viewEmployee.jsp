@@ -54,8 +54,7 @@
                                 <div class="center-align">
                                     <c:choose>
                                         <c:when test="${empImage ne null && not empty empImage}">
-
-                                            <!--<img  class="circle responsive-img activator z-depth-5" width="150" style="max-height:160px; min-height: 150px;" src="data:image/jpeg;base64,${empImage.base64}"/>-->
+                                            <img  class="circle responsive-img activator z-depth-5" width="150" style="max-height:160px; min-height: 150px;" src="data:image/jpeg;base64,${empImage.base64}"/>
                                         </c:when>
                                         <c:otherwise>
                                             <img class="circle  responsive-img z-depth-5"  src="/assets/img/noImage.jpg" style='max-height:200px;'>
@@ -179,6 +178,7 @@
 
                 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
+                <script src="assets/js/main.js" type="text/javascript"></script>
                 <script>
                     $(document).ready(function () {
                         $('select').formSelect();

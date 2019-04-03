@@ -29,6 +29,7 @@ import com.Reimbursement.service.expenseService.ExpenseService;
 import java.awt.BorderLayout;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import org.hibernate.bytecode.buildtime.spi.ExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -205,7 +206,7 @@ public class EmployeeController extends Validate {
             System.out.println("employeeRoleId " + employeeRoleId);
             if (myTeamMembersID.contains(employeeId) || employeeRoleId == 6) {
                 System.out.println("Indie loong if");
-                mv.setViewName("employee/viewEmployee");
+
                 EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
                 if (empDP != null) {
                     byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
@@ -241,50 +242,56 @@ public class EmployeeController extends Validate {
                 int tlNotification = 0;
                 int mngrNotification = 0;
                 int finNotification = 0;
-                List<Expense> ex = new ArrayList<>();
-                //   List<Employee> myTeamMembers = new ArrayList<>();
-                ExpenseStatus es = new ExpenseStatus();
-                switch (employeeRoleId) {
-                    case 1:
-                        System.out.println("Developer");
-                        break;
-                    case 2:
-                        System.out.println("Approver $$$$$$$$$$$$");
+                try {
+                    
+                    List<Expense> ex = new ArrayList<>();
+                    //   List<Employee> myTeamMembers = new ArrayList<>();
+                    ExpenseStatus es = new ExpenseStatus();
+                    switch (employeeRoleId) {
+                        case 1:
+                            System.out.println("Developer");
+                            break;
+                        case 2:
+                            System.out.println("Approver $$$$$$$$$$$$");
 
-                        es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
+                            es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
 
-                        myTeamMembers = employeeService.myTeamMembersTL(logedInEmployee().getId());
-                        myTeamMembers.remove(logedInEmployee());
-                        for (Employee empfromlist : myTeamMembers) {
-                            ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
-                        }
-                        System.out.println("Final fetched list size  Approver" + ex.size());
-                        tlNotification = ex.size();
-                        break;
-                    case 3:
+                            myTeamMembers = employeeService.myTeamMembersTL(logedInEmployee().getId());
+                            myTeamMembers.remove(logedInEmployee());
+                            for (Employee empfromlist : myTeamMembers) {
+                                ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
+                            }
+                            System.out.println("Final fetched list size  Approver" + ex.size());
+                            tlNotification = ex.size();
+                            break;
+                        case 3:
 
-                        System.out.println("Auditor");
-                        es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
-                        myTeamMembers = employeeService.myTeamMembersTL(logedInEmployee().getId());
-                        myTeamMembers.remove(logedInEmployee());
-                        for (Employee empfromlist : myTeamMembers) {
-                            ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
-                        }
-                        System.out.println("Final fetched list size Auditor " + ex.size());
-                        mngrNotification = ex.size();
-                        System.out.println("mngrNotification");
-                        break;
-                    case 4:
-                        System.out.println("Manager no rights");
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        System.out.println("Admin no rights");
-                        break;
-                    default:
-                        System.out.println("Else");
-                        break;
+                            System.out.println("Auditor");
+                            es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
+                            myTeamMembers = employeeService.myTeamMembersTL(logedInEmployee().getId());
+                            myTeamMembers.remove(logedInEmployee());
+                            for (Employee empfromlist : myTeamMembers) {
+                                ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
+                            }
+                            System.out.println("Final fetched list size Auditor " + ex.size());
+                            mngrNotification = ex.size();
+                            System.out.println("mngrNotification");
+                            break;
+                        case 4:
+                            System.out.println("Manager no rights");
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            System.out.println("Admin no rights");
+                            break;
+                        default:
+                            System.out.println("Else");
+                            break;
+                    }
+                } catch (ExecutionException e) {
+                    e.getMessage();
+
                 }
                 System.out.println("tlNotification " + tlNotification);
                 System.out.println("mngrNotification " + mngrNotification);
@@ -293,12 +300,12 @@ public class EmployeeController extends Validate {
                 mv.addObject("mngrNotification", mngrNotification);
                 mv.addObject("finNotification", finNotification);
 //******************************************************************************************
-
+                mv.setViewName("employee/viewEmployee");
                 mv.addObject("empImage", empDP);
                 mv.addObject("employeeRole", er.getEmpRole());
                 mv.addObject("employeeRoleId", employeeRoleId);
                 mv.addObject("employeeData", employee);
-               
+
             } else {
                 System.out.println("INSIDE ELSE WRONG ACCESS");
                 mv.setViewName("redirect:/wrongAccess");
