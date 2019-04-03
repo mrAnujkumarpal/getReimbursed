@@ -167,7 +167,6 @@ public class ExpenseDaoServiceImpl implements ExpenseDaoService {
             ExpenseStatus es = findExpenseStatusDetailsById(i);
             sum = sum + getSumAmountOfEmpByExpStatus(employee, es);
         }
-        System.out.println(" total pending sum " + sum);
         return sum;
     }
 

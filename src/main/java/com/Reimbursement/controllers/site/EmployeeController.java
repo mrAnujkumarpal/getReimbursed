@@ -26,12 +26,9 @@ import com.Reimbursement.models.expense.ExpenseStatus;
 import com.Reimbursement.service.commonServices.CommonService;
 import com.Reimbursement.service.empService.EmployeeService;
 import com.Reimbursement.service.expenseService.ExpenseService;
-import java.awt.BorderLayout;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import org.hibernate.bytecode.buildtime.spi.ExecutionException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -192,6 +189,7 @@ public class EmployeeController extends Validate {
     }
 
     @RequestMapping(value = {"viewEmployeeDetails/{id}"}, method = RequestMethod.GET)
+    @SuppressWarnings("null")
     public ModelAndView viewEmployeeDetails(@PathVariable("id") int employeeId) {
         System.out.println("viewEmployeeDetails comming id " + employeeId);
         ModelAndView mv = new ModelAndView();
@@ -233,9 +231,9 @@ public class EmployeeController extends Validate {
                 int tlNotification = 0;
                 int mngrNotification = 0;
                 int finNotification = 0;
-                /*
+
                 try {
-                    
+
                     List<Expense> ex = new ArrayList<>();
                     //   List<Employee> myTeamMembers = new ArrayList<>();
                     ExpenseStatus es = new ExpenseStatus();
@@ -291,22 +289,32 @@ public class EmployeeController extends Validate {
                 mv.addObject("tlNotification", tlNotification);
                 mv.addObject("mngrNotification", mngrNotification);
                 mv.addObject("finNotification", finNotification);
-                 */
+
 //******************************************************************************************
                 System.out.println("Now fetching EmpDP");
                 EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
-                if (empDP != null) {
-                    byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
-                    String base64Encoded = "";
-                    try {
-                        base64Encoded = new String(encodeBase64, "UTF-8");
-                    } catch (UnsupportedEncodingException eee) {
-                        String message = eee.getMessage();
-                        System.out.println("Exception message " + message);
+                System.out.println(" empDP " + empDP.getEmployee_id());
 
+                try {
+                    if (empDP != null) {
+                        System.out.println(" Inside if condition ");
+                        byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
+                        String base64Encoded = "";
+                        System.out.println(" Inside 1");
+                        try {
+                            base64Encoded = new String(encodeBase64, "UTF-8");
+                        } catch (UnsupportedEncodingException eee) {
+                            String message = eee.getMessage();
+                            System.out.println("Exception message " + message);
+                        }
+                        System.out.println(" Inside 2 ");
+                        empDP.setBase64(base64Encoded);
+                        System.out.println(" Inside 3");
                     }
-                    empDP.setBase64(base64Encoded);
+                } catch (NullPointerException nel) {
+                    nel.getMessage();
                 }
+
                 System.out.println("@@ - EMP DP Fetcting End");
                 mv.addObject("empImage", empDP);
                 mv.addObject("employeeRole", er.getEmpRole());
@@ -394,7 +402,7 @@ public class EmployeeController extends Validate {
         } else {
             System.out.println("Select any image to upload.");
         }
-
+        System.out.println("Now going to display uploaded image");
         EmpDP edp = employeeService.findDPByEmployeeId(employee.getId());
         byte[] encodeBase64 = Base64.encodeBase64(edp.getEmpDPData());
         String base64Encoded = "";
@@ -404,7 +412,7 @@ public class EmployeeController extends Validate {
         }
         edp.setBase64(base64Encoded);
         System.out.println(edp.getEmpDPName() + " - " + edp.getEmpDPType());
-
+        System.out.println(" going to back");
         /*
         List<EmpDP> edp = employeeService.getAllEmpDPDetails();
         System.out.println(" All detaila " + edp.size());
