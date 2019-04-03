@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="372fc2b4-4f4f-47d6-9424-68b45d9233d7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/main.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Reimbursement/controllers/site/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Reimbursement/controllers/site/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/viewEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/viewEmployee.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            <state relative-caret-position="125">
+              <caret line="14" column="102" selection-start-line="14" selection-start-column="88" selection-end-line="14" selection-end-column="102" />
             </state>
           </provider>
         </entry>
@@ -336,7 +331,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554314694502" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554314887298" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../wttj" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
@@ -440,6 +435,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49844238" weight="0.2624811" />
       <window_info id="Structure" order="1" sideWeight="0.50155765" side_tool="true" weight="0.2677761" />
@@ -450,12 +446,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.051282052" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.71965814" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.52307695" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5897436" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32991454" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.2923077" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2923077" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.45128205" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.565812" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.30769232" />
@@ -939,8 +935,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="125">
+          <caret line="14" column="102" selection-start-line="14" selection-start-column="88" selection-end-line="14" selection-end-column="102" />
         </state>
       </provider>
     </entry>

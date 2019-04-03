@@ -242,6 +242,7 @@ public class EmployeeController extends Validate {
                 int tlNotification = 0;
                 int mngrNotification = 0;
                 int finNotification = 0;
+                /*
                 try {
                     
                     List<Expense> ex = new ArrayList<>();
@@ -299,6 +300,7 @@ public class EmployeeController extends Validate {
                 mv.addObject("tlNotification", tlNotification);
                 mv.addObject("mngrNotification", mngrNotification);
                 mv.addObject("finNotification", finNotification);
+                 */
 //******************************************************************************************
                 mv.setViewName("employee/viewEmployee");
                 mv.addObject("empImage", empDP);
