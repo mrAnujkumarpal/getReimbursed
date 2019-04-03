@@ -118,79 +118,78 @@
                                         <div class="card">
                                             <div class="collapsible-header"> ${tlNotification}<i class="material-icons">notifications</i>Approval Pending</div>
                                         </div>
-                                    </c:if>
-                                    <c:if test="${mngrNotification != 0}">
-                                        <div class="col s12 m6 l4">
-                                            <div class="card">
-                                                <div class="collapsible-header">${mngrNotification}<i class="material-icons">notifications</i>Audit Pending</div>
-                                            </div>
-                                        </div>
-                                    </c:if>
-                                    <c:if test="${finNotification != 0}">
-                                        <div class="col s12 m12 l4">
-                                            <div class="card">
-                                                <div class="collapsible-header">${finNotification}<i class="material-icons">notifications</i>Reimburse Pending</div>
-                                            </div>
-                                        </div>
-                                    </c:if>
-                                </div>
-
-
-                                <div class="col s12 m12 l12">
-
-                                    <div class="card-panel">
-                                        <div class="card-content">
-                                            <a href="/myTeamMembers/${employeeData.id}" class="right"><small> ${employeeData.fName} ${employeeData.lName} team</small></a>
-
-                                            <c:if test="${showUploadDpForm eq true}">
-                                                <a id="uploadMyDp" class="waves-effect waves-light btn-small"><small>Change my DP </small></a>
-                                            </c:if>
-                                            <c:if test="${showUploadDpForm ne true}">
-                                                Hello
-
-                                            </c:if>
+                                    </div>
+                                </c:if>
+                                <c:if test="${mngrNotification != 0}">
+                                    <div class="col s12 m6 l4">
+                                        <div class="card">
+                                            <div class="collapsible-header">${mngrNotification}<i class="material-icons">notifications</i>Audit Pending</div>
                                         </div>
                                     </div>
-
-                                    <c:if test="${showUploadDpForm eq true}">
-                                        <div class="col s10 m10 l10" id="changeDPForm" style="display:none;">
-                                            <form method="post" action="doUploadEmpDP" enctype="multipart/form-data">
-                                                <div class = "file-field input-field">
-                                                    <div class="btn"><span>Browse</span><input name="empPhoto" type = "file"/></div>
-                                                    <div class = "file-path-wrapper">
-                                                        <input class="file-path validate" type="text" placeholder="Choose a photo to upload"/>
-                                                    </div>
-
-                                                    <button   class="waves-effect waves-light btn gradient-45deg-red-pink z-depth-4 mr-1 mb-2" type="submit" value="Upload">
-                                                        <i class="large material-icons">cloud_upload</i> Upload
-                                                    </button>
-                                                </div>
-                                            </form>
+                                </c:if>
+                                <c:if test="${finNotification != 0}">
+                                    <div class="col s12 m12 l4">
+                                        <div class="card">
+                                            <div class="collapsible-header">${finNotification}<i class="material-icons">notifications</i>Reimburse Pending</div>
                                         </div>
-                                    </c:if>
+                                    </div>
+                                </c:if>
+                            </div>
+                            <div class="col s12 m12 l12">
+
+                                <div class="card-panel">
+                                    <div class="card-content">
+                                        <a href="/myTeamMembers/${employeeData.id}" class="right"><small> ${employeeData.fName} ${employeeData.lName} team</small></a>
+
+                                        <c:if test="${showUploadDpForm eq true}">
+                                            <a id="uploadMyDp" class="waves-effect waves-light btn-small"><small>Change my DP </small></a>
+                                        </c:if>
+                                        <c:if test="${showUploadDpForm ne true}">
+                                            Hello
+
+                                        </c:if>
+                                    </div>
                                 </div>
+
+                                <c:if test="${showUploadDpForm eq true}">
+                                    <div class="col s10 m10 l10" id="changeDPForm" style="display:none;">
+                                        <form method="post" action="doUploadEmpDP" enctype="multipart/form-data">
+                                            <div class = "file-field input-field">
+                                                <div class="btn"><span>Browse</span><input name="empPhoto" type = "file"/></div>
+                                                <div class = "file-path-wrapper">
+                                                    <input class="file-path validate" type="text" placeholder="Choose a photo to upload"/>
+                                                </div>
+
+                                                <button   class="waves-effect waves-light btn gradient-45deg-red-pink z-depth-4 mr-1 mb-2" type="submit" value="Upload">
+                                                    <i class="large material-icons">cloud_upload</i> Upload
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </c:if>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!--Import jQuery before materialize.js-->
-
-                <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-                <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
-                <script src="assets/js/main.js" type="text/javascript"></script>
-                <script>
-                    $(document).ready(function () {
-                        $('select').formSelect();
-                    });
-                    $('.dropdown-trigger').dropdown();
-
-                    $("#uploadMyDp").click(function () {
-                        $("#changeDPForm").toggle();
-                    });
-                </script>
-
             </div>
+
+            <!--Import jQuery before materialize.js-->
+
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
+            <script src="assets/js/main.js" type="text/javascript"></script>
+            <script>
+                $(document).ready(function () {
+                    $('select').formSelect();
+                });
+                $('.dropdown-trigger').dropdown();
+
+                $("#uploadMyDp").click(function () {
+                    $("#changeDPForm").toggle();
+                });
+            </script>
+
         </div>
+
     </body>
 </html>
