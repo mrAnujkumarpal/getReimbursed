@@ -12119,3 +12119,865 @@ Caused by: org.postgresql.util.PSQLException: FATAL: no pg_hba.conf entry for ho
 	at org.hibernate.tool.schema.extract.internal.ExtractionContextImpl.getJdbcConnection(ExtractionContextImpl.java:62) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
 	... 35 common frames omitted
 
+2019-04-04 00:32:34.115 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2019-04-04 00:32:34.116 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2019-04-04 00:32:34.117 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2019-04-04 00:32:34.117 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2019-04-04 00:32:34.117 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2019-04-04 00:32:37.876 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [applicationConfig: [classpath:/application.properties]] PropertySource with search precedence immediately lower than [applicationConfigurationProperties]
+2019-04-04 00:32:37.876 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Removing [applicationConfigurationProperties] PropertySource
+2019-04-04 00:32:37.876 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Removing [defaultProperties] PropertySource
+2019-04-04 00:32:40.626 DEBUG 5972 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-04-04 00:32:40.626  INFO 5972 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6298 ms
+2019-04-04 00:32:41.032 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Replacing [servletContextInitParams] PropertySource with [servletContextInitParams]
+2019-04-04 00:32:48.933  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3a4bc3a1: startup date [Thu Apr 04 00:32:34 IST 2019]; root of context hierarchy
+2019-04-04 00:32:49.035 DEBUG 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking for request mappings in application context: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3a4bc3a1: startup date [Thu Apr 04 00:32:34 IST 2019]; root of context hierarchy
+2019-04-04 00:32:49.055 DEBUG 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 1 request handler methods found on class com.Reimbursement.controllers.MyErrorController: {public java.lang.String com.Reimbursement.controllers.MyErrorController.handleError(javax.servlet.http.HttpServletRequest)={[/error]}}
+2019-04-04 00:32:49.055  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public java.lang.String com.Reimbursement.controllers.MyErrorController.handleError(javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.065 DEBUG 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 23 request handler methods found on class com.Reimbursement.controllers.site.CommonController: {public java.util.Map com.Reimbursement.controllers.site.CommonController.deleteOrgnigationRole(org.springframework.ui.ModelMap,int)={[/common/deleteRole/{role_id}],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.fetchAllLocations()={[/viewAllLocations],methods=[GET]}, public java.util.Map com.Reimbursement.controllers.site.CommonController.editExistLocation(org.springframework.ui.ModelMap,int)={[/common/editLocation/{location_id}],methods=[GET]}, public java.util.Map com.Reimbursement.controllers.site.CommonController.locationEventUpdate(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)={[/locationEvent/update],methods=[POST]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.editVendorDetails(int)={[/editVendorDetails/{vendor_Id}],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.changePasswordDoing(java.lang.String,java.lang.String,java.lang.String)={[/changePassword],methods=[POST]}, public java.util.Map com.Reimbursement.controllers.site.CommonController.locationEventAdd(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)={[/locationEvent/add],methods=[POST]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.accessDenied()={[/access-denied],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.error404()={[/404],methods=[GET]}, public java.util.Map com.Reimbursement.controllers.site.CommonController.addNewRole(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)={[/roles/add],methods=[POST]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.allVendors()={[/allVendors],methods=[GET]}, public java.util.Map com.Reimbursement.controllers.site.CommonController.editExistRole(org.springframework.ui.ModelMap,int)={[/common/editRole/{role_id}],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.defaultPage()={[/],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.changePassword()={[/changePwd],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.wrongAccess()={[/wrongAccess],methods=[GET]}, public java.util.Map com.Reimbursement.controllers.site.CommonController.updateExistRole(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)={[/roles/update],methods=[POST]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.error500()={[/500],methods=[GET]}, public java.util.Map com.Reimbursement.controllers.site.CommonController.deleteLocation(org.springframework.ui.ModelMap,int)={[/common/deleteLocation/{location_id}],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.fetchAllRoles()={[/viewAllRoles],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.addVendor(org.springframework.ui.ModelMap,com.Reimbursement.models.commonModel.Vendor)={[/addNewVendor],methods=[POST]}, public java.util.Map com.Reimbursement.controllers.site.CommonController.deleteVendor(org.springframework.ui.ModelMap,int)={[/deleteVendor/{vendor_Id}],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.addNewVendor(javax.servlet.http.HttpServletRequest)={[/addNewVendor],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.loginPage(java.lang.String)={[/login],methods=[GET]}}
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/common/deleteRole/{role_id}],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.CommonController.deleteOrgnigationRole(org.springframework.ui.ModelMap,int)
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/viewAllLocations],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.fetchAllLocations()
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/common/editLocation/{location_id}],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.Reimbursement.controllers.site.CommonController.editExistLocation(org.springframework.ui.ModelMap,int)
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/locationEvent/update],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.CommonController.locationEventUpdate(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/editVendorDetails/{vendor_Id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.editVendorDetails(int)
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/changePassword],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.changePasswordDoing(java.lang.String,java.lang.String,java.lang.String)
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/locationEvent/add],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.CommonController.locationEventAdd(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/access-denied],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.accessDenied()
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/404],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.error404()
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/roles/add],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.CommonController.addNewRole(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allVendors],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.allVendors()
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/common/editRole/{role_id}],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.Reimbursement.controllers.site.CommonController.editExistRole(org.springframework.ui.ModelMap,int)
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.defaultPage()
+2019-04-04 00:32:49.065  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/changePwd],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.changePassword()
+2019-04-04 00:32:49.073  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/wrongAccess],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.wrongAccess()
+2019-04-04 00:32:49.073  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/roles/update],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.CommonController.updateExistRole(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.073  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/500],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.error500()
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/common/deleteLocation/{location_id}],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.CommonController.deleteLocation(org.springframework.ui.ModelMap,int)
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/viewAllRoles],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.fetchAllRoles()
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/addNewVendor],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.addVendor(org.springframework.ui.ModelMap,com.Reimbursement.models.commonModel.Vendor)
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/deleteVendor/{vendor_Id}],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.CommonController.deleteVendor(org.springframework.ui.ModelMap,int)
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/addNewVendor],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.addNewVendor(javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.loginPage(java.lang.String)
+2019-04-04 00:32:49.075 DEBUG 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 10 request handler methods found on class com.Reimbursement.controllers.site.EmployeeController: {public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.employeeRegistration(org.springframework.ui.ModelMap,com.Reimbursement.models.empModel.Employee)={[/empRegistration],methods=[POST]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.employeeRegistration()={[/empRegistration],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.viewEmployeeDetails(int)={[/viewEmployeeDetails/{id}],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.editEmployeeDetails(int)={[/editEmployeeDetails/{id}],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.viewAllEmployees()={[/viewAllEmployees]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.doUploadEmpDP(org.springframework.web.multipart.MultipartFile)={[/viewEmployeeDetails/doUploadEmpDP],methods=[POST]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.doHome()={[/uploadDp]}, public java.util.Map com.Reimbursement.controllers.site.EmployeeController.deleteEmployee(int)={[/deleteEmployee/{id}],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.commanHome()={[/home]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.myTeamMembers(int)={[/myTeamMembers/{employeeId}]}}
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/empRegistration],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.employeeRegistration(org.springframework.ui.ModelMap,com.Reimbursement.models.empModel.Employee)
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/empRegistration],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.employeeRegistration()
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/viewEmployeeDetails/{id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.viewEmployeeDetails(int)
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/editEmployeeDetails/{id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.editEmployeeDetails(int)
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/viewAllEmployees]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.viewAllEmployees()
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/viewEmployeeDetails/doUploadEmpDP],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.doUploadEmpDP(org.springframework.web.multipart.MultipartFile)
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/uploadDp]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.doHome()
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/deleteEmployee/{id}],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.EmployeeController.deleteEmployee(int)
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/home]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.commanHome()
+2019-04-04 00:32:49.075  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/myTeamMembers/{employeeId}]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.myTeamMembers(int)
+2019-04-04 00:32:49.083 DEBUG 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 request handler methods found on class com.Reimbursement.controllers.site.ExpenseController: {public java.util.Map com.Reimbursement.controllers.site.ExpenseController.deleteOrgnigationRole(org.springframework.ui.ModelMap,int)={[/deleteExpenseType/{et_id}],methods=[POST]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.createEditExpense(org.springframework.ui.ModelMap,com.Reimbursement.models.expense.Expense,org.springframework.web.multipart.MultipartFile[])={[/createEditExpense],methods=[POST]}, public java.util.Map com.Reimbursement.controllers.site.ExpenseController.addNewExpenseStatus(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)={[/expenseStatus/add],methods=[POST]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.editExpenseDetails(int)={[/editExpenseDetails/{exp_id}],methods=[GET]}, public java.util.Map com.Reimbursement.controllers.site.ExpenseController.addNewExpenseType(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)={[/expenseType/add],methods=[POST]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.viewAllExpenseStatus()={[/expenseStatus],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.viewAllExpenseType()={[/expenseType]}, public java.util.Map com.Reimbursement.controllers.site.ExpenseController.updateExpenseType(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)={[/expenseType/update],methods=[POST]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.viewPerticularExpense(int)={[/viewPerticularExpense/{expense_Id}],methods=[GET]}, public java.lang.String com.Reimbursement.controllers.site.ExpenseController.submitPerticularExpense(int)={[/submitPerticularExpense/{expense_Id}],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.activityMonitoring(javax.servlet.http.HttpServletRequest)={[/activityMonitoring],methods=[POST]}, public java.util.Map com.Reimbursement.controllers.site.ExpenseController.editExpenseId(org.springframework.ui.ModelMap,int)={[/rejectExpense/{expense_id}],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.submitExpense(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)={[/submitExpense],methods=[POST]}, public void com.Reimbursement.controllers.site.ExpenseController.downloadPDFFile(javax.servlet.http.HttpServletResponse,java.lang.String,java.lang.String,java.lang.String) throws java.lang.Exception={[/getPDFFile/{exStatusID}/{fromDate}/{toDate}],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.createExpense()={[/createEditExpense]}, public void com.Reimbursement.controllers.site.ExpenseController.downloadXLSXFile(javax.servlet.http.HttpServletResponse,java.lang.String,java.lang.String,java.lang.String) throws java.lang.Exception={[/getXLSXFile/{exStatusID}/{fromDate}/{toDate}],methods=[GET]}, public java.util.Map com.Reimbursement.controllers.site.ExpenseController.editExpenseType(org.springframework.ui.ModelMap,int)={[/editExpenseType/{expType_Id}],methods=[GET]}, public java.util.Map com.Reimbursement.controllers.site.ExpenseController.expenseApproved(org.springframework.ui.ModelMap,java.lang.String)={[/expense/approved/{exp_id}],methods=[POST]}, public java.util.Map com.Reimbursement.controllers.site.ExpenseController.rejectReason(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)={[/expense/rejectExpenseReasonForm],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.activityMonitr()={[/activityMonitoring],methods=[GET]}}
+2019-04-04 00:32:49.083  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/deleteExpenseType/{et_id}],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.ExpenseController.deleteOrgnigationRole(org.springframework.ui.ModelMap,int)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/createEditExpense],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.createEditExpense(org.springframework.ui.ModelMap,com.Reimbursement.models.expense.Expense,org.springframework.web.multipart.MultipartFile[])
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/expenseStatus/add],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.ExpenseController.addNewExpenseStatus(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/editExpenseDetails/{exp_id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.editExpenseDetails(int)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/expenseType/add],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.ExpenseController.addNewExpenseType(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/expenseStatus],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.viewAllExpenseStatus()
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/expenseType]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.viewAllExpenseType()
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/expenseType/update],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.ExpenseController.updateExpenseType(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/viewPerticularExpense/{expense_Id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.viewPerticularExpense(int)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/submitPerticularExpense/{expense_Id}],methods=[GET]}" onto public java.lang.String com.Reimbursement.controllers.site.ExpenseController.submitPerticularExpense(int)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/activityMonitoring],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.activityMonitoring(javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/rejectExpense/{expense_id}],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.Reimbursement.controllers.site.ExpenseController.editExpenseId(org.springframework.ui.ModelMap,int)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/submitExpense],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.submitExpense(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/getPDFFile/{exStatusID}/{fromDate}/{toDate}],methods=[GET]}" onto public void com.Reimbursement.controllers.site.ExpenseController.downloadPDFFile(javax.servlet.http.HttpServletResponse,java.lang.String,java.lang.String,java.lang.String) throws java.lang.Exception
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/createEditExpense]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.createExpense()
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/getXLSXFile/{exStatusID}/{fromDate}/{toDate}],methods=[GET]}" onto public void com.Reimbursement.controllers.site.ExpenseController.downloadXLSXFile(javax.servlet.http.HttpServletResponse,java.lang.String,java.lang.String,java.lang.String) throws java.lang.Exception
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/editExpenseType/{expType_Id}],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.Reimbursement.controllers.site.ExpenseController.editExpenseType(org.springframework.ui.ModelMap,int)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/expense/approved/{exp_id}],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.ExpenseController.expenseApproved(org.springframework.ui.ModelMap,java.lang.String)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/expense/rejectExpenseReasonForm],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.ExpenseController.rejectReason(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.085  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/activityMonitoring],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ExpenseController.activityMonitr()
+2019-04-04 00:32:49.093 DEBUG 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 7 request handler methods found on class com.Reimbursement.controllers.site.ReportsController: {public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ReportsController.expenseHistory(int)={[/expenseHistory/{id}]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ReportsController.pendingExpenseforRemburse()={[/pendingExpenseforRemburse]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ReportsController.pendingExpenseforApproval()={[/pendingExpenseforApproval]}, public java.util.Map com.Reimbursement.controllers.site.ReportsController.rejectExpenseDone(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)={[/RejectExpenseDone],methods=[POST]}, public java.util.Map com.Reimbursement.controllers.site.ReportsController.findExpenseForReject(org.springframework.ui.ModelMap,int)={[/expense/findExpenseForReject/{expense_id}],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ReportsController.deafultAfterLogin()={[/default],methods=[GET]}, public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ReportsController.pendingExpenseforAudit()={[/pendingExpenseforAudit]}}
+2019-04-04 00:32:49.093  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/expenseHistory/{id}]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ReportsController.expenseHistory(int)
+2019-04-04 00:32:49.093  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/pendingExpenseforRemburse]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ReportsController.pendingExpenseforRemburse()
+2019-04-04 00:32:49.093  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/pendingExpenseforApproval]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ReportsController.pendingExpenseforApproval()
+2019-04-04 00:32:49.096  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/RejectExpenseDone],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.Reimbursement.controllers.site.ReportsController.rejectExpenseDone(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest)
+2019-04-04 00:32:49.096  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/expense/findExpenseForReject/{expense_id}],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.Reimbursement.controllers.site.ReportsController.findExpenseForReject(org.springframework.ui.ModelMap,int)
+2019-04-04 00:32:49.096  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/default],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ReportsController.deafultAfterLogin()
+2019-04-04 00:32:49.096  INFO 5972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/pendingExpenseforAudit]}" onto public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ReportsController.pendingExpenseforAudit()
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Looking for URL mappings in application context: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3a4bc3a1: startup date [Thu Apr 04 00:32:34 IST 2019]; root of context hierarchy
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.internalRequiredAnnotationProcessor': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.internalCommonAnnotationProcessor': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.internalPersistenceAnnotationProcessor': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.event.internalEventListenerProcessor': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.event.internalEventListenerFactory': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'springMySqlApplication': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'appUserDetailsService': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'securityConfiguration': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'myErrorController': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'commonController': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'employeeController': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'expenseController': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'reportsController': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'commonDaoServiceImpl': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'employeeDaoServiceImpl': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'expenseDaoServiceImpl': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'reportDaoServiceImpl': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'commonServiceImpl': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'emailServiceImpl': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'employeeServiceImpl': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'expenseServiceImpl': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'xlsxReport': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'reportServiceImpl': no URL paths identified
+2019-04-04 00:32:49.126 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration': no URL paths identified
+2019-04-04 00:32:49.134 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'objectPostProcessor': no URL paths identified
+2019-04-04 00:32:49.134 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration': no URL paths identified
+2019-04-04 00:32:49.134 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'authenticationManagerBuilder': no URL paths identified
+2019-04-04 00:32:49.134 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'enableGlobalAuthenticationAutowiredConfigurer': no URL paths identified
+2019-04-04 00:32:49.134 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'initializeUserDetailsBeanManagerConfigurer': no URL paths identified
+2019-04-04 00:32:49.134 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'initializeAuthenticationProviderBeanManagerConfigurer': no URL paths identified
+2019-04-04 00:32:49.134 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': no URL paths identified
+2019-04-04 00:32:49.134 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'delegatingApplicationListener': no URL paths identified
+2019-04-04 00:32:49.134 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'webSecurityExpressionHandler': no URL paths identified
+2019-04-04 00:32:49.134 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'springSecurityFilterChain': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'privilegeEvaluator': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'autowiredWebSecurityConfigurersIgnoreParents': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'requestDataValueProcessor': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'methodSecurityInterceptor': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'methodSecurityMetadataSource': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'preInvocationAuthorizationAdvice': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'metaDataSourceAdvisor': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.aop.config.internalAutoProxyCreator': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'bCryptPasswordEncoder': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.AutoConfigurationPackages': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.condition.BeanTypeRegistry': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'propertySourcesPlaceholderConfigurer': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$Jackson2ObjectMapperBuilderCustomizerConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'standardJacksonObjectMapperBuilderCustomizer': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.jackson-org.springframework.boot.autoconfigure.jackson.JacksonProperties': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.store': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonObjectMapperBuilderConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'jacksonObjectMapperBuilder': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonObjectMapperConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'jacksonObjectMapper': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'jsonComponentModule': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.websocket.WebSocketAutoConfiguration$TomcatWebSocketConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'websocketContainerCustomizer': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.websocket.WebSocketAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.EmbeddedServletContainerAutoConfiguration$EmbeddedTomcat': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'tomcatEmbeddedServletContainerFactory': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.EmbeddedServletContainerAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'embeddedServletContainerCustomizerBeanPostProcessor': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'errorPageRegistrarBeanPostProcessor': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'dispatcherServlet': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.mvc-org.springframework.boot.autoconfigure.web.WebMvcProperties': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletRegistrationConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'dispatcherServletRegistration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'defaultValidator': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'methodValidationPostProcessor': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$DefaultErrorViewResolverConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'conventionErrorViewResolver': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'errorAttributes': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'errorPageCustomizer': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'preserveErrorControllerTargetClassPostProcessor': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.resources-org.springframework.boot.autoconfigure.web.ResourceProperties': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$EnableWebMvcConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'requestMappingHandlerAdapter': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'requestMappingHandlerMapping': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcValidator': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcContentNegotiationManager': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcPathMatcher': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcUrlPathHelper': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'viewControllerHandlerMapping': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'beanNameHandlerMapping': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'resourceHandlerMapping': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcResourceUrlProvider': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'defaultServletHandlerMapping': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcConversionService': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcUriComponentsContributor': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'httpRequestHandlerAdapter': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'simpleControllerHandlerAdapter': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'handlerExceptionResolver': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcViewResolver': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter$FaviconConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'faviconHandlerMapping': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'faviconRequestHandler': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'defaultViewResolver': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'viewResolver': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'welcomePageHandlerMapping': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'requestContextFilter': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'hiddenHttpMethodFilter': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'httpPutFormContentFilter': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mbeanExporter': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'objectNamingStrategy': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mbeanServer': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.aop.AopAutoConfiguration$JdkDynamicAutoProxyConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.aop.AopAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.transaction.jta.JtaAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.jta-org.springframework.boot.autoconfigure.transaction.jta.JtaProperties': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Tomcat': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'dataSource': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration$PooledDataSourceConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$TomcatDataSourcePoolMetadataProviderConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'tomcatPoolDataSourceMetadataProvider': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'dataSourceInitializer': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties': no URL paths identified
+2019-04-04 00:32:49.136 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'dataSourceInitializerPostProcessor': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'openEntityManagerInViewInterceptor': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'transactionManager': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'jpaVendorAdapter': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'entityManagerFactoryBuilder': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'entityManagerFactory': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.jpa-org.springframework.boot.autoconfigure.orm.jpa.JpaProperties': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'dataSourceInitializedPublisher': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'persistenceExceptionTranslationPostProcessor': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'emBeanDefinitionRegistrarPostProcessor': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'jpaMappingContext': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'jpaContext': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'empDPRepository': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'employeeApproverMappingRepository': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'vendorsRepository': no URL paths identified
+2019-04-04 00:32:49.144 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'expenseRejectRepository': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'expenseStatusRepository': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'expensePictureRepository': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'expenseTypeRepository': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'expenseRepository': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'employeeRoleRepository': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'locationRepository': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'paymentModeRepository': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'EmployeeRepository': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.HttpMessageConvertersAutoConfiguration$StringHttpMessageConverterConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'stringHttpMessageConverter': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.http.encoding-org.springframework.boot.autoconfigure.web.HttpEncodingProperties': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.JacksonHttpMessageConvertersConfiguration$MappingJackson2HttpMessageConverterConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mappingJackson2HttpMessageConverter': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.JacksonHttpMessageConvertersConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.HttpMessageConvertersAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'messageConverters': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.data.web.config.SpringDataWebConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'pageableResolver': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'sortResolver': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.data.web.config.SpringDataJacksonConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'jacksonGeoModule': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.security.AuthenticationManagerConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'authenticationManager': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'springBootAuthenticationConfigurerAdapter': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'authenticationManagerConfigurationListener': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.security.BootGlobalAuthenticationConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'bootGlobalAuthenticationConfigurationAdapter': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'authenticationEventPublisher': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'securityProperties': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.info-org.springframework.boot.autoconfigure.info.ProjectInfoProperties': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$DataSourceTransactionManagerConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'jdbcTemplate': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'namedParameterJdbcTemplate': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.mail.MailSenderAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mailSender': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.mail-org.springframework.boot.autoconfigure.mail.MailProperties': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.security.SecurityFilterAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'securityFilterChainRegistration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.transaction.config.internalTransactionAdvisor': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'transactionAttributeSource': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'transactionInterceptor': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.transaction.config.internalTransactionalEventListenerFactory': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$EnableTransactionManagementConfiguration$CglibAutoProxyConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$EnableTransactionManagementConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$TransactionTemplateConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'transactionTemplate': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'platformTransactionManagerCustomizers': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.HttpEncodingAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'characterEncodingFilter': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'localeCharsetMappingsCustomizer': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'multipartConfigElement': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'multipartResolver': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.http.multipart-org.springframework.boot.autoconfigure.web.MultipartProperties': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.ServerPropertiesAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'serverProperties': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'duplicateServerPropertiesDetector': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.WebClientAutoConfiguration$RestTemplateConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'restTemplateBuilder': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.WebClientAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.devtools.autoconfigure.DevToolsDataSourceAutoConfiguration$DatabaseShutdownExecutorJpaDependencyConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.devtools.autoconfigure.DevToolsDataSourceAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'inMemoryDatabaseShutdownExecutor': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'classPathFileSystemWatcher': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'classPathRestartStrategy': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'hateoasObjenesisCacheDisabler': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'fileSystemWatcherFactory': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$LiveReloadConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'liveReloadServer': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'optionalLiveReloadServer': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.devtools-org.springframework.boot.devtools.autoconfigure.DevToolsProperties': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.orm.jpa.SharedEntityManagerCreator#0': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'autoConfigurationReport': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'springApplicationArguments': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'springBootBanner': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'springBootLoggingSystem': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'environment': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'systemProperties': no URL paths identified
+2019-04-04 00:32:49.146 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'systemEnvironment': no URL paths identified
+2019-04-04 00:32:49.154 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importRegistry': no URL paths identified
+2019-04-04 00:32:49.154 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'messageSource': no URL paths identified
+2019-04-04 00:32:49.154 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'applicationEventMulticaster': no URL paths identified
+2019-04-04 00:32:49.154 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'servletContext': no URL paths identified
+2019-04-04 00:32:49.154 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'contextParameters': no URL paths identified
+2019-04-04 00:32:49.154 DEBUG 5972 --- [restartedMain] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'contextAttributes': no URL paths identified
+2019-04-04 00:32:49.177  INFO 5972 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-04 00:32:49.177  INFO 5972 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-04 00:32:49.197 DEBUG 5972 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : Looking for exception mappings: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3a4bc3a1: startup date [Thu Apr 04 00:32:34 IST 2019]; root of context hierarchy
+2019-04-04 00:32:49.248  INFO 5972 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-04 00:32:50.033 DEBUG 5972 --- [restartedMain] o.s.w.s.resource.ResourceUrlProvider     : Looking for resource handler mappings
+2019-04-04 00:32:50.042 DEBUG 5972 --- [restartedMain] o.s.w.s.resource.ResourceUrlProvider     : Found resource handler mapping: URL pattern="/**/favicon.ico", locations=[ServletContext resource [/], class path resource [META-INF/resources/], class path resource [resources/], class path resource [static/], class path resource [public/], class path resource []], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@41dcb015]
+2019-04-04 00:32:50.042 DEBUG 5972 --- [restartedMain] o.s.w.s.resource.ResourceUrlProvider     : Found resource handler mapping: URL pattern="/webjars/**", locations=[class path resource [META-INF/resources/webjars/]], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@3fed340]
+2019-04-04 00:32:50.042 DEBUG 5972 --- [restartedMain] o.s.w.s.resource.ResourceUrlProvider     : Found resource handler mapping: URL pattern="/**", locations=[ServletContext resource [/], class path resource [META-INF/resources/], class path resource [resources/], class path resource [static/], class path resource [public/]], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@366592f3]
+2019-04-04 00:32:50.145 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [server.ports] PropertySource with highest search precedence
+2019-04-04 00:34:18.123 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing servlet 'dispatcherServlet'
+2019-04-04 00:34:18.123  INFO 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-04-04 00:34:18.123 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Using MultipartResolver [org.springframework.web.multipart.support.StandardServletMultipartResolver@204285c6]
+2019-04-04 00:34:18.123 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Unable to locate LocaleResolver with name 'localeResolver': using default [org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver@4a410393]
+2019-04-04 00:34:18.154 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Unable to locate ThemeResolver with name 'themeResolver': using default [org.springframework.web.servlet.theme.FixedThemeResolver@4dcfe4ab]
+2019-04-04 00:34:18.170 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Unable to locate RequestToViewNameTranslator with name 'viewNameTranslator': using default [org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@413f5a5e]
+2019-04-04 00:34:18.192 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Unable to locate FlashMapManager with name 'flashMapManager': using default [org.springframework.web.servlet.support.SessionFlashMapManager@5315ba5c]
+2019-04-04 00:34:18.192 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Published WebApplicationContext of servlet 'dispatcherServlet' as ServletContext attribute with name [org.springframework.web.servlet.FrameworkServlet.CONTEXT.dispatcherServlet]
+2019-04-04 00:34:18.192  INFO 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 69 ms
+2019-04-04 00:34:18.192 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Servlet 'dispatcherServlet' configured successfully
+2019-04-04 00:34:18.254 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : DispatcherServlet with name 'dispatcherServlet' processing GET request for [/]
+2019-04-04 00:34:18.270 DEBUG 5972 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking up handler method for path /
+2019-04-04 00:34:18.270 DEBUG 5972 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Returning handler method [public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.defaultPage()]
+2019-04-04 00:34:18.270 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Last-Modified value for [/] is: -1
+2019-04-04 00:34:18.314 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Requested media types are [text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8] based on Accept header types and producible media types [*/*])
+2019-04-04 00:34:18.325 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Returning redirect view [org.springframework.web.servlet.view.RedirectView: name 'redirect:/login'; URL [/login]]
+2019-04-04 00:34:18.325 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Rendering view [org.springframework.web.servlet.view.RedirectView: name 'redirect:/login'; URL [/login]] in DispatcherServlet with name 'dispatcherServlet'
+2019-04-04 00:34:18.325 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Successfully completed request
+2019-04-04 00:34:18.464 DEBUG 5972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : DispatcherServlet with name 'dispatcherServlet' processing GET request for [/login]
+2019-04-04 00:34:18.467 DEBUG 5972 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking up handler method for path /login
+2019-04-04 00:34:18.467 DEBUG 5972 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Returning handler method [public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.CommonController.loginPage(java.lang.String)]
+2019-04-04 00:34:18.467 DEBUG 5972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Last-Modified value for [/login] is: -1
+2019-04-04 00:34:18.477 DEBUG 5972 --- [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Requested media types are [text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8] based on Accept header types and producible media types [*/*])
+2019-04-04 00:34:18.477 DEBUG 5972 --- [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Returning [org.springframework.web.servlet.view.JstlView: name 'common/login'; URL [/WEB-INF/jsp/common/login.jsp]] based on requested media type 'text/html'
+2019-04-04 00:34:18.485 DEBUG 5972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Rendering view [org.springframework.web.servlet.view.JstlView: name 'common/login'; URL [/WEB-INF/jsp/common/login.jsp]] in DispatcherServlet with name 'dispatcherServlet'
+2019-04-04 00:34:18.485 DEBUG 5972 --- [http-nio-8080-exec-2] o.s.web.servlet.view.JstlView            : Removed model object 'errorMessge' from request in view with name 'common/login'
+2019-04-04 00:34:18.485 DEBUG 5972 --- [http-nio-8080-exec-2] o.s.web.servlet.view.JstlView            : Added model object 'success' of type [java.lang.Boolean] to request in view with name 'common/login'
+2019-04-04 00:34:18.487 DEBUG 5972 --- [http-nio-8080-exec-2] o.s.web.servlet.view.JstlView            : Forwarding to resource [/WEB-INF/jsp/common/login.jsp] in InternalResourceView 'common/login'
+2019-04-04 00:34:19.885 DEBUG 5972 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Successfully completed request
+2019-04-04 00:34:25.593 DEBUG 5972 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : DispatcherServlet with name 'dispatcherServlet' processing GET request for [/default]
+2019-04-04 00:34:25.593 DEBUG 5972 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking up handler method for path /default
+2019-04-04 00:34:25.593 DEBUG 5972 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Returning handler method [public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.ReportsController.deafultAfterLogin()]
+2019-04-04 00:34:25.593 DEBUG 5972 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Last-Modified value for [/default] is: -1
+2019-04-04 00:34:25.613 DEBUG 5972 --- [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Requested media types are [text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8] based on Accept header types and producible media types [*/*])
+2019-04-04 00:34:25.613 DEBUG 5972 --- [http-nio-8080-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Returning redirect view [org.springframework.web.servlet.view.RedirectView: name 'redirect:viewEmployeeDetails/3'; URL [viewEmployeeDetails/3]]
+2019-04-04 00:34:25.613 DEBUG 5972 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Rendering view [org.springframework.web.servlet.view.RedirectView: name 'redirect:viewEmployeeDetails/3'; URL [viewEmployeeDetails/3]] in DispatcherServlet with name 'dispatcherServlet'
+2019-04-04 00:34:25.613 DEBUG 5972 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Successfully completed request
+2019-04-04 00:34:25.644 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : DispatcherServlet with name 'dispatcherServlet' processing GET request for [/viewEmployeeDetails/3]
+2019-04-04 00:34:25.644 DEBUG 5972 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking up handler method for path /viewEmployeeDetails/3
+2019-04-04 00:34:25.664 DEBUG 5972 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Returning handler method [public org.springframework.web.servlet.ModelAndView com.Reimbursement.controllers.site.EmployeeController.viewEmployeeDetails(int)]
+2019-04-04 00:34:25.664 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Last-Modified value for [/viewEmployeeDetails/3] is: -1
+2019-04-04 00:34:25.936 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Requested media types are [text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8] based on Accept header types and producible media types [*/*])
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Returning [org.springframework.web.servlet.view.JstlView: name 'employee/viewEmployee'; URL [/WEB-INF/jsp/employee/viewEmployee.jsp]] based on requested media type 'text/html'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Rendering view [org.springframework.web.servlet.view.JstlView: name 'employee/viewEmployee'; URL [/WEB-INF/jsp/employee/viewEmployee.jsp]] in DispatcherServlet with name 'dispatcherServlet'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.view.JstlView            : Added model object 'id' of type [java.lang.Integer] to request in view with name 'employee/viewEmployee'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.view.JstlView            : Added model object 'crTDAmount' of type [java.lang.Integer] to request in view with name 'employee/viewEmployee'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.view.JstlView            : Added model object 'penDNGAmnt' of type [java.lang.Integer] to request in view with name 'employee/viewEmployee'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.view.JstlView            : Added model object 'rmbSDAmount' of type [java.lang.Integer] to request in view with name 'employee/viewEmployee'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.view.JstlView            : Added model object 'showUploadDpForm' of type [java.lang.Boolean] to request in view with name 'employee/viewEmployee'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.view.JstlView            : Added model object 'empImage' of type [com.Reimbursement.models.empModel.EmpDP] to request in view with name 'employee/viewEmployee'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.view.JstlView            : Added model object 'employeeRole' of type [java.lang.String] to request in view with name 'employee/viewEmployee'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.view.JstlView            : Added model object 'employeeRoleId' of type [java.lang.Integer] to request in view with name 'employee/viewEmployee'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.view.JstlView            : Added model object 'employeeData' of type [com.Reimbursement.models.empModel.Employee] to request in view with name 'employee/viewEmployee'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.view.JstlView            : Added model object 'org.springframework.validation.BindingResult.empImage' of type [org.springframework.validation.BeanPropertyBindingResult] to request in view with name 'employee/viewEmployee'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.view.JstlView            : Added model object 'org.springframework.validation.BindingResult.employeeData' of type [org.springframework.validation.BeanPropertyBindingResult] to request in view with name 'employee/viewEmployee'
+2019-04-04 00:34:25.938 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.view.JstlView            : Forwarding to resource [/WEB-INF/jsp/employee/viewEmployee.jsp] in InternalResourceView 'employee/viewEmployee'
+2019-04-04 00:34:26.618 DEBUG 5972 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Successfully completed request
+2019-04-04 00:34:26.953 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : DispatcherServlet with name 'dispatcherServlet' processing GET request for [/viewEmployeeDetails/css/materialize.min.css]
+2019-04-04 00:34:26.953 DEBUG 5972 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking up handler method for path /viewEmployeeDetails/css/materialize.min.css
+2019-04-04 00:34:26.953 DEBUG 5972 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Did not find handler method for [/viewEmployeeDetails/css/materialize.min.css]
+2019-04-04 00:34:26.953 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns for request [/viewEmployeeDetails/css/materialize.min.css] are [/**]
+2019-04-04 00:34:26.961 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : URI Template variables for request [/viewEmployeeDetails/css/materialize.min.css] are {}
+2019-04-04 00:34:26.963 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapping [/viewEmployeeDetails/css/materialize.min.css] to HandlerExecutionChain with handler [ResourceHttpRequestHandler [locations=[ServletContext resource [/], class path resource [META-INF/resources/], class path resource [resources/], class path resource [static/], class path resource [public/]], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@366592f3]]] and 1 interceptor
+2019-04-04 00:34:26.963 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Last-Modified value for [/viewEmployeeDetails/css/materialize.min.css] is: -1
+2019-04-04 00:34:26.963 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : DispatcherServlet with name 'dispatcherServlet' processing GET request for [/viewEmployeeDetails/assets/js/main.js]
+2019-04-04 00:34:26.963 DEBUG 5972 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking up handler method for path /viewEmployeeDetails/assets/js/main.js
+2019-04-04 00:34:26.971 DEBUG 5972 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Did not find handler method for [/viewEmployeeDetails/assets/js/main.js]
+2019-04-04 00:34:26.971 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns for request [/viewEmployeeDetails/assets/js/main.js] are [/**]
+2019-04-04 00:34:26.971 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : URI Template variables for request [/viewEmployeeDetails/assets/js/main.js] are {}
+2019-04-04 00:34:26.971 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapping [/viewEmployeeDetails/assets/js/main.js] to HandlerExecutionChain with handler [ResourceHttpRequestHandler [locations=[ServletContext resource [/], class path resource [META-INF/resources/], class path resource [resources/], class path resource [static/], class path resource [public/]], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@366592f3]]] and 1 interceptor
+2019-04-04 00:34:26.971 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Last-Modified value for [/viewEmployeeDetails/assets/js/main.js] is: -1
+2019-04-04 00:34:26.973 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-04-04 00:34:26.973 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Successfully completed request
+2019-04-04 00:34:26.973 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : DispatcherServlet with name 'dispatcherServlet' processing GET request for [/error]
+2019-04-04 00:34:26.973 DEBUG 5972 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking up handler method for path /error
+2019-04-04 00:34:26.973 DEBUG 5972 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Returning handler method [public java.lang.String com.Reimbursement.controllers.MyErrorController.handleError(javax.servlet.http.HttpServletRequest)]
+2019-04-04 00:34:26.973 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Last-Modified value for [/error] is: -1
+2019-04-04 00:34:26.973 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-04-04 00:34:26.973 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Successfully completed request
+2019-04-04 00:34:26.973 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : DispatcherServlet with name 'dispatcherServlet' processing GET request for [/error]
+2019-04-04 00:34:26.973 DEBUG 5972 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking up handler method for path /error
+2019-04-04 00:34:26.973 DEBUG 5972 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Returning handler method [public java.lang.String com.Reimbursement.controllers.MyErrorController.handleError(javax.servlet.http.HttpServletRequest)]
+2019-04-04 00:34:26.973 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Last-Modified value for [/error] is: -1
+2019-04-04 00:34:26.983 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Requested media types are [text/css, */*;q=0.1] based on Accept header types and producible media types [*/*])
+2019-04-04 00:34:26.983 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Returning [org.springframework.web.servlet.view.JstlView: name 'errors/404'; URL [/WEB-INF/jsp/errors/404.jsp]] based on requested media type '*/*;q=0.1'
+2019-04-04 00:34:26.983 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Rendering view [org.springframework.web.servlet.view.JstlView: name 'errors/404'; URL [/WEB-INF/jsp/errors/404.jsp]] in DispatcherServlet with name 'dispatcherServlet'
+2019-04-04 00:34:26.983 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.web.servlet.view.JstlView            : Forwarding to resource [/WEB-INF/jsp/errors/404.jsp] in InternalResourceView 'errors/404'
+2019-04-04 00:34:26.983 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Requested media types are [*/*] based on Accept header types and producible media types [*/*])
+2019-04-04 00:34:26.983 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Returning [org.springframework.web.servlet.view.JstlView: name 'errors/404'; URL [/WEB-INF/jsp/errors/404.jsp]] based on requested media type '*/*'
+2019-04-04 00:34:26.983 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Rendering view [org.springframework.web.servlet.view.JstlView: name 'errors/404'; URL [/WEB-INF/jsp/errors/404.jsp]] in DispatcherServlet with name 'dispatcherServlet'
+2019-04-04 00:34:26.983 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.web.servlet.view.JstlView            : Forwarding to resource [/WEB-INF/jsp/errors/404.jsp] in InternalResourceView 'errors/404'
+2019-04-04 00:34:27.632 DEBUG 5972 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Successfully completed request
+2019-04-04 00:34:27.634 DEBUG 5972 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Successfully completed request
+2019-04-04 00:34:27.705 DEBUG 5972 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : DispatcherServlet with name 'dispatcherServlet' processing GET request for [/assets/img/logo.PNG]
+2019-04-04 00:34:27.705 DEBUG 5972 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking up handler method for path /assets/img/logo.PNG
+2019-04-04 00:34:27.705 DEBUG 5972 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Did not find handler method for [/assets/img/logo.PNG]
+2019-04-04 00:34:27.705 DEBUG 5972 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns for request [/assets/img/logo.PNG] are [/**]
+2019-04-04 00:34:27.705 DEBUG 5972 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : URI Template variables for request [/assets/img/logo.PNG] are {}
+2019-04-04 00:34:27.705 DEBUG 5972 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapping [/assets/img/logo.PNG] to HandlerExecutionChain with handler [ResourceHttpRequestHandler [locations=[ServletContext resource [/], class path resource [META-INF/resources/], class path resource [resources/], class path resource [static/], class path resource [public/]], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@366592f3]]] and 1 interceptor
+2019-04-04 00:34:27.705 DEBUG 5972 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Last-Modified value for [/assets/img/logo.PNG] is: -1
+2019-04-04 00:34:27.726 DEBUG 5972 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-04-04 00:34:27.726 DEBUG 5972 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Successfully completed request
+2019-04-04 00:34:27.766 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : DispatcherServlet with name 'dispatcherServlet' processing GET request for [/viewEmployeeDetails/assets/js/main.js]
+2019-04-04 00:34:27.774 DEBUG 5972 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking up handler method for path /viewEmployeeDetails/assets/js/main.js
+2019-04-04 00:34:27.776 DEBUG 5972 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Did not find handler method for [/viewEmployeeDetails/assets/js/main.js]
+2019-04-04 00:34:27.776 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Matching patterns for request [/viewEmployeeDetails/assets/js/main.js] are [/**]
+2019-04-04 00:34:27.776 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : URI Template variables for request [/viewEmployeeDetails/assets/js/main.js] are {}
+2019-04-04 00:34:27.776 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapping [/viewEmployeeDetails/assets/js/main.js] to HandlerExecutionChain with handler [ResourceHttpRequestHandler [locations=[ServletContext resource [/], class path resource [META-INF/resources/], class path resource [resources/], class path resource [static/], class path resource [public/]], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@366592f3]]] and 1 interceptor
+2019-04-04 00:34:27.776 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Last-Modified value for [/viewEmployeeDetails/assets/js/main.js] is: -1
+2019-04-04 00:34:27.776 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-04-04 00:34:27.776 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Successfully completed request
+2019-04-04 00:34:27.776 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : DispatcherServlet with name 'dispatcherServlet' processing GET request for [/error]
+2019-04-04 00:34:27.776 DEBUG 5972 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking up handler method for path /error
+2019-04-04 00:34:27.776 DEBUG 5972 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Returning handler method [public java.lang.String com.Reimbursement.controllers.MyErrorController.handleError(javax.servlet.http.HttpServletRequest)]
+2019-04-04 00:34:27.776 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Last-Modified value for [/error] is: -1
+2019-04-04 00:34:27.784 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Requested media types are [*/*] based on Accept header types and producible media types [*/*])
+2019-04-04 00:34:27.784 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Returning [org.springframework.web.servlet.view.JstlView: name 'errors/404'; URL [/WEB-INF/jsp/errors/404.jsp]] based on requested media type '*/*'
+2019-04-04 00:34:27.784 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Rendering view [org.springframework.web.servlet.view.JstlView: name 'errors/404'; URL [/WEB-INF/jsp/errors/404.jsp]] in DispatcherServlet with name 'dispatcherServlet'
+2019-04-04 00:34:27.784 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.view.JstlView            : Forwarding to resource [/WEB-INF/jsp/errors/404.jsp] in InternalResourceView 'errors/404'
+2019-04-04 00:34:27.784 DEBUG 5972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Successfully completed request
+2019-04-04 00:35:08.037 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2019-04-04 00:35:08.037 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2019-04-04 00:35:08.037 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2019-04-04 00:35:08.037 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2019-04-04 00:35:08.037 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2019-04-04 00:35:09.306 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [applicationConfig: [classpath:/application.properties]] PropertySource with search precedence immediately lower than [applicationConfigurationProperties]
+2019-04-04 00:35:09.306 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Removing [applicationConfigurationProperties] PropertySource
+2019-04-04 00:35:09.306 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Removing [defaultProperties] PropertySource
+2019-04-04 00:35:09.711 DEBUG 5972 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-04-04 00:35:09.713  INFO 5972 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1625 ms
+2019-04-04 00:35:09.804 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Replacing [servletContextInitParams] PropertySource with [servletContextInitParams]
+2019-04-04 00:35:10.889 ERROR 5972 --- [restartedMain] o.a.tomcat.jdbc.pool.ConnectionPool      : Unable to create initial connections of pool.
+
+org.postgresql.util.PSQLException: FATAL: no pg_hba.conf entry for host "43.229.27.28", user "juidrstshzlfak", database "d146bo21frd4mu", SSL off
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:443) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:217) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:215) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.Driver.makeConnection(Driver.java:404) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.Driver.connect(Driver.java:272) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) [tomcat-jdbc-8.5.15.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:111) [spring-jdbc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:77) [spring-jdbc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:326) [spring-jdbc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:366) [spring-jdbc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.DatabaseLookup.getDatabase(DatabaseLookup.java:72) [spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaProperties.determineDatabase(JpaProperties.java:139) [spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.jpaVendorAdapter(JpaBaseConfiguration.java:105) [spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$75abc6ad.CGLIB$jpaVendorAdapter$4(<generated>) [spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$75abc6ad$$FastClassBySpringCGLIB$$f2c2c2d3.invoke(<generated>) [spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228) [spring-core-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$75abc6ad.jpaVendorAdapter(<generated>) [spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_161]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1078) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at com.Reimbursement.SpringMySqlApplication.main(SpringMySqlApplication.java:21) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+
+2019-04-04 00:35:10.897  WARN 5972 --- [restartedMain] o.s.b.a.orm.jpa.DatabaseLookup           : Unable to determine jdbc url from datasource
+
+org.springframework.jdbc.support.MetaDataAccessException: Could not get Connection for extracting meta data; nested exception is org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.postgresql.util.PSQLException: FATAL: no pg_hba.conf entry for host "43.229.27.28", user "juidrstshzlfak", database "d146bo21frd4mu", SSL off
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:339) ~[spring-jdbc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:366) ~[spring-jdbc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.DatabaseLookup.getDatabase(DatabaseLookup.java:72) ~[spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaProperties.determineDatabase(JpaProperties.java:139) [spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.jpaVendorAdapter(JpaBaseConfiguration.java:105) [spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$75abc6ad.CGLIB$jpaVendorAdapter$4(<generated>) [spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$75abc6ad$$FastClassBySpringCGLIB$$f2c2c2d3.invoke(<generated>) [spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228) [spring-core-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$75abc6ad.jpaVendorAdapter(<generated>) [spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_161]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1078) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at com.Reimbursement.SpringMySqlApplication.main(SpringMySqlApplication.java:21) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.postgresql.util.PSQLException: FATAL: no pg_hba.conf entry for host "43.229.27.28", user "juidrstshzlfak", database "d146bo21frd4mu", SSL off
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:326) ~[spring-jdbc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	... 66 common frames omitted
+Caused by: org.postgresql.util.PSQLException: FATAL: no pg_hba.conf entry for host "43.229.27.28", user "juidrstshzlfak", database "d146bo21frd4mu", SSL off
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:443) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:217) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:215) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.Driver.makeConnection(Driver.java:404) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.Driver.connect(Driver.java:272) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:111) ~[spring-jdbc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:77) ~[spring-jdbc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	... 67 common frames omitted
+
+2019-04-04 00:35:11.987 ERROR 5972 --- [restartedMain] o.a.tomcat.jdbc.pool.ConnectionPool      : Unable to create initial connections of pool.
+
+org.postgresql.util.PSQLException: FATAL: no pg_hba.conf entry for host "43.229.27.28", user "juidrstshzlfak", database "d146bo21frd4mu", SSL off
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:443) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:217) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:215) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.Driver.makeConnection(Driver.java:404) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.Driver.connect(Driver.java:272) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) [tomcat-jdbc-8.5.15.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:180) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:88) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:254) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:228) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:51) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:94) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.handleTypes(MetadataBuildingProcess.java:352) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:111) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:847) [hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:874) [hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:60) [spring-orm-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:353) [spring-orm-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:370) [spring-orm-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:359) [spring-orm-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1078) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at com.Reimbursement.SpringMySqlApplication.main(SpringMySqlApplication.java:21) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+
+2019-04-04 00:35:11.987  WARN 5972 --- [restartedMain] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata : FATAL: no pg_hba.conf entry for host "43.229.27.28", user "juidrstshzlfak", database "d146bo21frd4mu", SSL off
+2019-04-04 00:35:12.038  WARN 5972 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2019-04-04 00:35:12.038  WARN 5972 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2019-04-04 00:35:12.038  WARN 5972 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2019-04-04 00:35:12.046  WARN 5972 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2019-04-04 00:35:12.046  WARN 5972 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2019-04-04 00:35:12.046  WARN 5972 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2019-04-04 00:35:12.907 ERROR 5972 --- [restartedMain] o.a.tomcat.jdbc.pool.ConnectionPool      : Unable to create initial connections of pool.
+
+org.postgresql.util.PSQLException: FATAL: no pg_hba.conf entry for host "43.229.27.28", user "juidrstshzlfak", database "d146bo21frd4mu", SSL off
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:443) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:217) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:215) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.Driver.makeConnection(Driver.java:404) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.Driver.connect(Driver.java:272) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) [tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) [tomcat-jdbc-8.5.15.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:180) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.schema.extract.internal.ExtractionContextImpl.getJdbcConnection(ExtractionContextImpl.java:62) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:40) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:64) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.<init>(DatabaseInformationImpl.java:60) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaUpdate.execute(SchemaUpdate.java:123) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaUpdate.execute(SchemaUpdate.java:101) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:472) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:444) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:879) [hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:60) [spring-orm-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:353) [spring-orm-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:370) [spring-orm-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:359) [spring-orm-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) [spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1078) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) [spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at com.Reimbursement.SpringMySqlApplication.main(SpringMySqlApplication.java:21) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+
+2019-04-04 00:35:12.907  WARN 5972 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 28000
+2019-04-04 00:35:12.907 ERROR 5972 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : FATAL: no pg_hba.conf entry for host "43.229.27.28", user "juidrstshzlfak", database "d146bo21frd4mu", SSL off
+2019-04-04 00:35:12.907  WARN 5972 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaAutoConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory
+2019-04-04 00:35:12.939 ERROR 5972 --- [restartedMain] o.s.boot.SpringApplication               : Application startup failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaAutoConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1628) ~[spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) ~[spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) ~[spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1078) ~[spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) ~[spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) ~[spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) ~[spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at com.Reimbursement.SpringMySqlApplication.main(SpringMySqlApplication.java:21) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.persistenceException(EntityManagerFactoryBuilderImpl.java:954) ~[hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:882) ~[hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:60) ~[spring-orm-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:353) ~[spring-orm-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:370) ~[spring-orm-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:359) ~[spring-orm-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687) ~[spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624) ~[spring-beans-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	... 21 common frames omitted
+Caused by: org.hibernate.exception.GenericJDBCException: Unable to obtain JDBC Connection
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:47) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:109) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:95) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.schema.extract.internal.ExtractionContextImpl.getJdbcConnection(ExtractionContextImpl.java:65) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:40) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:64) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.<init>(DatabaseInformationImpl.java:60) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaUpdate.execute(SchemaUpdate.java:123) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaUpdate.execute(SchemaUpdate.java:101) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:472) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:444) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:879) ~[hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	... 27 common frames omitted
+Caused by: org.postgresql.util.PSQLException: FATAL: no pg_hba.conf entry for host "43.229.27.28", user "juidrstshzlfak", database "d146bo21frd4mu", SSL off
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:443) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:217) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:215) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.Driver.makeConnection(Driver.java:404) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.postgresql.Driver.connect(Driver.java:272) ~[postgresql-9.4.1212.jre7.jar:9.4.1212.jre7]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) ~[tomcat-jdbc-8.5.15.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:180) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.schema.extract.internal.ExtractionContextImpl.getJdbcConnection(ExtractionContextImpl.java:62) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	... 35 common frames omitted
+
+2019-04-04 00:35:20.645 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2019-04-04 00:35:20.645 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2019-04-04 00:35:20.645 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2019-04-04 00:35:20.645 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2019-04-04 00:35:20.645 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2019-04-04 00:35:22.401 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Adding [applicationConfig: [classpath:/application.properties]] PropertySource with search precedence immediately lower than [applicationConfigurationProperties]
+2019-04-04 00:35:22.444 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Removing [applicationConfigurationProperties] PropertySource
+2019-04-04 00:35:22.445 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Removing [defaultProperties] PropertySource
+2019-04-04 00:35:22.988 DEBUG 5972 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-04-04 00:35:22.990  INFO 5972 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2336 ms
+2019-04-04 00:35:23.192 DEBUG 5972 --- [restartedMain] o.s.w.c.s.StandardServletEnvironment     : Replacing [servletContextInitParams] PropertySource with [servletContextInitParams]
