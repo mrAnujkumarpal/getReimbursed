@@ -207,37 +207,27 @@ public class EmployeeController extends Validate {
             if (myTeamMembersID.contains(employeeId) || employeeRoleId == 6) {
                 System.out.println("Indie loong if");
                 mv.setViewName("employee/viewEmployee");
-                EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
-                if (empDP != null) {
-                    byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
-                    String base64Encoded = "";
-                    try {
-                        base64Encoded = new String(encodeBase64, "UTF-8");
-                    } catch (UnsupportedEncodingException e1) {
-                    }
-                    empDP.setBase64(base64Encoded);
-                }
 
                 //1. sum(amount) exp.status_Id=2;  for created
                 int crTDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.getExpenseStatusDetailsById(1));
                 mv.addObject("crTDAmount", crTDAmount);
+                System.out.println("crTDAmount " + crTDAmount);
 
                 //2. sum(amount) exp.status_Id=3; for remaining all
                 int penDNGAmnt = expenseService.getMyPendingAmount(employee);
                 mv.addObject("penDNGAmnt", penDNGAmnt);
+                System.out.println("penDNGAmnt " + penDNGAmnt);
 
                 //3. sum(amount) exp.status_Id=4; for rembuirshment
                 int rmbSDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.getExpenseStatusDetailsById(5));
                 mv.addObject("rmbSDAmount", rmbSDAmount);
-
-                System.out.println("crTDAmount " + crTDAmount);
-                System.out.println("penDNGAmnt " + penDNGAmnt);
                 System.out.println("rmbSDAmount " + rmbSDAmount);
 
                 EmployeeRole er = employeeService.getEmployeeRoleByRoleId(employeeRoleId);
                 if (logedInEmployee().getId() == employee.getId()) {
                     mv.addObject("showUploadDpForm", true);
                 }
+                System.out.println("Start Notification code ");
 //************************************************************************************************
                 int tlNotification = 0;
                 int mngrNotification = 0;
@@ -302,7 +292,21 @@ public class EmployeeController extends Validate {
                 mv.addObject("finNotification", finNotification);
                  */
 //******************************************************************************************
+                System.out.println("Now fetching EmpDP");
+                EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
+                if (empDP != null) {
+                    byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
+                    String base64Encoded = "";
+                    try {
+                        base64Encoded = new String(encodeBase64, "UTF-8");
+                    } catch (UnsupportedEncodingException eee) {
+                        String message = eee.getMessage();
+                        System.out.println("Exception message " + message);
 
+                    }
+                    empDP.setBase64(base64Encoded);
+                }
+                System.out.println("@@ - EMP DP Fetcting End");
                 mv.addObject("empImage", empDP);
                 mv.addObject("employeeRole", er.getEmpRole());
                 mv.addObject("employeeRoleId", employeeRoleId);
