@@ -31,15 +31,19 @@ public class ExpensePicture implements Serializable {
     @Column(name = "updateDate")
     private Date updateDate;
 
+    @Lob
+    @Column(name = "ExpBill_Data")
+    private byte[] expBillData;
+
+    @Transient
+    private String base64;
 
     @Column(name = "bill_path")
     private String billPath;
 
-
     @ManyToOne(optional = false)
-    @JoinColumn(name="exp_id")
+    @JoinColumn(name = "exp_id")
     private Expense expense;
-
 
     public Expense getExpense() {
         return expense;
@@ -57,7 +61,6 @@ public class ExpensePicture implements Serializable {
         this.picture_id = picture_id;
     }
 
-
     public String getMimeType() {
         return mimeType;
     }
@@ -65,7 +68,6 @@ public class ExpensePicture implements Serializable {
     public void setMimeType(String mimeType) {
         this.mimeType = mimeType;
     }
-
 
     public String getPictureName() {
         return pictureName;
@@ -75,7 +77,6 @@ public class ExpensePicture implements Serializable {
         this.pictureName = pictureName;
     }
 
-
     public String getSuffix() {
         return suffix;
     }
@@ -83,7 +84,6 @@ public class ExpensePicture implements Serializable {
     public void setSuffix(String suffix) {
         this.suffix = suffix;
     }
-
 
     public String getPrefix() {
         return prefix;
@@ -93,7 +93,6 @@ public class ExpensePicture implements Serializable {
         this.prefix = prefix;
     }
 
-
     public Date getCreatedDate() {
         return createdDate;
     }
@@ -101,7 +100,6 @@ public class ExpensePicture implements Serializable {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
-
 
     public Date getUpdateDate() {
         return updateDate;
@@ -118,5 +116,20 @@ public class ExpensePicture implements Serializable {
     public void setBillPath(String billPath) {
         this.billPath = billPath;
     }
-}
 
+    public byte[] getExpBillData() {
+        return expBillData;
+    }
+
+    public void setExpBillData(byte[] expBillData) {
+        this.expBillData = expBillData;
+    }
+
+    public String getBase64() {
+        return base64;
+    }
+
+    public void setBase64(String base64) {
+        this.base64 = base64;
+    }
+}

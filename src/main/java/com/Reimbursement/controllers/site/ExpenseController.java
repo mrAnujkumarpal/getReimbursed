@@ -19,6 +19,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.apache.tomcat.util.codec.binary.Base64;
+import java.io.UnsupportedEncodingException;
+import org.hibernate.bytecode.buildtime.spi.ExecutionException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +29,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 @Controller
@@ -279,11 +284,11 @@ public class ExpenseController extends Validate {
                     for (MultipartFile uploadedFile : uploadingFiles) {
 
                         String DIFFERENCIATE_BILL = DIFFERENCIATE_BILL();
-                        System.out.println(" DIFFERENCIATE_BILL =======================::" + DIFFERENCIATE_BILL);
-                        File file = new File(CREATED_DIRECTORY + DIFFERENCIATE_BILL + uploadedFile.getOriginalFilename());
-                        System.out.println(" file name  =======================::" + file.getName());
+                        // System.out.println(" DIFFERENCIATE_BILL =======================::" + DIFFERENCIATE_BILL);
+                        //File file = new File(CREATED_DIRECTORY + DIFFERENCIATE_BILL + uploadedFile.getOriginalFilename());
+                        //System.out.println(" file name  =======================::" + file.getName());
 
-                        uploadedFile.transferTo(file);
+                        //uploadedFile.transferTo(file);
                         String pictureName = uploadedFile.getOriginalFilename();
                         System.out.println("pictureName  " + pictureName);
                         String cntntTyp = uploadedFile.getContentType();
@@ -291,6 +296,15 @@ public class ExpenseController extends Validate {
 
                         ExpensePicture ep = new ExpensePicture();
                         System.out.println("currentDate  :: saved date " + currentDate);
+                        System.out.println("------------------------------- ");
+                        try {
+
+                            ep.setExpBillData(uploadedFile.getBytes());
+
+                        } catch (IOException e) {
+                            System.out.println("Catch block : " + e.getMessage());
+                        }
+                        System.out.println("------------------------------- ");
                         ep.setCreatedDate(currentDate);
                         ep.setPictureName(pictureName);
                         ep.setMimeType(cntntTyp);
@@ -301,7 +315,7 @@ public class ExpenseController extends Validate {
 
                     }
 
-                } catch (IOException | IllegalStateException e) {
+                } catch (IllegalStateException e) {
                     System.out.println("Expense billable  : FALSE " + e.getMessage());
                 }
 
@@ -334,7 +348,7 @@ public class ExpenseController extends Validate {
 
     @RequestMapping(value = "/viewPerticularExpense/{expense_Id}", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView viewPerticularExpense(@PathVariable("expense_Id") int expense_Id) {
+    public ModelAndView viewPerticularExpense(@PathVariable("expense_Id") int expense_Id) throws UnsupportedEncodingException {
         System.out.println("comming expense id to view " + expense_Id);
         ModelAndView mv = new ModelAndView();
 
@@ -365,16 +379,31 @@ public class ExpenseController extends Validate {
                 if (expense.getBillable()) {
                     System.out.println("find attached bill details.");
                     epBls = expenseService.getAllBillsPerExpense(expense);
+                    System.out.println(" Attached bills count " + epBls.size());
                     if (epBls != null) {
                         System.out.println("find attached bill details-- " + epBls.size());
                         for (ExpensePicture ep : epBls) {
+
+                            byte[] encodeBase64 = Base64.encodeBase64(ep.getExpBillData());
+
+                            String base64Encoded = "";
+                            System.out.println(" Inside 1");
+                            try {
+                                base64Encoded = new String(encodeBase64, "UTF-8");
+                                System.out.println("=============DONE==============");
+                            } catch (NumberFormatException eee) {
+                                String message = eee.getMessage();
+                                System.out.println("Exception message " + message);
+                            }
                             //ep.setBillPath(ep.getBillPath().substring(50, ep.getBillPath().length()));
+                            ep.setBase64(base64Encoded);
                             imgPath = ep.getBillPath().substring(50, ep.getBillPath().length());
-                            System.out.println(" Image path ====>>> " + imgPath);
                             mv.addObject("imgPath", imgPath);
                         }
+                        System.out.println("==========================Bills found=========================");
                         mv.addObject("expAttachedBills", epBls);
                     } else {
+                        System.out.println("------------Bills not found ----------------------------");
                         mv.addObject("expAttachedBills", "");
                     }
                 } else {

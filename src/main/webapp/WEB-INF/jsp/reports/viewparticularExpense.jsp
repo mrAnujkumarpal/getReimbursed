@@ -6,7 +6,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
-    <title>whole Details | EMS</title> 
+    <title>Particular Expense | EMS</title> 
     <style type="text/css"> body { background-color:#f1f3e9;} #rejectBtn{background-color:#fff; border:1px solid #757575; color:#757575; border-radius:7px;} </style>
     <body>
 
@@ -145,7 +145,7 @@
                                             <c:when test="${expAttachedBills ne null && not empty expAttachedBills}">
                                                 <c:forEach items="${expAttachedBills}" var="eaB">
                                                     <div class="col s12 m6 l6">
-                                                        <img class="responsive-img" src="/${imgPath}${eaB.prefix}${eaB.pictureName}">
+                                                        <img class="responsive-img" src="data:image/jpeg;base64,${eaB.base64}">-
                                                     </div>
                                                 </c:forEach>
                                             </c:when>
