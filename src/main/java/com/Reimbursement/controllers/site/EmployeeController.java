@@ -291,7 +291,7 @@ public class EmployeeController extends Validate {
 
 //******************************************************************************************
                 System.out.println("Now fetching EmpDP");
-                /*
+                
                 EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
 
                 System.out.println(" empDP " + empDP.getEmployee_id());
@@ -315,7 +315,7 @@ public class EmployeeController extends Validate {
                 } catch (NullPointerException nel) {
                     nel.getMessage();
                 }
-                 */
+                 
                 System.out.println("@@ - EMP DP Fetcting End");
                 //   mv.addObject("empImage", empDP);
                 mv.addObject("employeeRole", er.getEmpRole());
