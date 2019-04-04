@@ -288,37 +288,34 @@ public class EmployeeController extends Validate {
                 mv.addObject("tlNotification", tlNotification);
                 mv.addObject("mngrNotification", mngrNotification);
                 mv.addObject("finNotification", finNotification);
-
+                mv.addObject("employeeRole", er.getEmpRole());
 //******************************************************************************************
                 System.out.println("Now fetching EmpDP");
 
                 EmpDP empDP = new EmpDP();
-                try {
-                    empDP = employeeService.findDPByEmployeeId(employeeId);
-                    System.out.println(" empDP " + empDP.getEmployee_id());
-                    if (empDP != null) {
-                        System.out.println(" Inside if condition ");
-                        byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
-                        String base64Encoded = "";
-                        System.out.println(" Inside 1");
-                        try {
-                            base64Encoded = new String(encodeBase64, "UTF-8");
-                        } catch (UnsupportedEncodingException eee) {
-                            String message = eee.getMessage();
-                            System.out.println("Exception message " + message);
-                        }
-                        System.out.println(" Inside 2 ");
-                        empDP.setBase64(base64Encoded);
-                        System.out.println(" Inside 3");
+
+                empDP = employeeService.findDPByEmployeeId(employeeId);
+                System.out.println(" empDP " + empDP.getEmployee_id());
+                if (empDP != null) {
+                    System.out.println(" Inside if condition ");
+                    byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
+                    String base64Encoded = "";
+                    System.out.println(" Inside 1");
+                    try {
+                        base64Encoded = new String(encodeBase64, "UTF-8");
+                    } catch (UnsupportedEncodingException eee) {
+                        String message = eee.getMessage();
+                        System.out.println("Exception message " + message);
                     }
-                } catch (NullPointerException nel) {
-                    System.out.println("Inside catch");
-                    System.out.println(nel.getMessage());
+                    System.out.println(" Inside 2 ");
+                    empDP.setBase64(base64Encoded);
+                    System.out.println(" Inside 3");
                 }
+
+                System.out.println("Inside catch");
 
                 System.out.println("@@ - EMP DP Fetcting End");
                 mv.addObject("empImage", empDP);
-                mv.addObject("employeeRole", er.getEmpRole());
 
             } else {
                 System.out.println("INSIDE ELSE WRONG ACCESS");
@@ -373,6 +370,8 @@ public class EmployeeController extends Validate {
 
         // ModelAndView mv = new ModelAndView();
         Employee employee = logedInEmployee();
+        String url = "viewEmployeeDetails/" + employee.getId();
+        System.out.println("url ::" + url);
         if (fileUpload.getSize() > 0 && (!fileUpload.getOriginalFilename().isEmpty())) {
             System.out.println("Saving file name : " + fileUpload.getOriginalFilename());
             System.out.println("Saving file size : " + fileUpload.getSize());
@@ -398,7 +397,7 @@ public class EmployeeController extends Validate {
                 System.out.println("NOW going to update only");
                 employeeService.addEmpPhoto(fetchedEmpDp);
                 System.out.println("DONE UPDATE");
-                        
+
             } else {
                 employeeService.addEmpPhoto(empDP);
             }
@@ -406,8 +405,7 @@ public class EmployeeController extends Validate {
         } else {
             System.out.println("Select any image to upload.");
         }
-        String url = "viewEmployeeDetails/"+employee.getId();
-        System.out.println("url ::" + url);
+
         //  mv.setViewName("redirect:" + url) ;
 
         /*
