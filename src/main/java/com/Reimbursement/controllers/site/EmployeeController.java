@@ -293,6 +293,7 @@ public class EmployeeController extends Validate {
 //******************************************************************************************
                 System.out.println("Now fetching EmpDP");
                 EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
+
                 System.out.println(" empDP " + empDP.getEmployee_id());
 
                 try {
@@ -371,7 +372,7 @@ public class EmployeeController extends Validate {
     @RequestMapping(value = "/viewEmployeeDetails/doUploadEmpDP", method = RequestMethod.POST)
     public ModelAndView doUploadEmpDP(@RequestParam("empPhoto") MultipartFile fileUpload) {
 
-        ModelAndView mv = new ModelAndView("employee/uploadEmployeeDp");
+        ModelAndView mv = new ModelAndView();
         Employee employee = logedInEmployee();
         if (fileUpload.getSize() > 0 && (!fileUpload.getOriginalFilename().isEmpty())) {
             System.out.println("Saving file name : " + fileUpload.getOriginalFilename());
@@ -402,6 +403,11 @@ public class EmployeeController extends Validate {
         } else {
             System.out.println("Select any image to upload.");
         }
+        String url = "viewEmployeeDetails/" + employee.getId();
+        System.out.println("url ::" + url);
+        mv.setViewName("redirect:" + url) ;
+                
+                /*
         System.out.println("Now going to display uploaded image");
         EmpDP edp = employeeService.findDPByEmployeeId(employee.getId());
         byte[] encodeBase64 = Base64.encodeBase64(edp.getEmpDPData());
@@ -413,7 +419,10 @@ public class EmployeeController extends Validate {
         edp.setBase64(base64Encoded);
         System.out.println(edp.getEmpDPName() + " - " + edp.getEmpDPType());
         System.out.println(" going to back");
-        /*
+        
+        mv.setViewName("employee/uploadEmployeeDp");
+       
+        
         List<EmpDP> edp = employeeService.getAllEmpDPDetails();
         System.out.println(" All detaila " + edp.size());
         for (EmpDP e : edp) {
@@ -428,11 +437,12 @@ public class EmployeeController extends Validate {
             System.out.println(e.getEmpDPName() + " - " + e.getEmpDPType());
         }
         mv.addObject("dpData", edp);
-         */
+        
         mv.addObject("employeeRoleId", employee.getEmpRole().getId());
         mv.addObject("dpData", edp);
         mv.addObject("uploadStatus", true);
         mv.addObject("uploadMsg", "Employee photo uploaded successfully.");
+                 */
         return mv;
     }
 
