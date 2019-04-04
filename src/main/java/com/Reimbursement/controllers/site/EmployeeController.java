@@ -291,12 +291,11 @@ public class EmployeeController extends Validate {
 
 //******************************************************************************************
                 System.out.println("Now fetching EmpDP");
-                
-                EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
 
-                System.out.println(" empDP " + empDP.getEmployee_id());
-
+                EmpDP empDP = new EmpDP();
                 try {
+                    empDP = employeeService.findDPByEmployeeId(employeeId);
+                    System.out.println(" empDP " + empDP.getEmployee_id());
                     if (empDP != null) {
                         System.out.println(" Inside if condition ");
                         byte[] encodeBase64 = Base64.encodeBase64(empDP.getEmpDPData());
@@ -313,9 +312,10 @@ public class EmployeeController extends Validate {
                         System.out.println(" Inside 3");
                     }
                 } catch (NullPointerException nel) {
-                    nel.getMessage();
+                    System.out.println("Inside catch");
+                    System.out.println(nel.getMessage());
                 }
-                 
+
                 System.out.println("@@ - EMP DP Fetcting End");
                 mv.addObject("empImage", empDP);
                 mv.addObject("employeeRole", er.getEmpRole());
