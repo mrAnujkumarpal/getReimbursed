@@ -370,9 +370,9 @@ public class EmployeeController extends Validate {
     }
 
     @RequestMapping(value = "/viewEmployeeDetails/doUploadEmpDP", method = RequestMethod.POST)
-    public ModelAndView doUploadEmpDP(@RequestParam("empPhoto") MultipartFile fileUpload) {
+    public String doUploadEmpDP(@RequestParam("empPhoto") MultipartFile fileUpload) {
 
-        ModelAndView mv = new ModelAndView();
+        // ModelAndView mv = new ModelAndView();
         Employee employee = logedInEmployee();
         if (fileUpload.getSize() > 0 && (!fileUpload.getOriginalFilename().isEmpty())) {
             System.out.println("Saving file name : " + fileUpload.getOriginalFilename());
@@ -403,11 +403,11 @@ public class EmployeeController extends Validate {
         } else {
             System.out.println("Select any image to upload.");
         }
-        String url = "viewEmployeeDetails/" + employee.getId();
+        String url = "viewEmployeeDetails/"+employee.getId();
         System.out.println("url ::" + url);
-        mv.setViewName("redirect:" + url) ;
-                
-                /*
+        //  mv.setViewName("redirect:" + url) ;
+
+        /*
         System.out.println("Now going to display uploaded image");
         EmpDP edp = employeeService.findDPByEmployeeId(employee.getId());
         byte[] encodeBase64 = Base64.encodeBase64(edp.getEmpDPData());
@@ -442,8 +442,8 @@ public class EmployeeController extends Validate {
         mv.addObject("dpData", edp);
         mv.addObject("uploadStatus", true);
         mv.addObject("uploadMsg", "Employee photo uploaded successfully.");
-                 */
-        return mv;
+         */
+        return "redirect:/"+ url;
     }
 
     /*
