@@ -138,6 +138,7 @@ public class ExpenseDaoServiceImpl implements ExpenseDaoService {
     }
 
     @Override
+    @Transactional
     public List<ExpensePicture> fetchAllAttechedBillWithExpense(Expense expense) {
         return expensePictureRepository.findAllAttechedBillWithExpense(expense);
     }

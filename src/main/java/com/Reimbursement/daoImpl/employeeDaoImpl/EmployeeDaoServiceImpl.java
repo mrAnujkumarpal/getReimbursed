@@ -109,7 +109,6 @@ public class EmployeeDaoServiceImpl implements EmployeeDaoService {
     @Override
     @Transactional
     public EmpDP findEmpDPByEmployeeID(int empId) {
-         System.out.println("$$--> Comming here to fetch dp emloyee service impl " + empId);
         return empDPRepository.findByEmployee_id(empId);
     }
 
