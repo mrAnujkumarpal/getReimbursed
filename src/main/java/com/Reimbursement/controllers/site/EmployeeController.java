@@ -387,6 +387,7 @@ public class EmployeeController extends Validate {
 
             EmpDP fetchedEmpDp = employeeService.findDPByEmployeeId(employee.getId());
             if (fetchedEmpDp != null) {
+                System.out.println("INSIDE if TO UPDATE EMPDP ");
                 fetchedEmpDp.setEmpDPName(fileUpload.getOriginalFilename());
                 fetchedEmpDp.setEmpDPType(fileUpload.getContentType());
                 try {
@@ -394,7 +395,10 @@ public class EmployeeController extends Validate {
                 } catch (IOException e) {
                     System.out.println("FetchedEmpDp Catch block : " + e.getMessage());
                 }
+                System.out.println("NOW going to update only");
                 employeeService.addEmpPhoto(fetchedEmpDp);
+                System.out.println("DONE UPDATE");
+                        
             } else {
                 employeeService.addEmpPhoto(empDP);
             }
@@ -402,7 +406,7 @@ public class EmployeeController extends Validate {
         } else {
             System.out.println("Select any image to upload.");
         }
-        String url = "viewEmployeeDetails/" + employee.getId();
+        String url = "viewEmployeeDetails/"+employee.getId();
         System.out.println("url ::" + url);
         //  mv.setViewName("redirect:" + url) ;
 
