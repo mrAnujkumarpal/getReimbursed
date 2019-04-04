@@ -189,7 +189,6 @@ public class EmployeeController extends Validate {
     }
 
     @RequestMapping(value = {"viewEmployeeDetails/{id}"}, method = RequestMethod.GET)
-    @SuppressWarnings("null")
     public ModelAndView viewEmployeeDetails(@PathVariable("id") int employeeId) {
         System.out.println("viewEmployeeDetails comming id " + employeeId);
         ModelAndView mv = new ModelAndView();
@@ -292,6 +291,7 @@ public class EmployeeController extends Validate {
 
 //******************************************************************************************
                 System.out.println("Now fetching EmpDP");
+                /*
                 EmpDP empDP = employeeService.findDPByEmployeeId(employeeId);
 
                 System.out.println(" empDP " + empDP.getEmployee_id());
@@ -315,9 +315,9 @@ public class EmployeeController extends Validate {
                 } catch (NullPointerException nel) {
                     nel.getMessage();
                 }
-
+                 */
                 System.out.println("@@ - EMP DP Fetcting End");
-                mv.addObject("empImage", empDP);
+                //   mv.addObject("empImage", empDP);
                 mv.addObject("employeeRole", er.getEmpRole());
                 mv.addObject("employeeRoleId", employeeRoleId);
 
@@ -403,7 +403,7 @@ public class EmployeeController extends Validate {
         } else {
             System.out.println("Select any image to upload.");
         }
-        String url = "viewEmployeeDetails/"+employee.getId();
+        String url = "viewEmployeeDetails/" + employee.getId();
         System.out.println("url ::" + url);
         //  mv.setViewName("redirect:" + url) ;
 
@@ -443,7 +443,7 @@ public class EmployeeController extends Validate {
         mv.addObject("uploadStatus", true);
         mv.addObject("uploadMsg", "Employee photo uploaded successfully.");
          */
-        return "redirect:/"+ url;
+        return "redirect:/" + url;
     }
 
     /*
