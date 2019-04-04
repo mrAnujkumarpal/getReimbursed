@@ -89,6 +89,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmpDP findDPByEmployeeId(int empId) {
+        System.out.println("$$--> Comming here to fetch dp emloyee service impl " + empId);
         return employeeDaoService.findEmpDPByEmployeeID(empId);
     }
 

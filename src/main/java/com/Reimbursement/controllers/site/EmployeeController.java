@@ -189,7 +189,7 @@ public class EmployeeController extends Validate {
 
     @RequestMapping(value = {"viewEmployeeDetails/{id}"}, method = RequestMethod.GET)
     public ModelAndView viewEmployeeDetails(@PathVariable("id") int employeeId) {
-        System.out.println("viewEmployeeDetails comming id " + employeeId);
+        System.out.println("viewEmployeeDetails comming id :::: " + employeeId);
         ModelAndView mv = new ModelAndView();
         try {
             Employee employee = employeeService.getEmployeeById(employeeId);
@@ -317,7 +317,7 @@ public class EmployeeController extends Validate {
                 }
                  
                 System.out.println("@@ - EMP DP Fetcting End");
-                //   mv.addObject("empImage", empDP);
+                mv.addObject("empImage", empDP);
                 mv.addObject("employeeRole", er.getEmpRole());
 
             } else {
