@@ -42,8 +42,7 @@ public class ReportsController extends Validate {
     @Autowired
     private EmployeeService employeeService;
 
- //   private final Logger log = LoggerFactory.getLogger(this.getClass());
-
+    //   private final Logger log = LoggerFactory.getLogger(this.getClass());
     List<Expense> respectiveExpenseHistory(int expStatus_id) {
 
         List<Expense> el = new ArrayList<>();
@@ -70,7 +69,8 @@ public class ReportsController extends Validate {
             }
             mv.addObject("expenses", ex);
         } else {
-            mv.setViewName("redirect:/wrongAccess");
+            mv.setViewName("wrongAccess");
+            mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         }
 
         return mv;
@@ -221,28 +221,23 @@ public class ReportsController extends Validate {
     }
 
     @RequestMapping(value = "/default", method = RequestMethod.GET)
-    public ModelAndView deafultAfterLogin() {
+    public String deafultAfterLogin() {
         System.out.println(" ------------------------------ ");
-        ModelAndView modelAndView = new ModelAndView();
-
         Employee emp = logedInEmployee();
         int employeeID = emp.getId();
-        int empRoleId = emp.getEmpRole().getId();
-
+        String url = "";
         System.out.println("employeeID " + employeeID);
         if (employeeID != 0) {
             System.out.println("Inside IF of default method");
-            String url = "viewEmployeeDetails/" + employeeID;
+            url = "viewEmployeeDetails/" + employeeID;
             System.out.println("url ::" + url);
-            modelAndView.setViewName("redirect:" + url);
-
         } else {
             System.out.println("Inside else of default method");
-            modelAndView.addObject("employeeRoleId", empRoleId);
-            modelAndView.setViewName("errors/404");
+            url = "wrongAccess";
+            System.out.println("url ::" + url);
         }
         System.out.println("Now return ");
-        return modelAndView;
+        return "redirect:/" + url;
     }
 
 }

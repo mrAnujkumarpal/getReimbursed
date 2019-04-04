@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="card">
                                     <div class="col s12" style="border-bottom:1px solid #eeeeee; padding:10px;">
-                                        <span  class="left-align" style="font-size:18px;">Sign in</span>
+                                        <span  class="left-align" style="font-size:18px;">Sign-in</span>
                                         <span   class="right" ><small><a href="#">Forgot Password ?</a></small></span>
                                     </div>
                                     <div class="card-content">
