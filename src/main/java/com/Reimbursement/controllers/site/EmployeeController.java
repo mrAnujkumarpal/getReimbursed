@@ -89,13 +89,12 @@ public class EmployeeController extends Validate {
             mv.addObject("locationList", commonService.getAllLocations());
             mv.addObject("submitterToList", submitterToList);
             mv.addObject("approverToList", approverToList);
-            mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
             mv.addObject("employee", new Employee());
             mv.setViewName("employee/registration");
         } else {
-            mv.setViewName("redirect:/wrongAccess");
+            mv.setViewName("errors/505");
         }
-
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return mv;
     }
 
@@ -201,6 +200,7 @@ public class EmployeeController extends Validate {
             });
             int employeeRoleId = logedInEmployee().getEmpRole().getId();
             System.out.println("employeeRoleId " + employeeRoleId);
+            mv.addObject("employeeRoleId", employeeRoleId);
             if (myTeamMembersID.contains(employeeId) || employeeRoleId == 6) {
                 System.out.println("Indie loong if");
                 mv.setViewName("employee/viewEmployee");
@@ -319,11 +319,10 @@ public class EmployeeController extends Validate {
                 System.out.println("@@ - EMP DP Fetcting End");
                 //   mv.addObject("empImage", empDP);
                 mv.addObject("employeeRole", er.getEmpRole());
-                mv.addObject("employeeRoleId", employeeRoleId);
 
             } else {
                 System.out.println("INSIDE ELSE WRONG ACCESS");
-                mv.setViewName("redirect:/wrongAccess");
+                mv.setViewName("errors/505");
             }
         } catch (Exception e) {
             e.getMessage();
@@ -339,7 +338,7 @@ public class EmployeeController extends Validate {
         System.out.println("comming id for edit" + employeeId);
         ModelAndView mv = new ModelAndView();
         if (logedInEmployee().getEmpRole().getId() != 6) {
-            mv.setViewName("redirect:/wrongAccess");
+            mv.setViewName("errors/505");
         } else {
 
             mv.setViewName("employee/registration");
@@ -516,10 +515,11 @@ public class EmployeeController extends Validate {
             mv.addObject("roleList", employeeService.getAllEmployeeRoles());
             mv.addObject("locationList", commonService.getAllLocations());
             mv.addObject("allEmployeesList", sortedListBasedOnID(myTeamMembers));
-            mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+
         } else {
-            mv.setViewName("redirect:/wrongAccess");
+            mv.setViewName("errors/505");
         }
+        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
         return mv;
     }
 
