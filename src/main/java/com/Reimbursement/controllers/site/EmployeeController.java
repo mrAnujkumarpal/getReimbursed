@@ -383,7 +383,7 @@ public class EmployeeController extends Validate {
             } catch (IOException e) {
                 System.out.println("Catch block : " + e.getMessage());
             }
-
+            System.out.println(" Now try to fetch for this employee id");
             EmpDP fetchedEmpDp = employeeService.findDPByEmployeeId(employee.getId());
             if (fetchedEmpDp != null) {
                 System.out.println("INSIDE if TO UPDATE EMPDP ");
@@ -444,6 +444,8 @@ public class EmployeeController extends Validate {
         mv.addObject("uploadStatus", true);
         mv.addObject("uploadMsg", "Employee photo uploaded successfully.");
          */
+        System.out.println("NOW REDIRECT ONLY----------");
+                
         return "redirect:/" + url;
     }
 

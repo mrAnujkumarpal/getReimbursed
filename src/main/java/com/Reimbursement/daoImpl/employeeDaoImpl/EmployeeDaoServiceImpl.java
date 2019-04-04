@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -106,6 +107,7 @@ public class EmployeeDaoServiceImpl implements EmployeeDaoService {
     }
 
     @Override
+    @Transactional
     public EmpDP findEmpDPByEmployeeID(int empId) {
          System.out.println("$$--> Comming here to fetch dp emloyee service impl " + empId);
         return empDPRepository.findByEmployee_id(empId);
