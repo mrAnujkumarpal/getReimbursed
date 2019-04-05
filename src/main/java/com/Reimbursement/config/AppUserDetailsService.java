@@ -16,25 +16,24 @@ import java.util.Arrays;
 @Service
 public class AppUserDetailsService implements UserDetailsService {
 
-
     @Autowired
     EmployeeRepository employeeRepository;
 
     @Override
     public UserDetails loadUserByUsername(String loginedEmail) throws UsernameNotFoundException {
         System.out.println("MMM----> loginedEmail " + loginedEmail);
+        loginedEmail = loginedEmail.toLowerCase();
+        Employee emp = employeeRepository.findByEmail(loginedEmail);
+        System.out.println("MMM----> verified email  " + emp.getEmail());
+        if (emp == null) {
+            throw new UsernameNotFoundException("User not authorized");
+        }
+        GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("USER");
+        System.out.println(" grantedAuthority  ");
+        UserDetails userDetails = new User(emp.getEmail(), emp.getPassword(), Arrays.asList(grantedAuthority));
+        System.out.println(" userDetails  " + userDetails.getUsername());
 
-            Employee emp = employeeRepository.findByEmail(loginedEmail);
-            System.out.println("MMM----> verified email  " + emp.getEmail());
-            if (emp == null) {
-                throw new UsernameNotFoundException("User not authorized");
-            }
-            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("USER");
-            System.out.println(" grantedAuthority  ");
-            UserDetails userDetails = new User(emp.getEmail(), emp.getPassword(), Arrays.asList(grantedAuthority));
-            System.out.println(" userDetails  " + userDetails.getUsername());
-
-        return  userDetails;
+        return userDetails;
 
     }
 }

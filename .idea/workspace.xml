@@ -5,24 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="372fc2b4-4f4f-47d6-9424-68b45d9233d7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/img/favicon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/main.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Reimbursement/controllers/site/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Reimbursement/controllers/site/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Reimbursement/controllers/site/ExpenseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Reimbursement/controllers/site/ExpenseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Reimbursement/daoImpl/expenseDaoImpl/ExpenseDaoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Reimbursement/daoImpl/expenseDaoImpl/ExpenseDaoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Reimbursement/models/expense/ExpensePicture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Reimbursement/models/expense/ExpensePicture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Reimbursement/serviceImpl/expenseServiceImpl/ExpenseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Reimbursement/serviceImpl/expenseServiceImpl/ExpenseServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reports/viewparticularExpense.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reports/viewparticularExpense.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Kumar/2019/03/05-22_41_03-images.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Kumar/2019/03/06-11_14_04-500.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Kumar/2019/03/13-23_33_21-404-plane.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Kumar/2019/03/Anuj Kumar/2019/03/06-11_15_25-logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Kumar/2019/04/04-20_52_22-12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Kumar/2019/04/04-20_52_22-21-1u0mo2l.1vg6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Kumar/2019/04/04-20_52_22-4.Coll_Classes_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Kumar/2019/04/04-21_07_21-bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Kumar/2019/04/04-21_17_31-cup-bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Kumar/2019/04/04-21_27_29-132.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Pal/2019/03/06-23_07_01-categories.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Pal/2019/03/06-23_13_53-mvc.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Pal/2019/03/06-23_16_30-food bill.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Pal/2019/03/07-12_18_39-hl2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Pal/2019/03/07-12_24_30-hl4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Pal/2019/03/14-00_03_02-IMB-Phone-and-Wallet-Plus-icon-272x315-03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Pal/2019/03/14-00_03_02-images.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Pal/2019/03/14-00_03_02-my logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Pal/2019/03/16-19_34_48-1512-800.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Pal/2019/03/16-19_34_48-4.Coll_Classes_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Pal/2019/03/16-19_34_48-anuj.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Anuj Pal/2019/03/Anuj Pal/2019/03/06-23_09_03-travel bill.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Ishant Agarwal/2019/03/07-13_03_04-404-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Ishant Agarwal/2019/03/07-13_03_04-500.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Pradip Kumar/2019/03/06-16_23_33-pb-s-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Pradip Kumar/2019/03/06-16_23_33-wine-glass-png-image-5a3ab289b3f583.50777371151379623373719080.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Prince Gupta/2019/03/16-04_45_22-18527271_357112881353360_1016926575777559023_o.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Prince Gupta/2019/03/18-17_04_10-12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Prince Gupta/2019/03/18-17_04_10-132.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Prince Gupta/2019/03/18-17_04_10-21-1u0mo2l.1vg6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Prince Gupta/2019/03/18-17_04_10-4.Coll_Classes_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Prince Gupta/2019/03/18-17_21_13-12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Prince Gupta/2019/03/18-17_21_13-21-1u0mo2l.1vg6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Prince Gupta/2019/03/18-17_21_13-4.Coll_Classes_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Prince Gupta/2019/03/Pradip Kumar/2019/03/16-04_47_37-logiclab-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/Bills/Test One/2019/03/05-21_44_52-food bill.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/.netbeans_automatic_build" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Reimbursement/controllers/site/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Reimbursement/controllers/site/EmployeeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Reimbursement/controllers/site/ExpenseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Reimbursement/controllers/site/ExpenseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Reimbursement/dao/expenseDaoService/ExpenseDaoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Reimbursement/dao/expenseDaoService/ExpenseDaoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Reimbursement/dao/repo/expense/ExpensePictureRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Reimbursement/dao/repo/expense/ExpensePictureRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Reimbursement/daoImpl/expenseDaoImpl/ExpenseDaoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Reimbursement/daoImpl/expenseDaoImpl/ExpenseDaoServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Reimbursement/models/expense/ExpensePicture.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Reimbursement/models/expense/ExpensePicture.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Reimbursement/service/expenseService/ExpenseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Reimbursement/service/expenseService/ExpenseService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Reimbursement/serviceImpl/expenseServiceImpl/ExpenseServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Reimbursement/serviceImpl/expenseServiceImpl/ExpenseServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/.netbeans_automatic_build" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,11 +70,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="67" column="1" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
+            <state relative-caret-position="432">
+              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/footer.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="9" column="63" selection-start-line="9" selection-start-column="63" selection-end-line="9" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/header.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -56,7 +100,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/Reimbursement/controllers/site/ExpenseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
+            <state relative-caret-position="8712">
               <caret line="391" column="45" selection-start-line="391" selection-start-column="45" selection-end-line="391" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -147,7 +191,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/common/vendors.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reports/viewparticularExpense.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/allEmployees.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/header.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/Reimbursement/models/empModel/Employee.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/Reimbursement/models/expense/ExpenseClickDate.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reports/expenseHistory.jsp" />
@@ -177,6 +220,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/Reimbursement/daoImpl/employeeDaoImpl/EmployeeDaoServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/Reimbursement/serviceImpl/expenseServiceImpl/ExpenseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/header.jsp" />
       </list>
     </option>
   </component>
@@ -210,135 +254,30 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Reimbursement" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Reimbursement" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Reimbursement" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Reimbursement" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="site" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringMySQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="getReimbursed" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-              <item name="employee" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554401759178" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554406608121" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../wttj" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ngApp" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\iNTELI_jA\getReimbursed\src\main\webapp\assets\img" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.Reimbursement.models" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\iNTELI_jA\getReimbursed\src\main\webapp\assets\img" />
       <recent name="D:\iNTELI_jA\getReimbursed\src\main\webapp\assets\img\Bills" />
       <recent name="D:\iNTELI_jA\SpringBootMySQL-CRUD\src\main\webapp\assets\img" />
       <recent name="D:\iNTELI_jA\SpringBootMySQL-CRUD\src\main\webapp" />
       <recent name="D:\iNTELI_jA\SpringBootMySQL-CRUD\src\main\webapp\WEB-INF\jsp\common" />
-      <recent name="D:\iNTELI_jA\SpringBootMySQL-CRUD\src\main\java\com\Reimbursement\controllers" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.Reimbursement.models" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\iNTELI_jA\getReimbursed\src\main\webapp\assets\img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -427,7 +366,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49844238" visible="true" weight="0.20953101" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49844238" visible="true" weight="0.32526475" />
       <window_info id="Structure" order="1" sideWeight="0.50155765" side_tool="true" weight="0.2677761" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -436,12 +375,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.051282052" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.82564104" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.14871795" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.6940171" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32991454" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.43760684" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.21880342" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.45128205" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.565812" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.30769232" />
@@ -557,20 +496,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/reports/pendingExpenseHistory.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
-          <caret line="4" column="63" lean-forward="true" selection-start-line="4" selection-start-column="63" selection-end-line="4" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/Reimbursement/dao/repo/expense/ExpenseRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/Reimbursement/models/expense/ExpenseClickDate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -658,13 +583,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/header.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -923,9 +841,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/img/favicon.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/footer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="63" selection-start-line="9" selection-start-column="63" selection-end-line="9" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/Reimbursement/controllers/site/ExpenseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
+        <state relative-caret-position="8712">
           <caret line="391" column="45" selection-start-line="391" selection-start-column="45" selection-end-line="391" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -933,10 +868,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/header.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="67" column="1" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
+        <state relative-caret-position="144">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
