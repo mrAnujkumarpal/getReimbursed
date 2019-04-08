@@ -80,19 +80,30 @@ public class CommonController extends Validate {
         ModelAndView mv = new ModelAndView("common/changePassword");
         Map<String, String> resp = new HashMap<>();
 
+        oldPwd = oldPwd.trim();
+        newPwd = newPwd.trim();
+        confrmPwd = confrmPwd.trim();
         System.out.println("oldPwd ::" + oldPwd);
         System.out.println("newPwd ::" + newPwd);
         System.out.println("confrmPwd ::" + confrmPwd);
 
+        if (oldPwd.isEmpty() || newPwd.isEmpty() || confrmPwd.isEmpty()) {
+            resp.put("success", "false");
+            resp.put("message", "All fields are required.");
+        }
         if (!newPwd.equalsIgnoreCase(confrmPwd)) {
             resp.put("success", "false");
             resp.put("message", "New password and confirm password are not match.");
         }
+
         Employee emp = logedInEmployee();
         if (emp != null) {
             if (!(emp.getPassword().equalsIgnoreCase(oldPwd))) {
                 resp.put("success", "false");
                 resp.put("message", "Stored password and not same to given old password.");
+            } else {
+                resp.put("success", "true");
+                resp.put("message", "Password changed sucessfully.");
             }
         }
         mv.addObject("employeeRoleId", emp.getEmpRole().getId());

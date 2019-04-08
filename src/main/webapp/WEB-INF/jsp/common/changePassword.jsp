@@ -51,9 +51,6 @@
 
                     <div class="row">
 
-
-
-
                         <div class="input-field col s12">
                             <input type="password" name="oldpassword"/>
                             <label for="oldPassword">Old Password</label>
@@ -69,41 +66,38 @@
                             <label for="confrmpassword">Confirm Password</label>
                         </div>
 
-
-
                         <div class="row">
                             <div class="input-field col s12">
                                 <button href="#" style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);" class="btn waves-effect waves-light col s12">Change</button>
                             </div>
                         </div>
 
-
+                    </div>
                 </form>
             </div>
+
+
         </div>
-
-
     </div>
-</div>
 
 
 
 
 
 
-<!--Import jQuery before materialize.js-->
+    <!--Import jQuery before materialize.js-->
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
-<script src="assets/js/main.js" type="text/javascript"></script>
-<script>
-    $(document).ready(function () {
-        $('select').formSelect();
-    });
-    $(document).ready(function ()) {
-        $(".dropdown-button").dropdown();
-    });
-</script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
+    <script src="assets/js/main.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+        $(document).ready(function ()) {
+            $(".dropdown-button").dropdown();
+        });
+    </script>
 </body>
 </html>
