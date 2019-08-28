@@ -1,0 +1,13 @@
+
+qsquid:S11926"UDefine a constant instead of duplicating this literal "            </div>\n" 8 times.(ÆŒ©£ùÿÿÿÿ
+T
+squid:S106%"9Replace this use of System.out or System.err by a logger.(Éµ§ýþÿÿÿÿ
+T
+squid:S106Q"9Replace this use of System.out or System.err by a logger.(ê—‹ºÿÿÿÿÿ
+T
+squid:S106["9Replace this use of System.out or System.err by a logger.(Éµ§ýþÿÿÿÿ
+P
+squid:S106…"9Replace this use of System.out or System.err by a logger.(›ò¨½
+nsquid:S00117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©Ãý®ýÿÿÿÿ
+nsquid:S00117X"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ýÐ½Œþÿÿÿÿ
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ø¦§¯þÿÿÿÿ

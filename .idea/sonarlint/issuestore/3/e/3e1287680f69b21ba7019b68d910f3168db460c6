@@ -1,0 +1,6 @@
+
+hsquid:S00117`"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕñçL
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¥¯•¼üÿÿÿÿ
+€squid:UselessImportCheck"\Remove this unused import 'org.springframework.security.core.context.SecurityContextHolder'.(ŒÄæë
+qsquid:UselessImportCheck
+"MRemove this unused import 'org.springframework.security.core.Authentication'.(ñýÓ“

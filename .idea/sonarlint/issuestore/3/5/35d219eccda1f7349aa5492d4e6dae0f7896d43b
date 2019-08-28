@@ -1,0 +1,70 @@
+
+U
+squid:S106ç"9Replace this use of System.out or System.err by a logger.(†îÂÄüÿÿÿÿ
+U
+squid:S106“"9Replace this use of System.out or System.err by a logger.(Õëøúÿÿÿÿ
+U
+squid:S106±"9Replace this use of System.out or System.err by a logger.(‰àºªşÿÿÿÿ
+U
+squid:S106á"9Replace this use of System.out or System.err by a logger.(Ïíõšûÿÿÿÿ
+qsquid:S14880"ZImmediately return this expression instead of assigning it to the temporary variable "el".(À•ÃÌ
+bsquid:S1192C"KDefine a constant instead of duplicating this literal "reportName" 4 times.(¿È§Ÿ
+O
+squid:S106h"9Replace this use of System.out or System.err by a logger.(øªóü
+nsquid:S00117Q"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûˆÃ—ùÿÿÿÿ
+U
+squid:S106À"9Replace this use of System.out or System.err by a logger.(Àëè¤üÿÿÿÿ
+Isquid:S1481v"-Remove this unused "rejectBy" local variable.(Í½Ü«øÿÿÿÿ
+O
+squid:S106c"9Replace this use of System.out or System.err by a logger.(½¤ŠÆ
+P
+squid:S106í"9Replace this use of System.out or System.err by a logger.(Ä’Æ„
+`squid:S4488ß"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ú»¶Ê
+U
+squid:S106ë"9Replace this use of System.out or System.err by a logger.(´àçêùÿÿÿÿ
+Xsquid:S1854v"<Remove this useless assignment to local variable "rejectBy".(Í½Ü«øÿÿÿÿ
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( À›ı
+O
+squid:S106R"9Replace this use of System.out or System.err by a logger.(…¡Õà
+isquid:S00117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„•ªÔ
+esquid:S1192@"ODefine a constant instead of duplicating this literal "allVendorsList" 4 times.(¦¿j
+U
+squid:S106—"9Replace this use of System.out or System.err by a logger.(‰àºªşÿÿÿÿ
+nsquid:S00117_"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®ÕØ‰ûÿÿÿÿ
+T
+squid:S106~"9Replace this use of System.out or System.err by a logger.(´øã®úÿÿÿÿ
+{squid:S1192Š"^Define a constant instead of duplicating this literal "reports/pendingExpenseHistory" 3 times.(¦ÑËôÿÿÿÿÿ
+csquid:CommentedOutCodeLineÍ"<This block of commented-out lines of code should be removed.(îˆÀ±
+P
+squid:S106‚"9Replace this use of System.out or System.err by a logger.(©åãß
+Jsquid:S1172."3Remove this unused method parameter "expStatus_id".(„•ªÔ
+`squid:S1192F"IDefine a constant instead of duplicating this literal "expenses" 4 times.(«¯¶
+lsquid:S1192B"PDefine a constant instead of duplicating this literal "expenseTypeList" 4 times.(¹Ó‘Œüÿÿÿÿ
+T
+squid:S106]"9Replace this use of System.out or System.err by a logger.(Ù›çşÿÿÿÿ
+Dsquid:S1602”",Remove useless curly braces around statement(ı‰§É
+bsquid:CommentedOutCodeLine-"<This block of commented-out lines of code should be removed.(ÂÏ¶
+Nsquid:S1854Â"6Remove this useless assignment to local variable "ex".(ˆ¿õ
+dsquid:S4488O"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(½ê„µûÿÿÿÿ
+asquid:S4488Z"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ªÜÌ¦
+csquid:S1192?"LDefine a constant instead of duplicating this literal "payModeList" 4 times.(£Î‰ç
+isquid:S00117`"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Îí—Ì
+O
+squid:S106q"9Replace this use of System.out or System.err by a logger.(¤ëãñ
+Isquid:S1611”"1Remove the parentheses around the "emp" parameter(ı‰§É
+Rsquid:S1854b"6Remove this useless assignment to local variable "es".(¿µ‰ûÿÿÿÿ
+P
+squid:S106é"9Replace this use of System.out or System.err by a logger.(Ä’Æ„
+U
+squid:S106Ê"9Replace this use of System.out or System.err by a logger.(ß¾¯Ãüÿÿÿÿ
+P
+squid:S106‘"9Replace this use of System.out or System.err by a logger.(§Š—£
+isquid:S001176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø©œµ
+P
+squid:S106å"9Replace this use of System.out or System.err by a logger.(ÖÅì±
+dsquid:S1192A"MDefine a constant instead of duplicating this literal "locationList" 4 times.(È€Şó
+ksquid:S1192D"ODefine a constant instead of duplicating this literal "employeeRoleId" 5 times.(‡Ø¹¯úÿÿÿÿ
+U
+squid:S106ï"9Replace this use of System.out or System.err by a logger.(îŞìÿÿÿÿÿ
+O
+squid:S106d"9Replace this use of System.out or System.err by a logger.(îöã£

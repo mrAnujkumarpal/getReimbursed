@@ -36,6 +36,8 @@ public class Validate {
 
     public final String Org_Name = "Xebia";//Newgen//Oracle
     public final String ORG_CODE = "XI";//NG//OR
+    public String message="message";
+
 
     public Map<String, String> validateVendor(Vendor vendor) {
 
@@ -51,31 +53,31 @@ public class Validate {
         if (venderName.trim().isEmpty() || venderName.equals("") || venderPhNo.trim().isEmpty() || venderPhNo.equals("")
                 || vendorAdrs.trim().isEmpty() || vendorAdrs.equals("")) {
             resp.put("success", success);
-            resp.put("message", "All fields are required.");
+            resp.put(message, "All fields are required.");
             return resp;
         }
 
         if (venderName.length() < 3) {
             resp.put("success", success);
-            resp.put("message", "Please enter a valid name.");
+            resp.put(message, "Please enter a valid name.");
             return resp;
         }
         try {
             Long.parseLong(venderPhNo);
         } catch (NumberFormatException ne) {
             resp.put("success", success);
-            resp.put("message", "Please enter a valid mobile number.");
+            resp.put(message, "Please enter a valid mobile number.");
             return resp;
         }
 
         if (locId == 0) {
             resp.put("success", success);
-            resp.put("message", "Please select vendor location.");
+            resp.put(message, "Please select vendor location.");
             return resp;
         }
 
         resp.put("success", "true");
-        resp.put("message", "Successfully added.");
+        resp.put(message, "Successfully added.");
         return resp;
     }
 
@@ -91,7 +93,7 @@ public class Validate {
                 || mobileNo.trim().isEmpty() || mobileNo.equals("") || password.trim().isEmpty() || password.equals("")
                 || email.trim().isEmpty() || email.equals("")) {
             resp.put("success", success);
-            resp.put("message", "All fields are required.");
+            resp.put(message, "All fields are required.");
             return resp;
         }
         fname = fname.trim();
@@ -101,25 +103,25 @@ public class Validate {
         email = email.trim();
         if (fname.length() < 3) {
             resp.put("success", success);
-            resp.put("message", "First name is too short.");
+            resp.put(message, "First name is too short.");
             return resp;
         }
         if (lName.length() < 3) {
             resp.put("success", success);
-            resp.put("message", "Last name is too short.");
+            resp.put(message, "Last name is too short.");
             return resp;
         }
         pattern = Pattern.compile(STRING_PATTERN);
         matcher = pattern.matcher(fname);
         if (!matcher.matches()) {
             resp.put("success", success);
-            resp.put("message", "Please enter a valid name, digits or special characters are not allowed.");
+            resp.put(message, "Please enter a valid name, digits or special characters are not allowed.");
             return resp;
         }
 
         if (password.length() < 6) {
             resp.put("success", success);
-            resp.put("message", "Please enter 6-digit password length. ");
+            resp.put(message, "Please enter 6-digit password length. ");
             return resp;
         }
         pattern = Pattern.compile(EMAIL_PATTERN);
@@ -127,17 +129,17 @@ public class Validate {
 
         if (!matcher.matches()) {
             resp.put("success", success);
-            resp.put("message", "Please enter a valid email.");
+            resp.put(message, "Please enter a valid email.");
             return resp;
         }
         if (mobileNo.length() < 10 || mobileNo.length() > 16) {
             resp.put("success", success);
-            resp.put("message", "Mobile no should be 10 digit.");
+            resp.put(message, "Mobile no should be 10 digit.");
             return resp;
         }
         if (mobileNo.equalsIgnoreCase("\t0000000000")) {
             resp.put("success", success);
-            resp.put("message", "Please enter a valid mobile no.");
+            resp.put(message, "Please enter a valid mobile no.");
             return resp;
         }
 
@@ -145,18 +147,18 @@ public class Validate {
             Long.parseLong(mobileNo);
         } catch (NumberFormatException ne) {
             resp.put("success", success);
-            resp.put("message", "Please enter a valid mobile number.");
+            resp.put(message, "Please enter a valid mobile number.");
             return resp;
         }
 
         if (employee.getSubimitter_To().getId() == employee.getApprover_To().getId()) {
             resp.put("success", success);
-            resp.put("message", "Submitter & approver can not same.");
+            resp.put(message, "Submitter & approver can not same.");
             return resp;
         }
 
         resp.put("success", "true");
-        resp.put("message", "Successfully added.");
+        resp.put(message, "Successfully added.");
         return resp;
     }
 
@@ -277,6 +279,9 @@ public class Validate {
         return al;
     }
 
+
+
+
     protected static boolean isFutureDate(final Date providedDate) {
 
         Date currentDate = new Date(System.currentTimeMillis());
@@ -307,6 +312,7 @@ public class Validate {
             dateType = df.parse(dateInStr);
 
         } catch (ParseException e) {
+          e.getMessage();
         }
         return dateType;
     }
@@ -316,18 +322,10 @@ public class Validate {
         Map<String, String> response = new HashMap<>();
         String title = expense.getExp_name().trim();
 
-        String message = "";
         String description = expense.getExp_description();
         boolean billable = expense.getBillable();
 
-        System.out.println(expense.getExpenseDate() == null);
-        System.out.println(expense.getExpenseType() == null);
-        System.out.println(expense.getPaymentMode() == null);
-        System.out.println(expense.getVendor() == null);
-        System.out.println(expense.getExp_amount() == 0);
-        System.out.println(description.trim().isEmpty());
-        System.out.println(description == null);
-        System.out.println(title.isEmpty());
+
 
         if (expense.getExpenseDate() == null
                 || expense.getExpenseType() == null
@@ -359,7 +357,7 @@ public class Validate {
 
         }
         response.put("success", success);
-        response.put("message", message);
+        response.put(message, message);
         return response;
     }
 }

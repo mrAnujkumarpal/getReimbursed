@@ -1,0 +1,21 @@
+
+gsquid:CommentedOutCodeLine2"<This block of commented-out lines of code should be removed.(ô› þÿÿÿÿ
+gsquid:CommentedOutCodeLine["<This block of commented-out lines of code should be removed.(ý–˜òþÿÿÿÿ
+fsquid:S00100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥ëš
+fsquid:S00100,"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜Š³·
+ksquid:S00100C"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šðú‡ùÿÿÿÿ
+fsquid:S00100G"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÐŸÛ»
+fsquid:S00100K"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«î·“
+ksquid:S00100O"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ˆ†Ùûÿÿÿÿ
+fsquid:S00100S"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îê·
+ksquid:S00100W"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í»¦ùÿÿÿÿ
+jsquid:S00116"MRename this field "Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬µä›þÿÿÿÿ
+tsquid:S00116"\Rename this field "exp_reject_reason" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íðõ
+wsquid:S00116"ZRename this field "exp_reject_Date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öˆÀÆýÿÿÿÿ
+osquid:S00116"XRename this field "exp_reject_By" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ¦”^
+msquid:S00116"URename this field "expense_Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Š÷Í
+isquid:S00117,"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜Š³·
+isquid:S00117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÐŸÛ»
+nsquid:S00117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ˆ†Ùûÿÿÿÿ
+nsquid:S00117W"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í»¦ùÿÿÿÿ
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ª”Æ‚

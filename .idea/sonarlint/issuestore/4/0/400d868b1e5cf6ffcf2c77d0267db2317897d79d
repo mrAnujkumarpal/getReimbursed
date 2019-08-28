@@ -1,0 +1,12 @@
+
+T
+squid:S106 "9Replace this use of System.out or System.err by a logger.(âØ™Øÿÿÿÿÿ
+O
+squid:S106""9Replace this use of System.out or System.err by a logger.(öˆïž
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Â¹›Ìÿÿÿÿÿ
+O
+squid:S106"9Replace this use of System.out or System.err by a logger.(¸ÛèÄ
+O
+squid:S106"9Replace this use of System.out or System.err by a logger.(žˆÉÆ
+Ä%squid:RedundantThrowsDeclarationCheck"’Remove the declaration of thrown exception 'org.springframework.security.core.userdetails.UsernameNotFoundException' which is a runtime exception.(í—äÊ
+`squid:S2583"DChange this condition so that it does not always evaluate to "false"(ïŸ¢Ýþÿÿÿÿ

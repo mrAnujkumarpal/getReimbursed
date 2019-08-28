@@ -1,0 +1,86 @@
+
+fsquid:S4488I"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ØîÖéúÿÿÿÿ
+P
+squid:S106¹"9Replace this use of System.out or System.err by a logger.(Ä÷ù
+P
+squid:S106ß"9Replace this use of System.out or System.err by a logger.(Ä÷ù
+`squid:S4488Ö"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ø§ˆ£
+bsquid:S4488Ó"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(À‘ÙŠ
+`squid:S4488‰"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(„Èß¶
+jsquid:S00117æ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À—ßè
+bsquid:S4488®"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Ü¾‡ğ
+O
+squid:S1060"9Replace this use of System.out or System.err by a logger.(¼â¨è
+_squid:S4488)"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(£™şš
+osquid:S00117Ø"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊĞ€øøÿÿÿÿ
+U
+squid:S106Ö"9Replace this use of System.out or System.err by a logger.(­ŒŸ›ÿÿÿÿÿ
+nsquid:S1192ƒ"VDefine a constant instead of duplicating this literal "common/vendorRegistor" 3 times.(ÜØç„
+esquid:S4488Ê"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(¨¶¢Úüÿÿÿÿ
+esquid:S4488 "HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(åèòıøÿÿÿÿ
+bsquid:S1192["FDefine a constant instead of duplicating this literal "false" 4 times.(œ×Øíøÿÿÿÿ
+`squid:S4488Á"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ß¯ºô
+]squid:S4684’"@Replace this persistent entity with a simple POJO or DTO object.(Ú÷ğüÿÿÿÿ
+jsquid:S00117í"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ”É¹
+_squid:S4488."HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ú­Ç†
+P
+squid:S106Ù"9Replace this use of System.out or System.err by a logger.(¦¬ÁÒ
+O
+squid:S106V"9Replace this use of System.out or System.err by a logger.(«Ğï·
+P
+squid:S106î"9Replace this use of System.out or System.err by a logger.(ùÛ’Ÿ
+U
+squid:S106"9Replace this use of System.out or System.err by a logger.(ÒçúĞıÿÿÿÿ
+U
+squid:S106±"9Replace this use of System.out or System.err by a logger.(­ŒŸ›ÿÿÿÿÿ
+U
+squid:S106ì"9Replace this use of System.out or System.err by a logger.(½ÁÓƒşÿÿÿÿ
+isquid:S00117‹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãµ”!
+{squid:S1192Ö"^Define a constant instead of duplicating this literal "comes here common Controller " 4 times.(­ŒŸ›ÿÿÿÿÿ
+O
+squid:S106W"9Replace this use of System.out or System.err by a logger.(”·Õ
+esquid:S4488ó"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ô¼Îúÿÿÿÿ
+esquid:S4488ä"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ò¾‰öüÿÿÿÿ
+Vsquid:S2387&":"employeeRepository" is the name of a field in "Validate".(¨ÊùÜùÿÿÿÿ
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( À›ı
+T
+squid:S106X"9Replace this use of System.out or System.err by a logger.(êû¦şÿÿÿÿ
+U
+squid:S106"9Replace this use of System.out or System.err by a logger.(¡Õ´÷ÿÿÿÿÿ
+\squid:S1854¤"?Remove this useless assignment to local variable "fetchVendor".(ƒº¶¾ÿÿÿÿÿ
+P
+squid:S106Ù"9Replace this use of System.out or System.err by a logger.(úà 
+U
+squid:S106ë"9Replace this use of System.out or System.err by a logger.(ÖŠëôûÿÿÿÿ
+`squid:S4488§"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(’Ç°Ç
+`squid:S4488—"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ø™µ˜
+gsquid:CommentedOutCodeLineu"<This block of commented-out lines of code should be removed.(‘´Ö™øÿÿÿÿ
+bsquid:CommentedOutCodeLine("<This block of commented-out lines of code should be removed.(ÌË®Ç
+esquid:S1192›"MDefine a constant instead of duplicating this literal "locationList" 6 times.(È€Şó
+U
+squid:S106É"9Replace this use of System.out or System.err by a logger.(Ò±Ù‰ûÿÿÿÿ
+lsquid:S1192E"PDefine a constant instead of duplicating this literal "employeeRoleId" 12 times.(‡Ø¹¯úÿÿÿÿ
+P
+squid:S106Ã"9Replace this use of System.out or System.err by a logger.(»ã
+bsquid:S4488Å"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(¶£Ü«
+bsquid:S4488‘"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Å½àğ
+U
+squid:S106´"9Replace this use of System.out or System.err by a logger.(®Ÿ½Ìúÿÿÿÿ
+esquid:S1192\"IDefine a constant instead of duplicating this literal "message" 13 times.(¨ô·²ÿÿÿÿÿ
+U
+squid:S106“"9Replace this use of System.out or System.err by a logger.(‚µÁˆüÿÿÿÿ
+esquid:S4488Ñ"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ù‹‚Âÿÿÿÿÿ
+osquid:S00117¥"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûèéçùÿÿÿÿ
+U
+squid:S106º"9Replace this use of System.out or System.err by a logger.(Í…‹ïÿÿÿÿÿ
+jsquid:S00117Ã"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰ £ô
+jsquid:S00117Ó"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ‘•µ
+`squid:S4488€"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(÷¼¸ù
+gsquid:CommentedOutCodeLine="<This block of commented-out lines of code should be removed.(©¸òıÿÿÿÿ
+esquid:S4488ë"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ÁïÊµûÿÿÿÿ
+P
+squid:S106°"9Replace this use of System.out or System.err by a logger.(“õ¾
+dsquid:S4488B"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(»³íßÿÿÿÿÿ
+gsquid:S4488÷"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(›äÊìÿÿÿÿÿ
+]squid:S2259m"AA "NullPointerException" could be thrown; "emp" is nullable here.(µ´’©şÿÿÿÿ
+esquid:S11927"IDefine a constant instead of duplicating this literal "success" 18 times.(»Î“Åûÿÿÿÿ

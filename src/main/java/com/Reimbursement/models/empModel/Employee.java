@@ -15,7 +15,7 @@ import java.util.Date;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "Employees")
-public class Employee implements Serializable, UserDetails {
+public class Employee implements Serializable, UserDetails,Comparable<Employee> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -231,4 +231,13 @@ public class Employee implements Serializable, UserDetails {
     }
 
 
+    @Override
+    public int compareTo(Employee employee) {
+        if(this.getId()< employee.getId()){
+            return 1;
+        }else if(this.getId() == employee.getId()){
+            return 0;
+        }
+        return -1;
+    }
 }

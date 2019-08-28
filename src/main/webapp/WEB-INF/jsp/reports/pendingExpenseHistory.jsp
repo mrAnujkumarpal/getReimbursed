@@ -100,7 +100,7 @@
                 </c:when>
                 <c:otherwise>
                     <div class="row">
-                        <div class="col s10 m8 l6 offset-s1 offset-l3  z-depth-5 card-panel center-align " id="panelBck">
+                        <div class="col s10 m8 l6 offset-s1 offset-m2 offset-l3  z-depth-5 card-panel center-align " id="panelBck">
                             <div class="center-align">
                                 <img class="responsive-img center-align "  src="http://insidetimeshare.com/wp-content/uploads/2018/03/not_available.jpg">
                             </div>

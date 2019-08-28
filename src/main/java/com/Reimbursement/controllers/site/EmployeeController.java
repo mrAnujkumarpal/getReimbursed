@@ -3,10 +3,19 @@ package com.Reimbursement.controllers.site;
 /**
  * Created by Anuj Kumar.
  */
+
+import com.Reimbursement.controllers.validation.Validate;
 import com.Reimbursement.models.empModel.EmpDP;
+import com.Reimbursement.models.empModel.Employee;
 import com.Reimbursement.models.empModel.EmployeeRole;
+import com.Reimbursement.models.expense.Expense;
+import com.Reimbursement.models.expense.ExpenseStatus;
+import com.Reimbursement.service.commonServices.CommonService;
 import com.Reimbursement.service.commonServices.EmailService;
+import com.Reimbursement.service.empService.EmployeeService;
+import com.Reimbursement.service.expenseService.ExpenseService;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.hibernate.bytecode.buildtime.spi.ExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,24 +23,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
-import com.Reimbursement.controllers.validation.Validate;
-import com.Reimbursement.models.empModel.Employee;
-import com.Reimbursement.models.expense.Expense;
-import com.Reimbursement.models.expense.ExpenseStatus;
-import com.Reimbursement.service.commonServices.CommonService;
-import com.Reimbursement.service.empService.EmployeeService;
-import com.Reimbursement.service.expenseService.ExpenseService;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import org.hibernate.bytecode.buildtime.spi.ExecutionException;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class EmployeeController extends Validate {
@@ -150,7 +146,7 @@ public class EmployeeController extends Validate {
                     });
 
                     message = "alreadyRegistered\", \""
-                            + "Oops!  There is already a user registered with the email provided.";
+                        + "Oops!  There is already a user registered with the email provided.";
                     success = "false";
                     mv.addObject("success", success);
                     mv.addObject("message", message);
@@ -444,7 +440,7 @@ public class EmployeeController extends Validate {
         mv.addObject("uploadMsg", "Employee photo uploaded successfully.");
          */
         System.out.println("NOW REDIRECT ONLY----------");
-                
+
         return "redirect:/" + url;
     }
 

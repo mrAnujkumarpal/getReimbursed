@@ -1,0 +1,10 @@
+
+fsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À¢ŒŒ
+fsquid:S00100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€áÆÑ
+fsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÿ—æ
+isquid:S00116"QRename this field "pay_Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—¸Ý¤
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(å±Å°þÿÿÿÿ
+isquid:S00117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€áÆÑ
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£¹Ã»úÿÿÿÿ
+ksquid:S00116"SRename this field "pay_type" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º‰ð±
+isquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÿ—æ

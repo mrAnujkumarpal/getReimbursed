@@ -6,6 +6,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
+
     <head><title>Home Page | EMS</title></head>
     <body>
         <style>
@@ -80,34 +83,40 @@
 
                         <div class="row">
                             <div class="col s12 m6 l4">
-                                <div class="card gradient-shadow gradient-45deg-red-pink border-radius-3">
-                                    <div class="card-content center">
-                                        <h6 class="white-text lighten-4">
-                                            <fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${crTDAmount}"/>
-                                        </h6>
-                                        <p class="white-text lighten-4">Expense Created</p>
+                                <a href="/expenseHistory/1" style="color:white;">
+                                    <div class="card gradient-shadow gradient-45deg-red-pink border-radius-3">
+                                        <div class="card-content center">
+                                            <h6 class="white-text lighten-4">
+                                                <fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${crTDAmount}"/>
+                                            </h6>
+                                            <p class="white-text lighten-4">Expense Created</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="col s12 m6 l4">
-                                <div class="card gradient-shadow gradient-45deg-amber-amber border-radius-3">
-                                    <div class="card-content center">
-                                        <h6 class="white-text lighten-4">
-                                            <fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${penDNGAmnt}"/>
-                                        </h6>
-                                        <p class="white-text lighten-4">Expense InProgress</p>
+                                <a href="#" style="color:white;">
+                                    <div class="card gradient-shadow gradient-45deg-amber-amber border-radius-3">
+                                        <div class="card-content center">
+                                            <h6 class="white-text lighten-4">
+                                                <fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${penDNGAmnt}"/>
+                                            </h6>
+                                            <p class="white-text lighten-4">Expense InProgress</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="col s12 m12 l4">
-                                <div class="card gradient-shadow gradient-45deg-green-teal border-radius-3">
-                                    <div class="card-content center">
-                                        <h6 class="white-text lighten-4">
-                                            <fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${rmbSDAmount}"/>
-                                        </h6>
-                                        <p class="white-text lighten-4">Expense Reimbursed</p>
+                                <a href="/expenseHistory/5" style="color:white;">
+                                    <div class="card gradient-shadow gradient-45deg-green-teal border-radius-3">
+                                        <div class="card-content center">
+                                            <h6 class="white-text lighten-4">
+                                                <fmt:formatNumber type="number" maxFractionDigits="2"  minFractionDigits="2" value="${rmbSDAmount}"/>
+                                            </h6>
+                                            <p class="white-text lighten-4">Expense Reimbursed</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
 
@@ -155,7 +164,8 @@
                                     <div class="col s10 m10 l10" id="changeDPForm" style="display:none;">
                                         <form method="post" action="doUploadEmpDP" enctype="multipart/form-data">
                                             <div class = "file-field input-field">
-                                                <div class="btn"><span>Browse</span><input name="empPhoto" type = "file"/></div>
+                                                <div class="btn"><span>Browse</span>
+                                                    <input name="empPhoto" type = "file"/></div>
                                                 <div class = "file-path-wrapper">
                                                     <input class="file-path validate" type="text" placeholder="Choose a photo to upload"/>
                                                 </div>
@@ -175,9 +185,9 @@
 
             <!--Import jQuery before materialize.js-->
 
-            <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
-            <script src="assets/js/main.js" type="text/javascript"></script>
+
+
+
             <script>
                 $(document).ready(function () {
                     $('select').formSelect();

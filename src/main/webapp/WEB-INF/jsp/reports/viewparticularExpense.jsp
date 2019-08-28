@@ -7,6 +7,10 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
     <title>Particular Expense | EMS</title> 
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
+    <script src="assets/js/main.js" type="text/javascript"></script>
     <style type="text/css"> body { background-color:#f1f3e9;} #rejectBtn{background-color:#fff; border:1px solid #757575; color:#757575; border-radius:7px;} </style>
     <body>
 
@@ -196,10 +200,8 @@
 
 
         <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/materialize/0.98.2/js/materialize.min.js"></script>
-        <script src="assets/js/main.js" type="text/javascript"></script>
+
+
 
         <script type="text/javascript">
 

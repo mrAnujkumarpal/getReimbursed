@@ -1,0 +1,27 @@
+
+bsquid:CommentedOutCodeLine3"<This block of commented-out lines of code should be removed.(ñå¹ý
+psquid:S00116%"SRename this field "Org_Name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÞ÷­úÿÿÿÿ
+"squid:ClassVariableVisibilityCheck'"SMake message a static final constant or non-public and provide accessors if needed.(ü‡çÿûÿÿÿÿ8âÂîù«-
+Xsquid:UselessImportCheck"4Remove this unused import 'org.slf4j.LoggerFactory'.(–ÿÚÞ
+\squid:S2589Ú"8Remove this expression which always evaluates to "false"(õßÐáûÿÿÿÿ8¾öù«-
+qsquid:S00116!"YRename this field "STRING_PATTERN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÀÏ´þ
+ssquid:S00100Ö"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°ÄÈ¦øÿÿÿÿ8¾öù«-
+qsquid:S00117Þ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©§³Ô8¾öù«-
+[squid:S1854Æ"<Remove this useless assignment to local variable "billable".(Ë¢˜Ë8¾öù«-
+qsquid:S00117Û"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»Š°‡8¾öù«-
+Jsquid:S1075Ë"&Remove this hard-coded path-delimiter.(ºÌ¢“þÿÿÿÿ8¾öù«-
+esquid:S11927"IDefine a constant instead of duplicating this literal "success" 17 times.(ÇÐŒñþÿÿÿÿ
+usquid:S00116 "XRename this field "EMAIL_PATTERN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü†Ô¡ûÿÿÿÿ
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(—Ö“Èúÿÿÿÿ
+Jsquid:S1075º"&Remove this hard-coded path-delimiter.(–ù½šüÿÿÿÿ8¾öù«-
+Lsquid:S1481Æ"-Remove this unused "billable" local variable.(Ë¢˜Ë8¾öù«-
+ksquid:S00116&"SRename this field "ORG_CODE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æÀèŽ
+Dsquid:S1075Å"&Remove this hard-coded path-delimiter.(ä ¢A8¾öù«-
+W
+squid:S106ä"9Replace this use of System.out or System.err by a logger.(òÚ¹”8¾öù«-
+rsquid:S3008"[Rename this field "UPLOAD_DIRECTORY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†£çÀ
+Psquid:UselessImportCheck"-Remove this unused import 'org.slf4j.Logger'.(íØ®6
+=squid:S1170%"!Make this final field static too.(ôÞ÷­úÿÿÿÿ
+qsquid:S00117ã"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯–Ô¡8¾öù«-
+8squid:S1170&"!Make this final field static too.(æÀèŽ
+\squid:S2589Ð"8Remove this expression which always evaluates to "false"(ñõÉðùÿÿÿÿ8¾öù«-

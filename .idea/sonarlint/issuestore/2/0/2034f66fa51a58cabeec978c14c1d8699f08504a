@@ -1,0 +1,186 @@
+
+Isquid:S1602Å",Remove useless curly braces around statement(–ÔÚÁøÿÿÿÿ
+U
+squid:S106"9Replace this use of System.out or System.err by a logger.(Èõ»´úÿÿÿÿ
+O
+squid:S106‹"9Replace this use of System.out or System.err by a logger.(â–ª[
+Hsquid:S1611P"1Remove the parentheses around the "emp" parameter(å–Şÿ
+U
+squid:S106ğ"9Replace this use of System.out or System.err by a logger.(»¡á¢øÿÿÿÿ
+Hsquid:S1611v"1Remove the parentheses around the "emp" parameter(®ó‰Ô
+P
+squid:S106±"9Replace this use of System.out or System.err by a logger.(¸Âœš
+hsquid:CommentedOutCodeLine˜"<This block of commented-out lines of code should be removed.(Áşë¨ıÿÿÿÿ
+Isquid:S1611‘"1Remove the parentheses around the "emp" parameter(å–Şÿ
+P
+squid:S106Ç"9Replace this use of System.out or System.err by a logger.(í‡Ãû
+P
+squid:S106"9Replace this use of System.out or System.err by a logger.(“¨’È
+U
+squid:S106º"9Replace this use of System.out or System.err by a logger.(öÅÓçÿÿÿÿÿ
+U
+squid:S106í"9Replace this use of System.out or System.err by a logger.(§Ûûÿÿÿÿ
+U
+squid:S106’"9Replace this use of System.out or System.err by a logger.(ÏÂëËıÿÿÿÿ
+U
+squid:S106Ì"9Replace this use of System.out or System.err by a logger.(„Ã¸¨şÿÿÿÿ
+Jsquid:UselessParenthesesCheckv"!Remove these useless parentheses.(®ó‰Ô
+hsquid:CommentedOutCodeLineì"<This block of commented-out lines of code should be removed.(£¶‚òşÿÿÿÿ
+P
+squid:S106"9Replace this use of System.out or System.err by a logger.(ˆÊüş
+esquid:S1192?"IDefine a constant instead of duplicating this literal "roleList" 6 times.(ºŞìëşÿÿÿÿ
+U
+squid:S106ä"9Replace this use of System.out or System.err by a logger.(„¯á©øÿÿÿÿ
+Qsquid:S1854¦"9Remove this useless assignment to local variable "empDP".(‚»Öª
+Ksquid:UselessParenthesesCheck”"!Remove these useless parentheses.(®ó‰Ô
+U
+squid:S106¹"9Replace this use of System.out or System.err by a logger.(Î±ø¸ıÿÿÿÿ
+osquid:S3776¾"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(Ú¨•Ëûÿÿÿÿ
+Rsquid:S1141é"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+Tsquid:S2589ª"7Remove this expression which always evaluates to "true"(×ÌÎèıÿÿÿÿ
+T
+squid:S106O"9Replace this use of System.out or System.err by a logger.(®«ì£úÿÿÿÿ
+dsquid:S4488G"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ä—²”úÿÿÿÿ
+P
+squid:S106«"9Replace this use of System.out or System.err by a logger.(¾±÷Ş
+Hsquid:S1611s"1Remove the parentheses around the "emp" parameter(å–Şÿ
+U
+squid:S106"9Replace this use of System.out or System.err by a logger.(µªÛòÿÿÿÿÿ
+Gsquid:S1611ñ"/Remove the parentheses around the "e" parameter(ÿß…
+U
+squid:S106³"9Replace this use of System.out or System.err by a logger.(õšè‹şÿÿÿÿ
+fsquid:S1192Z"ODefine a constant instead of duplicating this literal "approverToList" 3 times.(±¹¨ã
+U
+squid:S106è"9Replace this use of System.out or System.err by a logger.(ûœıÿıÿÿÿÿ
+Qsquid:S1611Å"4Remove the parentheses around the "myTeam" parameter(–ÔÚÁøÿÿÿÿ
+P
+squid:S106ˆ"9Replace this use of System.out or System.err by a logger.(İ“Òû
+Dsquid:S1602”",Remove useless curly braces around statement(®ó‰Ô
+Ksquid:UselessParenthesesCheck‘"!Remove these useless parentheses.(å–Şÿ
+U
+squid:S106"9Replace this use of System.out or System.err by a logger.(®«ì£úÿÿÿÿ
+U
+squid:S106µ"9Replace this use of System.out or System.err by a logger.(Ş™‡–ÿÿÿÿÿ
+P
+squid:S106®"9Replace this use of System.out or System.err by a logger.(¢¨‡¨
+Isquid:S1611”"1Remove the parentheses around the "emp" parameter(®ó‰Ô
+O
+squid:S106ã"9Replace this use of System.out or System.err by a logger.(¹Ú‰.
+msquid:S1192\"VDefine a constant instead of duplicating this literal "employee/registration" 4 times.(¤Ê†ÿ
+Csquid:S1612S",Replace this lambda with a method reference.(®ó‰Ô
+P
+squid:S106ˆ"9Replace this use of System.out or System.err by a logger.(‡ÉÛ
+P
+squid:S106ÿ"9Replace this use of System.out or System.err by a logger.(éğÜ
+P
+squid:S106Š"9Replace this use of System.out or System.err by a logger.(»Ìğ¦
+Hsquid:S1611S"1Remove the parentheses around the "emp" parameter(®ó‰Ô
+bsquid:S4488ï"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ù•Å›
+Csquid:S1602v",Remove useless curly braces around statement(®ó‰Ô
+Dsquid:S1602ñ",Remove useless curly braces around statement(ÿß…
+hsquid:CommentedOutCodeLineò"<This block of commented-out lines of code should be removed.(ßÀç×şÿÿÿÿ
+Dsquid:S1612”",Replace this lambda with a method reference.(®ó‰Ô
+O
+squid:S106œ"9Replace this use of System.out or System.err by a logger.(ªá³#
+bsquid:CommentedOutCodeLine3"<This block of commented-out lines of code should be removed.(ÂÏ¶
+U
+squid:S106Ü"9Replace this use of System.out or System.err by a logger.(ÊëÆ²ıÿÿÿÿ
+_squid:S1192j"HDefine a constant instead of duplicating this literal "success" 4 times.(ËÙİ‘
+fsquid:S1192Y"PDefine a constant instead of duplicating this literal "submitterToList" 3 times.(»Ï\
+P
+squid:S106¼"9Replace this use of System.out or System.err by a logger.(–ş«Ø
+Lsquid:S1611ç"/Remove the parentheses around the "e" parameter(Ü©ú¥øÿÿÿÿ
+Hsquid:S1611s"1Remove the parentheses around the "emp" parameter(å–Şÿ
+dsquid:S1192@"MDefine a constant instead of duplicating this literal "locationList" 6 times.(È€Şó
+Hsquid:S1611v"1Remove the parentheses around the "emp" parameter(®ó‰Ô
+P
+squid:S106ó"9Replace this use of System.out or System.err by a logger.( Ÿ’æ
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( À›ı
+psquid:S14886"ZImmediately return this expression instead of assigning it to the temporary variable "mv".(ÃĞ¨
+O
+squid:S106"9Replace this use of System.out or System.err by a logger.(¨´ÁD
+Csquid:S1612v",Replace this lambda with a method reference.(®ó‰Ô
+bsquid:S1192^"KDefine a constant instead of duplicating this literal "errors/505" 4 times.(ÿ¯¬Æ
+P
+squid:S106¿"9Replace this use of System.out or System.err by a logger.(áõğÎ
+U
+squid:S106µ"9Replace this use of System.out or System.err by a logger.(Ú¶º¨ùÿÿÿÿ
+Csquid:S1602S",Remove useless curly braces around statement(®ó‰Ô
+Rsquid:S1141¯"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+P
+squid:S106…"9Replace this use of System.out or System.err by a logger.(’³®ù
+esquid:S4488Ë"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(æËËİıÿÿÿÿ
+U
+squid:S106ò"9Replace this use of System.out or System.err by a logger.(‰¡Æˆıÿÿÿÿ
+P
+squid:S106×"9Replace this use of System.out or System.err by a logger.(Ãò
+U
+squid:S106¤"9Replace this use of System.out or System.err by a logger.(‰Âòÿÿÿÿÿ
+msquid:S1192O"QDefine a constant instead of duplicating this literal " B4 remove size " 3 times.(®«ì£úÿÿÿÿ
+T
+squid:S106g"9Replace this use of System.out or System.err by a logger.(ÿ¼¾şÿÿÿÿ
+P
+squid:S106õ"9Replace this use of System.out or System.err by a logger.(Ä’Æ„
+ksquid:S1192B"ODefine a constant instead of duplicating this literal "employeeRoleId" 7 times.(‡Ø¹¯úÿÿÿÿ
+Isquid:S1611”"1Remove the parentheses around the "emp" parameter(®ó‰Ô
+U
+squid:S106´"9Replace this use of System.out or System.err by a logger.(›úö§ûÿÿÿÿ
+P
+squid:S106¨"9Replace this use of System.out or System.err by a logger.(ôÀÙÇ
+Jsquid:UselessParenthesesChecks"!Remove these useless parentheses.(å–Şÿ
+U
+squid:S106æ"9Replace this use of System.out or System.err by a logger.(†ØÊ şÿÿÿÿ
+Wsquid:S4684e"@Replace this persistent entity with a simple POJO or DTO object.(íüÂ
+P
+squid:S106Š"9Replace this use of System.out or System.err by a logger.(ƒğ˜ê
+P
+squid:S106Ö"9Replace this use of System.out or System.err by a logger.(è®€Š
+P
+squid:S106•"9Replace this use of System.out or System.err by a logger.(çä¿
+U
+squid:S106¾"9Replace this use of System.out or System.err by a logger.(‚ºõÊüÿÿÿÿ
+U
+squid:S106É"9Replace this use of System.out or System.err by a logger.( œ˜ªüÿÿÿÿ
+P
+squid:S106«"9Replace this use of System.out or System.err by a logger.(Ä÷ù
+^squid:S1192k"HDefine a constant instead of duplicating this literal "message" 3 times.(Åş¾
+P
+squid:S106Œ"9Replace this use of System.out or System.err by a logger.(ŒîñŒ
+Isquid:S1611‘"1Remove the parentheses around the "emp" parameter(å–Şÿ
+O
+squid:S106©"9Replace this use of System.out or System.err by a logger.(šù¶
+Ssquid:S1854í"6Remove this useless assignment to local variable "es".(¿µ‰ûÿÿÿÿ
+P
+squid:S106ø"9Replace this use of System.out or System.err by a logger.(—¿¾ı
+P
+squid:S106Ò"9Replace this use of System.out or System.err by a logger.(ûúéÜ
+Jsquid:UselessParenthesesCheckS"!Remove these useless parentheses.(®ó‰Ô
+esquid:S4488à"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(æ‹«§üÿÿÿÿ
+hsquid:S1192A"QDefine a constant instead of duplicating this literal "allEmployeesList" 3 times.(ÔËÎË
+esquid:S4488½"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(¨š¢äşÿÿÿÿ
+csquid:CommentedOutCodeLineÆ"<This block of commented-out lines of code should be removed.(Ú“Œ
+P
+squid:S106·"9Replace this use of System.out or System.err by a logger.(ï“«½
+P
+squid:S106À"9Replace this use of System.out or System.err by a logger.(ğÈáÕ
+U
+squid:S106„"9Replace this use of System.out or System.err by a logger.(«Ø²ùÿÿÿÿ
+Hsquid:S1611P"1Remove the parentheses around the "emp" parameter(å–Şÿ
+P
+squid:S106ü"9Replace this use of System.out or System.err by a logger.(èÒĞâ
+`squid:S1192["IDefine a constant instead of duplicating this literal "employee" 4 times.(ÃÃ¨ÿ
+Jsquid:UselessParenthesesCheckP"!Remove these useless parentheses.(å–Şÿ
+hsquid:CommentedOutCodeLine›"<This block of commented-out lines of code should be removed.(î›‘Éşÿÿÿÿ
+U
+squid:S106Î"9Replace this use of System.out or System.err by a logger.(ôÈÑóúÿÿÿÿ
+P
+squid:S106•"9Replace this use of System.out or System.err by a logger.(Ÿ“Ò±
+hsquid:CommentedOutCodeLine¶"<This block of commented-out lines of code should be removed.(–ìô˜ÿÿÿÿÿ
+U
+squid:S106"9Replace this use of System.out or System.err by a logger.(şˆ¾€şÿÿÿÿ
+Hsquid:S1611S"1Remove the parentheses around the "emp" parameter(®ó‰Ô
+T
+squid:S106r"9Replace this use of System.out or System.err by a logger.(®«ì£úÿÿÿÿ
+P
+squid:S106÷"9Replace this use of System.out or System.err by a logger.(¿ÆÑ
+fsquid:S4488d"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ùÌıÿÿÿÿ

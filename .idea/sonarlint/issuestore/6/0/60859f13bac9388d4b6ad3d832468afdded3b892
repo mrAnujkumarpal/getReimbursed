@@ -1,0 +1,8 @@
+
+djavascript:UnusedVariable)":Remove the declaration of the unused 'instances' variable.(ÌöäÒøÿÿÿÿ
+=javascript:S1116%"Remove this empty statement.(Åñ­õşÿÿÿÿ
+<javascript:S1442" Remove this usage of alert(...).(µÉĞ×
+Cjavascript:S1442""Remove this usage of confirm(...).(¸¸¦¨ıÿÿÿÿ
+]javascript:S1854)"<Remove this useless assignment to local variable "instances"(ÌöäÒøÿÿÿÿ
+;javascript:S1442" Remove this usage of alert(...).(íÇÅD
+Ajavascript:S1442" Remove this usage of alert(...).(‚„áûÿÿÿÿ
