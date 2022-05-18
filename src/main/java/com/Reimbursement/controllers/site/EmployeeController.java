@@ -59,7 +59,7 @@ public class EmployeeController extends Validate {
         mv.addObject("roleList", employeeService.getAllEmployeeRoles());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("allEmployeesList", employeeService.getAllEmployees());
-        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
 
         return mv;
     }
@@ -68,7 +68,7 @@ public class EmployeeController extends Validate {
     public ModelAndView employeeRegistration() {
         ModelAndView mv = new ModelAndView();
 
-        if (logedInEmployee().getEmpRole().getId() == 6) {
+        if (loggedInEmployee().getEmpRole().getId() == 6) {
             List<Employee> empls = employeeService.getAllEmployees();
             List<Employee> submitterToList = new ArrayList<>();
             List<Employee> approverToList = new ArrayList<>();
@@ -89,7 +89,7 @@ public class EmployeeController extends Validate {
         } else {
             mv.setViewName("errors/505");
         }
-        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
         return mv;
     }
 
@@ -123,7 +123,7 @@ public class EmployeeController extends Validate {
             mv.addObject("locationList", commonService.getAllLocations());
             mv.addObject("submitterToList", submitterToList);
             mv.addObject("approverToList", approverToList);
-            mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+            mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
             mv.setViewName("employee/registration");
         } else {
             System.out.println("My id " + employee.getId());
@@ -156,7 +156,7 @@ public class EmployeeController extends Validate {
                     mv.addObject("locationList", commonService.getAllLocations());
                     mv.addObject("submitterToList", submitterToList);
                     mv.addObject("approverToList", approverToList);
-                    mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+                    mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
                     mv.setViewName("employee/registration");
                 }
             }
@@ -175,7 +175,7 @@ public class EmployeeController extends Validate {
             String userName = employeeFullName(employee);
             System.out.println("userName " + userName);
             System.out.println("now going to send email... " + employee.getEmail());
-//            emailService.sendHTML_RegistrationMail(userName, employee.getEmail());
+            emailService.sendHTML_RegistrationMail(userName, employee.getEmail());
             mv.setViewName("redirect:/viewAllEmployees");
         }
         System.out.println(":::::::::::::::::::::::::::::::::::::::::");
@@ -189,11 +189,11 @@ public class EmployeeController extends Validate {
         try {
             Employee employee = employeeService.getEmployeeById(employeeId);
             List<Integer> myTeamMembersID = new ArrayList<>();
-            List<Employee> myTeamMembers = employeeService.getMyTeamMembers(logedInEmployee().getId());
+            List<Employee> myTeamMembers = employeeService.getMyTeamMembers(loggedInEmployee().getId());
             myTeamMembers.forEach((myTeam) -> {
                 myTeamMembersID.add(myTeam.getId());
             });
-            int employeeRoleId = logedInEmployee().getEmpRole().getId();
+            int employeeRoleId = loggedInEmployee().getEmpRole().getId();
             System.out.println("employeeRoleId " + employeeRoleId);
             mv.addObject("employeeRoleId", employeeRoleId);
             if (myTeamMembersID.contains(employeeId) || employeeRoleId == 6) {
@@ -216,7 +216,7 @@ public class EmployeeController extends Validate {
                 System.out.println("rmbSDAmount " + rmbSDAmount);
 
                 EmployeeRole er = employeeService.getEmployeeRoleByRoleId(employeeRoleId);
-                if (logedInEmployee().getId() == employee.getId()) {
+                if (loggedInEmployee().getId() == employee.getId()) {
                     mv.addObject("showUploadDpForm", true);
                 }
                 mv.addObject("employeeData", employee);
@@ -240,8 +240,8 @@ public class EmployeeController extends Validate {
 
                             es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
 
-                            myTeamMembers = employeeService.myTeamMembersTL(logedInEmployee().getId());
-                            myTeamMembers.remove(logedInEmployee());
+                            myTeamMembers = employeeService.myTeamMembersTL(loggedInEmployee().getId());
+                            myTeamMembers.remove(loggedInEmployee());
                             for (Employee empfromlist : myTeamMembers) {
                                 ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
                             }
@@ -252,8 +252,8 @@ public class EmployeeController extends Validate {
 
                             System.out.println("Auditor");
                             es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
-                            myTeamMembers = employeeService.myTeamMembersTL(logedInEmployee().getId());
-                            myTeamMembers.remove(logedInEmployee());
+                            myTeamMembers = employeeService.myTeamMembersTL(loggedInEmployee().getId());
+                            myTeamMembers.remove(loggedInEmployee());
                             for (Employee empfromlist : myTeamMembers) {
                                 ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
                             }
@@ -329,7 +329,7 @@ public class EmployeeController extends Validate {
     public ModelAndView editEmployeeDetails(@PathVariable("id") int employeeId) {
         System.out.println("comming id for edit" + employeeId);
         ModelAndView mv = new ModelAndView();
-        if (logedInEmployee().getEmpRole().getId() != 6) {
+        if (loggedInEmployee().getEmpRole().getId() != 6) {
             mv.setViewName("errors/505");
         } else {
 
@@ -341,7 +341,7 @@ public class EmployeeController extends Validate {
             mv.addObject("locationList", commonService.getAllLocations());
             mv.addObject("employee", employee);
         }
-        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
         return mv;
     }
 
@@ -364,7 +364,7 @@ public class EmployeeController extends Validate {
     public String doUploadEmpDP(@RequestParam("empPhoto") MultipartFile fileUpload) {
 
         // ModelAndView mv = new ModelAndView();
-        Employee employee = logedInEmployee();
+        Employee employee = loggedInEmployee();
         String url = "viewEmployeeDetails/" + employee.getId();
         System.out.println("url ::" + url);
         if (fileUpload.getSize() > 0 && (!fileUpload.getOriginalFilename().isEmpty())) {
@@ -502,7 +502,7 @@ public class EmployeeController extends Validate {
     public ModelAndView myTeamMembers(@PathVariable("employeeId") int employeeId) {
         ModelAndView mv = new ModelAndView();
         List<Integer> myTeamMembersID = new ArrayList<>();
-        List<Employee> myTeamMembers = employeeService.getMyTeamMembers(logedInEmployee().getId());
+        List<Employee> myTeamMembers = employeeService.getMyTeamMembers(loggedInEmployee().getId());
         for (Employee myTeam : myTeamMembers) {
             myTeamMembersID.add(myTeam.getId());
         }
@@ -518,7 +518,7 @@ public class EmployeeController extends Validate {
         } else {
             mv.setViewName("errors/505");
         }
-        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
         return mv;
     }
 

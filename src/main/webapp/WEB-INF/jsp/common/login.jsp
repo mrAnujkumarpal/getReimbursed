@@ -25,9 +25,10 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col s12 m8 l6  offset-m2 offset-l3">
-                                <div class="center-align">
-                                    <img class="responsive-img center-align photo-border mt-10"  style="max-height:200px;" src="https://react.sphere.it/wp-content/uploads/2016/12/logo-big-1.png">
-                                </div>
+                                <div class="text-center">
+                                                 <img src="https://www.freeiconspng.com/uploads/money-transfer-icon-24.png"
+                                                   style="width: 185px;" alt="logo">
+                                               </div>
                                 <div class="card">
                                     <div class="col s12" style="border-bottom:1px solid #eeeeee; padding:10px;">
                                         <span  class="left-align" style="font-size:18px;">Sign-in</span>

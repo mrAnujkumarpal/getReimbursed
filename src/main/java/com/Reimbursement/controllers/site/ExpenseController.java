@@ -21,16 +21,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.apache.tomcat.util.codec.binary.Base64;
 import java.io.UnsupportedEncodingException;
-import org.hibernate.bytecode.buildtime.spi.ExecutionException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 @Controller
@@ -58,7 +55,7 @@ public class ExpenseController extends Validate {
         List<ExpenseType> et = expenseService.viewAllExpenseType();
 
         mv.addObject("expenseTypeList", et);
-        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
         return mv;
     }
 
@@ -93,7 +90,7 @@ public class ExpenseController extends Validate {
         Map<String, Object> resp = new HashMap<>();
 
         ExpenseType expenseType = expenseService.getExpenseTypeById(expType_Id);
-        System.out.println("----------" + expenseType.getExpType_Name());
+        //System.out.println("----------" + expenseType.getExpType_Name());
         resp.put("success", "true");
         resp.put("id", expenseType.getExpType_Id());
         resp.put("exptype", expenseType.getExpType_Name());
@@ -134,7 +131,7 @@ public class ExpenseController extends Validate {
         List<ExpenseStatus> esL = expenseService.viewAllExpenseStatus();
 
         mv.addObject("expenseStatusList", esL);
-        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
         return mv;
     }
 
@@ -144,7 +141,7 @@ public class ExpenseController extends Validate {
         System.out.println("comes here common Controller ");
         Map<String, String> resp = new HashMap<>();
         String esName = request.getParameter("expType_Name").trim();
-        System.out.println("comes here common Controller " + esName);
+       // System.out.println("comes here common Controller " + esName);
 
         ExpenseStatus es = new ExpenseStatus();
 
@@ -172,7 +169,7 @@ public class ExpenseController extends Validate {
         mv.addObject("allVendorsList", commonService.getAllVendors());
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
-        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
         mv.addObject("mode", "Add");
         return mv;
     }
@@ -180,12 +177,12 @@ public class ExpenseController extends Validate {
     @RequestMapping(value = "/editExpenseDetails/{exp_id}", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView editExpenseDetails(@PathVariable("exp_id") int exp_id) {
-        System.out.println("comming id for edit" + exp_id);
+        //System.out.println("comming id for edit" + exp_id);
         ModelAndView mv = new ModelAndView();
 
         Expense ex = expenseService.getExpenseById(exp_id);
         if (ex.getExpenseStatus().getExpStatus_Id() != 1) {
-            System.out.println("You are in wrong track");
+           // System.out.println("You are in wrong track");
             mv.setViewName("errors/404");
         } else {
             mv.setViewName("expense/createNew");
@@ -197,18 +194,18 @@ public class ExpenseController extends Validate {
             mv.addObject("mode", "Edit");
 
         }
-        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
         return mv;
     }
 
     @RequestMapping(value = "/createEditExpense", method = RequestMethod.POST)
     public ModelAndView createEditExpense(
-            ModelMap model, 
-            @ModelAttribute Expense expense, 
+            ModelMap model,
+            @ModelAttribute Expense expense,
             @RequestParam("pictureName") MultipartFile[] uploadingFiles) {
 
         Date currentDate = new Date();
-        Employee emp = logedInEmployee();
+        Employee emp = loggedInEmployee();
 
         ModelAndView mv = new ModelAndView("expense/createNew");
         Map<String, String> validateExpense = validateExpense(expense);
@@ -220,7 +217,7 @@ public class ExpenseController extends Validate {
 
             mv.addObject("success", success);
             mv.addObject("message", message);
-            System.out.println(" ========= GO BACK ========== ");
+            //System.out.println(" ========= GO BACK ========== ");
             if (expense.getExpenseDate() != null) {
                 System.out.println(" Inside ");
                 String dteStr = expense.getExpenseDate();
@@ -258,8 +255,8 @@ public class ExpenseController extends Validate {
             } else {
 
                 Vendor ven = commonService.getVendorDetailsByVendorID(vid);
-                System.out.println("Vendor Location id jo jake DB m save hoge ::" + ven.getLocation().getLocation_id());
-                System.out.println("dono same hone hai jo jake DB m save hoge ::" + commonService.getLocationById(ven.getLocation().getLocation_id()));
+               // System.out.println("Vendor Location id jo jake DB m save hoge ::" + ven.getLocation().getLocation_id());
+               // System.out.println("dono same hone hai jo jake DB m save hoge ::" + commonService.getLocationById(ven.getLocation().getLocation_id()));
                 expense.setLocation(commonService.getLocationById(ven.getLocation().getLocation_id()));
             }
 
@@ -326,13 +323,15 @@ public class ExpenseController extends Validate {
                 System.out.println("Expense billable  : FALSE ");
                 System.out.println("So you don't need to save bills ");
             }
-            /*
+
       emailService.sendHTML_ExpenseMail(
-            empName, emp.getEmail(), addedExpense.getExp_amount(),
-            addedExpense.getExp_id(), empName,
-            addedExpense.getExpenseStatus().getExpStatus_Name()
-        );
-             */
+          empName,
+          emp.getEmail(),
+          addedExpense.getExp_amount(),
+          addedExpense.getExp_id(),
+          empName,
+          addedExpense.getExpenseStatus().getExpStatus_Name());
+
             mv.addObject("success", true);
             mv.addObject("payModeList", commonService.getAllPaymentMode());
             mv.addObject("allVendorsList", commonService.getAllVendors());
@@ -360,7 +359,7 @@ public class ExpenseController extends Validate {
             System.out.println("employe id-->" + expense.getEmployee().getId());
             String imgPath;
 
-            Employee employee = logedInEmployee();
+            Employee employee = loggedInEmployee();
             System.out.println(employee.getEmpRole().getId());
             System.out.println(expense.getExpenseStatus().getExpStatus_Id() == 5);
             int logedInempId = employee.getId();
@@ -422,7 +421,7 @@ public class ExpenseController extends Validate {
 
             mv.addObject("employeeRoleId", employee.getEmpRole().getId());
             mv.addObject("payModeList", commonService.getAllPaymentMode());
-            System.out.println("comming expense details " + expense.getExp_id());
+            System.out.println("coming expense details " + expense.getExp_id());
         } else {
             mv = new ModelAndView("redirect:/404");
         }
@@ -431,14 +430,14 @@ public class ExpenseController extends Validate {
 
     @RequestMapping(value = "/submitPerticularExpense/{expense_Id}", method = RequestMethod.GET)
     public String submitPerticularExpense(@PathVariable("expense_Id") int expense_Id) {
-        System.out.println("comming expense id to view " + expense_Id);
+        System.out.println("coming expense id to view " + expense_Id);
 
         Expense ex = expenseService.getExpenseById(expense_Id);
         if (ex != null) {
             System.out.println("Expense created by :::::: " + ex.getEmployee().getfName());
             int oldStatus = ex.getExpenseStatus().getExpStatus_Id();
             System.out.println("oldStatus :::::: " + oldStatus);
-            Employee employee = logedInEmployee();
+            Employee employee = loggedInEmployee();
             int logedInEmployeeId = employee.getId();
             Date currentDate = new Date();
             if ((ex.getEmployee().getId() != logedInEmployeeId)
@@ -481,7 +480,7 @@ public class ExpenseController extends Validate {
             Employee emp = employeeService.getEmployeeById(ex.getEmployee().getId());
             String empName = employeeFullName(emp);
 
-            String byName = employeeFullName(logedInEmployee());
+            String byName = employeeFullName(loggedInEmployee());
             System.out.println(empName + " This empliyee is differ from loged in emp " + logedInEmployeeId);
             /*    emailService.sendHTML_ExpenseMail(
                 empName, emp.getEmail(), ex.getExp_amount(),
@@ -509,7 +508,7 @@ public class ExpenseController extends Validate {
             System.out.println("Expense created by :::::: " + ex.getEmployee().getfName());
             int oldStatus = ex.getExpenseStatus().getExpStatus_Id();
             System.out.println("oldStatus :::::: " + oldStatus);
-            int logedInEmployeeId = logedInEmployee().getId();
+            int logedInEmployeeId = loggedInEmployee().getId();
 
             if (oldStatus == 5) {
                 System.out.println("this is already in reimbursed state ");
@@ -553,7 +552,7 @@ public class ExpenseController extends Validate {
                         Employee emp = employeeService.getEmployeeById(ex.getEmployee().getId());
                         String empName = employeeFullName(emp);
 
-                        String byName = employeeFullName(logedInEmployee());
+                        String byName = employeeFullName(loggedInEmployee());
                         System.out.println(empName + " This empliyee is differ from loged in emp " + logedInEmployeeId);
                         /* emailService.sendHTML_ExpenseMail(
                         empName, emp.getEmail(), ex.getExp_amount(),
@@ -592,7 +591,7 @@ public class ExpenseController extends Validate {
         System.out.println(" ireject_reasond " + reject_reason);
         Date currentDate = new Date();
 
-        Employee employee = logedInEmployee();
+        Employee employee = loggedInEmployee();
         ExpenseReject expenseReject = new ExpenseReject();
 
         expenseReject.setExp_reject_By(employeeFullName(employee));
@@ -654,7 +653,7 @@ public class ExpenseController extends Validate {
     public ModelAndView activityMonitr() {
         System.out.println("comes here..activityMonitr");
         ModelAndView mv = new ModelAndView("reports/monitor");
-        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
         mv.addObject("allExpStatus", expenseService.viewAllExpenseStatus());
         return mv;
     }
@@ -699,7 +698,7 @@ public class ExpenseController extends Validate {
             mv.addObject("grandTotal", sum);
             mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
         }
-        mv.addObject("employeeRoleId", logedInEmployee().getEmpRole().getId());
+        mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
         mv.addObject("allExpStatus", expenseService.viewAllExpenseStatus());
         mv.addObject("ckActivity", exStatusID);
         mv.addObject("from_date", fromDateStr);
@@ -763,12 +762,12 @@ public class ExpenseController extends Validate {
     private List<Expense> activityBetweenDte(int ckStatusId, Date fromDate, Date toDate) {
         List<Expense> expenseList = new ArrayList<>();
 
-        Employee employee = logedInEmployee();
+        Employee employee = loggedInEmployee();
 
 
         /*
          *Below code to including 1 day (current day as well)
-         * 
+         *
          */
         System.out.println("$$$---> B4 date " + toDate);
         toDate = addDays(toDate, 1);

@@ -17,8 +17,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class Validate {
 
@@ -48,7 +46,6 @@ public class Validate {
         venderName = venderName.trim();
         venderPhNo = venderPhNo.trim();
         vendorAdrs = vendorAdrs.trim();
-//        System.out.println(vendor.getLocation().getLocation_id());
 
         if (venderName.trim().isEmpty() || venderName.equals("") || venderPhNo.trim().isEmpty() || venderPhNo.equals("")
                 || vendorAdrs.trim().isEmpty() || vendorAdrs.equals("")) {
@@ -227,7 +224,6 @@ public class Validate {
     public String myReportName(int expStatus_id) {
 
         String reportName;
-        // switch statement with int data type
         switch (expStatus_id) {
             case 1:
                 reportName = "Created";
@@ -267,7 +263,7 @@ public class Validate {
 
     }
 
-    public Employee logedInEmployee() {
+    public Employee loggedInEmployee() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return employeeRepository.findByEmail(authentication.getName());
     }

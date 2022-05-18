@@ -161,18 +161,22 @@
                                 </div>
 
                                 <c:if test="${showUploadDpForm eq true}">
-                                    <div class="col s10 m10 l10" id="changeDPForm" style="display:none;">
+                                    <div class="col s12 m12 l12" id="changeDPForm" style="display:none;">
                                         <form method="post" action="doUploadEmpDP" enctype="multipart/form-data">
+                                           <div class="col s12 m12 l11">
                                             <div class = "file-field input-field">
-                                                <div class="btn"><span>Browse</span>
-                                                    <input name="empPhoto" type = "file"/></div>
+                                              <div class="col s12 m12 l10">
+                                                <div class="btn"><span>Browse</span>  <input name="empPhoto" type = "file"/></div>
                                                 <div class = "file-path-wrapper">
                                                     <input class="file-path validate" type="text" placeholder="Choose a photo to upload"/>
                                                 </div>
-
+                                                </div>
+                                                <div class="col s12 m12 l2" class="right">
                                                 <button   class="waves-effect waves-light btn gradient-45deg-red-pink z-depth-4 mr-1 mb-2" type="submit" value="Upload">
                                                     <i class="large material-icons">cloud_upload</i> Upload
                                                 </button>
+                                                </div>
+                                            </div>
                                             </div>
                                         </form>
                                     </div>
