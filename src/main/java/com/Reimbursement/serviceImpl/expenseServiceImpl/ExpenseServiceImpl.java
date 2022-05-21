@@ -18,7 +18,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     private ExpenseDaoService expenseDaoService;
 
     @Override
-    public List<Expense> getAllExpenseByExpStatus(ExpenseStatus es) {
+    public List<Expense> allExpenseByExpStatus(ExpenseStatus es) {
         return expenseDaoService.getExpListByExpStatus(es);
     }
 
@@ -58,7 +58,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public ExpenseStatus getExpenseStatusDetailsById(int esId) {
+    public ExpenseStatus expenseStatusDetails(int esId) {
         return expenseDaoService.findExpenseStatusDetailsById(esId);
     }
 
@@ -68,12 +68,12 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public List<Expense> getAllExpenseRelatedToMe(Employee employee, ExpenseStatus es) {
+    public List<Expense> allExpenseRelatedToMe(Employee employee, ExpenseStatus es) {
         return expenseDaoService.getAllExpRelatedToMe(employee, es);
     }
 
     @Override
-    public List<Expense> fetchAllexpCreatedByMe(Employee employee) {
+    public List<Expense> expensesCreatedByMe(Employee employee) {
         return expenseDaoService.expanseCreatedByeMe(employee);
     }
 
@@ -84,7 +84,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 
     @Override
-    public void submitExpenseToNextLavel(List<Integer> expenseIds) {
+    public void submitExpenseToNextLevel(List<Integer> expenseIds) {
 
         for (Integer id : expenseIds) {
             Expense expense = new Expense();

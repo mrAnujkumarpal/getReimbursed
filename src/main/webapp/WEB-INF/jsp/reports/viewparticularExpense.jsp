@@ -113,11 +113,11 @@
                                                 <div class="right-align">
                                                     <c:if test="${aboutExpense.expenseStatus.expStatus_Id != 1}">
                                                         <a href="" data-target="ExpenseTypeModelWindow"  style="background: linear-gradient(to right, #FF5252 0%, #EB7077 50%, #f48fb1 100%); margin: 10px 0px;"  data-uri="<c:url value="/rejectExpense/${aboutExpense.exp_id}"/>"  class="btn-large modal-trigger  editExpenceTypeBtn">
-                                                            <b>Rejected</b>
+                                                            <b>Reject</b>
                                                         </a>
 
                                                     </c:if>
-                                                    <a href="/submitPerticularExpense/${aboutExpense.exp_id}" style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);"  class="btn-large waves-effect waves-light"><b>Approved</b> </a>
+                                                    <a href="/submitPerticularExpense/${aboutExpense.exp_id}" style="background: linear-gradient(to right, #018647 0%, #008570 50%, #008685 100%);"  class="btn-large waves-effect waves-light"><b>Approve  ${nextAction}</b> </a>
                                                 </div>
                                             </div>
 
@@ -156,7 +156,7 @@
                                             <c:otherwise>
                                                 <div class="col s12 m12 l12 center-align " id="panelBck">
                                                     <div class="center-align">
-                                                        <img class="responsive-img center-align "  src="https://www.cleverstudentlets.com/wp-content/uploads/2015/11/nobill-clear.png">
+                                                        <img class="responsive-img center-align "  src="">
                                                     </div>
                                                     <h6>OOps, You don not Attached any bills with this expense.</h5>
                                                 </div>

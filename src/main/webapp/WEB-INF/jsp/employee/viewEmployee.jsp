@@ -67,7 +67,7 @@
                                 <div class="card">
                                     <div class="card-content" style="border-top:1px solid #f1f3e9;">
 
-                                        <span class="card-title  flow-text left-align">${employeeData.fName} ${employeeData.lName}</span>
+                                        <span class="card-title  flow-text left-align">${employeeData.fName} ${employeeData.lName} </span>
 
                                         <p><i class="material-icons profile-card-i">perm_identity</i>    ${employeeRole}</p>
                                         <p><i class="material-icons profile-card-i">perm_phone_msg</i>    ${employeeData.mobile} </p>

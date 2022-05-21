@@ -201,7 +201,7 @@ public class EmployeeController extends Validate {
                 mv.setViewName("employee/viewEmployee");
 
                 //1. sum(amount) exp.status_Id=2;  for created
-                int crTDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.getExpenseStatusDetailsById(1));
+                int crTDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.expenseStatusDetails(1));
                 mv.addObject("crTDAmount", crTDAmount);
                 System.out.println("crTDAmount " + crTDAmount);
 
@@ -211,7 +211,7 @@ public class EmployeeController extends Validate {
                 System.out.println("penDNGAmnt " + penDNGAmnt);
 
                 //3. sum(amount) exp.status_Id=4; for rembuirshment
-                int rmbSDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.getExpenseStatusDetailsById(5));
+                int rmbSDAmount = expenseService.getSumAmountOfEmpByExpStatus(employee, expenseService.expenseStatusDetails(5));
                 mv.addObject("rmbSDAmount", rmbSDAmount);
                 System.out.println("rmbSDAmount " + rmbSDAmount);
 
@@ -238,12 +238,12 @@ public class EmployeeController extends Validate {
                         case 2:
                             System.out.println("Approver $$$$$$$$$$$$");
 
-                            es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
+                            es = expenseService.expenseStatusDetails(employeeRoleId);
 
                             myTeamMembers = employeeService.myTeamMembersTL(loggedInEmployee().getId());
                             myTeamMembers.remove(loggedInEmployee());
                             for (Employee empfromlist : myTeamMembers) {
-                                ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
+                                ex.addAll(expenseService.allExpenseRelatedToMe(empfromlist, es));
                             }
                             System.out.println("Final fetched list size  Approver" + ex.size());
                             tlNotification = ex.size();
@@ -251,11 +251,11 @@ public class EmployeeController extends Validate {
                         case 3:
 
                             System.out.println("Auditor");
-                            es = expenseService.getExpenseStatusDetailsById(employeeRoleId);
+                            es = expenseService.expenseStatusDetails(employeeRoleId);
                             myTeamMembers = employeeService.myTeamMembersTL(loggedInEmployee().getId());
                             myTeamMembers.remove(loggedInEmployee());
                             for (Employee empfromlist : myTeamMembers) {
-                                ex.addAll(expenseService.getAllExpenseRelatedToMe(empfromlist, es));
+                                ex.addAll(expenseService.allExpenseRelatedToMe(empfromlist, es));
                             }
                             System.out.println("Final fetched list size Auditor " + ex.size());
                             mngrNotification = ex.size();

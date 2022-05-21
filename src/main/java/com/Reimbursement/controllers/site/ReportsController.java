@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /** Created by Anuj Kumar on 09/03/2019. */
 @Controller
@@ -45,10 +46,10 @@ public class ReportsController extends Validate {
   public ModelAndView expenseHistory(@PathVariable("id") int expStatus_id) {
     ModelAndView mv = new ModelAndView();
 
-    ExpenseStatus es = expenseService.getExpenseStatusDetailsById(expStatus_id);
+    ExpenseStatus es = expenseService.expenseStatusDetails(expStatus_id);
     if (es != null) {
       mv.setViewName("reports/expenseHistory");
-      List<Expense> ex = expenseService.getAllExpenseRelatedToMe(loggedInEmployee(), es);
+      List<Expense> ex = expenseService.allExpenseRelatedToMe(loggedInEmployee(), es);
       if (ex != null) {
 
         mv.addObject("payModeList", commonService.getAllPaymentMode());
@@ -56,14 +57,18 @@ public class ReportsController extends Validate {
         mv.addObject("locationList", commonService.getAllLocations());
         mv.addObject("expenseTypeList", expenseService.viewAllExpenseType());
         mv.addObject("reportName", myReportName(expStatus_id));
-        mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
       }
-      mv.addObject("expenses", ex);
+      List<Expense> descendingList =
+          ex.stream()
+              .sorted(Comparator.comparing(Expense::getExp_id).reversed())
+              .collect(Collectors.toList());
+
+      System.out.println(" list:::::::::::: " + descendingList.toString());
+      mv.addObject("expenses", descendingList);
     } else {
       mv.setViewName("wrongAccess");
-      mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
     }
-
+    mv.addObject("employeeRoleId", loggedInEmployee().getEmpRole().getId());
     return mv;
   }
 
@@ -94,7 +99,7 @@ public class ReportsController extends Validate {
 
     System.out.println(" ex not null ");
     if (ex != null) {
-      es = expenseService.getExpenseStatusDetailsById(6);
+      es = expenseService.expenseStatusDetails(6);
       ex.setExpenseStatus(es);
 
       Date currentDate = new Date();
@@ -129,7 +134,7 @@ public class ReportsController extends Validate {
     ModelAndView mv = new ModelAndView("reports/pendingExpenseHistory");
 
     List<Expense> ex = new ArrayList<>();
-    ExpenseStatus es = expenseService.getExpenseStatusDetailsById(2);
+    ExpenseStatus es = expenseService.expenseStatusDetails(2);
 
     Employee employee = loggedInEmployee();
     List<Employee> myTeamMembers = employeeService.myTeamMembersTL(employee.getId());
@@ -138,7 +143,7 @@ public class ReportsController extends Validate {
     System.out.println("removed itself");
     myTeamMembers.forEach(
         (emp) -> {
-          ex.addAll(expenseService.getAllExpenseRelatedToMe(emp, es));
+          ex.addAll(expenseService.allExpenseRelatedToMe(emp, es));
         });
     System.out.println("Final fetched list size  " + ex.size());
 
@@ -157,14 +162,14 @@ public class ReportsController extends Validate {
 
     ModelAndView mv = new ModelAndView("reports/pendingExpenseHistory");
     List<Expense> ex = new ArrayList<>();
-    ExpenseStatus es = expenseService.getExpenseStatusDetailsById(3);
+    ExpenseStatus es = expenseService.expenseStatusDetails(3);
     Employee employee = loggedInEmployee();
 
     List<Employee> myTeamMembers = employeeService.myTeamMembersManager(employee.getId());
     myTeamMembers.remove(employee);
 
     for (Employee emp : myTeamMembers) {
-      ex.addAll(expenseService.getAllExpenseRelatedToMe(emp, es));
+      ex.addAll(expenseService.allExpenseRelatedToMe(emp, es));
     }
     System.out.println("Final fetched list size" + ex.size());
 
@@ -185,7 +190,7 @@ public class ReportsController extends Validate {
     ModelAndView mv = new ModelAndView("reports/pendingExpenseHistory");
     List<Expense> ex = new ArrayList<>();
 
-    ExpenseStatus es = expenseService.getExpenseStatusDetailsById(4);
+    ExpenseStatus es = expenseService.expenseStatusDetails(4);
 
     Employee employee = loggedInEmployee();
     int empRoleId = employee.getEmpRole().getId();
@@ -200,7 +205,7 @@ public class ReportsController extends Validate {
     for (Employee emp : myTeamMembers) {
         ex.addAll(expenseService.getAllExpenseRelatedToMe(emp, es));
     }*/
-    ex = expenseService.getAllExpenseByExpStatus(es);
+    ex = expenseService.allExpenseByExpStatus(es);
 
     mv.addObject("payModeList", commonService.getAllPaymentMode());
     mv.addObject("allVendorsList", commonService.getAllVendors());
