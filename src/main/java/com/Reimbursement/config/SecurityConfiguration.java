@@ -53,9 +53,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        System.out.println("here 1");
+
         auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder);
-        System.out.println(" configureGlobal " + passwordEncoder);
+
 
     }
 
